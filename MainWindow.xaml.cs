@@ -23,5 +23,10 @@ namespace MDP_Projekt
         {
             InitializeComponent();
         }
+
+        private void testButton_Click(object sender, RoutedEventArgs e)
+        {
+            testButton.Content = "hallo Welt";
+        }
     }
 }
