@@ -8,7 +8,6 @@
 *.aps
 *.bak
 *.[Cc]ache
-*.dll
 *.DS_Store
 *.exe
 *.exp
@@ -42,9 +41,6 @@ _ReSharper*/
 
 #Project files
 [Bb]uild/
-
-#Subversion files
-.svn
 
 # Office Temp Files
 ~$*
