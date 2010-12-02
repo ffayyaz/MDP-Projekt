@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="RepairModelEntities.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="RepairModelEntitiesStoreContainer">
+          <EntitySet Name="TR_FAHRZEUG" EntityType="RepairModelEntities.Store.TR_FAHRZEUG" store:Type="Tables" Schema="dbo" />
+        </EntityContainer>
+        <EntityType Name="TR_FAHRZEUG">
+          <Key>
+            <PropertyRef Name="FZG_ID" />
+          </Key>
+          <Property Name="FZG_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="FZG_SCHILDNR" Type="nvarchar" MaxLength="50" />
+          <Property Name="FZG_CHASSISNR" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="FZG_STAMMNR" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="FZG_INVERKEHR" Type="datetime" Nullable="false" />
+        </EntityType>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="RepairModelEntities" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="RepairModelConnection" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="TR_FAHRZEUG" EntityType="RepairModelEntities.TR_FAHRZEUG" />
+        </EntityContainer>
+        <EntityType Name="TR_FAHRZEUG">
+          <Key>
+            <PropertyRef Name="FZG_ID" />
+          </Key>
+          <Property Name="FZG_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FZG_SCHILDNR" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="FZG_CHASSISNR" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="FZG_STAMMNR" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="FZG_INVERKEHR" Type="DateTime" Nullable="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="RepairModelEntitiesStoreContainer" CdmEntityContainer="RepairModelConnection">
+          <EntitySetMapping Name="TR_FAHRZEUG"><EntityTypeMapping TypeName="RepairModelEntities.TR_FAHRZEUG"><MappingFragment StoreEntitySet="TR_FAHRZEUG">
+            <ScalarProperty Name="FZG_ID" ColumnName="FZG_ID" />
+            <ScalarProperty Name="FZG_SCHILDNR" ColumnName="FZG_SCHILDNR" />
+            <ScalarProperty Name="FZG_CHASSISNR" ColumnName="FZG_CHASSISNR" />
+            <ScalarProperty Name="FZG_STAMMNR" ColumnName="FZG_STAMMNR" />
+            <ScalarProperty Name="FZG_INVERKEHR" ColumnName="FZG_INVERKEHR" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="RepairModel">
+        <EntityTypeShape EntityType="RepairModelEntities.TR_FAHRZEUG" Width="1.5" PointX="0.75" PointY="0.75" Height="1.9802864583333331" IsExpanded="true" />
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>
