@@ -27,7 +27,13 @@ namespace MDP_Projekt
         private void testButton_Click(object sender, RoutedEventArgs e)
         {
             testButton.Content = "hallo Welt";
-            
+
+            // Beispiel Code
+            using (Model.Context context = new Model.Context())
+            {
+                context.AddToT_NUTZER(new Model.T_NUTZER() { NUT_NAME = "Selim", NUT_ORT = "Zug", NUT_PLZ = 6300 });
+                context.SaveChanges();
+            }
         }
     }
 }

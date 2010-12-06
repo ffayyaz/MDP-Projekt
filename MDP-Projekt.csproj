@@ -96,6 +96,11 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\RepairModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RepairModel.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -119,7 +124,8 @@
     <None Include="Documentation\UserStoriesAndTasks\UserStoriesAndTasks.pdf" />
     <None Include="Documentation\UserStoriesAndTasks\UserStoriesAndTasks.xls" />
     <EntityDeploy Include="Model\RepairModel.edmx">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>RepairModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
