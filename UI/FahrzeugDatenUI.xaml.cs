@@ -14,13 +14,21 @@ using System.Windows.Shapes;
 namespace MDP_Projekt.UI
 {
     /// <summary>
-    /// Interaction logic for Window1.xaml
+    /// Interaction logic for FahrzeugDaten.xaml
     /// </summary>
-    public partial class Window1 : Window
+    public partial class FahrzeugDatenUI : Window
     {
-        public Window1()
+        public FahrzeugDatenUI()
         {
             InitializeComponent();
+
+            // Fahrzeugdaten in Fahrzeugdaten Grid laden
+            this.gridFahrzeugDaten.ItemsSource = LoadCollectionData();
+
+            // ComboBox Fahrzeugart abfüllen
+            this.comboFahrzeugArt.ItemsSource = LoadFahrzeugartCombo();
+            this.comboFahrzeugArt.DisplayMemberPath = "FZA_BEZEICHNUNG";
+            this.comboFahrzeugArt.SelectedValuePath = "FZA_ID";
         }
 
         private List<Model.T_FAHRZEUG> LoadCollectionData()
@@ -38,11 +46,18 @@ namespace MDP_Projekt.UI
                 fahrzeuge.ForEach(q => q.TZ_FAHRZEUGMARKE.TR_FAHRZEUGTYPReference.Load());
             }
             return fahrzeuge;
-
-        } 
-        private void FahrzeugDaten_Loaded(object sender, RoutedEventArgs e)
-        {
-            gridFahrzeugDaten.ItemsSource = LoadCollectionData();
         }
+
+        private List<Model.TR_FAHRZEUGART> LoadFahrzeugartCombo()
+        {
+            List<Model.TR_FAHRZEUGART> arten = new List<Model.TR_FAHRZEUGART>();
+            using (Model.Context context = new Model.Context())
+            {
+                arten = context.TR_FAHRZEUGART.ToList();
+            }
+
+            return arten;
+        }
+
     }
 }
