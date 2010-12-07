@@ -27,6 +27,30 @@ namespace MDP_Projekt
         private void testButton_Click(object sender, RoutedEventArgs e)
         {
             testButton.Content = "hallo Welt";
+
+            // Beispiel Code
+            using (Model.Context context = new Model.Context())
+            {
+                // Create example 1
+                context.AddToT_NUTZER(new Model.T_NUTZER() { NUT_NAME = "Selim", NUT_ORT = "Zug", NUT_PLZ = 6300 });
+                context.SaveChanges();
+
+                // Create example 2
+                Model.TZ_FAHRZEUGMARKETYP marketyp = new Model.TZ_FAHRZEUGMARKETYP();
+                marketyp.TR_FAHRZEUGTYP = new Model.TR_FAHRZEUGTYP() { FZT_BEZEICHNUNG = "Piaggio" };
+                marketyp.FMT_BEZEICHNUNG = "MSX 323 Turbo";
+                context.AddToTZ_FAHRZEUGMARKETYP(marketyp);
+                context.SaveChanges();
+
+                // Update example
+                Model.T_NUTZER nutzer = context.T_NUTZER.Where(q => q.NUT_ID == 1).First();
+                nutzer.NUT_NAME = "Noëlle";
+                context.SaveChanges();
+
+                // Delete example
+                context.T_NUTZER.DeleteObject(context.T_NUTZER.Where(q => q.NUT_ID == 5).First());
+                context.SaveChanges();
+            }
         }
     }
 }
