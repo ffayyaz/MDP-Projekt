@@ -57,6 +57,14 @@
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
                     <DataGridTextColumn Binding="{Binding Path=FZG_SCHILDNR, Mode=OneWay}" Header="Schild-Nr" />
+                    <DataGridTextColumn Binding="{Binding Path=TR_FAHRZEUGARTReference.FZA_BEZEICHNUNG, Mode=OneWay}" Header="Fahrzeugart" />
+                    <DataGridTextColumn Binding="{Binding Path=FZG_FAHRZEUGNR, Mode=OneWay}" Header="Fahrzeug-Nr" />
+                    <DataGridTextColumn Binding="{Binding Path=TZ_FAHRZEUGMARKEReference.FZM_BEZEICHNUNG, Mode=OneWay}" Header="Marke" />
+                    <DataGridTextColumn Binding="{Binding Path=TZ_FAHRZEUGMARKEReference.TR_FAHRZEUGTYPReference.FZT_BEZEICHNUNG, Mode=OneWay}" Header="Typ" />
+                    <DataGridTextColumn Binding="{Binding Path=FZG_RAHMENNR, Mode=OneWay}" Header="Rahmen-Nr"/>
+                    <DataGridTextColumn Binding="{Binding Path=FZG_STAMMNR, Mode=OneWay}" Header="Stamm-Nr" />
+                    <DataGridTextColumn Binding="{Binding Path=FZG_ERSTEINVERKEHR, Mode=OneWay}" Header="eingelöst am" />
+                    <DataGridTextColumn Binding="{Binding Path=T_NUTZERReference.NUT_NAME, Mode=OneWay}" Header="Nutzer" />
                 </DataGrid.Columns>
             </DataGrid>
             <GridSplitter Grid.Row="5" Grid.ColumnSpan="4" Height="5" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Margin="0,10,0,0" />
