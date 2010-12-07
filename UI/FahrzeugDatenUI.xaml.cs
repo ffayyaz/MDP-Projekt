@@ -23,9 +23,19 @@ namespace MDP_Projekt.UI
             InitializeComponent();
         }
 
+        private List<Model.T_FAHRZEUG> LoadCollectionData()
+        {
+            List<Model.T_FAHRZEUG> fahrzeuge = new List<Model.T_FAHRZEUG>();
+            using (Model.Context context = new Model.Context())
+            {
+                fahrzeuge = context.T_FAHRZEUG.ToList();
+            }
+            return fahrzeuge;
+
+        } 
         private void FahrzeugDaten_Loaded(object sender, RoutedEventArgs e)
         {
-
+            gridFahrzeugDaten.ItemsSource = LoadCollectionData();
         }
     }
 }

@@ -1,7 +1,7 @@
 ﻿<Window x:Class="MDP_Projekt.UI.Window1"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Fahrzeugdaten" Height="500" Width="500" Name="FahrzeugDaten" Loaded="FahrzeugDaten_Loaded">
+        Title="Fahrzeugdaten" Height="300" Width="700" Name="FahrzeugDaten" Loaded="FahrzeugDaten_Loaded">
     <StackPanel>
         <Grid Height="Auto" Margin="10">
             <Grid.RowDefinitions>
@@ -31,12 +31,30 @@
             <ComboBox Grid.Row="2" Grid.Column="1"></ComboBox>
             <Label Grid.Row="2" Grid.Column="2">Stamm-Nr.:</Label>
             <TextBox Grid.Row="2" Grid.Column="3"></TextBox>
-            <Label Grid.Row="3" Grid.Column="0">Nutzer</Label>
+            <Label Grid.Row="3" Grid.Column="0">Nutzer:</Label>
             <ComboBox Grid.Row="3" Grid.Column="1"></ComboBox>
             <Label Grid.Row="3" Grid.Column="2">eingelöst am:</Label>
             <DatePicker Grid.Row="3" Grid.Column="3"></DatePicker>
             <Button Grid.Row="3" Grid.Column="4">Save</Button>
-            <DataGrid Grid.Row="5" Grid.ColumnSpan="5" HeadersVisibility="Column" Margin="0,0,0,-332" ItemsSource="{Binding}" Name="gridFahrzeugDaten"></DataGrid>
+            <DataGrid Grid.Row="5" Grid.ColumnSpan="5" AutoGenerateColumns="False" HeadersVisibility="Column" Name="gridFahrzeugDaten" ItemsSource="{Binding}">
+                <DataGrid.Columns>
+                    <DataGridTemplateColumn>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button>Edit</Button>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button>Delete</Button>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTextColumn Binding="{Binding Path=FZG_SCHILDNR, Mode=OneWay}" Header="Schild-Nr" />
+                </DataGrid.Columns>
+            </DataGrid>
             <GridSplitter Grid.Row="4" Grid.ColumnSpan="5" Height="5" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Margin="0,10,0,0" />
         </Grid>
     </StackPanel>
