@@ -28,7 +28,14 @@ namespace MDP_Projekt.UI
             List<Model.T_FAHRZEUG> fahrzeuge = new List<Model.T_FAHRZEUG>();
             using (Model.Context context = new Model.Context())
             {
+                // Fahrzeuge holen
                 fahrzeuge = context.T_FAHRZEUG.ToList();
+
+                // ... deren Entitäten laden
+                fahrzeuge.ForEach(q => q.TZ_FAHRZEUGMARKEReference.Load());
+                fahrzeuge.ForEach(q => q.TR_FAHRZEUGARTReference.Load());
+                fahrzeuge.ForEach(q => q.T_NUTZERReference.Load());
+                fahrzeuge.ForEach(q => q.TZ_FAHRZEUGMARKE.TR_FAHRZEUGTYPReference.Load());
             }
             return fahrzeuge;
 
