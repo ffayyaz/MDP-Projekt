@@ -36,10 +36,10 @@ namespace MDP_Projekt
                 context.SaveChanges();
 
                 // Create example 2
-                Model.TZ_FAHRZEUGMARKETYP marketyp = new Model.TZ_FAHRZEUGMARKETYP();
+                Model.TZ_FAHRZEUGMARKE marketyp = new Model.TZ_FAHRZEUGMARKE();
                 marketyp.TR_FAHRZEUGTYP = new Model.TR_FAHRZEUGTYP() { FZT_BEZEICHNUNG = "Piaggio" };
-                marketyp.FMT_BEZEICHNUNG = "MSX 323 Turbo";
-                context.AddToTZ_FAHRZEUGMARKETYP(marketyp);
+                marketyp.FZM_BEZEICHNUNG = "MSX 323 Turbo";
+                context.AddToTZ_FAHRZEUGMARKE(marketyp);
                 context.SaveChanges();
 
                 // Update example
