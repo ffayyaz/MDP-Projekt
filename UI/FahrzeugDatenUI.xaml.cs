@@ -23,15 +23,19 @@ namespace MDP_Projekt.UI
             InitializeComponent();
 
             // Fahrzeugdaten in Fahrzeugdaten Grid laden
-            this.gridFahrzeugDaten.ItemsSource = LoadCollectionData();
+            this.gridFahrzeugDaten.ItemsSource = getFahrzeuge();
 
             // ComboBox Fahrzeugart abfüllen
-            this.comboFahrzeugArt.ItemsSource = LoadFahrzeugartCombo();
+            this.comboFahrzeugArt.ItemsSource = getFahrzeugarten();
             this.comboFahrzeugArt.DisplayMemberPath = "FZA_BEZEICHNUNG";
             this.comboFahrzeugArt.SelectedValuePath = "FZA_ID";
         }
 
-        private List<Model.T_FAHRZEUG> LoadCollectionData()
+        /// <summary>
+        /// Gibt alle Fahrzeuge zurück
+        /// </summary>
+        /// <returns>Liste der Fahrzeuge</returns>
+        private List<Model.T_FAHRZEUG> getFahrzeuge()
         {
             List<Model.T_FAHRZEUG> fahrzeuge = new List<Model.T_FAHRZEUG>();
             using (Model.Context context = new Model.Context())
@@ -48,7 +52,11 @@ namespace MDP_Projekt.UI
             return fahrzeuge;
         }
 
-        private List<Model.TR_FAHRZEUGART> LoadFahrzeugartCombo()
+        /// <summary>
+        /// Gibt alle Fahrzeugarten zurück
+        /// </summary>
+        /// <returns>Liste der Fahrzeugarten</returns>
+        private List<Model.TR_FAHRZEUGART> getFahrzeugarten()
         {
             List<Model.TR_FAHRZEUGART> arten = new List<Model.TR_FAHRZEUGART>();
             using (Model.Context context = new Model.Context())
