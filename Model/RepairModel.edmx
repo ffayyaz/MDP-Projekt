@@ -4,24 +4,24 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Model.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+    <Schema Namespace="Model.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
         <EntityContainer Name="ModelStoreContainer">
           <EntitySet Name="T_FAHRZEUG" EntityType="Model.Store.T_FAHRZEUG" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="T_NUTZER" EntityType="Model.Store.T_NUTZER" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="TR_FAHRZEUGART" EntityType="Model.Store.TR_FAHRZEUGART" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="TR_FAHRZEUGTYP" EntityType="Model.Store.TR_FAHRZEUGTYP" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="TZ_FAHRZEUGMARKETYP" EntityType="Model.Store.TZ_FAHRZEUGMARKETYP" store:Type="Tables" Schema="dbo" />
-          <AssociationSet Name="FK_FMT_FZG" Association="Model.Store.FK_FMT_FZG">
-            <End Role="TZ_FAHRZEUGMARKETYP" EntitySet="TZ_FAHRZEUGMARKETYP" />
-            <End Role="T_FAHRZEUG" EntitySet="T_FAHRZEUG" />
-          </AssociationSet>
+          <EntitySet Name="TZ_FAHRZEUGMARKE" EntityType="Model.Store.TZ_FAHRZEUGMARKE" store:Type="Tables" Schema="dbo" />
           <AssociationSet Name="FK_FZA_FZG" Association="Model.Store.FK_FZA_FZG">
             <End Role="TR_FAHRZEUGART" EntitySet="TR_FAHRZEUGART" />
             <End Role="T_FAHRZEUG" EntitySet="T_FAHRZEUG" />
           </AssociationSet>
+          <AssociationSet Name="FK_FZM_FZG" Association="Model.Store.FK_FZM_FZG">
+            <End Role="TZ_FAHRZEUGMARKE" EntitySet="TZ_FAHRZEUGMARKE" />
+            <End Role="T_FAHRZEUG" EntitySet="T_FAHRZEUG" />
+          </AssociationSet>
           <AssociationSet Name="FK_FZT_FMT" Association="Model.Store.FK_FZT_FMT">
             <End Role="TR_FAHRZEUGTYP" EntitySet="TR_FAHRZEUGTYP" />
-            <End Role="TZ_FAHRZEUGMARKETYP" EntitySet="TZ_FAHRZEUGMARKETYP" />
+            <End Role="TZ_FAHRZEUGMARKE" EntitySet="TZ_FAHRZEUGMARKE" />
           </AssociationSet>
           <AssociationSet Name="FK_NUT_FZG" Association="Model.Store.FK_NUT_FZG">
             <End Role="T_NUTZER" EntitySet="T_NUTZER" />
@@ -33,14 +33,14 @@
             <PropertyRef Name="FZG_ID" />
           </Key>
           <Property Name="FZG_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="FZG_SCHILDNR" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="FZG_SCHILDNR" Type="nvarchar" MaxLength="50" />
           <Property Name="FZG_RAHMENNR" Type="nvarchar" MaxLength="50" />
           <Property Name="FZG_STAMMNR" Type="nvarchar" MaxLength="50" />
           <Property Name="FZG_ERSTEINVERKEHR" Type="datetime" />
           <Property Name="FZG_FAHRZEUGNR" Type="nvarchar" MaxLength="50" />
           <Property Name="FZG_NUT_ID" Type="int" />
           <Property Name="FZG_FZA_ID" Type="int" />
-          <Property Name="FZG_FMT_ID" Type="int" />
+          <Property Name="FZG_FZM_ID" Type="int" />
         </EntityType>
         <EntityType Name="T_NUTZER">
           <Key>
@@ -66,26 +66,14 @@
           <Property Name="FZT_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="FZT_BEZEICHNUNG" Type="nvarchar" Nullable="false" MaxLength="50" />
         </EntityType>
-        <EntityType Name="TZ_FAHRZEUGMARKETYP">
+        <EntityType Name="TZ_FAHRZEUGMARKE">
           <Key>
-            <PropertyRef Name="FMT_ID" />
+            <PropertyRef Name="FZM_ID" />
           </Key>
-          <Property Name="FMT_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="FMT_BEZEICHNUNG" Type="nvarchar" MaxLength="50" />
-          <Property Name="FMT_FZT_ID" Type="int" />
+          <Property Name="FZM_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="FZM_BEZEICHNUNG" Type="nvarchar" MaxLength="50" />
+          <Property Name="FZM_FZT_ID" Type="int" />
         </EntityType>
-        <Association Name="FK_FMT_FZG">
-          <End Role="TZ_FAHRZEUGMARKETYP" Type="Model.Store.TZ_FAHRZEUGMARKETYP" Multiplicity="0..1" />
-          <End Role="T_FAHRZEUG" Type="Model.Store.T_FAHRZEUG" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TZ_FAHRZEUGMARKETYP">
-              <PropertyRef Name="FMT_ID" />
-            </Principal>
-            <Dependent Role="T_FAHRZEUG">
-              <PropertyRef Name="FZG_FMT_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_FZA_FZG">
           <End Role="TR_FAHRZEUGART" Type="Model.Store.TR_FAHRZEUGART" Multiplicity="0..1" />
           <End Role="T_FAHRZEUG" Type="Model.Store.T_FAHRZEUG" Multiplicity="*" />
@@ -98,15 +86,27 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_FZM_FZG">
+          <End Role="TZ_FAHRZEUGMARKE" Type="Model.Store.TZ_FAHRZEUGMARKE" Multiplicity="0..1" />
+          <End Role="T_FAHRZEUG" Type="Model.Store.T_FAHRZEUG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TZ_FAHRZEUGMARKE">
+              <PropertyRef Name="FZM_ID" />
+            </Principal>
+            <Dependent Role="T_FAHRZEUG">
+              <PropertyRef Name="FZG_FZM_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_FZT_FMT">
           <End Role="TR_FAHRZEUGTYP" Type="Model.Store.TR_FAHRZEUGTYP" Multiplicity="0..1" />
-          <End Role="TZ_FAHRZEUGMARKETYP" Type="Model.Store.TZ_FAHRZEUGMARKETYP" Multiplicity="*" />
+          <End Role="TZ_FAHRZEUGMARKE" Type="Model.Store.TZ_FAHRZEUGMARKE" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TR_FAHRZEUGTYP">
               <PropertyRef Name="FZT_ID" />
             </Principal>
-            <Dependent Role="TZ_FAHRZEUGMARKETYP">
-              <PropertyRef Name="FMT_FZT_ID" />
+            <Dependent Role="TZ_FAHRZEUGMARKE">
+              <PropertyRef Name="FZM_FZT_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -122,8 +122,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Model" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
@@ -132,13 +131,13 @@
           <EntitySet Name="T_NUTZER" EntityType="Model.T_NUTZER" />
           <EntitySet Name="TR_FAHRZEUGART" EntityType="Model.TR_FAHRZEUGART" />
           <EntitySet Name="TR_FAHRZEUGTYP" EntityType="Model.TR_FAHRZEUGTYP" />
-          <EntitySet Name="TZ_FAHRZEUGMARKETYP" EntityType="Model.TZ_FAHRZEUGMARKETYP" />
-          <AssociationSet Name="FK_FMT_FZG" Association="Model.FK_FMT_FZG">
-            <End Role="TZ_FAHRZEUGMARKETYP" EntitySet="TZ_FAHRZEUGMARKETYP" />
-            <End Role="T_FAHRZEUG" EntitySet="T_FAHRZEUG" />
-          </AssociationSet>
+          <EntitySet Name="TZ_FAHRZEUGMARKE" EntityType="Model.TZ_FAHRZEUGMARKE" />
           <AssociationSet Name="FK_FZA_FZG" Association="Model.FK_FZA_FZG">
             <End Role="TR_FAHRZEUGART" EntitySet="TR_FAHRZEUGART" />
+            <End Role="T_FAHRZEUG" EntitySet="T_FAHRZEUG" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FZM_FZG" Association="Model.FK_FZM_FZG">
+            <End Role="TZ_FAHRZEUGMARKE" EntitySet="TZ_FAHRZEUGMARKE" />
             <End Role="T_FAHRZEUG" EntitySet="T_FAHRZEUG" />
           </AssociationSet>
           <AssociationSet Name="FK_NUT_FZG" Association="Model.FK_NUT_FZG">
@@ -147,78 +146,66 @@
           </AssociationSet>
           <AssociationSet Name="FK_FZT_FMT" Association="Model.FK_FZT_FMT">
             <End Role="TR_FAHRZEUGTYP" EntitySet="TR_FAHRZEUGTYP" />
-            <End Role="TZ_FAHRZEUGMARKETYP" EntitySet="TZ_FAHRZEUGMARKETYP" />
+            <End Role="TZ_FAHRZEUGMARKE" EntitySet="TZ_FAHRZEUGMARKE" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="T_FAHRZEUG">
           <Key>
             <PropertyRef Name="FZG_ID" />
           </Key>
-          <Property Name="FZG_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="FZG_SCHILDNR" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
-          <Property Name="FZG_RAHMENNR" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
-          <Property Name="FZG_STAMMNR" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
-          <Property Name="FZG_ERSTEINVERKEHR" Type="DateTime" />
-          <Property Name="FZG_FAHRZEUGNR" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
-          <Property Name="FZG_NUT_ID" Type="Int32" />
-          <Property Name="FZG_FZA_ID" Type="Int32" />
-          <Property Name="FZG_FMT_ID" Type="Int32" />
-          <NavigationProperty Name="TZ_FAHRZEUGMARKETYP" Relationship="Model.FK_FMT_FZG" FromRole="T_FAHRZEUG" ToRole="TZ_FAHRZEUGMARKETYP" />
+          <Property Type="Int32" Name="FZG_ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="FZG_SCHILDNR" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="FZG_RAHMENNR" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="FZG_STAMMNR" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="FZG_ERSTEINVERKEHR" />
+          <Property Type="String" Name="FZG_FAHRZEUGNR" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="FZG_NUT_ID" />
+          <Property Type="Int32" Name="FZG_FZA_ID" />
+          <Property Type="Int32" Name="FZG_FZM_ID" />
           <NavigationProperty Name="TR_FAHRZEUGART" Relationship="Model.FK_FZA_FZG" FromRole="T_FAHRZEUG" ToRole="TR_FAHRZEUGART" />
+          <NavigationProperty Name="TZ_FAHRZEUGMARKE" Relationship="Model.FK_FZM_FZG" FromRole="T_FAHRZEUG" ToRole="TZ_FAHRZEUGMARKE" />
           <NavigationProperty Name="T_NUTZER" Relationship="Model.FK_NUT_FZG" FromRole="T_FAHRZEUG" ToRole="T_NUTZER" />
         </EntityType>
         <EntityType Name="T_NUTZER">
           <Key>
             <PropertyRef Name="NUT_ID" />
           </Key>
-          <Property Name="NUT_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="NUT_NAME" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
-          <Property Name="NUT_PLZ" Type="Int32" />
-          <Property Name="NUT_ORT" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Type="Int32" Name="NUT_ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="NUT_NAME" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="NUT_PLZ" />
+          <Property Type="String" Name="NUT_ORT" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="T_FAHRZEUG" Relationship="Model.FK_NUT_FZG" FromRole="T_NUTZER" ToRole="T_FAHRZEUG" />
         </EntityType>
         <EntityType Name="TR_FAHRZEUGART">
           <Key>
             <PropertyRef Name="FZA_ID" />
           </Key>
-          <Property Name="FZA_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="FZA_BEZEICHNUNG" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
-          <Property Name="FZA_KEY" Type="String" Nullable="false" MaxLength="3" Unicode="false" FixedLength="true" />
+          <Property Type="Int32" Name="FZA_ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="FZA_BEZEICHNUNG" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="FZA_KEY" Nullable="false" MaxLength="3" FixedLength="true" Unicode="false" />
           <NavigationProperty Name="T_FAHRZEUG" Relationship="Model.FK_FZA_FZG" FromRole="TR_FAHRZEUGART" ToRole="T_FAHRZEUG" />
         </EntityType>
         <EntityType Name="TR_FAHRZEUGTYP">
           <Key>
             <PropertyRef Name="FZT_ID" />
           </Key>
-          <Property Name="FZT_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="FZT_BEZEICHNUNG" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
-          <NavigationProperty Name="TZ_FAHRZEUGMARKETYP" Relationship="Model.FK_FZT_FMT" FromRole="TR_FAHRZEUGTYP" ToRole="TZ_FAHRZEUGMARKETYP" />
+          <Property Type="Int32" Name="FZT_ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="FZT_BEZEICHNUNG" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="TZ_FAHRZEUGMARKE" Relationship="Model.FK_FZT_FMT" FromRole="TR_FAHRZEUGTYP" ToRole="TZ_FAHRZEUGMARKE" />
         </EntityType>
-        <EntityType Name="TZ_FAHRZEUGMARKETYP">
+        <EntityType Name="TZ_FAHRZEUGMARKE">
           <Key>
-            <PropertyRef Name="FMT_ID" />
+            <PropertyRef Name="FZM_ID" />
           </Key>
-          <Property Name="FMT_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="FMT_BEZEICHNUNG" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
-          <Property Name="FMT_FZT_ID" Type="Int32" />
-          <NavigationProperty Name="T_FAHRZEUG" Relationship="Model.FK_FMT_FZG" FromRole="TZ_FAHRZEUGMARKETYP" ToRole="T_FAHRZEUG" />
-          <NavigationProperty Name="TR_FAHRZEUGTYP" Relationship="Model.FK_FZT_FMT" FromRole="TZ_FAHRZEUGMARKETYP" ToRole="TR_FAHRZEUGTYP" />
+          <Property Type="Int32" Name="FZM_ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="FZM_BEZEICHNUNG" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="FZM_FZT_ID" />
+          <NavigationProperty Name="T_FAHRZEUG" Relationship="Model.FK_FZM_FZG" FromRole="TZ_FAHRZEUGMARKE" ToRole="T_FAHRZEUG" />
+          <NavigationProperty Name="TR_FAHRZEUGTYP" Relationship="Model.FK_FZT_FMT" FromRole="TZ_FAHRZEUGMARKE" ToRole="TR_FAHRZEUGTYP" />
         </EntityType>
-        <Association Name="FK_FMT_FZG">
-          <End Role="TZ_FAHRZEUGMARKETYP" Type="Model.TZ_FAHRZEUGMARKETYP" Multiplicity="0..1" />
-          <End Role="T_FAHRZEUG" Type="Model.T_FAHRZEUG" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TZ_FAHRZEUGMARKETYP">
-              <PropertyRef Name="FMT_ID" />
-            </Principal>
-            <Dependent Role="T_FAHRZEUG">
-              <PropertyRef Name="FZG_FMT_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_FZA_FZG">
-          <End Role="TR_FAHRZEUGART" Type="Model.TR_FAHRZEUGART" Multiplicity="0..1" />
-          <End Role="T_FAHRZEUG" Type="Model.T_FAHRZEUG" Multiplicity="*" />
+          <End Type="Model.TR_FAHRZEUGART" Role="TR_FAHRZEUGART" Multiplicity="0..1" />
+          <End Type="Model.T_FAHRZEUG" Role="T_FAHRZEUG" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TR_FAHRZEUGART">
               <PropertyRef Name="FZA_ID" />
@@ -228,9 +215,21 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_FZM_FZG">
+          <End Type="Model.TZ_FAHRZEUGMARKE" Role="TZ_FAHRZEUGMARKE" Multiplicity="0..1" />
+          <End Type="Model.T_FAHRZEUG" Role="T_FAHRZEUG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TZ_FAHRZEUGMARKE">
+              <PropertyRef Name="FZM_ID" />
+            </Principal>
+            <Dependent Role="T_FAHRZEUG">
+              <PropertyRef Name="FZG_FZM_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_NUT_FZG">
-          <End Role="T_NUTZER" Type="Model.T_NUTZER" Multiplicity="0..1" />
-          <End Role="T_FAHRZEUG" Type="Model.T_FAHRZEUG" Multiplicity="*" />
+          <End Type="Model.T_NUTZER" Role="T_NUTZER" Multiplicity="0..1" />
+          <End Type="Model.T_FAHRZEUG" Role="T_FAHRZEUG" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="T_NUTZER">
               <PropertyRef Name="NUT_ID" />
@@ -241,54 +240,74 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_FZT_FMT">
-          <End Role="TR_FAHRZEUGTYP" Type="Model.TR_FAHRZEUGTYP" Multiplicity="0..1" />
-          <End Role="TZ_FAHRZEUGMARKETYP" Type="Model.TZ_FAHRZEUGMARKETYP" Multiplicity="*" />
+          <End Type="Model.TR_FAHRZEUGTYP" Role="TR_FAHRZEUGTYP" Multiplicity="0..1" />
+          <End Type="Model.TZ_FAHRZEUGMARKE" Role="TZ_FAHRZEUGMARKE" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TR_FAHRZEUGTYP">
               <PropertyRef Name="FZT_ID" />
             </Principal>
-            <Dependent Role="TZ_FAHRZEUGMARKETYP">
-              <PropertyRef Name="FMT_FZT_ID" />
+            <Dependent Role="TZ_FAHRZEUGMARKE">
+              <PropertyRef Name="FZM_FZT_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="Context">
-          <EntitySetMapping Name="T_FAHRZEUG"><EntityTypeMapping TypeName="Model.T_FAHRZEUG"><MappingFragment StoreEntitySet="T_FAHRZEUG">
-            <ScalarProperty Name="FZG_ID" ColumnName="FZG_ID" />
-            <ScalarProperty Name="FZG_SCHILDNR" ColumnName="FZG_SCHILDNR" />
-            <ScalarProperty Name="FZG_RAHMENNR" ColumnName="FZG_RAHMENNR" />
-            <ScalarProperty Name="FZG_STAMMNR" ColumnName="FZG_STAMMNR" />
-            <ScalarProperty Name="FZG_ERSTEINVERKEHR" ColumnName="FZG_ERSTEINVERKEHR" />
-            <ScalarProperty Name="FZG_FAHRZEUGNR" ColumnName="FZG_FAHRZEUGNR" />
-            <ScalarProperty Name="FZG_NUT_ID" ColumnName="FZG_NUT_ID" />
-            <ScalarProperty Name="FZG_FZA_ID" ColumnName="FZG_FZA_ID" />
-            <ScalarProperty Name="FZG_FMT_ID" ColumnName="FZG_FMT_ID" />
-          </MappingFragment></EntityTypeMapping></EntitySetMapping>
-          <EntitySetMapping Name="T_NUTZER"><EntityTypeMapping TypeName="Model.T_NUTZER"><MappingFragment StoreEntitySet="T_NUTZER">
-            <ScalarProperty Name="NUT_ID" ColumnName="NUT_ID" />
-            <ScalarProperty Name="NUT_NAME" ColumnName="NUT_NAME" />
-            <ScalarProperty Name="NUT_PLZ" ColumnName="NUT_PLZ" />
-            <ScalarProperty Name="NUT_ORT" ColumnName="NUT_ORT" />
-          </MappingFragment></EntityTypeMapping></EntitySetMapping>
-          <EntitySetMapping Name="TR_FAHRZEUGART"><EntityTypeMapping TypeName="Model.TR_FAHRZEUGART"><MappingFragment StoreEntitySet="TR_FAHRZEUGART">
-            <ScalarProperty Name="FZA_ID" ColumnName="FZA_ID" />
-            <ScalarProperty Name="FZA_BEZEICHNUNG" ColumnName="FZA_BEZEICHNUNG" />
-            <ScalarProperty Name="FZA_KEY" ColumnName="FZA_KEY" />
-          </MappingFragment></EntityTypeMapping></EntitySetMapping>
-          <EntitySetMapping Name="TR_FAHRZEUGTYP"><EntityTypeMapping TypeName="Model.TR_FAHRZEUGTYP"><MappingFragment StoreEntitySet="TR_FAHRZEUGTYP">
-            <ScalarProperty Name="FZT_ID" ColumnName="FZT_ID" />
-            <ScalarProperty Name="FZT_BEZEICHNUNG" ColumnName="FZT_BEZEICHNUNG" />
-          </MappingFragment></EntityTypeMapping></EntitySetMapping>
-          <EntitySetMapping Name="TZ_FAHRZEUGMARKETYP"><EntityTypeMapping TypeName="Model.TZ_FAHRZEUGMARKETYP"><MappingFragment StoreEntitySet="TZ_FAHRZEUGMARKETYP">
-            <ScalarProperty Name="FMT_ID" ColumnName="FMT_ID" />
-            <ScalarProperty Name="FMT_BEZEICHNUNG" ColumnName="FMT_BEZEICHNUNG" />
-            <ScalarProperty Name="FMT_FZT_ID" ColumnName="FMT_FZT_ID" />
-          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="T_FAHRZEUG">
+            <EntityTypeMapping TypeName="Model.T_FAHRZEUG">
+              <MappingFragment StoreEntitySet="T_FAHRZEUG">
+                <ScalarProperty Name="FZG_FZM_ID" ColumnName="FZG_FZM_ID" />
+                <ScalarProperty Name="FZG_FZA_ID" ColumnName="FZG_FZA_ID" />
+                <ScalarProperty Name="FZG_NUT_ID" ColumnName="FZG_NUT_ID" />
+                <ScalarProperty Name="FZG_FAHRZEUGNR" ColumnName="FZG_FAHRZEUGNR" />
+                <ScalarProperty Name="FZG_ERSTEINVERKEHR" ColumnName="FZG_ERSTEINVERKEHR" />
+                <ScalarProperty Name="FZG_STAMMNR" ColumnName="FZG_STAMMNR" />
+                <ScalarProperty Name="FZG_RAHMENNR" ColumnName="FZG_RAHMENNR" />
+                <ScalarProperty Name="FZG_SCHILDNR" ColumnName="FZG_SCHILDNR" />
+                <ScalarProperty Name="FZG_ID" ColumnName="FZG_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_NUTZER">
+            <EntityTypeMapping TypeName="Model.T_NUTZER">
+              <MappingFragment StoreEntitySet="T_NUTZER">
+                <ScalarProperty Name="NUT_ORT" ColumnName="NUT_ORT" />
+                <ScalarProperty Name="NUT_PLZ" ColumnName="NUT_PLZ" />
+                <ScalarProperty Name="NUT_NAME" ColumnName="NUT_NAME" />
+                <ScalarProperty Name="NUT_ID" ColumnName="NUT_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TR_FAHRZEUGART">
+            <EntityTypeMapping TypeName="Model.TR_FAHRZEUGART">
+              <MappingFragment StoreEntitySet="TR_FAHRZEUGART">
+                <ScalarProperty Name="FZA_KEY" ColumnName="FZA_KEY" />
+                <ScalarProperty Name="FZA_BEZEICHNUNG" ColumnName="FZA_BEZEICHNUNG" />
+                <ScalarProperty Name="FZA_ID" ColumnName="FZA_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TR_FAHRZEUGTYP">
+            <EntityTypeMapping TypeName="Model.TR_FAHRZEUGTYP">
+              <MappingFragment StoreEntitySet="TR_FAHRZEUGTYP">
+                <ScalarProperty Name="FZT_BEZEICHNUNG" ColumnName="FZT_BEZEICHNUNG" />
+                <ScalarProperty Name="FZT_ID" ColumnName="FZT_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TZ_FAHRZEUGMARKE">
+            <EntityTypeMapping TypeName="Model.TZ_FAHRZEUGMARKE">
+              <MappingFragment StoreEntitySet="TZ_FAHRZEUGMARKE">
+                <ScalarProperty Name="FZM_FZT_ID" ColumnName="FZM_FZT_ID" />
+                <ScalarProperty Name="FZM_BEZEICHNUNG" ColumnName="FZM_BEZEICHNUNG" />
+                <ScalarProperty Name="FZM_ID" ColumnName="FZM_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -310,26 +329,26 @@
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
       <Diagram Name="RepairModel">
-        <EntityTypeShape EntityType="Model.T_FAHRZEUG" Width="1.5" PointX="5.25" PointY="1" Height="3.3263964843749996" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.T_NUTZER" Width="1.5" PointX="3" PointY="5.375" Height="1.9802864583333335" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.TR_FAHRZEUGART" Width="1.5" PointX="3" PointY="8.125" Height="1.7879850260416639" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.TR_FAHRZEUGTYP" Width="1.5" PointX="0.75" PointY="1.875" Height="1.5956835937499996" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.TZ_FAHRZEUGMARKETYP" Width="1.5" PointX="3" PointY="1.625" Height="1.9802864583333326" IsExpanded="true" />
-        <AssociationConnector Association="Model.FK_FMT_FZG" ManuallyRouted="false">
-          <ConnectorPoint PointX="4.5" PointY="2.6151432291666663" />
-          <ConnectorPoint PointX="5.25" PointY="2.6151432291666663" />
+        <EntityTypeShape EntityType="Model.T_FAHRZEUG" Width="1.5" PointX="5.25" PointY="1" Height="3.3263964843749996" />
+        <EntityTypeShape EntityType="Model.T_NUTZER" Width="1.5" PointX="3" PointY="5.375" Height="1.9802864583333317" />
+        <EntityTypeShape EntityType="Model.TR_FAHRZEUGART" Width="1.5" PointX="3" PointY="8.125" Height="1.7879850260416674" />
+        <EntityTypeShape EntityType="Model.TR_FAHRZEUGTYP" Width="1.5" PointX="0.75" PointY="1.875" Height="1.5956835937499996" />
+        <EntityTypeShape EntityType="Model.TZ_FAHRZEUGMARKE" Width="1.5" PointX="3" PointY="1.625" Height="1.9802864583333353" />
+        <AssociationConnector Association="Model.FK_FZA_FZG" >
+          <ConnectorPoint PointX="4.5" PointY="9.0189925130208337" />
+          <ConnectorPoint PointX="6" PointY="9.0189925130208337" />
+          <ConnectorPoint PointX="6" PointY="4.326396484375" />
         </AssociationConnector>
-        <AssociationConnector Association="Model.FK_FZA_FZG" ManuallyRouted="false">
-          <ConnectorPoint PointX="4.5" PointY="9.0189925130208319" />
-          <ConnectorPoint PointX="6.07031375" PointY="9.0189925130208319" />
-          <ConnectorPoint PointX="6.07031375" PointY="4.326396484375" />
+        <AssociationConnector Association="Model.FK_FZM_FZG" >
+          <ConnectorPoint PointX="4.5" PointY="2.6151432291666676" />
+          <ConnectorPoint PointX="5.25" PointY="2.6151432291666676" />
         </AssociationConnector>
-        <AssociationConnector Association="Model.FK_NUT_FZG" ManuallyRouted="false">
-          <ConnectorPoint PointX="4.5" PointY="5.53125" />
-          <ConnectorPoint PointX="5.3281225" PointY="5.53125" />
-          <ConnectorPoint PointX="5.3281225" PointY="4.326396484375" />
+        <AssociationConnector Association="Model.FK_NUT_FZG" >
+          <ConnectorPoint PointX="4.5" PointY="6.3651432291666659" />
+          <ConnectorPoint PointX="5.5937475" PointY="6.3651432291666659" />
+          <ConnectorPoint PointX="5.5937475" PointY="4.326396484375" />
         </AssociationConnector>
-        <AssociationConnector Association="Model.FK_FZT_FMT" ManuallyRouted="false">
+        <AssociationConnector Association="Model.FK_FZT_FMT" >
           <ConnectorPoint PointX="2.25" PointY="2.672841796875" />
           <ConnectorPoint PointX="3" PointY="2.672841796875" />
         </AssociationConnector>
