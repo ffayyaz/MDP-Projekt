@@ -23,7 +23,7 @@ namespace MDP_Projekt.UI
             InitializeComponent();
 
             // Fahrzeugdaten in Fahrzeugdaten Grid laden
-            this.gridFahrzeugDaten.ItemsSource = getFahrzeuge();
+            this.gridFahrzeugDaten.DataContext = getFahrzeuge();
 
             // ComboBox Fahrzeugart abfüllen
             this.comboFahrzeugArt.ItemsSource = getFahrzeugarten();
@@ -65,6 +65,19 @@ namespace MDP_Projekt.UI
             }
 
             return arten;
+        }
+
+        private void gridFahrzeugDaten_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Model.T_FAHRZEUG selectedItem = this.gridFahrzeugDaten.SelectedItem as Model.T_FAHRZEUG;
+
+            if (selectedItem != null)
+            {
+                using (Model.Context context = new Model.Context())
+                {
+                    this.viewFahrzeug.DataContext = context.T_FAHRZEUG.Where(q => q.FZG_ID == selectedItem.FZG_ID).First();
+                }
+            }
         }
 
     }

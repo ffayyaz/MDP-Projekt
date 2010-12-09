@@ -3,71 +3,73 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Fahrzeugdaten" Height="400" Width="700" Name="FahrzeugDaten">
     <StackPanel>
-        <Grid Height="Auto" Margin="10">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-            <Label Grid.Row="0" Grid.Column="0">Fahrzeugart:</Label>
-            <ComboBox Grid.Row="0" Grid.Column="1" Name="comboFahrzeugArt"></ComboBox>
-            <Label Grid.Row="0" Grid.Column="2" Padding="5">Schild-Nr.:</Label>
-            <TextBox Grid.Row="0" Grid.Column="3"></TextBox>
-            <Label Grid.Row="1" Grid.Column="0">Fahrzeug-Nr.:</Label>
-            <TextBox Grid.Row="1" Grid.Column="1"></TextBox>
-            <Label Grid.Row="1" Grid.Column="2">Marke:</Label>
-            <ComboBox Grid.Row="1" Grid.Column="3"></ComboBox>
-            <Label Grid.Row="2" Grid.Column="0">Rahmen-Nr.:</Label>
-            <TextBox Grid.Row="2" Grid.Column="1"></TextBox>
-            <Label Grid.Row="2" Grid.Column="2">Typ:</Label>
-            <ComboBox Grid.Row="2" Grid.Column="3"></ComboBox>
-            <Label Grid.Row="3" Grid.Column="0">Stamm-Nr.:</Label>
-            <TextBox Grid.Row="3" Grid.Column="1"></TextBox>
-            <Label Grid.Row="3" Grid.Column="2">Nutzer:</Label>
-            <ComboBox Grid.Row="3" Grid.Column="3"></ComboBox>
-            <Label Grid.Row="4" Grid.Column="0">eingelöst am:</Label>
-            <DatePicker Grid.Row="4" Grid.Column="1"></DatePicker>
-            <Button Grid.Row="4" Grid.Column="3">Save</Button>
-            <Button Grid.Row="6" Grid.Column="0">New</Button>
-            <DataGrid Grid.Row="7" Grid.ColumnSpan="4" AutoGenerateColumns="False" HeadersVisibility="Column" Name="gridFahrzeugDaten" ItemsSource="{Binding}">
-                <DataGrid.Columns>
-                    <DataGridTemplateColumn>
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <Button>Edit</Button>
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
-                    <DataGridTemplateColumn>
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <Button>Delete</Button>
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
-                    <DataGridTextColumn Binding="{Binding Path=FZG_SCHILDNR, Mode=OneWay}" Header="Schild-Nr" />
-                    <DataGridTextColumn Binding="{Binding Path=TR_FAHRZEUGART.FZA_BEZEICHNUNG, Mode=OneWay}" Header="Fahrzeugart" />
-                    <DataGridTextColumn Binding="{Binding Path=FZG_FAHRZEUGNR, Mode=OneWay}" Header="Fahrzeug-Nr" />
-                    <DataGridTextColumn Binding="{Binding Path=TZ_FAHRZEUGMARKE.FZM_BEZEICHNUNG, Mode=OneWay}" Header="Marke" />
-                    <DataGridTextColumn Binding="{Binding Path=TZ_FAHRZEUGMARKE.TR_FAHRZEUGTYP.FZT_BEZEICHNUNG, Mode=OneWay}" Header="Typ" />
-                    <DataGridTextColumn Binding="{Binding Path=FZG_RAHMENNR, Mode=OneWay}" Header="Rahmen-Nr"/>
-                    <DataGridTextColumn Binding="{Binding Path=FZG_STAMMNR, Mode=OneWay}" Header="Stamm-Nr" />
-                    <DataGridTextColumn Binding="{Binding Path=FZG_ERSTEINVERKEHR, Mode=OneWay}" Header="eingelöst am" />
-                    <DataGridTextColumn Binding="{Binding Path=T_NUTZER.NUT_NAME, Mode=OneWay}" Header="Nutzer" />
-                </DataGrid.Columns>
-            </DataGrid>
-            <GridSplitter Grid.Row="5" Grid.ColumnSpan="4" Height="5" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Margin="0,10,0,0" />
-        </Grid>
+        <ListView Name="viewFahrzeug">
+            <Grid Height="Auto" Margin="10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Label Grid.Row="0" Grid.Column="0">Fahrzeugart:</Label>
+                <ComboBox Grid.Row="0" Grid.Column="1" Name="comboFahrzeugArt" SelectedValue="{Binding Path=FZG_FZA_ID}"></ComboBox>
+                <Label Grid.Row="0" Grid.Column="2" Padding="5">Schild-Nr.:</Label>
+                <TextBox Grid.Row="0" Grid.Column="3" Text="{Binding Path=FZG_SCHILDNR}"></TextBox>
+                <Label Grid.Row="1" Grid.Column="0">Fahrzeug-Nr.:</Label>
+                <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Path=FZG_FAHRZEUGNR}"></TextBox>
+                <Label Grid.Row="1" Grid.Column="2">Marke:</Label>
+                <ComboBox Grid.Row="1" Grid.Column="3" SelectedValue="{Binding Path=FZG_FZM_ID}"></ComboBox>
+                <Label Grid.Row="2" Grid.Column="0">Rahmen-Nr.:</Label>
+                <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Path=FZG_RAHMENNR}"></TextBox>
+                <Label Grid.Row="2" Grid.Column="2">Typ:</Label>
+                <ComboBox Grid.Row="2" Grid.Column="3"></ComboBox>
+                <Label Grid.Row="3" Grid.Column="0">Stamm-Nr.:</Label>
+                <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding Path=FZG_STAMMNR}"></TextBox>
+                <Label Grid.Row="3" Grid.Column="2">Nutzer:</Label>
+                <ComboBox Grid.Row="3" Grid.Column="3" SelectedValue="{Binding Path=FZG_NUT_ID}"></ComboBox>
+                <Label Grid.Row="4" Grid.Column="0">eingelöst am:</Label>
+                <DatePicker Grid.Row="4" Grid.Column="1"></DatePicker>
+                <Button Grid.Row="4" Grid.Column="3">Save</Button>
+                <Button Grid.Row="6" Grid.Column="0">New</Button>
+                <DataGrid Grid.Row="7" Grid.ColumnSpan="4" AutoGenerateColumns="False" HeadersVisibility="Column" Name="gridFahrzeugDaten" ItemsSource="{Binding}" SelectionChanged="gridFahrzeugDaten_SelectionChanged">
+                    <DataGrid.Columns>
+                        <DataGridTemplateColumn>
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button>Edit</Button>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn>
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button>Delete</Button>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTextColumn Binding="{Binding Path=FZG_SCHILDNR, Mode=OneWay}" Header="Schild-Nr" />
+                        <DataGridTextColumn Binding="{Binding Path=TR_FAHRZEUGART.FZA_BEZEICHNUNG, Mode=OneWay}" Header="Fahrzeugart" />
+                        <DataGridTextColumn Binding="{Binding Path=FZG_FAHRZEUGNR, Mode=OneWay}" Header="Fahrzeug-Nr" />
+                        <DataGridTextColumn Binding="{Binding Path=TZ_FAHRZEUGMARKE.FZM_BEZEICHNUNG, Mode=OneWay}" Header="Marke" />
+                        <DataGridTextColumn Binding="{Binding Path=TZ_FAHRZEUGMARKE.TR_FAHRZEUGTYP.FZT_BEZEICHNUNG, Mode=OneWay}" Header="Typ" />
+                        <DataGridTextColumn Binding="{Binding Path=FZG_RAHMENNR, Mode=OneWay}" Header="Rahmen-Nr"/>
+                        <DataGridTextColumn Binding="{Binding Path=FZG_STAMMNR, Mode=OneWay}" Header="Stamm-Nr" />
+                        <DataGridTextColumn Binding="{Binding Path=FZG_ERSTEINVERKEHR, Mode=OneWay}" Header="eingelöst am" />
+                        <DataGridTextColumn Binding="{Binding Path=T_NUTZER.NUT_NAME, Mode=OneWay}" Header="Nutzer" />
+                    </DataGrid.Columns>
+                </DataGrid>
+                <GridSplitter Grid.Row="5" Grid.ColumnSpan="4" Height="5" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Margin="0,10,0,0" />
+            </Grid>
+        </ListView>
     </StackPanel>
 </Window>
