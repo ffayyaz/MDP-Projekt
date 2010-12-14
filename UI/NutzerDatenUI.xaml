@@ -1,0 +1,51 @@
+﻿<Window x:Class="MDP_Projekt.UI.NutzerDatenUI"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="NutzerDatenUI" Height="300" Width="640">
+    <StackPanel>
+        <Grid Height="Auto" Margin="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Row="0" Grid.Column="0">Name: </Label>
+            <ComboBox Grid.Row="0" Grid.Column="1" Name="comboNutzer"></ComboBox>
+            <Label Grid.Row="1" Grid.Column="0">PLZ: </Label>
+            <TextBox Grid.Row="1" Grid.Column="1"></TextBox>
+            <Label Grid.Row="2" Grid.Column="0">Ort: </Label>
+            <TextBox Grid.Row="2" Grid.Column="1"></TextBox>
+            <Button Grid.Row="1" Grid.Column="3">New</Button>
+            <Button Grid.Row="2" Grid.Column="3">Save</Button>
+            <DataGrid  Grid.Row="4" Grid.ColumnSpan="4" AutoGenerateColumns="False" HeadersVisibility="Column" Name="gridNutzerDaten" ItemsSource="{Binding}">
+                <DataGrid.Columns>
+                    <DataGridTemplateColumn>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button>Edit</Button>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button>Delete</Button>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTextColumn Binding="{Binding Path=NUT_NAME, Mode=OneWay}" Header="Name" />
+                    <DataGridTextColumn Binding="{Binding Path=NUT_PLZ, Mode=OneWay}" Header="PLZ" />
+                    <DataGridTextColumn Binding="{Binding Path=NUT_ORT, Mode=OneWay}" Header="Ort" />
+                </DataGrid.Columns>
+            </DataGrid>
+            <GridSplitter Grid.Row="5" Grid.ColumnSpan="4" Height="5" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Margin="0,10,0,0" />
+        </Grid>
+    </StackPanel>
+</Window>

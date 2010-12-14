@@ -85,6 +85,9 @@
     <Compile Include="UI\FahrzeugDatenUI.xaml.cs">
       <DependentUpon>FahrzeugDatenUI.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\NutzerDatenUI.xaml.cs">
+      <DependentUpon>NutzerDatenUI.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -98,6 +101,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="UI\FahrzeugDatenUI.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\NutzerDatenUI.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
