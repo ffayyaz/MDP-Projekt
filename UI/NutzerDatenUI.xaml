@@ -3,10 +3,12 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="NutzerDatenUI" Height="300" Width="640">
     <StackPanel>
-        <Grid Height="Auto" Margin="10">
+        <Grid Height="Auto" Margin="10" Name="gridNutzerDaten">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
@@ -14,17 +16,16 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
-                <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <Label Grid.Row="0" Grid.Column="0">Name: </Label>
-            <ComboBox Grid.Row="0" Grid.Column="1" Name="comboNutzer"></ComboBox>
+            <TextBox Grid.Row="0" Grid.Column="1"  Text="{Binding Path=NUT_NAME}" />
             <Label Grid.Row="1" Grid.Column="0">PLZ: </Label>
-            <TextBox Grid.Row="1" Grid.Column="1"></TextBox>
+            <TextBox Grid.Row="1" Grid.Column="1"  Text="{Binding Path=NUT_PLZ}" />
             <Label Grid.Row="2" Grid.Column="0">Ort: </Label>
-            <TextBox Grid.Row="2" Grid.Column="1"></TextBox>
-            <Button Grid.Row="1" Grid.Column="3">New</Button>
+            <TextBox Grid.Row="2" Grid.Column="1"  Text="{Binding Path=NUT_ORT}" />
+            <Button Grid.Row="4" Grid.Column="0">New</Button>
             <Button Grid.Row="2" Grid.Column="3">Save</Button>
-            <DataGrid  Grid.Row="4" Grid.ColumnSpan="4" AutoGenerateColumns="False" HeadersVisibility="Column" Name="gridNutzerDaten" ItemsSource="{Binding}">
+            <DataGrid  Grid.Row="5" Grid.ColumnSpan="3" AutoGenerateColumns="False" HeadersVisibility="Column" Name="dataGridNutzerDaten" ItemsSource="{Binding}" SelectionChanged="dataGridNutzerDaten_SelectionChanged">
                 <DataGrid.Columns>
                     <DataGridTemplateColumn>
                         <DataGridTemplateColumn.CellTemplate>
@@ -45,7 +46,7 @@
                     <DataGridTextColumn Binding="{Binding Path=NUT_ORT, Mode=OneWay}" Header="Ort" />
                 </DataGrid.Columns>
             </DataGrid>
-            <GridSplitter Grid.Row="5" Grid.ColumnSpan="4" Height="5" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Margin="0,10,0,0" />
+            <GridSplitter Grid.Row="3" Grid.ColumnSpan="3" Height="5" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Margin="0,10,0,0" />
         </Grid>
     </StackPanel>
 </Window>

@@ -22,13 +22,13 @@ namespace MDP_Projekt.UI
         {
             InitializeComponent();
 
-            this.gridNutzerDaten.ItemsSource = getNutzer();
-
-            this.comboNutzer.ItemsSource = getNutzer();
-            this.comboNutzer.DisplayMemberPath = "NUT_NAME";
-            this.comboNutzer.SelectedValuePath = "NUT_ID";
+            this.dataGridNutzerDaten.DataContext = getNutzer();
         }
 
+        /// <summary>
+        /// Gibt alle Nutzer zurück
+        /// </summary>
+        /// <returns>Liste der Nutzer</returns>
         private List<Model.T_NUTZER> getNutzer()
         {
             List<Model.T_NUTZER> nutzer = new List<Model.T_NUTZER>();
@@ -38,5 +38,25 @@ namespace MDP_Projekt.UI
             }
             return nutzer;
         }
+
+        /// <summary>
+        /// Gibt alle Nutzer zurück
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e">Liste aller Nutzer</param>
+        private void dataGridNutzerDaten_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Model.T_NUTZER selectedItem = this.dataGridNutzerDaten.SelectedItem as Model.T_NUTZER;
+
+            if (selectedItem != null)
+            {
+                using (Model.Context context = new Model.Context())
+                {
+                    this.gridNutzerDaten.DataContext = context.T_NUTZER.Where(q => q.NUT_ID == selectedItem.NUT_ID).First();
+                }
+            }
+        }
+
+
     }
 }
