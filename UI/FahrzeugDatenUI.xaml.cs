@@ -23,12 +23,27 @@ namespace MDP_Projekt.UI
             InitializeComponent();
 
             // Fahrzeugdaten in Fahrzeugdaten Grid laden
-            this.gridFahrzeugDaten.ItemsSource = getFahrzeuge();
+            this.datagridFahrzeugDaten.DataContext = getFahrzeuge();
 
             // ComboBox Fahrzeugart abfüllen
             this.comboFahrzeugArt.ItemsSource = getFahrzeugarten();
             this.comboFahrzeugArt.DisplayMemberPath = "FZA_BEZEICHNUNG";
             this.comboFahrzeugArt.SelectedValuePath = "FZA_ID";
+
+            // ComboBox Fahrzeugmarke abfüllen
+            this.comboFahrzeugMarke.ItemsSource = getFahrzeugmarkeCombo();
+            this.comboFahrzeugMarke.DisplayMemberPath = "FZM_BEZEICHNUNG";
+            this.comboFahrzeugMarke.SelectedValuePath = "FZM_ID";
+
+            // ComboBox Fahrzeugtyp abfüllen
+            this.comboFahrzeugTyp.ItemsSource = getFahrzeugtypCombo();
+            this.comboFahrzeugTyp.DisplayMemberPath = "FZT_BEZEICHNUNG";
+            this.comboFahrzeugTyp.SelectedValuePath = "FZT_ID";
+
+            // ComboBox Nutzer abfüllen
+            this.comboFahrzeugNutzer.ItemsSource = getFahrzeugnutzerCombo();
+            this.comboFahrzeugNutzer.DisplayMemberPath = "NUT_NAME";
+            this.comboFahrzeugNutzer.SelectedValuePath = "NUT_ID";
         }
 
         /// <summary>
@@ -67,5 +82,67 @@ namespace MDP_Projekt.UI
             return arten;
         }
 
+        /// <summary>
+        /// Gibt alle Fahrzeugmarken zurück
+        /// </summary>
+        /// <returns>Liste der Fahrzeugmarken</returns>
+        private List<Model.TZ_FAHRZEUGMARKE> getFahrzeugmarkeCombo()
+        {
+            List<Model.TZ_FAHRZEUGMARKE> marken = new List<Model.TZ_FAHRZEUGMARKE>();
+            using (Model.Context context = new Model.Context())
+            {
+                marken = context.TZ_FAHRZEUGMARKE.ToList();
+            }
+
+            return marken;
+        }
+
+        /// <summary>
+        /// Gibt alle Fahrzeugtypen zurück
+        /// </summary>
+        /// <returns>Liste der Fahrzeugtypen</returns>
+        private List<Model.TR_FAHRZEUGTYP> getFahrzeugtypCombo()
+        {
+            List<Model.TR_FAHRZEUGTYP> typen = new List<Model.TR_FAHRZEUGTYP>();
+            using (Model.Context context = new Model.Context())
+            {
+                typen = context.TR_FAHRZEUGTYP.ToList();
+            }
+
+            return typen;
+        }
+
+        /// <summary>
+        /// Gibt alle Fahrzeugnutzer zurück
+        /// </summary>
+        /// <returns>Liste der Fahrzeugnutzer</returns>
+        private List<Model.T_NUTZER> getFahrzeugnutzerCombo()
+        {
+            List<Model.T_NUTZER> nutzer = new List<Model.T_NUTZER>();
+            using (Model.Context context = new Model.Context())
+            {
+                nutzer = context.T_NUTZER.ToList();
+            }
+
+            return nutzer;
+        }
+
+        /// <summary>
+        /// Lädt die Detailansicht anhand der Datagridauswahl
+        /// </summary>
+        /// <param name="sender">Senderobjekt Datagrid</param>
+        /// <param name="e">Argument des Senderobjekts</param>
+        private void gridFahrzeugDaten_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Model.T_FAHRZEUG selectedItem = this.datagridFahrzeugDaten.SelectedItem as Model.T_FAHRZEUG;
+
+            if (selectedItem != null)
+            {
+                using (Model.Context context = new Model.Context())
+                {
+                    this.gridFahrzeug.DataContext = context.T_FAHRZEUG.Where(q => q.FZG_ID == selectedItem.FZG_ID).First();
+                }
+            }
+        }
     }
 }
