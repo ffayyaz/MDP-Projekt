@@ -52,21 +52,20 @@ namespace MDP_Projekt.UI
         /// <returns>Liste der Fahrzeuge</returns>
         private List<Model.T_FAHRZEUG> getFahrzeuge()
         {
-            List<Model.T_FAHRZEUG> fahrzeuge = new List<Model.T_FAHRZEUG>();
+            List<Model.T_FAHRZEUG> fahrzeuge; // = new List<Model.T_FAHRZEUG>();
             using (Model.Context context = new Model.Context())
             {
                 // Fahrzeuge holen
                 fahrzeuge = context.T_FAHRZEUG.ToList();
 
                 // ... deren Entitäten laden
-                /*
-                fahrzeuge.ForEach(q => q.TZ_FAHRZEUGMARKEReference.Load());
-                fahrzeuge.ForEach(q => q.TR_FAHRZEUGARTReference.Load());
-                fahrzeuge.ForEach(q => q.T_NUTZERReference.Load());
-                fahrzeuge.ForEach(q => q.TZ_FAHRZEUGMARKE.TR_FAHRZEUGTYPReference.Load());
-                 * */
+                fahrzeuge.Where(q => q.TZ_FAHRZEUGMARKEReference != null).ToList().ForEach(q => q.TZ_FAHRZEUGMARKEReference.Load());
+                fahrzeuge.Where(q => q.TR_FAHRZEUGARTReference != null).ToList().ForEach(q => q.TR_FAHRZEUGARTReference.Load());
+                fahrzeuge.Where(q => q.T_NUTZERReference != null).ToList().ForEach(q => q.T_NUTZERReference.Load());
+                fahrzeuge.Where(q => q.TZ_FAHRZEUGMARKE != null && q.TZ_FAHRZEUGMARKE.TR_FAHRZEUGTYPReference != null).ToList()
+                                .ForEach(q => q.T_NUTZERReference.Load());
             }
-            return fahrzeuge;
+            return fahrzeuge.ToList();
         }
 
         /// <summary>
@@ -76,9 +75,10 @@ namespace MDP_Projekt.UI
         private List<Model.TR_FAHRZEUGART> getFahrzeugarten()
         {
             List<Model.TR_FAHRZEUGART> arten = new List<Model.TR_FAHRZEUGART>();
+            arten.Add(new Model.TR_FAHRZEUGART() { FZA_ID = 0 });
             using (Model.Context context = new Model.Context())
             {
-                arten = context.TR_FAHRZEUGART.ToList();
+                arten.AddRange(context.TR_FAHRZEUGART.Distinct().ToList());
             }
 
             return arten;
@@ -91,9 +91,10 @@ namespace MDP_Projekt.UI
         private List<Model.TZ_FAHRZEUGMARKE> getFahrzeugmarkeCombo()
         {
             List<Model.TZ_FAHRZEUGMARKE> marken = new List<Model.TZ_FAHRZEUGMARKE>();
+            marken.Add(new Model.TZ_FAHRZEUGMARKE() { FZM_ID = 0 });
             using (Model.Context context = new Model.Context())
             {
-                marken = context.TZ_FAHRZEUGMARKE.ToList();
+                marken.AddRange(context.TZ_FAHRZEUGMARKE.Distinct().ToList());
             }
 
             return marken;
@@ -106,9 +107,10 @@ namespace MDP_Projekt.UI
         private List<Model.TR_FAHRZEUGTYP> getFahrzeugtypCombo()
         {
             List<Model.TR_FAHRZEUGTYP> typen = new List<Model.TR_FAHRZEUGTYP>();
+            typen.Add(new Model.TR_FAHRZEUGTYP() { FZT_ID = 0 });
             using (Model.Context context = new Model.Context())
             {
-                typen = context.TR_FAHRZEUGTYP.ToList();
+                typen.AddRange(context.TR_FAHRZEUGTYP.Distinct().ToList());
             }
 
             return typen;
@@ -121,9 +123,10 @@ namespace MDP_Projekt.UI
         private List<Model.T_NUTZER> getFahrzeugnutzerCombo()
         {
             List<Model.T_NUTZER> nutzer = new List<Model.T_NUTZER>();
+            nutzer.Add(new Model.T_NUTZER() { NUT_ID = 0});
             using (Model.Context context = new Model.Context())
             {
-                nutzer = context.T_NUTZER.ToList();
+                nutzer.AddRange(context.T_NUTZER.ToList());
             }
 
             return nutzer;
@@ -190,7 +193,7 @@ namespace MDP_Projekt.UI
 
                     if (fahrzeugToDelete != null)
                     {
-                        context.T_FAHRZEUG.DeleteObject(context.T_FAHRZEUG.Where(q=>q.FZG_ID == fahrzeugToDelete.FZG_ID).First());
+                        context.T_FAHRZEUG.DeleteObject(context.T_FAHRZEUG.Where(q => q.FZG_ID == fahrzeugToDelete.FZG_ID).First());
                         context.SaveChanges();
                     }
                 }

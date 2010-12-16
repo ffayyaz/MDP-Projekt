@@ -82,6 +82,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Model\CustomRepairModel.cs" />
     <Compile Include="UI\FahrzeugDatenUI.xaml.cs">
       <DependentUpon>FahrzeugDatenUI.xaml</DependentUpon>
     </Compile>
