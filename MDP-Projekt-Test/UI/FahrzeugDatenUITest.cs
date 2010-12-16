@@ -202,23 +202,5 @@ namespace MDP_Projekt_Test
             Assert.AreEqual(expected, actual);
             Assert.Inconclusive("Verify the correctness of this test method.");
         }
-
-        /// <summary>
-        ///A test for getFahrzeugtypCombo
-        ///</summary>
-        [TestMethod()]
-        [DeploymentItem("MDP-Projekt.exe")]
-        public void getFahrzeugnutzerComboTest()
-        {
-            MDP_Projekt.UI.FahrzeugDatenUI_Accessor target = new MDP_Projekt.UI.FahrzeugDatenUI_Accessor();
-            System.Collections.Generic.List<MDP_Projekt.Model.T_NUTZER> expected = null; // TODO: Initialize to an appropriate value
-            System.Collections.Generic.List<MDP_Projekt.Model.T_NUTZER> actual;
-            actual = target.getFahrzeugnutzerCombo();
-            Assert.IsNotNull(actual);
-            Assert.IsInstanceOfType(target, typeof(FahrzeugDatenUI_Accessor));
-            Assert.IsTrue(actual.Capacity > 0);
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
-        }
     }
 }
