@@ -144,6 +144,7 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>RepairModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <None Include="Properties\DataSources\MDP_Projekt.Model.Context.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

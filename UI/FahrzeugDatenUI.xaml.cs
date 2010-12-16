@@ -59,10 +59,12 @@ namespace MDP_Projekt.UI
                 fahrzeuge = context.T_FAHRZEUG.ToList();
 
                 // ... deren Entitäten laden
+                /*
                 fahrzeuge.ForEach(q => q.TZ_FAHRZEUGMARKEReference.Load());
                 fahrzeuge.ForEach(q => q.TR_FAHRZEUGARTReference.Load());
                 fahrzeuge.ForEach(q => q.T_NUTZERReference.Load());
                 fahrzeuge.ForEach(q => q.TZ_FAHRZEUGMARKE.TR_FAHRZEUGTYPReference.Load());
+                 * */
             }
             return fahrzeuge;
         }
@@ -143,6 +145,62 @@ namespace MDP_Projekt.UI
                     this.gridFahrzeug.DataContext = context.T_FAHRZEUG.Where(q => q.FZG_ID == selectedItem.FZG_ID).First();
                 }
             }
+        }
+
+        private void btnSave_Click(object sender, RoutedEventArgs e)
+        {
+            Model.T_FAHRZEUG currentFahrzeug = this.gridFahrzeug.DataContext as Model.T_FAHRZEUG;
+
+            if (currentFahrzeug != null)
+            {
+                using (Model.Context context = new Model.Context())
+                {
+                    Model.T_FAHRZEUG fahrzeugToSave;
+
+                    if (currentFahrzeug.FZG_ID > 0)
+                    {
+                        fahrzeugToSave = context.T_FAHRZEUG.Where(q => q.FZG_ID == currentFahrzeug.FZG_ID).First();
+
+                        if (fahrzeugToSave != null)
+                        {
+                            context.ApplyCurrentValues<Model.T_FAHRZEUG>("T_FAHRZEUG", currentFahrzeug);
+                            context.SaveChanges();
+                        }
+                    }
+                    else
+                    {
+                        context.AddToT_FAHRZEUG(currentFahrzeug);
+                        context.SaveChanges();
+                    }
+                }
+
+                this.datagridFahrzeugDaten.DataContext = getFahrzeuge();
+            }
+        }
+
+        private void btnDelete_Click(object sender, RoutedEventArgs e)
+        {
+            Model.T_FAHRZEUG currentFahrzeug = this.gridFahrzeug.DataContext as Model.T_FAHRZEUG;
+
+            if (currentFahrzeug != null)
+            {
+                using (Model.Context context = new Model.Context())
+                {
+                    Model.T_FAHRZEUG fahrzeugToDelete = context.T_FAHRZEUG.Where(q => q.FZG_ID == currentFahrzeug.FZG_ID).First();
+
+                    if (fahrzeugToDelete != null)
+                    {
+                        context.T_FAHRZEUG.DeleteObject(context.T_FAHRZEUG.Where(q=>q.FZG_ID == fahrzeugToDelete.FZG_ID).First());
+                        context.SaveChanges();
+                    }
+                }
+                this.datagridFahrzeugDaten.DataContext = getFahrzeuge();
+            }
+        }
+
+        private void btnNew_Click(object sender, RoutedEventArgs e)
+        {
+            this.gridFahrzeug.DataContext = new Model.T_FAHRZEUG();
         }
     }
 }
