@@ -44,6 +44,9 @@ namespace MDP_Projekt.UI
             this.comboFahrzeugNutzer.ItemsSource = getFahrzeugnutzerCombo();
             this.comboFahrzeugNutzer.DisplayMemberPath = "NUT_NAME";
             this.comboFahrzeugNutzer.SelectedValuePath = "NUT_ID";
+
+            // Fahrzeug Details Maske mit neuem Fahrzeug binden
+            this.gridFahrzeug.DataContext = new Model.T_FAHRZEUG();
         }
 
         /// <summary>
@@ -75,7 +78,6 @@ namespace MDP_Projekt.UI
         private List<Model.TR_FAHRZEUGART> getFahrzeugarten()
         {
             List<Model.TR_FAHRZEUGART> arten = new List<Model.TR_FAHRZEUGART>();
-            arten.Add(new Model.TR_FAHRZEUGART() { FZA_ID = 0 });
             using (Model.Context context = new Model.Context())
             {
                 arten.AddRange(context.TR_FAHRZEUGART.Distinct().ToList());
@@ -91,7 +93,6 @@ namespace MDP_Projekt.UI
         private List<Model.TZ_FAHRZEUGMARKE> getFahrzeugmarkeCombo()
         {
             List<Model.TZ_FAHRZEUGMARKE> marken = new List<Model.TZ_FAHRZEUGMARKE>();
-            marken.Add(new Model.TZ_FAHRZEUGMARKE() { FZM_ID = 0 });
             using (Model.Context context = new Model.Context())
             {
                 marken.AddRange(context.TZ_FAHRZEUGMARKE.Distinct().ToList());
@@ -107,7 +108,6 @@ namespace MDP_Projekt.UI
         private List<Model.TR_FAHRZEUGTYP> getFahrzeugtypCombo()
         {
             List<Model.TR_FAHRZEUGTYP> typen = new List<Model.TR_FAHRZEUGTYP>();
-            typen.Add(new Model.TR_FAHRZEUGTYP() { FZT_ID = 0 });
             using (Model.Context context = new Model.Context())
             {
                 typen.AddRange(context.TR_FAHRZEUGTYP.Distinct().ToList());
@@ -123,7 +123,6 @@ namespace MDP_Projekt.UI
         private List<Model.T_NUTZER> getFahrzeugnutzerCombo()
         {
             List<Model.T_NUTZER> nutzer = new List<Model.T_NUTZER>();
-            nutzer.Add(new Model.T_NUTZER() { NUT_ID = 0});
             using (Model.Context context = new Model.Context())
             {
                 nutzer.AddRange(context.T_NUTZER.ToList());
