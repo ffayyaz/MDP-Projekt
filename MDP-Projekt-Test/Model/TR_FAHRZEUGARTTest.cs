@@ -1,6 +1,7 @@
 ﻿using MDP_Projekt.Model;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.Data.Objects.DataClasses;
 
 namespace MDP_Projekt_Test
 {
@@ -70,8 +71,8 @@ namespace MDP_Projekt_Test
         [TestMethod()]
         public void TR_FAHRZEUGARTConstructorTest()
         {
-            MDP_Projekt.Model.TR_FAHRZEUGART target = new MDP_Projekt.Model.TR_FAHRZEUGART();
-            Assert.Inconclusive("TODO: Implement code to verify target");
+            TR_FAHRZEUGART fzgArt = new TR_FAHRZEUGART();
+            Assert.IsInstanceOfType(fzgArt, typeof(TR_FAHRZEUGART));
         }
 
         /// <summary>
@@ -80,14 +81,11 @@ namespace MDP_Projekt_Test
         [TestMethod()]
         public void CreateTR_FAHRZEUGARTTest()
         {
-            int fZA_ID = 0; // TODO: Initialize to an appropriate value
-            string fZA_BEZEICHNUNG = string.Empty; // TODO: Initialize to an appropriate value
-            string fZA_KEY = string.Empty; // TODO: Initialize to an appropriate value
-            MDP_Projekt.Model.TR_FAHRZEUGART expected = null; // TODO: Initialize to an appropriate value
-            MDP_Projekt.Model.TR_FAHRZEUGART actual;
-            actual = MDP_Projekt.Model.TR_FAHRZEUGART.CreateTR_FAHRZEUGART(fZA_ID, fZA_BEZEICHNUNG, fZA_KEY);
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
+            int fZA_ID = 1; 
+            string fZA_BEZEICHNUNG = "Roller"; 
+            string fZA_KEY = "ROL"; 
+            TR_FAHRZEUGART fzgArt = TR_FAHRZEUGART.CreateTR_FAHRZEUGART(fZA_ID, fZA_BEZEICHNUNG, fZA_KEY);
+            Assert.IsTrue(fzgArt.FZA_ID == fZA_ID && fzgArt.FZA_BEZEICHNUNG.Equals(fZA_BEZEICHNUNG) && fzgArt.FZA_KEY.Equals(fZA_KEY));
         }
 
         /// <summary>
@@ -96,13 +94,10 @@ namespace MDP_Projekt_Test
         [TestMethod()]
         public void FZA_BEZEICHNUNGTest()
         {
-            MDP_Projekt.Model.TR_FAHRZEUGART target = new MDP_Projekt.Model.TR_FAHRZEUGART(); // TODO: Initialize to an appropriate value
-            string expected = string.Empty; // TODO: Initialize to an appropriate value
-            string actual;
-            target.FZA_BEZEICHNUNG = expected;
-            actual = target.FZA_BEZEICHNUNG;
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
+            TR_FAHRZEUGART fzgArt = new TR_FAHRZEUGART(); 
+            string expected = "Roller"; 
+            fzgArt.FZA_BEZEICHNUNG = expected;
+            Assert.AreEqual(expected, fzgArt.FZA_BEZEICHNUNG);
         }
 
         /// <summary>
@@ -111,13 +106,10 @@ namespace MDP_Projekt_Test
         [TestMethod()]
         public void FZA_IDTest()
         {
-            MDP_Projekt.Model.TR_FAHRZEUGART target = new MDP_Projekt.Model.TR_FAHRZEUGART(); // TODO: Initialize to an appropriate value
-            int expected = 0; // TODO: Initialize to an appropriate value
-            int actual;
-            target.FZA_ID = expected;
-            actual = target.FZA_ID;
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
+            TR_FAHRZEUGART fzgArt = new TR_FAHRZEUGART();
+            int expected = 1; 
+            fzgArt.FZA_ID = expected;
+            Assert.AreEqual(expected, fzgArt.FZA_ID);
         }
 
         /// <summary>
@@ -126,13 +118,10 @@ namespace MDP_Projekt_Test
         [TestMethod()]
         public void FZA_KEYTest()
         {
-            MDP_Projekt.Model.TR_FAHRZEUGART target = new MDP_Projekt.Model.TR_FAHRZEUGART(); // TODO: Initialize to an appropriate value
-            string expected = string.Empty; // TODO: Initialize to an appropriate value
-            string actual;
-            target.FZA_KEY = expected;
-            actual = target.FZA_KEY;
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
+            TR_FAHRZEUGART fzgArt = new TR_FAHRZEUGART(); 
+            string expected = "ROL"; 
+            fzgArt.FZA_KEY = expected;
+            Assert.AreEqual(expected, fzgArt.FZA_KEY);
         }
 
         /// <summary>
@@ -141,11 +130,11 @@ namespace MDP_Projekt_Test
         [TestMethod()]
         public void T_FAHRZEUGTest()
         {
-            MDP_Projekt.Model.TR_FAHRZEUGART target = new MDP_Projekt.Model.TR_FAHRZEUGART(); // TODO: Initialize to an appropriate value
-            System.Data.Objects.DataClasses.EntityCollection<MDP_Projekt.Model.T_FAHRZEUG> expected = null; // TODO: Initialize to an appropriate value
-            System.Data.Objects.DataClasses.EntityCollection<MDP_Projekt.Model.T_FAHRZEUG> actual;
-            target.T_FAHRZEUG = expected;
-            actual = target.T_FAHRZEUG;
+            TR_FAHRZEUGART fzgArt = new TR_FAHRZEUGART(); // TODO: Initialize to an appropriate value
+            EntityCollection<T_FAHRZEUG> expected = null; // TODO: Initialize to an appropriate value
+            EntityCollection<T_FAHRZEUG> actual;
+            fzgArt.T_FAHRZEUG = expected;
+            actual = fzgArt.T_FAHRZEUG;
             Assert.AreEqual(expected, actual);
             Assert.Inconclusive("Verify the correctness of this test method.");
         }

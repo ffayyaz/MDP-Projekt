@@ -1,19 +1,17 @@
 ﻿using MDP_Projekt;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using System.Windows.Markup;
-using System.Windows;
 
 namespace MDP_Projekt_Test
 {
     
     
     /// <summary>
-    ///This is a test class for MainWindowTest and is intended
-    ///to contain all MainWindowTest Unit Tests
+    ///This is a test class for AppTest and is intended
+    ///to contain all AppTest Unit Tests
     ///</summary>
     [TestClass()]
-    public class MainWindowTest
+    public class AppTest
     {
 
 
@@ -67,13 +65,13 @@ namespace MDP_Projekt_Test
 
 
         /// <summary>
-        ///A test for MainWindow Constructor
+        ///A test for App Constructor
         ///</summary>
         [TestMethod()]
-        public void MainWindowConstructorTest()
+        public void AppConstructorTest()
         {
-            MainWindow mainWindow = new MainWindow();
-            Assert.IsInstanceOfType(mainWindow, typeof(MainWindow));
+            App app = new App();
+            Assert.IsInstanceOfType(app, typeof(App));
         }
 
         /// <summary>
@@ -82,36 +80,18 @@ namespace MDP_Projekt_Test
         [TestMethod()]
         public void InitializeComponentTest()
         {
-            MainWindow mainWindow = new MainWindow(); // TODO: Initialize to an appropriate value
-            mainWindow.InitializeComponent();
+            App app = new App(); // TODO: Initialize to an appropriate value
+            app.InitializeComponent();
             Assert.Inconclusive("A method that does not return a value cannot be verified.");
         }
 
         /// <summary>
-        ///A test for System.Windows.Markup.IComponentConnector.Connect
+        ///A test for Main
         ///</summary>
         [TestMethod()]
-        [DeploymentItem("MDP-Projekt.exe")]
-        public void ConnectTest()
+        public void MainTest()
         {
-            IComponentConnector mainWindow = new MainWindow(); // TODO: Initialize to an appropriate value
-            int connectionId = 0; // TODO: Initialize to an appropriate value
-            object mainWindow1 = null; // TODO: Initialize to an appropriate value
-            mainWindow.Connect(connectionId, mainWindow1);
-            Assert.Inconclusive("A method that does not return a value cannot be verified.");
-        }
-
-        /// <summary>
-        ///A test for testButton_Click
-        ///</summary>
-        [TestMethod()]
-        [DeploymentItem("MDP-Projekt.exe")]
-        public void testButton_ClickTest()
-        {
-            MainWindow_Accessor mainWindow = new MainWindow_Accessor(); // TODO: Initialize to an appropriate value
-            object sender = null; // TODO: Initialize to an appropriate value
-            RoutedEventArgs e = null; // TODO: Initialize to an appropriate value
-            mainWindow.testButton_Click(sender, e);
+            App.Main();
             Assert.Inconclusive("A method that does not return a value cannot be verified.");
         }
     }

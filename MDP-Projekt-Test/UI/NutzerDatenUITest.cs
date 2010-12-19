@@ -71,20 +71,19 @@ namespace MDP_Projekt_Test
         public void NutzerDatenUIConstructorTest()
         {
             MDP_Projekt.UI.NutzerDatenUI target = new MDP_Projekt.UI.NutzerDatenUI();
-            // Assert.Inconclusive("TODO: Implement code to verify target");
             Assert.IsInstanceOfType(target, typeof(NutzerDatenUI));
         }
 
         /// <summary>
         ///A test for InitializeComponent
-        ///</summary>
+        ///</summary>       
         [TestMethod()]
         public void InitializeComponentTest()
         {
             MDP_Projekt.UI.NutzerDatenUI target = new MDP_Projekt.UI.NutzerDatenUI(); // TODO: Initialize to an appropriate value
-            target.InitializeComponent();
+            target.InitializeComponent();            
             Assert.Inconclusive("A method that does not return a value cannot be verified.");
-        }
+        }        
 
         /// <summary>
         ///A test for System.Windows.Markup.IComponentConnector.Connect
@@ -101,6 +100,28 @@ namespace MDP_Projekt_Test
         }
 
         /// <summary>
+        ///A test for getNutzer
+        ///</summary>
+        [TestMethod()]
+        [DeploymentItem("MDP-Projekt.exe")]
+        public void getNutzerTest()
+        {
+            MDP_Projekt.UI.NutzerDatenUI_Accessor target1 = new MDP_Projekt.UI.NutzerDatenUI_Accessor();
+            MDP_Projekt.UI.NutzerDatenUI_Accessor target2 = new MDP_Projekt.UI.NutzerDatenUI_Accessor();
+            System.Collections.Generic.List<MDP_Projekt.Model.T_NUTZER> expected;
+            System.Collections.Generic.List<MDP_Projekt.Model.T_NUTZER> actual;
+            actual = target1.getNutzer();
+            expected = target2.getNutzer();
+
+            Assert.IsNotNull(actual);
+            Assert.IsInstanceOfType(target1, typeof(NutzerDatenUI_Accessor));
+            Assert.IsInstanceOfType(target2, typeof(NutzerDatenUI_Accessor));
+            Assert.IsTrue(actual.Capacity > 0);
+            Assert.IsTrue(actual.Capacity == expected.Capacity);
+            Assert.AreEqual(expected, actual);
+        }
+
+        /// <summary>
         ///A test for dataGridNutzerDaten_SelectionChanged
         ///</summary>
         [TestMethod()]
@@ -112,24 +133,6 @@ namespace MDP_Projekt_Test
             System.Windows.Controls.SelectionChangedEventArgs e = null; // TODO: Initialize to an appropriate value
             target.dataGridNutzerDaten_SelectionChanged(sender, e);
             Assert.Inconclusive("A method that does not return a value cannot be verified.");
-        }
-
-        /// <summary>
-        ///A test for getNutzer
-        ///</summary>
-        [TestMethod()]
-        [DeploymentItem("MDP-Projekt.exe")]
-        public void getNutzerTest()
-        {
-            MDP_Projekt.UI.NutzerDatenUI_Accessor target = new MDP_Projekt.UI.NutzerDatenUI_Accessor(); // TODO: Initialize to an appropriate value
-            System.Collections.Generic.List<MDP_Projekt.Model.T_NUTZER> expected = null; // TODO: Initialize to an appropriate value
-            System.Collections.Generic.List<MDP_Projekt.Model.T_NUTZER> actual;
-            actual = target.getNutzer();
-            Assert.IsNotNull(actual);
-            Assert.IsInstanceOfType(target, typeof(NutzerDatenUI_Accessor));
-            Assert.IsTrue(actual.Capacity > 0);
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
         }
     }
 }

@@ -70,7 +70,6 @@ namespace MDP_Projekt_Test
         public void FahrzeugDatenUIConstructorTest()
         {
             MDP_Projekt.UI.FahrzeugDatenUI target = new MDP_Projekt.UI.FahrzeugDatenUI();
-            // Assert.Inconclusive("TODO: Implement code to verify target");
             Assert.IsInstanceOfType(target, typeof(FahrzeugDatenUI));
         }
 
@@ -100,17 +99,25 @@ namespace MDP_Projekt_Test
         }
 
         /// <summary>
-        ///A test for dataGridNutzerDaten_SelectionChanged
+        ///A test for getFahrzeuge
         ///</summary>
         [TestMethod()]
         [DeploymentItem("MDP-Projekt.exe")]
-        public void gridFahrzeugDaten_SelectionChangedTest()
+        public void getFahrzeugeTest()
         {
-            MDP_Projekt.UI.NutzerDatenUI_Accessor target = new MDP_Projekt.UI.NutzerDatenUI_Accessor(); // TODO: Initialize to an appropriate value
-            object sender = null; // TODO: Initialize to an appropriate value
-            System.Windows.Controls.SelectionChangedEventArgs e = null; // TODO: Initialize to an appropriate value
-            target.dataGridNutzerDaten_SelectionChanged(sender, e);
-            Assert.Inconclusive("A method that does not return a value cannot be verified.");
+            MDP_Projekt.UI.FahrzeugDatenUI_Accessor target1 = new MDP_Projekt.UI.FahrzeugDatenUI_Accessor();
+            MDP_Projekt.UI.FahrzeugDatenUI_Accessor target2 = new MDP_Projekt.UI.FahrzeugDatenUI_Accessor();
+            System.Collections.Generic.List<MDP_Projekt.Model.T_FAHRZEUG> expected;
+            System.Collections.Generic.List<MDP_Projekt.Model.T_FAHRZEUG> actual;
+            actual = target1.getFahrzeuge();
+            expected = target2.getFahrzeuge();
+            
+            Assert.IsNotNull(actual);
+            Assert.IsInstanceOfType(target1, typeof(FahrzeugDatenUI_Accessor));
+            Assert.IsInstanceOfType(target2, typeof(FahrzeugDatenUI_Accessor));
+            Assert.IsTrue(actual.Capacity > 0);
+            Assert.IsTrue(actual.Capacity == expected.Capacity);
+            Assert.AreEqual(expected, actual);
         }
 
         /// <summary>
@@ -120,33 +127,19 @@ namespace MDP_Projekt_Test
         [DeploymentItem("MDP-Projekt.exe")]
         public void getFahrzeugartenTest()
         {
-            MDP_Projekt.UI.FahrzeugDatenUI_Accessor target = new MDP_Projekt.UI.FahrzeugDatenUI_Accessor(); 
-            System.Collections.Generic.List<MDP_Projekt.Model.TR_FAHRZEUGART> expected = null; // TODO: Initialize to an appropriate value
+            MDP_Projekt.UI.FahrzeugDatenUI_Accessor target1 = new MDP_Projekt.UI.FahrzeugDatenUI_Accessor();
+            MDP_Projekt.UI.FahrzeugDatenUI_Accessor target2 = new MDP_Projekt.UI.FahrzeugDatenUI_Accessor(); 
+            System.Collections.Generic.List<MDP_Projekt.Model.TR_FAHRZEUGART> expected;
             System.Collections.Generic.List<MDP_Projekt.Model.TR_FAHRZEUGART> actual;
-            actual = target.getFahrzeugarten();
+            actual = target1.getFahrzeugarten();
+            expected = target2.getFahrzeugarten();
+            
             Assert.IsNotNull(actual);
-            Assert.IsInstanceOfType(target, typeof(FahrzeugDatenUI_Accessor));
+            Assert.IsInstanceOfType(target1, typeof(FahrzeugDatenUI_Accessor));
+            Assert.IsInstanceOfType(target2, typeof(FahrzeugDatenUI_Accessor));
             Assert.IsTrue(actual.Capacity > 0);
+            Assert.IsTrue(actual.Capacity == expected.Capacity);
             Assert.AreEqual(expected, actual);            
-            Assert.Inconclusive("Verify the correctness of this test method.");
-        }
-
-        /// <summary>
-        ///A test for getFahrzeuge
-        ///</summary>
-        [TestMethod()]
-        [DeploymentItem("MDP-Projekt.exe")]
-        public void getFahrzeugeTest()
-        {
-            MDP_Projekt.UI.FahrzeugDatenUI_Accessor target = new MDP_Projekt.UI.FahrzeugDatenUI_Accessor(); 
-            System.Collections.Generic.List<MDP_Projekt.Model.T_FAHRZEUG> expected = null; // TODO: Initialize to an appropriate value
-            System.Collections.Generic.List<MDP_Projekt.Model.T_FAHRZEUG> actual;
-            actual = target.getFahrzeuge();            
-            Assert.IsNotNull(actual);
-            Assert.IsInstanceOfType(target, typeof(FahrzeugDatenUI_Accessor));
-            Assert.IsTrue(actual.Capacity > 0);
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
         }
 
         /// <summary>
@@ -156,15 +149,19 @@ namespace MDP_Projekt_Test
         [DeploymentItem("MDP-Projekt.exe")]
         public void getFahrzeugmarkeComboTest()
         {
-            MDP_Projekt.UI.FahrzeugDatenUI_Accessor target = new MDP_Projekt.UI.FahrzeugDatenUI_Accessor(); 
-            System.Collections.Generic.List<MDP_Projekt.Model.TZ_FAHRZEUGMARKE> expected = null; // TODO: Initialize to an appropriate value
+            MDP_Projekt.UI.FahrzeugDatenUI_Accessor target1 = new MDP_Projekt.UI.FahrzeugDatenUI_Accessor();
+            MDP_Projekt.UI.FahrzeugDatenUI_Accessor target2 = new MDP_Projekt.UI.FahrzeugDatenUI_Accessor(); 
+            System.Collections.Generic.List<MDP_Projekt.Model.TZ_FAHRZEUGMARKE> expected;
             System.Collections.Generic.List<MDP_Projekt.Model.TZ_FAHRZEUGMARKE> actual;
-            actual = target.getFahrzeugmarkeCombo();
+            actual = target1.getFahrzeugmarkeCombo();
+            expected = target2.getFahrzeugmarkeCombo();
+            
             Assert.IsNotNull(actual);
-            Assert.IsInstanceOfType(target, typeof(FahrzeugDatenUI_Accessor));
+            Assert.IsInstanceOfType(target1, typeof(FahrzeugDatenUI_Accessor));
+            Assert.IsInstanceOfType(target2, typeof(FahrzeugDatenUI_Accessor));
             Assert.IsTrue(actual.Capacity > 0);
+            Assert.IsTrue(actual.Capacity == expected.Capacity);
             Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
         }
 
         /// <summary>
@@ -174,15 +171,18 @@ namespace MDP_Projekt_Test
         [DeploymentItem("MDP-Projekt.exe")]
         public void getFahrzeugtypComboTest()
         {
-            MDP_Projekt.UI.FahrzeugDatenUI_Accessor target = new MDP_Projekt.UI.FahrzeugDatenUI_Accessor();
-            System.Collections.Generic.List<MDP_Projekt.Model.TR_FAHRZEUGTYP> expected = null; // TODO: Initialize to an appropriate value
+            MDP_Projekt.UI.FahrzeugDatenUI_Accessor target1 = new MDP_Projekt.UI.FahrzeugDatenUI_Accessor();
+            MDP_Projekt.UI.FahrzeugDatenUI_Accessor target2 = new MDP_Projekt.UI.FahrzeugDatenUI_Accessor();
+            System.Collections.Generic.List<MDP_Projekt.Model.TR_FAHRZEUGTYP> expected;
             System.Collections.Generic.List<MDP_Projekt.Model.TR_FAHRZEUGTYP> actual;
-            actual = target.getFahrzeugtypCombo();
+            actual = target1.getFahrzeugtypCombo();
+            expected = target2.getFahrzeugtypCombo();
             Assert.IsNotNull(actual);
-            Assert.IsInstanceOfType(target, typeof(FahrzeugDatenUI_Accessor));
+            Assert.IsInstanceOfType(target1, typeof(FahrzeugDatenUI_Accessor));
+            Assert.IsInstanceOfType(target2, typeof(FahrzeugDatenUI_Accessor));
             Assert.IsTrue(actual.Capacity > 0);
+            Assert.IsTrue(actual.Capacity == expected.Capacity);
             Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
         }
 
         /// <summary>
@@ -192,15 +192,65 @@ namespace MDP_Projekt_Test
         [DeploymentItem("MDP-Projekt.exe")]
         public void getFahrzeugnutzerComboTest()
         {
-            MDP_Projekt.UI.FahrzeugDatenUI_Accessor target = new MDP_Projekt.UI.FahrzeugDatenUI_Accessor();
-            System.Collections.Generic.List<MDP_Projekt.Model.T_NUTZER> expected = null; // TODO: Initialize to an appropriate value
+            MDP_Projekt.UI.FahrzeugDatenUI_Accessor target1 = new MDP_Projekt.UI.FahrzeugDatenUI_Accessor();
+            MDP_Projekt.UI.FahrzeugDatenUI_Accessor target2 = new MDP_Projekt.UI.FahrzeugDatenUI_Accessor();
+            System.Collections.Generic.List<MDP_Projekt.Model.T_NUTZER> expected;
             System.Collections.Generic.List<MDP_Projekt.Model.T_NUTZER> actual;
-            actual = target.getFahrzeugnutzerCombo();
+            actual = target1.getFahrzeugnutzerCombo();
+            expected = target2.getFahrzeugnutzerCombo();
             Assert.IsNotNull(actual);
-            Assert.IsInstanceOfType(target, typeof(FahrzeugDatenUI_Accessor));
+            Assert.IsInstanceOfType(target1, typeof(FahrzeugDatenUI_Accessor));
+            Assert.IsInstanceOfType(target2, typeof(FahrzeugDatenUI_Accessor));
             Assert.IsTrue(actual.Capacity > 0);
+            Assert.IsTrue(actual.Capacity == expected.Capacity);
             Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
+        }
+
+        /// <summary>
+        ///A test for dataGridNutzerDaten_SelectionChanged
+        ///</summary>
+        [TestMethod()]
+        [DeploymentItem("MDP-Projekt.exe")]
+        public void gridFahrzeugDaten_SelectionChangedTest()
+        {
+            MDP_Projekt.UI.FahrzeugDatenUI_Accessor target = new MDP_Projekt.UI.FahrzeugDatenUI_Accessor(); // TODO: Initialize to an appropriate value
+            object sender = null; // TODO: Initialize to an appropriate value
+            System.Windows.Controls.SelectionChangedEventArgs e = null; // TODO: Initialize to an appropriate value
+            target.gridFahrzeugDaten_SelectionChanged(sender, e);
+            Assert.Inconclusive("A method that does not return a value cannot be verified.");
+        }
+
+        /// <summary>
+        ///A test for btnSave_Click
+        ///</summary>
+        [TestMethod()]
+        [DeploymentItem("MDP-Projekt.exe")]
+        public void btnSave_ClickTest()
+        {
+            MDP_Projekt.UI.FahrzeugDatenUI_Accessor target = new MDP_Projekt.UI.FahrzeugDatenUI_Accessor(); // TODO: Initialize to an appropriate value
+
+        }
+
+        /// <summary>
+        ///A test for btnDelete_Click
+        ///</summary>
+        [TestMethod()]
+        [DeploymentItem("MDP-Projekt.exe")]
+        public void btnDelete_ClickTest()
+        {
+            MDP_Projekt.UI.FahrzeugDatenUI_Accessor target = new MDP_Projekt.UI.FahrzeugDatenUI_Accessor(); // TODO: Initialize to an appropriate value
+
+        }
+
+        /// <summary>
+        ///A test for btnNew_Click
+        ///</summary>
+        [TestMethod()]
+        [DeploymentItem("MDP-Projekt.exe")]
+        public void btnNew_ClickTest()
+        {
+            MDP_Projekt.UI.FahrzeugDatenUI_Accessor target = new MDP_Projekt.UI.FahrzeugDatenUI_Accessor(); // TODO: Initialize to an appropriate value
+
         }
     }
 }

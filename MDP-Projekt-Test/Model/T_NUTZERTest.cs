@@ -1,6 +1,7 @@
 ﻿using MDP_Projekt.Model;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.Data.Objects.DataClasses;
 
 namespace MDP_Projekt_Test
 {
@@ -70,8 +71,8 @@ namespace MDP_Projekt_Test
         [TestMethod()]
         public void T_NUTZERConstructorTest()
         {
-            MDP_Projekt.Model.T_NUTZER target = new MDP_Projekt.Model.T_NUTZER();
-            Assert.Inconclusive("TODO: Implement code to verify target");
+            T_NUTZER nutzer = new T_NUTZER();
+            Assert.IsInstanceOfType(nutzer, typeof(T_NUTZER));            
         }
 
         /// <summary>
@@ -80,13 +81,10 @@ namespace MDP_Projekt_Test
         [TestMethod()]
         public void CreateT_NUTZERTest()
         {
-            int nUT_ID = 0; // TODO: Initialize to an appropriate value
-            string nUT_NAME = string.Empty; // TODO: Initialize to an appropriate value
-            MDP_Projekt.Model.T_NUTZER expected = null; // TODO: Initialize to an appropriate value
-            MDP_Projekt.Model.T_NUTZER actual;
-            actual = MDP_Projekt.Model.T_NUTZER.CreateT_NUTZER(nUT_ID, nUT_NAME);
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
+            int nUT_ID = 1; 
+            string nUT_NAME = "Poststelle";
+            T_NUTZER nutzer = T_NUTZER.CreateT_NUTZER(nUT_ID, nUT_NAME);
+            Assert.IsTrue(nutzer.NUT_ID == nUT_ID && nutzer.NUT_NAME.Equals(nUT_NAME));
         }
 
         /// <summary>
@@ -95,13 +93,10 @@ namespace MDP_Projekt_Test
         [TestMethod()]
         public void NUT_IDTest()
         {
-            MDP_Projekt.Model.T_NUTZER target = new MDP_Projekt.Model.T_NUTZER(); // TODO: Initialize to an appropriate value
-            int expected = 0; // TODO: Initialize to an appropriate value
-            int actual;
-            target.NUT_ID = expected;
-            actual = target.NUT_ID;
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
+            T_NUTZER nutzer = new T_NUTZER(); 
+            int expected = 1; 
+            nutzer.NUT_ID = expected;
+            Assert.AreEqual(expected, nutzer.NUT_ID);
         }
 
         /// <summary>
@@ -110,13 +105,10 @@ namespace MDP_Projekt_Test
         [TestMethod()]
         public void NUT_NAMETest()
         {
-            MDP_Projekt.Model.T_NUTZER target = new MDP_Projekt.Model.T_NUTZER(); // TODO: Initialize to an appropriate value
-            string expected = string.Empty; // TODO: Initialize to an appropriate value
-            string actual;
-            target.NUT_NAME = expected;
-            actual = target.NUT_NAME;
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
+            T_NUTZER nutzer = new T_NUTZER(); 
+            string expected = "Poststelle"; 
+            nutzer.NUT_NAME = expected;
+            Assert.AreEqual(expected, nutzer.NUT_NAME);
         }
 
         /// <summary>
@@ -125,13 +117,10 @@ namespace MDP_Projekt_Test
         [TestMethod()]
         public void NUT_ORTTest()
         {
-            MDP_Projekt.Model.T_NUTZER target = new MDP_Projekt.Model.T_NUTZER(); // TODO: Initialize to an appropriate value
-            string expected = string.Empty; // TODO: Initialize to an appropriate value
-            string actual;
-            target.NUT_ORT = expected;
-            actual = target.NUT_ORT;
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
+            T_NUTZER nutzer = new T_NUTZER();
+            string expected = "Cham"; 
+            nutzer.NUT_ORT = expected;
+            Assert.AreEqual(expected, nutzer.NUT_ORT);
         }
 
         /// <summary>
@@ -140,13 +129,10 @@ namespace MDP_Projekt_Test
         [TestMethod()]
         public void NUT_PLZTest()
         {
-            MDP_Projekt.Model.T_NUTZER target = new MDP_Projekt.Model.T_NUTZER(); // TODO: Initialize to an appropriate value
-            System.Nullable<int> expected = new System.Nullable<int>(); // TODO: Initialize to an appropriate value
-            System.Nullable<int> actual;
-            target.NUT_PLZ = expected;
-            actual = target.NUT_PLZ;
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
+            T_NUTZER nutzer = new T_NUTZER(); 
+            Nullable<int> expected = 6330; 
+            nutzer.NUT_PLZ = expected;
+            Assert.AreEqual(expected, nutzer.NUT_PLZ);
         }
 
         /// <summary>
@@ -155,11 +141,11 @@ namespace MDP_Projekt_Test
         [TestMethod()]
         public void T_FAHRZEUGTest()
         {
-            MDP_Projekt.Model.T_NUTZER target = new MDP_Projekt.Model.T_NUTZER(); // TODO: Initialize to an appropriate value
-            System.Data.Objects.DataClasses.EntityCollection<MDP_Projekt.Model.T_FAHRZEUG> expected = null; // TODO: Initialize to an appropriate value
-            System.Data.Objects.DataClasses.EntityCollection<MDP_Projekt.Model.T_FAHRZEUG> actual;
-            target.T_FAHRZEUG = expected;
-            actual = target.T_FAHRZEUG;
+            T_NUTZER nutzer = new T_NUTZER(); // TODO: Initialize to an appropriate value
+            EntityCollection<T_FAHRZEUG> expected = null; // TODO: Initialize to an appropriate value
+            EntityCollection<T_FAHRZEUG> actual;
+            nutzer.T_FAHRZEUG = expected;
+            actual = nutzer.T_FAHRZEUG;
             Assert.AreEqual(expected, actual);
             Assert.Inconclusive("Verify the correctness of this test method.");
         }

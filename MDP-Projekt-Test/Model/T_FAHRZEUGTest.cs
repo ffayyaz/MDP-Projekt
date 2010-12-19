@@ -1,6 +1,7 @@
 ﻿using MDP_Projekt.Model;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.Data.Objects.DataClasses;
 
 namespace MDP_Projekt_Test
 {
@@ -70,8 +71,8 @@ namespace MDP_Projekt_Test
         [TestMethod()]
         public void T_FAHRZEUGConstructorTest()
         {
-            MDP_Projekt.Model.T_FAHRZEUG target = new MDP_Projekt.Model.T_FAHRZEUG();
-            Assert.Inconclusive("TODO: Implement code to verify target");
+            T_FAHRZEUG fzg = new T_FAHRZEUG();
+            Assert.IsInstanceOfType(fzg, typeof(T_FAHRZEUG));
         }
 
         /// <summary>
@@ -80,12 +81,9 @@ namespace MDP_Projekt_Test
         [TestMethod()]
         public void CreateT_FAHRZEUGTest()
         {
-            int fZG_ID = 0; // TODO: Initialize to an appropriate value
-            MDP_Projekt.Model.T_FAHRZEUG expected = null; // TODO: Initialize to an appropriate value
-            MDP_Projekt.Model.T_FAHRZEUG actual;
-            actual = MDP_Projekt.Model.T_FAHRZEUG.CreateT_FAHRZEUG(fZG_ID);
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
+            int fZG_ID = 1;             
+            T_FAHRZEUG fzg = T_FAHRZEUG.CreateT_FAHRZEUG(fZG_ID);
+            Assert.AreEqual(fzg.FZG_ID, fZG_ID);
         }
 
         /// <summary>
@@ -94,13 +92,10 @@ namespace MDP_Projekt_Test
         [TestMethod()]
         public void FZG_ERSTEINVERKEHRTest()
         {
-            MDP_Projekt.Model.T_FAHRZEUG target = new MDP_Projekt.Model.T_FAHRZEUG(); // TODO: Initialize to an appropriate value
-            System.Nullable<System.DateTime> expected = new System.Nullable<System.DateTime>(); // TODO: Initialize to an appropriate value
-            System.Nullable<System.DateTime> actual;
-            target.FZG_ERSTEINVERKEHR = expected;
-            actual = target.FZG_ERSTEINVERKEHR;
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
+            T_FAHRZEUG fzg = new T_FAHRZEUG(); 
+            Nullable<DateTime> expected = new Nullable<DateTime>();
+            fzg.FZG_ERSTEINVERKEHR = expected;            
+            Assert.AreEqual(expected, fzg.FZG_ERSTEINVERKEHR);
         }
 
         /// <summary>
@@ -108,14 +103,11 @@ namespace MDP_Projekt_Test
         ///</summary>
         [TestMethod()]
         public void FZG_FAHRZEUGNRTest()
-        {
-            MDP_Projekt.Model.T_FAHRZEUG target = new MDP_Projekt.Model.T_FAHRZEUG(); // TODO: Initialize to an appropriate value
-            string expected = string.Empty; // TODO: Initialize to an appropriate value
-            string actual;
-            target.FZG_FAHRZEUGNR = expected;
-            actual = target.FZG_FAHRZEUGNR;
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
+        {            
+            T_FAHRZEUG fzg = new T_FAHRZEUG(); 
+            string expected = "999-666009"; 
+            fzg.FZG_FAHRZEUGNR = expected;
+            Assert.AreEqual(expected, fzg.FZG_FAHRZEUGNR);
         }
 
         /// <summary>
@@ -124,13 +116,10 @@ namespace MDP_Projekt_Test
         [TestMethod()]
         public void FZG_FZA_IDTest()
         {
-            MDP_Projekt.Model.T_FAHRZEUG target = new MDP_Projekt.Model.T_FAHRZEUG(); // TODO: Initialize to an appropriate value
-            System.Nullable<int> expected = new System.Nullable<int>(); // TODO: Initialize to an appropriate value
-            System.Nullable<int> actual;
-            target.FZG_FZA_ID = expected;
-            actual = target.FZG_FZA_ID;
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
+            T_FAHRZEUG fzg = new T_FAHRZEUG(); 
+            Nullable<int> expected = 1;
+            fzg.FZG_FZA_ID = expected;
+            Assert.AreEqual(expected, fzg.FZG_FZA_ID);
         }
 
         /// <summary>
@@ -139,13 +128,10 @@ namespace MDP_Projekt_Test
         [TestMethod()]
         public void FZG_FZM_IDTest()
         {
-            MDP_Projekt.Model.T_FAHRZEUG target = new MDP_Projekt.Model.T_FAHRZEUG(); // TODO: Initialize to an appropriate value
-            System.Nullable<int> expected = new System.Nullable<int>(); // TODO: Initialize to an appropriate value
-            System.Nullable<int> actual;
-            target.FZG_FZM_ID = expected;
-            actual = target.FZG_FZM_ID;
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
+            T_FAHRZEUG fzg = new T_FAHRZEUG();
+            Nullable<int> expected = 1; 
+            fzg.FZG_FZM_ID = expected;
+            Assert.AreEqual(expected, fzg.FZG_FZM_ID);
         }
 
         /// <summary>
@@ -154,13 +140,10 @@ namespace MDP_Projekt_Test
         [TestMethod()]
         public void FZG_IDTest()
         {
-            MDP_Projekt.Model.T_FAHRZEUG target = new MDP_Projekt.Model.T_FAHRZEUG(); // TODO: Initialize to an appropriate value
-            int expected = 0; // TODO: Initialize to an appropriate value
-            int actual;
-            target.FZG_ID = expected;
-            actual = target.FZG_ID;
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
+            T_FAHRZEUG fzg = new T_FAHRZEUG(); 
+            int expected = 1; 
+            fzg.FZG_ID = expected;
+            Assert.AreEqual(expected, fzg.FZG_ID);
         }
 
         /// <summary>
@@ -169,13 +152,10 @@ namespace MDP_Projekt_Test
         [TestMethod()]
         public void FZG_NUT_IDTest()
         {
-            MDP_Projekt.Model.T_FAHRZEUG target = new MDP_Projekt.Model.T_FAHRZEUG(); // TODO: Initialize to an appropriate value
-            System.Nullable<int> expected = new System.Nullable<int>(); // TODO: Initialize to an appropriate value
-            System.Nullable<int> actual;
-            target.FZG_NUT_ID = expected;
-            actual = target.FZG_NUT_ID;
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
+            T_FAHRZEUG fzg = new T_FAHRZEUG(); 
+            Nullable<int> expected = 1; 
+            fzg.FZG_NUT_ID = expected;
+            Assert.AreEqual(expected, fzg.FZG_NUT_ID);
         }
 
         /// <summary>
@@ -184,13 +164,10 @@ namespace MDP_Projekt_Test
         [TestMethod()]
         public void FZG_RAHMENNRTest()
         {
-            MDP_Projekt.Model.T_FAHRZEUG target = new MDP_Projekt.Model.T_FAHRZEUG(); // TODO: Initialize to an appropriate value
-            string expected = string.Empty; // TODO: Initialize to an appropriate value
-            string actual;
-            target.FZG_RAHMENNR = expected;
-            actual = target.FZG_RAHMENNR;
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
+            T_FAHRZEUG fzg = new T_FAHRZEUG();
+            string expected = "XC22AB49S##SD#SD"; 
+            fzg.FZG_RAHMENNR = expected;
+            Assert.AreEqual(expected, fzg.FZG_RAHMENNR);
         }
 
         /// <summary>
@@ -199,13 +176,10 @@ namespace MDP_Projekt_Test
         [TestMethod()]
         public void FZG_SCHILDNRTest()
         {
-            MDP_Projekt.Model.T_FAHRZEUG target = new MDP_Projekt.Model.T_FAHRZEUG(); // TODO: Initialize to an appropriate value
-            string expected = string.Empty; // TODO: Initialize to an appropriate value
-            string actual;
-            target.FZG_SCHILDNR = expected;
-            actual = target.FZG_SCHILDNR;
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
+            T_FAHRZEUG fzg = new T_FAHRZEUG(); 
+            string expected = "BE 020-22"; 
+            fzg.FZG_SCHILDNR = expected;
+            Assert.AreEqual(expected, fzg.FZG_SCHILDNR);
         }
 
         /// <summary>
@@ -214,13 +188,10 @@ namespace MDP_Projekt_Test
         [TestMethod()]
         public void FZG_STAMMNRTest()
         {
-            MDP_Projekt.Model.T_FAHRZEUG target = new MDP_Projekt.Model.T_FAHRZEUG(); // TODO: Initialize to an appropriate value
-            string expected = string.Empty; // TODO: Initialize to an appropriate value
-            string actual;
-            target.FZG_STAMMNR = expected;
-            actual = target.FZG_STAMMNR;
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
+            T_FAHRZEUG fzg = new T_FAHRZEUG(); 
+            string expected = "2d22"; 
+            fzg.FZG_STAMMNR = expected;
+            Assert.AreEqual(expected, fzg.FZG_STAMMNR);
         }
 
         /// <summary>
@@ -229,13 +200,11 @@ namespace MDP_Projekt_Test
         [TestMethod()]
         public void TR_FAHRZEUGARTTest()
         {
-            MDP_Projekt.Model.T_FAHRZEUG target = new MDP_Projekt.Model.T_FAHRZEUG(); // TODO: Initialize to an appropriate value
-            MDP_Projekt.Model.TR_FAHRZEUGART expected = null; // TODO: Initialize to an appropriate value
-            MDP_Projekt.Model.TR_FAHRZEUGART actual;
-            target.TR_FAHRZEUGART = expected;
-            actual = target.TR_FAHRZEUGART;
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
+            T_FAHRZEUG fzg = new T_FAHRZEUG();
+            TR_FAHRZEUGART expected = new TR_FAHRZEUGART();
+            expected.FZA_ID = 1;
+            fzg.TR_FAHRZEUGART = expected;
+            Assert.AreEqual(expected, fzg.TR_FAHRZEUGART);
         }
 
         /// <summary>
@@ -244,11 +213,11 @@ namespace MDP_Projekt_Test
         [TestMethod()]
         public void TR_FAHRZEUGARTReferenceTest()
         {
-            MDP_Projekt.Model.T_FAHRZEUG target = new MDP_Projekt.Model.T_FAHRZEUG(); // TODO: Initialize to an appropriate value
-            System.Data.Objects.DataClasses.EntityReference<MDP_Projekt.Model.TR_FAHRZEUGART> expected = null; // TODO: Initialize to an appropriate value
-            System.Data.Objects.DataClasses.EntityReference<MDP_Projekt.Model.TR_FAHRZEUGART> actual;
-            target.TR_FAHRZEUGARTReference = expected;
-            actual = target.TR_FAHRZEUGARTReference;
+            T_FAHRZEUG fzg = new T_FAHRZEUG(); // TODO: Initialize to an appropriate value
+            EntityReference<TR_FAHRZEUGART> expected = null; // TODO: Initialize to an appropriate value
+            EntityReference<TR_FAHRZEUGART> actual;
+            fzg.TR_FAHRZEUGARTReference = expected;
+            actual = fzg.TR_FAHRZEUGARTReference;
             Assert.AreEqual(expected, actual);
             Assert.Inconclusive("Verify the correctness of this test method.");
         }
@@ -259,13 +228,11 @@ namespace MDP_Projekt_Test
         [TestMethod()]
         public void TZ_FAHRZEUGMARKETest()
         {
-            MDP_Projekt.Model.T_FAHRZEUG target = new MDP_Projekt.Model.T_FAHRZEUG(); // TODO: Initialize to an appropriate value
-            MDP_Projekt.Model.TZ_FAHRZEUGMARKE expected = null; // TODO: Initialize to an appropriate value
-            MDP_Projekt.Model.TZ_FAHRZEUGMARKE actual;
-            target.TZ_FAHRZEUGMARKE = expected;
-            actual = target.TZ_FAHRZEUGMARKE;
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
+            T_FAHRZEUG fzg = new T_FAHRZEUG(); 
+            TZ_FAHRZEUGMARKE expected = new TZ_FAHRZEUGMARKE();
+            expected.FZM_BEZEICHNUNG = "Vespa";
+            fzg.TZ_FAHRZEUGMARKE = expected;
+            Assert.AreEqual(expected, fzg.TZ_FAHRZEUGMARKE);
         }
 
         /// <summary>
@@ -274,11 +241,11 @@ namespace MDP_Projekt_Test
         [TestMethod()]
         public void TZ_FAHRZEUGMARKEReferenceTest()
         {
-            MDP_Projekt.Model.T_FAHRZEUG target = new MDP_Projekt.Model.T_FAHRZEUG(); // TODO: Initialize to an appropriate value
-            System.Data.Objects.DataClasses.EntityReference<MDP_Projekt.Model.TZ_FAHRZEUGMARKE> expected = null; // TODO: Initialize to an appropriate value
-            System.Data.Objects.DataClasses.EntityReference<MDP_Projekt.Model.TZ_FAHRZEUGMARKE> actual;
-            target.TZ_FAHRZEUGMARKEReference = expected;
-            actual = target.TZ_FAHRZEUGMARKEReference;
+            T_FAHRZEUG fzg = new T_FAHRZEUG(); // TODO: Initialize to an appropriate value
+            EntityReference<TZ_FAHRZEUGMARKE> expected = null; // TODO: Initialize to an appropriate value
+            EntityReference<TZ_FAHRZEUGMARKE> actual;
+            fzg.TZ_FAHRZEUGMARKEReference = expected;
+            actual = fzg.TZ_FAHRZEUGMARKEReference;
             Assert.AreEqual(expected, actual);
             Assert.Inconclusive("Verify the correctness of this test method.");
         }
@@ -289,13 +256,11 @@ namespace MDP_Projekt_Test
         [TestMethod()]
         public void T_NUTZERTest()
         {
-            MDP_Projekt.Model.T_FAHRZEUG target = new MDP_Projekt.Model.T_FAHRZEUG(); // TODO: Initialize to an appropriate value
-            MDP_Projekt.Model.T_NUTZER expected = null; // TODO: Initialize to an appropriate value
-            MDP_Projekt.Model.T_NUTZER actual;
-            target.T_NUTZER = expected;
-            actual = target.T_NUTZER;
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
+            T_FAHRZEUG fzg = new T_FAHRZEUG(); 
+            T_NUTZER expected = new T_NUTZER();
+            expected.NUT_ID = 1;
+            fzg.T_NUTZER = expected;
+            Assert.AreEqual(expected, fzg.T_NUTZER);
         }
 
         /// <summary>
@@ -304,11 +269,11 @@ namespace MDP_Projekt_Test
         [TestMethod()]
         public void T_NUTZERReferenceTest()
         {
-            MDP_Projekt.Model.T_FAHRZEUG target = new MDP_Projekt.Model.T_FAHRZEUG(); // TODO: Initialize to an appropriate value
-            System.Data.Objects.DataClasses.EntityReference<MDP_Projekt.Model.T_NUTZER> expected = null; // TODO: Initialize to an appropriate value
-            System.Data.Objects.DataClasses.EntityReference<MDP_Projekt.Model.T_NUTZER> actual;
-            target.T_NUTZERReference = expected;
-            actual = target.T_NUTZERReference;
+            T_FAHRZEUG fzg = new T_FAHRZEUG(); // TODO: Initialize to an appropriate value
+            EntityReference<T_NUTZER> expected = null; // TODO: Initialize to an appropriate value
+            EntityReference<T_NUTZER> actual;
+            fzg.T_NUTZERReference = expected;
+            actual = fzg.T_NUTZERReference;
             Assert.AreEqual(expected, actual);
             Assert.Inconclusive("Verify the correctness of this test method.");
         }

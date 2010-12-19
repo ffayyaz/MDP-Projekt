@@ -1,6 +1,7 @@
 ﻿using MDP_Projekt.Model;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.Data.Objects.DataClasses;
 
 namespace MDP_Projekt_Test
 {
@@ -70,8 +71,8 @@ namespace MDP_Projekt_Test
         [TestMethod()]
         public void TR_FAHRZEUGTYPConstructorTest()
         {
-            MDP_Projekt.Model.TR_FAHRZEUGTYP target = new MDP_Projekt.Model.TR_FAHRZEUGTYP();
-            Assert.Inconclusive("TODO: Implement code to verify target");
+            TR_FAHRZEUGTYP fzgTyp = new TR_FAHRZEUGTYP();
+            Assert.IsInstanceOfType(fzgTyp, typeof(TR_FAHRZEUGTYP));
         }
 
         /// <summary>
@@ -80,13 +81,10 @@ namespace MDP_Projekt_Test
         [TestMethod()]
         public void CreateTR_FAHRZEUGTYPTest()
         {
-            int fZT_ID = 0; // TODO: Initialize to an appropriate value
-            string fZT_BEZEICHNUNG = string.Empty; // TODO: Initialize to an appropriate value
-            MDP_Projekt.Model.TR_FAHRZEUGTYP expected = null; // TODO: Initialize to an appropriate value
-            MDP_Projekt.Model.TR_FAHRZEUGTYP actual;
-            actual = MDP_Projekt.Model.TR_FAHRZEUGTYP.CreateTR_FAHRZEUGTYP(fZT_ID, fZT_BEZEICHNUNG);
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
+            int fZT_ID = 1;
+            string fZT_BEZEICHNUNG = "Liberty";
+            TR_FAHRZEUGTYP fzgTyp = TR_FAHRZEUGTYP.CreateTR_FAHRZEUGTYP(fZT_ID, fZT_BEZEICHNUNG);
+            Assert.IsTrue(fzgTyp.FZT_ID == fZT_ID && fzgTyp.FZT_BEZEICHNUNG.Equals(fZT_BEZEICHNUNG));
         }
 
         /// <summary>
@@ -95,13 +93,10 @@ namespace MDP_Projekt_Test
         [TestMethod()]
         public void FZT_BEZEICHNUNGTest()
         {
-            MDP_Projekt.Model.TR_FAHRZEUGTYP target = new MDP_Projekt.Model.TR_FAHRZEUGTYP(); // TODO: Initialize to an appropriate value
-            string expected = string.Empty; // TODO: Initialize to an appropriate value
-            string actual;
-            target.FZT_BEZEICHNUNG = expected;
-            actual = target.FZT_BEZEICHNUNG;
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
+            TR_FAHRZEUGTYP fzgTyp = new TR_FAHRZEUGTYP();
+            string expected = "Liberty"; 
+            fzgTyp.FZT_BEZEICHNUNG = expected;
+            Assert.AreEqual(expected, fzgTyp.FZT_BEZEICHNUNG);
         }
 
         /// <summary>
@@ -110,13 +105,10 @@ namespace MDP_Projekt_Test
         [TestMethod()]
         public void FZT_IDTest()
         {
-            MDP_Projekt.Model.TR_FAHRZEUGTYP target = new MDP_Projekt.Model.TR_FAHRZEUGTYP(); // TODO: Initialize to an appropriate value
-            int expected = 0; // TODO: Initialize to an appropriate value
-            int actual;
-            target.FZT_ID = expected;
-            actual = target.FZT_ID;
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
+            TR_FAHRZEUGTYP fzgTyp = new TR_FAHRZEUGTYP(); 
+            int expected = 1; 
+            fzgTyp.FZT_ID = expected;
+            Assert.AreEqual(expected, fzgTyp.FZT_ID);
         }
 
         /// <summary>
@@ -125,11 +117,11 @@ namespace MDP_Projekt_Test
         [TestMethod()]
         public void TZ_FAHRZEUGMARKETest()
         {
-            MDP_Projekt.Model.TR_FAHRZEUGTYP target = new MDP_Projekt.Model.TR_FAHRZEUGTYP(); // TODO: Initialize to an appropriate value
-            System.Data.Objects.DataClasses.EntityCollection<MDP_Projekt.Model.TZ_FAHRZEUGMARKE> expected = null; // TODO: Initialize to an appropriate value
-            System.Data.Objects.DataClasses.EntityCollection<MDP_Projekt.Model.TZ_FAHRZEUGMARKE> actual;
-            target.TZ_FAHRZEUGMARKE = expected;
-            actual = target.TZ_FAHRZEUGMARKE;
+            TR_FAHRZEUGTYP fzgTyp = new TR_FAHRZEUGTYP(); // TODO: Initialize to an appropriate value
+            EntityCollection<TZ_FAHRZEUGMARKE> expected = null; // TODO: Initialize to an appropriate value
+            EntityCollection<TZ_FAHRZEUGMARKE> actual;
+            fzgTyp.TZ_FAHRZEUGMARKE = expected;
+            actual = fzgTyp.TZ_FAHRZEUGMARKE;
             Assert.AreEqual(expected, actual);
             Assert.Inconclusive("Verify the correctness of this test method.");
         }

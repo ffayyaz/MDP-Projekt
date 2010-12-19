@@ -1,6 +1,8 @@
 ﻿using MDP_Projekt.Model;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.Data.EntityClient;
+using System.Data.Objects;
 
 namespace MDP_Projekt_Test
 {
@@ -70,8 +72,8 @@ namespace MDP_Projekt_Test
         [TestMethod()]
         public void ContextConstructorTest()
         {
-            System.Data.EntityClient.EntityConnection connection = null; // TODO: Initialize to an appropriate value
-            MDP_Projekt.Model.Context target = new MDP_Projekt.Model.Context(connection);
+            EntityConnection connection = null; // TODO: Initialize to an appropriate value
+            Context target = new Context(connection);
             Assert.Inconclusive("TODO: Implement code to verify target");
         }
 
@@ -82,7 +84,7 @@ namespace MDP_Projekt_Test
         public void ContextConstructorTest1()
         {
             string connectionString = string.Empty; // TODO: Initialize to an appropriate value
-            MDP_Projekt.Model.Context target = new MDP_Projekt.Model.Context(connectionString);
+            Context target = new Context(connectionString);
             Assert.Inconclusive("TODO: Implement code to verify target");
         }
 
@@ -92,7 +94,7 @@ namespace MDP_Projekt_Test
         [TestMethod()]
         public void ContextConstructorTest2()
         {
-            MDP_Projekt.Model.Context target = new MDP_Projekt.Model.Context();
+            Context target = new Context();
             Assert.Inconclusive("TODO: Implement code to verify target");
         }
 
@@ -102,8 +104,8 @@ namespace MDP_Projekt_Test
         [TestMethod()]
         public void AddToTR_FAHRZEUGARTTest()
         {
-            MDP_Projekt.Model.Context target = new MDP_Projekt.Model.Context(); // TODO: Initialize to an appropriate value
-            MDP_Projekt.Model.TR_FAHRZEUGART tR_FAHRZEUGART = null; // TODO: Initialize to an appropriate value
+            Context target = new Context(); // TODO: Initialize to an appropriate value
+            TR_FAHRZEUGART tR_FAHRZEUGART = null; // TODO: Initialize to an appropriate value
             target.AddToTR_FAHRZEUGART(tR_FAHRZEUGART);
             Assert.Inconclusive("A method that does not return a value cannot be verified.");
         }
@@ -114,8 +116,8 @@ namespace MDP_Projekt_Test
         [TestMethod()]
         public void AddToTR_FAHRZEUGTYPTest()
         {
-            MDP_Projekt.Model.Context target = new MDP_Projekt.Model.Context(); // TODO: Initialize to an appropriate value
-            MDP_Projekt.Model.TR_FAHRZEUGTYP tR_FAHRZEUGTYP = null; // TODO: Initialize to an appropriate value
+            Context target = new Context(); // TODO: Initialize to an appropriate value
+            TR_FAHRZEUGTYP tR_FAHRZEUGTYP = null; // TODO: Initialize to an appropriate value
             target.AddToTR_FAHRZEUGTYP(tR_FAHRZEUGTYP);
             Assert.Inconclusive("A method that does not return a value cannot be verified.");
         }
@@ -126,8 +128,8 @@ namespace MDP_Projekt_Test
         [TestMethod()]
         public void AddToTZ_FAHRZEUGMARKETest()
         {
-            MDP_Projekt.Model.Context target = new MDP_Projekt.Model.Context(); // TODO: Initialize to an appropriate value
-            MDP_Projekt.Model.TZ_FAHRZEUGMARKE tZ_FAHRZEUGMARKE = null; // TODO: Initialize to an appropriate value
+            Context target = new Context(); // TODO: Initialize to an appropriate value
+            TZ_FAHRZEUGMARKE tZ_FAHRZEUGMARKE = null; // TODO: Initialize to an appropriate value
             target.AddToTZ_FAHRZEUGMARKE(tZ_FAHRZEUGMARKE);
             Assert.Inconclusive("A method that does not return a value cannot be verified.");
         }
@@ -138,8 +140,8 @@ namespace MDP_Projekt_Test
         [TestMethod()]
         public void AddToT_FAHRZEUGTest()
         {
-            MDP_Projekt.Model.Context target = new MDP_Projekt.Model.Context(); // TODO: Initialize to an appropriate value
-            MDP_Projekt.Model.T_FAHRZEUG t_FAHRZEUG = null; // TODO: Initialize to an appropriate value
+            Context target = new Context(); // TODO: Initialize to an appropriate value
+            T_FAHRZEUG t_FAHRZEUG = null; // TODO: Initialize to an appropriate value
             target.AddToT_FAHRZEUG(t_FAHRZEUG);
             Assert.Inconclusive("A method that does not return a value cannot be verified.");
         }
@@ -150,8 +152,8 @@ namespace MDP_Projekt_Test
         [TestMethod()]
         public void AddToT_NUTZERTest()
         {
-            MDP_Projekt.Model.Context target = new MDP_Projekt.Model.Context(); // TODO: Initialize to an appropriate value
-            MDP_Projekt.Model.T_NUTZER t_NUTZER = null; // TODO: Initialize to an appropriate value
+            Context target = new Context(); // TODO: Initialize to an appropriate value
+            T_NUTZER t_NUTZER = null; // TODO: Initialize to an appropriate value
             target.AddToT_NUTZER(t_NUTZER);
             Assert.Inconclusive("A method that does not return a value cannot be verified.");
         }
@@ -162,8 +164,8 @@ namespace MDP_Projekt_Test
         [TestMethod()]
         public void TR_FAHRZEUGARTTest()
         {
-            MDP_Projekt.Model.Context target = new MDP_Projekt.Model.Context(); // TODO: Initialize to an appropriate value
-            System.Data.Objects.ObjectSet<MDP_Projekt.Model.TR_FAHRZEUGART> actual;
+            Context target = new Context(); // TODO: Initialize to an appropriate value
+            ObjectSet<TR_FAHRZEUGART> actual;
             actual = target.TR_FAHRZEUGART;
             Assert.Inconclusive("Verify the correctness of this test method.");
         }
@@ -174,8 +176,8 @@ namespace MDP_Projekt_Test
         [TestMethod()]
         public void TR_FAHRZEUGTYPTest()
         {
-            MDP_Projekt.Model.Context target = new MDP_Projekt.Model.Context(); // TODO: Initialize to an appropriate value
-            System.Data.Objects.ObjectSet<MDP_Projekt.Model.TR_FAHRZEUGTYP> actual;
+            Context target = new Context(); // TODO: Initialize to an appropriate value
+            ObjectSet<TR_FAHRZEUGTYP> actual;
             actual = target.TR_FAHRZEUGTYP;
             Assert.Inconclusive("Verify the correctness of this test method.");
         }
@@ -186,8 +188,8 @@ namespace MDP_Projekt_Test
         [TestMethod()]
         public void TZ_FAHRZEUGMARKETest()
         {
-            MDP_Projekt.Model.Context target = new MDP_Projekt.Model.Context(); // TODO: Initialize to an appropriate value
-            System.Data.Objects.ObjectSet<MDP_Projekt.Model.TZ_FAHRZEUGMARKE> actual;
+            Context target = new Context(); // TODO: Initialize to an appropriate value
+            ObjectSet<TZ_FAHRZEUGMARKE> actual;
             actual = target.TZ_FAHRZEUGMARKE;
             Assert.Inconclusive("Verify the correctness of this test method.");
         }
@@ -198,8 +200,8 @@ namespace MDP_Projekt_Test
         [TestMethod()]
         public void T_FAHRZEUGTest()
         {
-            MDP_Projekt.Model.Context target = new MDP_Projekt.Model.Context(); // TODO: Initialize to an appropriate value
-            System.Data.Objects.ObjectSet<MDP_Projekt.Model.T_FAHRZEUG> actual;
+            Context target = new Context(); // TODO: Initialize to an appropriate value
+            ObjectSet<T_FAHRZEUG> actual;
             actual = target.T_FAHRZEUG;
             Assert.Inconclusive("Verify the correctness of this test method.");
         }
@@ -210,8 +212,8 @@ namespace MDP_Projekt_Test
         [TestMethod()]
         public void T_NUTZERTest()
         {
-            MDP_Projekt.Model.Context target = new MDP_Projekt.Model.Context(); // TODO: Initialize to an appropriate value
-            System.Data.Objects.ObjectSet<MDP_Projekt.Model.T_NUTZER> actual;
+            Context target = new Context(); // TODO: Initialize to an appropriate value
+            ObjectSet<T_NUTZER> actual;
             actual = target.T_NUTZER;
             Assert.Inconclusive("Verify the correctness of this test method.");
         }
