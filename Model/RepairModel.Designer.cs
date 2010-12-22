@@ -152,6 +152,38 @@ namespace MDP_Projekt.Model
             }
         }
         private ObjectSet<TZ_FAHRZEUGMARKE> _TZ_FAHRZEUGMARKE;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<TR_ARBEIT> TR_ARBEIT
+        {
+            get
+            {
+                if ((_TR_ARBEIT == null))
+                {
+                    _TR_ARBEIT = base.CreateObjectSet<TR_ARBEIT>("TR_ARBEIT");
+                }
+                return _TR_ARBEIT;
+            }
+        }
+        private ObjectSet<TR_ARBEIT> _TR_ARBEIT;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<TR_MATERIAL> TR_MATERIAL
+        {
+            get
+            {
+                if ((_TR_MATERIAL == null))
+                {
+                    _TR_MATERIAL = base.CreateObjectSet<TR_MATERIAL>("TR_MATERIAL");
+                }
+                return _TR_MATERIAL;
+            }
+        }
+        private ObjectSet<TR_MATERIAL> _TR_MATERIAL;
 
         #endregion
         #region AddTo Methods
@@ -194,6 +226,22 @@ namespace MDP_Projekt.Model
         public void AddToTZ_FAHRZEUGMARKE(TZ_FAHRZEUGMARKE tZ_FAHRZEUGMARKE)
         {
             base.AddObject("TZ_FAHRZEUGMARKE", tZ_FAHRZEUGMARKE);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the TR_ARBEIT EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToTR_ARBEIT(TR_ARBEIT tR_ARBEIT)
+        {
+            base.AddObject("TR_ARBEIT", tR_ARBEIT);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the TR_MATERIAL EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToTR_MATERIAL(TR_MATERIAL tR_MATERIAL)
+        {
+            base.AddObject("TR_MATERIAL", tR_MATERIAL);
         }
 
         #endregion
@@ -725,6 +773,109 @@ namespace MDP_Projekt.Model
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="Model", Name="TR_ARBEIT")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class TR_ARBEIT : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new TR_ARBEIT object.
+        /// </summary>
+        /// <param name="aRB_ID">Initial value of the ARB_ID property.</param>
+        public static TR_ARBEIT CreateTR_ARBEIT(global::System.Int32 aRB_ID)
+        {
+            TR_ARBEIT tR_ARBEIT = new TR_ARBEIT();
+            tR_ARBEIT.ARB_ID = aRB_ID;
+            return tR_ARBEIT;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ARB_ID
+        {
+            get
+            {
+                return _ARB_ID;
+            }
+            set
+            {
+                if (_ARB_ID != value)
+                {
+                    OnARB_IDChanging(value);
+                    ReportPropertyChanging("ARB_ID");
+                    _ARB_ID = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ARB_ID");
+                    OnARB_IDChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ARB_ID;
+        partial void OnARB_IDChanging(global::System.Int32 value);
+        partial void OnARB_IDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String ARB_BEZEICHNUNG
+        {
+            get
+            {
+                return _ARB_BEZEICHNUNG;
+            }
+            set
+            {
+                OnARB_BEZEICHNUNGChanging(value);
+                ReportPropertyChanging("ARB_BEZEICHNUNG");
+                _ARB_BEZEICHNUNG = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("ARB_BEZEICHNUNG");
+                OnARB_BEZEICHNUNGChanged();
+            }
+        }
+        private global::System.String _ARB_BEZEICHNUNG;
+        partial void OnARB_BEZEICHNUNGChanging(global::System.String value);
+        partial void OnARB_BEZEICHNUNGChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Decimal> ARB_PREIS
+        {
+            get
+            {
+                return _ARB_PREIS;
+            }
+            set
+            {
+                OnARB_PREISChanging(value);
+                ReportPropertyChanging("ARB_PREIS");
+                _ARB_PREIS = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ARB_PREIS");
+                OnARB_PREISChanged();
+            }
+        }
+        private Nullable<global::System.Decimal> _ARB_PREIS;
+        partial void OnARB_PREISChanging(Nullable<global::System.Decimal> value);
+        partial void OnARB_PREISChanged();
+
+        #endregion
+    
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
     [EdmEntityTypeAttribute(NamespaceName="Model", Name="TR_FAHRZEUGART")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
@@ -958,6 +1109,133 @@ namespace MDP_Projekt.Model
         }
 
         #endregion
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="Model", Name="TR_MATERIAL")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class TR_MATERIAL : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new TR_MATERIAL object.
+        /// </summary>
+        /// <param name="mAT_ID">Initial value of the MAT_ID property.</param>
+        public static TR_MATERIAL CreateTR_MATERIAL(global::System.Int32 mAT_ID)
+        {
+            TR_MATERIAL tR_MATERIAL = new TR_MATERIAL();
+            tR_MATERIAL.MAT_ID = mAT_ID;
+            return tR_MATERIAL;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 MAT_ID
+        {
+            get
+            {
+                return _MAT_ID;
+            }
+            set
+            {
+                if (_MAT_ID != value)
+                {
+                    OnMAT_IDChanging(value);
+                    ReportPropertyChanging("MAT_ID");
+                    _MAT_ID = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("MAT_ID");
+                    OnMAT_IDChanged();
+                }
+            }
+        }
+        private global::System.Int32 _MAT_ID;
+        partial void OnMAT_IDChanging(global::System.Int32 value);
+        partial void OnMAT_IDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String MAT_BEZEICHNUNG
+        {
+            get
+            {
+                return _MAT_BEZEICHNUNG;
+            }
+            set
+            {
+                OnMAT_BEZEICHNUNGChanging(value);
+                ReportPropertyChanging("MAT_BEZEICHNUNG");
+                _MAT_BEZEICHNUNG = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("MAT_BEZEICHNUNG");
+                OnMAT_BEZEICHNUNGChanged();
+            }
+        }
+        private global::System.String _MAT_BEZEICHNUNG;
+        partial void OnMAT_BEZEICHNUNGChanging(global::System.String value);
+        partial void OnMAT_BEZEICHNUNGChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Decimal> MAT_PREIS
+        {
+            get
+            {
+                return _MAT_PREIS;
+            }
+            set
+            {
+                OnMAT_PREISChanging(value);
+                ReportPropertyChanging("MAT_PREIS");
+                _MAT_PREIS = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("MAT_PREIS");
+                OnMAT_PREISChanged();
+            }
+        }
+        private Nullable<global::System.Decimal> _MAT_PREIS;
+        partial void OnMAT_PREISChanging(Nullable<global::System.Decimal> value);
+        partial void OnMAT_PREISChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Decimal> MAT_MARGE
+        {
+            get
+            {
+                return _MAT_MARGE;
+            }
+            set
+            {
+                OnMAT_MARGEChanging(value);
+                ReportPropertyChanging("MAT_MARGE");
+                _MAT_MARGE = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("MAT_MARGE");
+                OnMAT_MARGEChanged();
+            }
+        }
+        private Nullable<global::System.Decimal> _MAT_MARGE;
+        partial void OnMAT_MARGEChanging(Nullable<global::System.Decimal> value);
+        partial void OnMAT_MARGEChanged();
+
+        #endregion
+    
     }
     
     /// <summary>

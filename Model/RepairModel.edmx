@@ -8,8 +8,10 @@
         <EntityContainer Name="ModelStoreContainer">
           <EntitySet Name="T_FAHRZEUG" EntityType="Model.Store.T_FAHRZEUG" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="T_NUTZER" EntityType="Model.Store.T_NUTZER" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TR_ARBEIT" EntityType="Model.Store.TR_ARBEIT" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="TR_FAHRZEUGART" EntityType="Model.Store.TR_FAHRZEUGART" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="TR_FAHRZEUGTYP" EntityType="Model.Store.TR_FAHRZEUGTYP" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TR_MATERIAL" EntityType="Model.Store.TR_MATERIAL" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="TZ_FAHRZEUGMARKE" EntityType="Model.Store.TZ_FAHRZEUGMARKE" store:Type="Tables" Schema="dbo" />
           <AssociationSet Name="FK_FZA_FZG" Association="Model.Store.FK_FZA_FZG">
             <End Role="TR_FAHRZEUGART" EntitySet="TR_FAHRZEUGART" />
@@ -51,6 +53,14 @@
           <Property Name="NUT_PLZ" Type="int" />
           <Property Name="NUT_ORT" Type="nvarchar" MaxLength="50" />
         </EntityType>
+        <EntityType Name="TR_ARBEIT">
+          <Key>
+            <PropertyRef Name="ARB_ID" />
+          </Key>
+          <Property Name="ARB_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ARB_BEZEICHNUNG" Type="nvarchar" MaxLength="50" />
+          <Property Name="ARB_PREIS" Type="decimal" Precision="12" Scale="2" />
+        </EntityType>
         <EntityType Name="TR_FAHRZEUGART">
           <Key>
             <PropertyRef Name="FZA_ID" />
@@ -65,6 +75,15 @@
           </Key>
           <Property Name="FZT_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="FZT_BEZEICHNUNG" Type="nvarchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="TR_MATERIAL">
+          <Key>
+            <PropertyRef Name="MAT_ID" />
+          </Key>
+          <Property Name="MAT_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="MAT_BEZEICHNUNG" Type="nvarchar" MaxLength="50" />
+          <Property Name="MAT_PREIS" Type="decimal" Precision="12" Scale="2" />
+          <Property Name="MAT_MARGE" Type="decimal" Precision="12" Scale="2" />
         </EntityType>
         <EntityType Name="TZ_FAHRZEUGMARKE">
           <Key>
@@ -148,6 +167,8 @@
             <End Role="TR_FAHRZEUGTYP" EntitySet="TR_FAHRZEUGTYP" />
             <End Role="TZ_FAHRZEUGMARKE" EntitySet="TZ_FAHRZEUGMARKE" />
           </AssociationSet>
+          <EntitySet Name="TR_ARBEIT" EntityType="Model.TR_ARBEIT" />
+          <EntitySet Name="TR_MATERIAL" EntityType="Model.TR_MATERIAL" />
         </EntityContainer>
         <EntityType Name="T_FAHRZEUG">
           <Key>
@@ -251,6 +272,23 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="TR_ARBEIT">
+          <Key>
+            <PropertyRef Name="ARB_ID" />
+          </Key>
+          <Property Type="Int32" Name="ARB_ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="ARB_BEZEICHNUNG" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="ARB_PREIS" Precision="12" Scale="2" />
+        </EntityType>
+        <EntityType Name="TR_MATERIAL">
+          <Key>
+            <PropertyRef Name="MAT_ID" />
+          </Key>
+          <Property Type="Int32" Name="MAT_ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="MAT_BEZEICHNUNG" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="MAT_PREIS" Precision="12" Scale="2" />
+          <Property Type="Decimal" Name="MAT_MARGE" Precision="12" Scale="2" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -308,6 +346,25 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="TR_ARBEIT">
+            <EntityTypeMapping TypeName="Model.TR_ARBEIT">
+              <MappingFragment StoreEntitySet="TR_ARBEIT">
+                <ScalarProperty Name="ARB_PREIS" ColumnName="ARB_PREIS" />
+                <ScalarProperty Name="ARB_BEZEICHNUNG" ColumnName="ARB_BEZEICHNUNG" />
+                <ScalarProperty Name="ARB_ID" ColumnName="ARB_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TR_MATERIAL">
+            <EntityTypeMapping TypeName="Model.TR_MATERIAL">
+              <MappingFragment StoreEntitySet="TR_MATERIAL">
+                <ScalarProperty Name="MAT_MARGE" ColumnName="MAT_MARGE" />
+                <ScalarProperty Name="MAT_PREIS" ColumnName="MAT_PREIS" />
+                <ScalarProperty Name="MAT_BEZEICHNUNG" ColumnName="MAT_BEZEICHNUNG" />
+                <ScalarProperty Name="MAT_ID" ColumnName="MAT_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -352,6 +409,8 @@
           <ConnectorPoint PointX="2.25" PointY="2.672841796875" />
           <ConnectorPoint PointX="3" PointY="2.672841796875" />
         </AssociationConnector>
+        <EntityTypeShape EntityType="Model.TR_ARBEIT" Width="1.5" PointX="7.5" PointY="3.75" Height="1.5956835937499996" />
+        <EntityTypeShape EntityType="Model.TR_MATERIAL" Width="1.5" PointX="7.5" PointY="1.75" Height="1.7879850260416674" />
       </Diagram>
     </Diagrams>
   </Designer>
