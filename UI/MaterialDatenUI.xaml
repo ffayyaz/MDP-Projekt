@@ -23,9 +23,9 @@
             <TextBox Grid.Row="1" Grid.Column="1"  Text="{Binding Path=MAT_PREIS}" />
             <Label Grid.Row="2" Grid.Column="0">Marge:</Label>
             <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Path=MAT_MARGE}" />
-            <Button Grid.Row="4" Grid.Column="0">New</Button>
-            <Button Grid.Row="4" Grid.Column="1">Delete</Button>
-            <Button Grid.Row="2" Grid.Column="3">Save</Button>
+            <Button Grid.Row="4" Grid.Column="0" Name="btnNew" Click="btnNew_Click">New</Button>
+            <Button Grid.Row="4" Grid.Column="1" Name="btnDelete" Click="btnDelete_Click">Delete</Button>
+            <Button Grid.Row="2" Grid.Column="3" Name="btnSave" Click="btnSave_Click">Save</Button>
             <DataGrid Grid.Row="5" Grid.ColumnSpan="3" AutoGenerateColumns="False" HeadersVisibility="Column" Name="dataGridMaterialDaten" ItemsSource="{Binding}" SelectionChanged="dataGridMaterialDaten_SelectionChanged">
                 <DataGrid.Columns>
                     <DataGridTextColumn Binding="{Binding Path=MAT_BEZEICHNUNG, Mode=OneWay}" Header="Bezeichnung" />

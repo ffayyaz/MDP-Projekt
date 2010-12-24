@@ -2,12 +2,6 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="NutzerDatenUI" Height="300" Width="640">
-    <Window.Resources>
-        <Style x:Key="buttonStyle" TargetType="Button">
-            <Setter Property="Margin" Value="5" />
-        </Style>
-    </Window.Resources>
-    
     <StackPanel>
         <Grid Height="Auto" Margin="10" Name="gridNutzerDaten">
             <Grid.RowDefinitions>
@@ -28,10 +22,10 @@
             <Label Grid.Row="1" Grid.Column="0">PLZ:</Label>
             <TextBox Grid.Row="1" Grid.Column="1"  Text="{Binding Path=NUT_PLZ}" />
             <Label Grid.Row="2" Grid.Column="0">Ort:</Label>
-            <TextBox Grid.Row="2" Grid.Column="1"  Text="{Binding Path=NUT_ORT}" />
-            <Button Grid.Row="4" Grid.Column="0"  Style="{StaticResource buttonStyle}">New</Button>
-            <Button Grid.Row="4" Grid.Column="1">Delete</Button>
-            <Button Grid.Row="2" Grid.Column="3">Save</Button>
+            <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Path=NUT_ORT}" />
+            <Button Grid.Row="4" Grid.Column="0" Name="btnNew" Click="btnNew_Click">New</Button>
+            <Button Grid.Row="4" Grid.Column="1" Name="btnDelete" Click="btnDelete_Click">Delete</Button>
+            <Button Grid.Row="2" Grid.Column="3" Name="btnSave" Click="btnSave_Click">Save</Button>
             <DataGrid  Grid.Row="5" Grid.ColumnSpan="3" AutoGenerateColumns="False" HeadersVisibility="Column" Name="dataGridNutzerDaten" ItemsSource="{Binding}" SelectionChanged="dataGridNutzerDaten_SelectionChanged">
                 <DataGrid.Columns>
                     <DataGridTextColumn Binding="{Binding Path=NUT_NAME, Mode=OneWay}" Header="Name" />
