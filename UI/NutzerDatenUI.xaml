@@ -23,9 +23,9 @@
             <TextBox Grid.Row="1" Grid.Column="1"  Text="{Binding Path=NUT_PLZ}" />
             <Label Grid.Row="2" Grid.Column="0">Ort:</Label>
             <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Path=NUT_ORT}" />
-            <Button Grid.Row="4" Grid.Column="0">New</Button>
-            <Button Grid.Row="4" Grid.Column="1">Delete</Button>
-            <Button Grid.Row="2" Grid.Column="3">Save</Button>
+            <Button Grid.Row="4" Grid.Column="0" Name="btnNew" Click="btnNew_Click">New</Button>
+            <Button Grid.Row="4" Grid.Column="1" Name="btnDelete" Click="btnDelete_Click">Delete</Button>
+            <Button Grid.Row="2" Grid.Column="3" Name="btnSave" Click="btnSave_Click">Save</Button>
             <DataGrid  Grid.Row="5" Grid.ColumnSpan="3" AutoGenerateColumns="False" HeadersVisibility="Column" Name="dataGridNutzerDaten" ItemsSource="{Binding}" SelectionChanged="dataGridNutzerDaten_SelectionChanged">
                 <DataGrid.Columns>
                     <DataGridTextColumn Binding="{Binding Path=NUT_NAME, Mode=OneWay}" Header="Name" />

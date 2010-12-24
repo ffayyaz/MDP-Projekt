@@ -23,6 +23,9 @@ namespace MDP_Projekt.UI
             InitializeComponent();
 
             this.dataGridNutzerDaten.DataContext = getNutzer();
+
+            // Nutzer Details Maske mit neuem Nutzer binden
+            this.gridNutzerDaten.DataContext = new Model.T_NUTZER();
         }
 
         /// <summary>
@@ -57,6 +60,76 @@ namespace MDP_Projekt.UI
             }
         }
 
+        /// <summary>
+        /// Erstellt einen neuen Nutzer im Model
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnNew_Click(object sender, RoutedEventArgs e)
+        {
+            this.gridNutzerDaten.DataContext = new Model.T_NUTZER();
+        }
 
+        /// <summary>
+        /// Löscht einen Nutzer aus dem Model
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnDelete_Click(object sender, RoutedEventArgs e)
+        {
+            Model.T_NUTZER currentNutzer = this.gridNutzerDaten.DataContext as Model.T_NUTZER;
+
+            if (currentNutzer != null)
+            {
+                using (Model.Context context = new Model.Context())
+                {
+                    Model.T_NUTZER nutzerToDelete = context.T_NUTZER.Where(q => q.NUT_ID == currentNutzer.NUT_ID).First();
+
+                    if (nutzerToDelete != null)
+                    {
+                        context.T_NUTZER.DeleteObject(context.T_NUTZER.Where(q => q.NUT_ID == nutzerToDelete.NUT_ID).First());
+                        context.SaveChanges();
+                    }
+                }
+                this.gridNutzerDaten.DataContext = new Model.T_NUTZER();
+                this.dataGridNutzerDaten.DataContext = getNutzer();
+            }
+        }
+
+        /// <summary>
+        /// Speichert Änderungen eines Nutzerdatensatzes im Model
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnSave_Click(object sender, RoutedEventArgs e)
+        {
+            Model.T_NUTZER currentNutzer = this.gridNutzerDaten.DataContext as Model.T_NUTZER;
+
+            if (currentNutzer != null)
+            {
+                using (Model.Context context = new Model.Context())
+                {
+                    Model.T_NUTZER nutzerToSave;
+
+                    if (currentNutzer.NUT_ID > 0)
+                    {
+                        nutzerToSave = context.T_NUTZER.Where(q => q.NUT_ID == currentNutzer.NUT_ID).First();
+
+                        if (nutzerToSave != null)
+                        {
+                            context.ApplyCurrentValues<Model.T_NUTZER>("T_NUTZER", currentNutzer);
+                            context.SaveChanges();
+                        }
+                    }
+                    else
+                    {
+                        context.AddToT_NUTZER(currentNutzer);
+                        context.SaveChanges();
+                    }
+                }
+
+                this.dataGridNutzerDaten.DataContext = getNutzer();
+            }
+        }
     }
 }

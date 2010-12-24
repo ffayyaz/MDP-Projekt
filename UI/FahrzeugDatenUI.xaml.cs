@@ -149,6 +149,11 @@ namespace MDP_Projekt.UI
             }
         }
 
+        /// <summary>
+        /// Speichert Änderungen eines Fahrzeugdatensatzes im Model
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
             Model.T_FAHRZEUG currentFahrzeug = this.gridFahrzeug.DataContext as Model.T_FAHRZEUG;
@@ -180,6 +185,11 @@ namespace MDP_Projekt.UI
             }
         }
 
+        /// <summary>
+        /// Löscht ein Fahrzeug aus dem Model
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
             Model.T_FAHRZEUG currentFahrzeug = this.gridFahrzeug.DataContext as Model.T_FAHRZEUG;
@@ -196,10 +206,16 @@ namespace MDP_Projekt.UI
                         context.SaveChanges();
                     }
                 }
+                this.gridFahrzeug.DataContext = new Model.T_FAHRZEUG();
                 this.datagridFahrzeugDaten.DataContext = getFahrzeuge();
             }
         }
 
+        /// <summary>
+        /// Erstellt ein neues Fahrzeug im Model
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnNew_Click(object sender, RoutedEventArgs e)
         {
             this.gridFahrzeug.DataContext = new Model.T_FAHRZEUG();
