@@ -3,6 +3,9 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
-        <Button Content="Click me" Height="23" HorizontalAlignment="Left" Margin="200,131,0,0" Name="testButton" VerticalAlignment="Top" Width="75" Click="testButton_Click" />
+        <Button Content="Fahrzeuge" Height="26" HorizontalAlignment="Left" Margin="132,51,0,0" Name="btnFahrzeuge" VerticalAlignment="Top" Width="105" Click="btnFahrzeuge_Click" />
+        <Button Content="Nutzer" HorizontalAlignment="Left" Margin="132,83,0,200" Name="btnNutzer" Width="105" Click="btnNutzer_Click" />
+        <Button Content="Materialien" Height="32" HorizontalAlignment="Left" Margin="132,117,0,0" Name="btnMaterialien" VerticalAlignment="Top" Width="105" Click="btnMaterialien_Click" />
+        <Button Content="Arbeiten" Height="24" HorizontalAlignment="Left" Margin="132,155,0,0" Name="button4" VerticalAlignment="Top" Width="103" />
     </Grid>
 </Window>

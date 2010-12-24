@@ -24,33 +24,22 @@ namespace MDP_Projekt
             InitializeComponent();
         }
 
-        private void testButton_Click(object sender, RoutedEventArgs e)
+        private void btnFahrzeuge_Click(object sender, RoutedEventArgs e)
         {
-            testButton.Content = "hallo Welt";
+            UI.FahrzeugDatenUI fahrzeugGUI = new UI.FahrzeugDatenUI();
+            fahrzeugGUI.ShowDialog();
+        }
 
-            // Beispiel Code
-            using (Model.Context context = new Model.Context())
-            {
-                // Create example 1
-                context.AddToT_NUTZER(new Model.T_NUTZER() { NUT_NAME = "Selim", NUT_ORT = "Zug", NUT_PLZ = 6300 });
-                context.SaveChanges();
+        private void btnNutzer_Click(object sender, RoutedEventArgs e)
+        {
+            UI.NutzerDatenUI nutzerGUI = new UI.NutzerDatenUI();
+            nutzerGUI.ShowDialog();
+        }
 
-                // Create example 2
-                Model.TZ_FAHRZEUGMARKE marketyp = new Model.TZ_FAHRZEUGMARKE();
-                marketyp.TR_FAHRZEUGTYP = new Model.TR_FAHRZEUGTYP() { FZT_BEZEICHNUNG = "Piaggio" };
-                marketyp.FZM_BEZEICHNUNG = "MSX 323 Turbo";
-                context.AddToTZ_FAHRZEUGMARKE(marketyp);
-                context.SaveChanges();
-
-                // Update example
-                Model.T_NUTZER nutzer = context.T_NUTZER.Where(q => q.NUT_ID == 1).First();
-                nutzer.NUT_NAME = "Noëlle";
-                context.SaveChanges();
-
-                // Delete example
-                context.T_NUTZER.DeleteObject(context.T_NUTZER.Where(q => q.NUT_ID == 5).First());
-                context.SaveChanges();
-            }
+        private void btnMaterialien_Click(object sender, RoutedEventArgs e)
+        {
+            UI.MaterialDatenUI materialienGUI = new UI.MaterialDatenUI();
+            materialienGUI.ShowDialog();
         }
     }
 }

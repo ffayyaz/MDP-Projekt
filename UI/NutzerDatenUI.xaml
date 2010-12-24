@@ -2,6 +2,12 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="NutzerDatenUI" Height="300" Width="640">
+    <Window.Resources>
+        <Style x:Key="buttonStyle" TargetType="Button">
+            <Setter Property="Margin" Value="5" />
+        </Style>
+    </Window.Resources>
+    
     <StackPanel>
         <Grid Height="Auto" Margin="10" Name="gridNutzerDaten">
             <Grid.RowDefinitions>
@@ -17,30 +23,17 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Label Grid.Row="0" Grid.Column="0">Name: </Label>
+            <Label Grid.Row="0" Grid.Column="0">Name:</Label>
             <TextBox Grid.Row="0" Grid.Column="1"  Text="{Binding Path=NUT_NAME}" />
-            <Label Grid.Row="1" Grid.Column="0">PLZ: </Label>
+            <Label Grid.Row="1" Grid.Column="0">PLZ:</Label>
             <TextBox Grid.Row="1" Grid.Column="1"  Text="{Binding Path=NUT_PLZ}" />
-            <Label Grid.Row="2" Grid.Column="0">Ort: </Label>
+            <Label Grid.Row="2" Grid.Column="0">Ort:</Label>
             <TextBox Grid.Row="2" Grid.Column="1"  Text="{Binding Path=NUT_ORT}" />
-            <Button Grid.Row="4" Grid.Column="0">New</Button>
+            <Button Grid.Row="4" Grid.Column="0"  Style="{StaticResource buttonStyle}">New</Button>
+            <Button Grid.Row="4" Grid.Column="1">Delete</Button>
             <Button Grid.Row="2" Grid.Column="3">Save</Button>
             <DataGrid  Grid.Row="5" Grid.ColumnSpan="3" AutoGenerateColumns="False" HeadersVisibility="Column" Name="dataGridNutzerDaten" ItemsSource="{Binding}" SelectionChanged="dataGridNutzerDaten_SelectionChanged">
                 <DataGrid.Columns>
-                    <DataGridTemplateColumn>
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <Button>Edit</Button>
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
-                    <DataGridTemplateColumn>
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <Button>Delete</Button>
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
                     <DataGridTextColumn Binding="{Binding Path=NUT_NAME, Mode=OneWay}" Header="Name" />
                     <DataGridTextColumn Binding="{Binding Path=NUT_PLZ, Mode=OneWay}" Header="PLZ" />
                     <DataGridTextColumn Binding="{Binding Path=NUT_ORT, Mode=OneWay}" Header="Ort" />

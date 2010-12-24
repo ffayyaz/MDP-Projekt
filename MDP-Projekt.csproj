@@ -86,9 +86,14 @@
     <Compile Include="UI\FahrzeugDatenUI.xaml.cs">
       <DependentUpon>FahrzeugDatenUI.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\ISubject.cs" />
+    <Compile Include="UI\MaterialDatenUI.xaml.cs">
+      <DependentUpon>MaterialDatenUI.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\NutzerDatenUI.xaml.cs">
       <DependentUpon>NutzerDatenUI.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\IObserver.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -104,6 +109,10 @@
     <Page Include="UI\FahrzeugDatenUI.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\MaterialDatenUI.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="UI\NutzerDatenUI.xaml">
       <SubType>Designer</SubType>
@@ -138,6 +147,8 @@
     <None Include="Documentation\Iterations\Iteration_1\Iteration1_1.pdf" />
     <None Include="Documentation\Iterations\Iteration_1\Iteration1_2.pdf" />
     <None Include="Documentation\Iterations\Iteration_2\Iteration2.pdf" />
+    <None Include="Documentation\Iterations\Iteration_2\Iteration2_1.pdf" />
+    <None Include="Documentation\Iterations\Iteration_2\Iteration2_2.pdf" />
     <None Include="Documentation\Iterations\Iteration_3\Iteration3.pdf" />
     <None Include="Documentation\UserStoriesAndTasks\UserStoriesAndTasks.pdf" />
     <None Include="Documentation\UserStoriesAndTasks\UserStoriesAndTasks.xls" />

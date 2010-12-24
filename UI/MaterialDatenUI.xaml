@@ -1,0 +1,39 @@
+<Window x:Class="MDP_Projekt.UI.MaterialDatenUI"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MaterialDatenUI" Height="300" Width="400">
+    <StackPanel>
+        <Grid Height="Auto" Margin="10" Name="gridMaterialDaten">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Row="0" Grid.Column="0">Bezeichnung:</Label>
+            <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding Path=MAT_BEZEICHNUNG}" />
+            <Label Grid.Row="1" Grid.Column="0">Preis:</Label>
+            <TextBox Grid.Row="1" Grid.Column="1"  Text="{Binding Path=MAT_PREIS}" />
+            <Label Grid.Row="2" Grid.Column="0">Marge:</Label>
+            <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Path=MAT_MARGE}" />
+            <Button Grid.Row="4" Grid.Column="0">New</Button>
+            <Button Grid.Row="4" Grid.Column="1">Delete</Button>
+            <Button Grid.Row="2" Grid.Column="3">Save</Button>
+            <DataGrid Grid.Row="5" Grid.ColumnSpan="3" AutoGenerateColumns="False" HeadersVisibility="Column" Name="dataGridMaterialDaten" ItemsSource="{Binding}" SelectionChanged="dataGridMaterialDaten_SelectionChanged">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding Path=MAT_BEZEICHNUNG, Mode=OneWay}" Header="Bezeichnung" />
+                    <DataGridTextColumn Binding="{Binding Path=MAT_PREIS, Mode=OneWay}" Header="Preis" />
+                    <DataGridTextColumn Binding="{Binding Path=MAT_MARGE, Mode=OneWay}" Header="Marge" />
+                </DataGrid.Columns>
+            </DataGrid>
+            <GridSplitter Grid.Row="3" Grid.ColumnSpan="3" Height="5" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Margin="0,10,0,0" />
+        </Grid>
+    </StackPanel>
+</Window>

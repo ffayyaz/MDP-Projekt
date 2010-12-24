@@ -100,19 +100,5 @@ namespace MDP_Projekt_Test
             mainWindow.Connect(connectionId, mainWindow1);
             Assert.Inconclusive("A method that does not return a value cannot be verified.");
         }
-
-        /// <summary>
-        ///A test for testButton_Click
-        ///</summary>
-        [TestMethod()]
-        [DeploymentItem("MDP-Projekt.exe")]
-        public void testButton_ClickTest()
-        {
-            MainWindow_Accessor mainWindow = new MainWindow_Accessor(); // TODO: Initialize to an appropriate value
-            object sender = null; // TODO: Initialize to an appropriate value
-            RoutedEventArgs e = null; // TODO: Initialize to an appropriate value
-            mainWindow.testButton_Click(sender, e);
-            Assert.Inconclusive("A method that does not return a value cannot be verified.");
-        }
     }
 }
