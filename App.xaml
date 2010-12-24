@@ -3,6 +3,29 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              StartupUri="/MainWindow.xaml">
     <Application.Resources>
-
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="FontFamily" Value="Calibri" />
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="Margin" Value="4" />
+            <Setter Property="Padding" Value="8,4" />
+        </Style>
+        <Style TargetType="{x:Type Label}">
+            <Setter Property="FontFamily" Value="Calibri" />
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="Margin" Value="4" />
+            <Setter Property="Padding" Value="8,4" />
+        </Style>
+        <Style TargetType="{x:Type TextBox}">
+            <Setter Property="FontFamily" Value="Calibri" />
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="Margin" Value="4" />
+            <Setter Property="Padding" Value="8,4" />
+        </Style>
+        <Style TargetType="{x:Type ComboBox}">
+            <Setter Property="FontFamily" Value="Calibri" />
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="Margin" Value="4" />
+            <Setter Property="Padding" Value="8,4" />
+        </Style>
     </Application.Resources>
 </Application>
