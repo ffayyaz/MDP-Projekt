@@ -62,11 +62,11 @@ namespace MDP_Projekt.UI
                 fahrzeuge = context.T_FAHRZEUG.ToList();
 
                 // ... deren Entitäten laden
-                fahrzeuge.Where(q => q.TZ_FAHRZEUGMARKEReference != null).ToList().ForEach(q => q.TZ_FAHRZEUGMARKEReference.Load());
+                fahrzeuge.Where(q => q.TZ_FAHRZEUGTYPReference != null).ToList().ForEach(q => q.TZ_FAHRZEUGTYPReference.Load());
                 fahrzeuge.Where(q => q.TR_FAHRZEUGARTReference != null).ToList().ForEach(q => q.TR_FAHRZEUGARTReference.Load());
                 fahrzeuge.Where(q => q.T_NUTZERReference != null).ToList().ForEach(q => q.T_NUTZERReference.Load());
-                fahrzeuge.Where(q => q.TZ_FAHRZEUGMARKE != null && q.TZ_FAHRZEUGMARKE.TR_FAHRZEUGTYPReference != null).ToList()
-                                .ForEach(q => q.T_NUTZERReference.Load());
+                fahrzeuge.Where(q => q.TZ_FAHRZEUGTYP != null && q.TZ_FAHRZEUGTYP.TR_FAHRZEUGMARKEReference != null).ToList()
+                                .ForEach(q => q.TZ_FAHRZEUGTYP.TR_FAHRZEUGMARKEReference.Load());
             }
             return fahrzeuge.ToList();
         }
@@ -90,12 +90,12 @@ namespace MDP_Projekt.UI
         /// Gibt alle Fahrzeugmarken zurück
         /// </summary>
         /// <returns>Liste der Fahrzeugmarken</returns>
-        private List<Model.TZ_FAHRZEUGMARKE> getFahrzeugmarkeCombo()
+        private List<Model.TR_FAHRZEUGMARKE> getFahrzeugmarkeCombo()
         {
-            List<Model.TZ_FAHRZEUGMARKE> marken = new List<Model.TZ_FAHRZEUGMARKE>();
+            List<Model.TR_FAHRZEUGMARKE> marken = new List<Model.TR_FAHRZEUGMARKE>();
             using (Model.Context context = new Model.Context())
             {
-                marken.AddRange(context.TZ_FAHRZEUGMARKE.Distinct().ToList());
+                marken.AddRange(context.TR_FAHRZEUGMARKE.Distinct().ToList());
             }
 
             return marken;
@@ -105,12 +105,12 @@ namespace MDP_Projekt.UI
         /// Gibt alle Fahrzeugtypen zurück
         /// </summary>
         /// <returns>Liste der Fahrzeugtypen</returns>
-        private List<Model.TR_FAHRZEUGTYP> getFahrzeugtypCombo()
+        private List<Model.TZ_FAHRZEUGTYP> getFahrzeugtypCombo()
         {
-            List<Model.TR_FAHRZEUGTYP> typen = new List<Model.TR_FAHRZEUGTYP>();
+            List<Model.TZ_FAHRZEUGTYP> typen = new List<Model.TZ_FAHRZEUGTYP>();
             using (Model.Context context = new Model.Context())
             {
-                typen.AddRange(context.TR_FAHRZEUGTYP.Distinct().ToList());
+                typen.AddRange(context.TZ_FAHRZEUGTYP.Distinct().ToList());
             }
 
             return typen;

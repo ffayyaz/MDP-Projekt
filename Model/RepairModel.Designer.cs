@@ -19,9 +19,14 @@ using System.Runtime.Serialization;
 #region EDM Relationship Metadata
 
 [assembly: EdmRelationshipAttribute("Model", "FK_FZA_FZG", "TR_FAHRZEUGART", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(MDP_Projekt.Model.TR_FAHRZEUGART), "T_FAHRZEUG", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MDP_Projekt.Model.T_FAHRZEUG), true)]
-[assembly: EdmRelationshipAttribute("Model", "FK_FZM_FZG", "TZ_FAHRZEUGMARKE", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(MDP_Projekt.Model.TZ_FAHRZEUGMARKE), "T_FAHRZEUG", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MDP_Projekt.Model.T_FAHRZEUG), true)]
+[assembly: EdmRelationshipAttribute("Model", "FK_FZG_REP", "T_FAHRZEUG", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(MDP_Projekt.Model.T_FAHRZEUG), "T_REPARATUR", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MDP_Projekt.Model.T_REPARATUR), true)]
+[assembly: EdmRelationshipAttribute("Model", "FK_FZT_FZG", "TZ_FAHRZEUGTYP", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(MDP_Projekt.Model.TZ_FAHRZEUGTYP), "T_FAHRZEUG", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MDP_Projekt.Model.T_FAHRZEUG), true)]
 [assembly: EdmRelationshipAttribute("Model", "FK_NUT_FZG", "T_NUTZER", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(MDP_Projekt.Model.T_NUTZER), "T_FAHRZEUG", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MDP_Projekt.Model.T_FAHRZEUG), true)]
-[assembly: EdmRelationshipAttribute("Model", "FK_FZT_FMT", "TR_FAHRZEUGTYP", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(MDP_Projekt.Model.TR_FAHRZEUGTYP), "TZ_FAHRZEUGMARKE", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MDP_Projekt.Model.TZ_FAHRZEUGMARKE), true)]
+[assembly: EdmRelationshipAttribute("Model", "FK_ABL_REP", "TZ_ARBEITLISTE", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(MDP_Projekt.Model.TZ_ARBEITLISTE), "T_REPARATUR", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MDP_Projekt.Model.T_REPARATUR), true)]
+[assembly: EdmRelationshipAttribute("Model", "FK_MTL_REP", "TZ_MATERIALLISTE", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(MDP_Projekt.Model.TZ_MATERIALLISTE), "T_REPARATUR", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MDP_Projekt.Model.T_REPARATUR), true)]
+[assembly: EdmRelationshipAttribute("Model", "FK_ARB_ABL", "TR_ARBEIT", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(MDP_Projekt.Model.TR_ARBEIT), "TZ_ARBEITLISTE", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MDP_Projekt.Model.TZ_ARBEITLISTE), true)]
+[assembly: EdmRelationshipAttribute("Model", "FK_FZM_FZT", "TR_FAHRZEUGMARKE", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(MDP_Projekt.Model.TR_FAHRZEUGMARKE), "TZ_FAHRZEUGTYP", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MDP_Projekt.Model.TZ_FAHRZEUGTYP), true)]
+[assembly: EdmRelationshipAttribute("Model", "FK_MAT_MTL", "TR_MATERIAL", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(MDP_Projekt.Model.TR_MATERIAL), "TZ_MATERIALLISTE", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MDP_Projekt.Model.TZ_MATERIALLISTE), true)]
 
 #endregion
 
@@ -108,50 +113,18 @@ namespace MDP_Projekt.Model
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        public ObjectSet<TR_FAHRZEUGART> TR_FAHRZEUGART
+        public ObjectSet<T_REPARATUR> T_REPARATUR
         {
             get
             {
-                if ((_TR_FAHRZEUGART == null))
+                if ((_T_REPARATUR == null))
                 {
-                    _TR_FAHRZEUGART = base.CreateObjectSet<TR_FAHRZEUGART>("TR_FAHRZEUGART");
+                    _T_REPARATUR = base.CreateObjectSet<T_REPARATUR>("T_REPARATUR");
                 }
-                return _TR_FAHRZEUGART;
+                return _T_REPARATUR;
             }
         }
-        private ObjectSet<TR_FAHRZEUGART> _TR_FAHRZEUGART;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        public ObjectSet<TR_FAHRZEUGTYP> TR_FAHRZEUGTYP
-        {
-            get
-            {
-                if ((_TR_FAHRZEUGTYP == null))
-                {
-                    _TR_FAHRZEUGTYP = base.CreateObjectSet<TR_FAHRZEUGTYP>("TR_FAHRZEUGTYP");
-                }
-                return _TR_FAHRZEUGTYP;
-            }
-        }
-        private ObjectSet<TR_FAHRZEUGTYP> _TR_FAHRZEUGTYP;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        public ObjectSet<TZ_FAHRZEUGMARKE> TZ_FAHRZEUGMARKE
-        {
-            get
-            {
-                if ((_TZ_FAHRZEUGMARKE == null))
-                {
-                    _TZ_FAHRZEUGMARKE = base.CreateObjectSet<TZ_FAHRZEUGMARKE>("TZ_FAHRZEUGMARKE");
-                }
-                return _TZ_FAHRZEUGMARKE;
-            }
-        }
-        private ObjectSet<TZ_FAHRZEUGMARKE> _TZ_FAHRZEUGMARKE;
+        private ObjectSet<T_REPARATUR> _T_REPARATUR;
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -172,6 +145,38 @@ namespace MDP_Projekt.Model
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
+        public ObjectSet<TR_FAHRZEUGART> TR_FAHRZEUGART
+        {
+            get
+            {
+                if ((_TR_FAHRZEUGART == null))
+                {
+                    _TR_FAHRZEUGART = base.CreateObjectSet<TR_FAHRZEUGART>("TR_FAHRZEUGART");
+                }
+                return _TR_FAHRZEUGART;
+            }
+        }
+        private ObjectSet<TR_FAHRZEUGART> _TR_FAHRZEUGART;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<TR_FAHRZEUGMARKE> TR_FAHRZEUGMARKE
+        {
+            get
+            {
+                if ((_TR_FAHRZEUGMARKE == null))
+                {
+                    _TR_FAHRZEUGMARKE = base.CreateObjectSet<TR_FAHRZEUGMARKE>("TR_FAHRZEUGMARKE");
+                }
+                return _TR_FAHRZEUGMARKE;
+            }
+        }
+        private ObjectSet<TR_FAHRZEUGMARKE> _TR_FAHRZEUGMARKE;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
         public ObjectSet<TR_MATERIAL> TR_MATERIAL
         {
             get
@@ -184,6 +189,54 @@ namespace MDP_Projekt.Model
             }
         }
         private ObjectSet<TR_MATERIAL> _TR_MATERIAL;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<TZ_ARBEITLISTE> TZ_ARBEITLISTE
+        {
+            get
+            {
+                if ((_TZ_ARBEITLISTE == null))
+                {
+                    _TZ_ARBEITLISTE = base.CreateObjectSet<TZ_ARBEITLISTE>("TZ_ARBEITLISTE");
+                }
+                return _TZ_ARBEITLISTE;
+            }
+        }
+        private ObjectSet<TZ_ARBEITLISTE> _TZ_ARBEITLISTE;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<TZ_FAHRZEUGTYP> TZ_FAHRZEUGTYP
+        {
+            get
+            {
+                if ((_TZ_FAHRZEUGTYP == null))
+                {
+                    _TZ_FAHRZEUGTYP = base.CreateObjectSet<TZ_FAHRZEUGTYP>("TZ_FAHRZEUGTYP");
+                }
+                return _TZ_FAHRZEUGTYP;
+            }
+        }
+        private ObjectSet<TZ_FAHRZEUGTYP> _TZ_FAHRZEUGTYP;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<TZ_MATERIALLISTE> TZ_MATERIALLISTE
+        {
+            get
+            {
+                if ((_TZ_MATERIALLISTE == null))
+                {
+                    _TZ_MATERIALLISTE = base.CreateObjectSet<TZ_MATERIALLISTE>("TZ_MATERIALLISTE");
+                }
+                return _TZ_MATERIALLISTE;
+            }
+        }
+        private ObjectSet<TZ_MATERIALLISTE> _TZ_MATERIALLISTE;
 
         #endregion
         #region AddTo Methods
@@ -205,27 +258,11 @@ namespace MDP_Projekt.Model
         }
     
         /// <summary>
-        /// Deprecated Method for adding a new object to the TR_FAHRZEUGART EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// Deprecated Method for adding a new object to the T_REPARATUR EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
-        public void AddToTR_FAHRZEUGART(TR_FAHRZEUGART tR_FAHRZEUGART)
+        public void AddToT_REPARATUR(T_REPARATUR t_REPARATUR)
         {
-            base.AddObject("TR_FAHRZEUGART", tR_FAHRZEUGART);
-        }
-    
-        /// <summary>
-        /// Deprecated Method for adding a new object to the TR_FAHRZEUGTYP EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddToTR_FAHRZEUGTYP(TR_FAHRZEUGTYP tR_FAHRZEUGTYP)
-        {
-            base.AddObject("TR_FAHRZEUGTYP", tR_FAHRZEUGTYP);
-        }
-    
-        /// <summary>
-        /// Deprecated Method for adding a new object to the TZ_FAHRZEUGMARKE EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddToTZ_FAHRZEUGMARKE(TZ_FAHRZEUGMARKE tZ_FAHRZEUGMARKE)
-        {
-            base.AddObject("TZ_FAHRZEUGMARKE", tZ_FAHRZEUGMARKE);
+            base.AddObject("T_REPARATUR", t_REPARATUR);
         }
     
         /// <summary>
@@ -237,11 +274,51 @@ namespace MDP_Projekt.Model
         }
     
         /// <summary>
+        /// Deprecated Method for adding a new object to the TR_FAHRZEUGART EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToTR_FAHRZEUGART(TR_FAHRZEUGART tR_FAHRZEUGART)
+        {
+            base.AddObject("TR_FAHRZEUGART", tR_FAHRZEUGART);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the TR_FAHRZEUGMARKE EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToTR_FAHRZEUGMARKE(TR_FAHRZEUGMARKE tR_FAHRZEUGMARKE)
+        {
+            base.AddObject("TR_FAHRZEUGMARKE", tR_FAHRZEUGMARKE);
+        }
+    
+        /// <summary>
         /// Deprecated Method for adding a new object to the TR_MATERIAL EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
         public void AddToTR_MATERIAL(TR_MATERIAL tR_MATERIAL)
         {
             base.AddObject("TR_MATERIAL", tR_MATERIAL);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the TZ_ARBEITLISTE EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToTZ_ARBEITLISTE(TZ_ARBEITLISTE tZ_ARBEITLISTE)
+        {
+            base.AddObject("TZ_ARBEITLISTE", tZ_ARBEITLISTE);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the TZ_FAHRZEUGTYP EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToTZ_FAHRZEUGTYP(TZ_FAHRZEUGTYP tZ_FAHRZEUGTYP)
+        {
+            base.AddObject("TZ_FAHRZEUGTYP", tZ_FAHRZEUGTYP);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the TZ_MATERIALLISTE EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToTZ_MATERIALLISTE(TZ_MATERIALLISTE tZ_MATERIALLISTE)
+        {
+            base.AddObject("TZ_MATERIALLISTE", tZ_MATERIALLISTE);
         }
 
         #endregion
@@ -476,24 +553,24 @@ namespace MDP_Projekt.Model
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public Nullable<global::System.Int32> FZG_FZM_ID
+        public Nullable<global::System.Int32> FZG_FZT_ID
         {
             get
             {
-                return _FZG_FZM_ID;
+                return _FZG_FZT_ID;
             }
             set
             {
-                OnFZG_FZM_IDChanging(value);
-                ReportPropertyChanging("FZG_FZM_ID");
-                _FZG_FZM_ID = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("FZG_FZM_ID");
-                OnFZG_FZM_IDChanged();
+                OnFZG_FZT_IDChanging(value);
+                ReportPropertyChanging("FZG_FZT_ID");
+                _FZG_FZT_ID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("FZG_FZT_ID");
+                OnFZG_FZT_IDChanged();
             }
         }
-        private Nullable<global::System.Int32> _FZG_FZM_ID;
-        partial void OnFZG_FZM_IDChanging(Nullable<global::System.Int32> value);
-        partial void OnFZG_FZM_IDChanged();
+        private Nullable<global::System.Int32> _FZG_FZT_ID;
+        partial void OnFZG_FZT_IDChanging(Nullable<global::System.Int32> value);
+        partial void OnFZG_FZT_IDChanged();
 
         #endregion
     
@@ -543,16 +620,38 @@ namespace MDP_Projekt.Model
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("Model", "FK_FZM_FZG", "TZ_FAHRZEUGMARKE")]
-        public TZ_FAHRZEUGMARKE TZ_FAHRZEUGMARKE
+        [EdmRelationshipNavigationPropertyAttribute("Model", "FK_FZG_REP", "T_REPARATUR")]
+        public EntityCollection<T_REPARATUR> T_REPARATUR
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TZ_FAHRZEUGMARKE>("Model.FK_FZM_FZG", "TZ_FAHRZEUGMARKE").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<T_REPARATUR>("Model.FK_FZG_REP", "T_REPARATUR");
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TZ_FAHRZEUGMARKE>("Model.FK_FZM_FZG", "TZ_FAHRZEUGMARKE").Value = value;
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<T_REPARATUR>("Model.FK_FZG_REP", "T_REPARATUR", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Model", "FK_FZT_FZG", "TZ_FAHRZEUGTYP")]
+        public TZ_FAHRZEUGTYP TZ_FAHRZEUGTYP
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TZ_FAHRZEUGTYP>("Model.FK_FZT_FZG", "TZ_FAHRZEUGTYP").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TZ_FAHRZEUGTYP>("Model.FK_FZT_FZG", "TZ_FAHRZEUGTYP").Value = value;
             }
         }
         /// <summary>
@@ -560,17 +659,17 @@ namespace MDP_Projekt.Model
         /// </summary>
         [BrowsableAttribute(false)]
         [DataMemberAttribute()]
-        public EntityReference<TZ_FAHRZEUGMARKE> TZ_FAHRZEUGMARKEReference
+        public EntityReference<TZ_FAHRZEUGTYP> TZ_FAHRZEUGTYPReference
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TZ_FAHRZEUGMARKE>("Model.FK_FZM_FZG", "TZ_FAHRZEUGMARKE");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TZ_FAHRZEUGTYP>("Model.FK_FZT_FZG", "TZ_FAHRZEUGTYP");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TZ_FAHRZEUGMARKE>("Model.FK_FZM_FZG", "TZ_FAHRZEUGMARKE", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TZ_FAHRZEUGTYP>("Model.FK_FZT_FZG", "TZ_FAHRZEUGTYP", value);
                 }
             }
         }
@@ -773,6 +872,370 @@ namespace MDP_Projekt.Model
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="Model", Name="T_REPARATUR")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class T_REPARATUR : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new T_REPARATUR object.
+        /// </summary>
+        /// <param name="rEP_ID">Initial value of the REP_ID property.</param>
+        public static T_REPARATUR CreateT_REPARATUR(global::System.Int32 rEP_ID)
+        {
+            T_REPARATUR t_REPARATUR = new T_REPARATUR();
+            t_REPARATUR.REP_ID = rEP_ID;
+            return t_REPARATUR;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 REP_ID
+        {
+            get
+            {
+                return _REP_ID;
+            }
+            set
+            {
+                if (_REP_ID != value)
+                {
+                    OnREP_IDChanging(value);
+                    ReportPropertyChanging("REP_ID");
+                    _REP_ID = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("REP_ID");
+                    OnREP_IDChanged();
+                }
+            }
+        }
+        private global::System.Int32 _REP_ID;
+        partial void OnREP_IDChanging(global::System.Int32 value);
+        partial void OnREP_IDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String REP_DISPONR
+        {
+            get
+            {
+                return _REP_DISPONR;
+            }
+            set
+            {
+                OnREP_DISPONRChanging(value);
+                ReportPropertyChanging("REP_DISPONR");
+                _REP_DISPONR = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("REP_DISPONR");
+                OnREP_DISPONRChanged();
+            }
+        }
+        private global::System.String _REP_DISPONR;
+        partial void OnREP_DISPONRChanging(global::System.String value);
+        partial void OnREP_DISPONRChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> REP_EINGANG
+        {
+            get
+            {
+                return _REP_EINGANG;
+            }
+            set
+            {
+                OnREP_EINGANGChanging(value);
+                ReportPropertyChanging("REP_EINGANG");
+                _REP_EINGANG = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("REP_EINGANG");
+                OnREP_EINGANGChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _REP_EINGANG;
+        partial void OnREP_EINGANGChanging(Nullable<global::System.DateTime> value);
+        partial void OnREP_EINGANGChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> REP_AUSGANG
+        {
+            get
+            {
+                return _REP_AUSGANG;
+            }
+            set
+            {
+                OnREP_AUSGANGChanging(value);
+                ReportPropertyChanging("REP_AUSGANG");
+                _REP_AUSGANG = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("REP_AUSGANG");
+                OnREP_AUSGANGChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _REP_AUSGANG;
+        partial void OnREP_AUSGANGChanging(Nullable<global::System.DateTime> value);
+        partial void OnREP_AUSGANGChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> REP_RECHNUNGSNR
+        {
+            get
+            {
+                return _REP_RECHNUNGSNR;
+            }
+            set
+            {
+                OnREP_RECHNUNGSNRChanging(value);
+                ReportPropertyChanging("REP_RECHNUNGSNR");
+                _REP_RECHNUNGSNR = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("REP_RECHNUNGSNR");
+                OnREP_RECHNUNGSNRChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _REP_RECHNUNGSNR;
+        partial void OnREP_RECHNUNGSNRChanging(Nullable<global::System.Int32> value);
+        partial void OnREP_RECHNUNGSNRChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> REP_FAHRZEUGKM
+        {
+            get
+            {
+                return _REP_FAHRZEUGKM;
+            }
+            set
+            {
+                OnREP_FAHRZEUGKMChanging(value);
+                ReportPropertyChanging("REP_FAHRZEUGKM");
+                _REP_FAHRZEUGKM = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("REP_FAHRZEUGKM");
+                OnREP_FAHRZEUGKMChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _REP_FAHRZEUGKM;
+        partial void OnREP_FAHRZEUGKMChanging(Nullable<global::System.Int32> value);
+        partial void OnREP_FAHRZEUGKMChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> REP_FZG_ID
+        {
+            get
+            {
+                return _REP_FZG_ID;
+            }
+            set
+            {
+                OnREP_FZG_IDChanging(value);
+                ReportPropertyChanging("REP_FZG_ID");
+                _REP_FZG_ID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("REP_FZG_ID");
+                OnREP_FZG_IDChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _REP_FZG_ID;
+        partial void OnREP_FZG_IDChanging(Nullable<global::System.Int32> value);
+        partial void OnREP_FZG_IDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> REP_MTL_ID
+        {
+            get
+            {
+                return _REP_MTL_ID;
+            }
+            set
+            {
+                OnREP_MTL_IDChanging(value);
+                ReportPropertyChanging("REP_MTL_ID");
+                _REP_MTL_ID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("REP_MTL_ID");
+                OnREP_MTL_IDChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _REP_MTL_ID;
+        partial void OnREP_MTL_IDChanging(Nullable<global::System.Int32> value);
+        partial void OnREP_MTL_IDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> REP_ABL_ID
+        {
+            get
+            {
+                return _REP_ABL_ID;
+            }
+            set
+            {
+                OnREP_ABL_IDChanging(value);
+                ReportPropertyChanging("REP_ABL_ID");
+                _REP_ABL_ID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("REP_ABL_ID");
+                OnREP_ABL_IDChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _REP_ABL_ID;
+        partial void OnREP_ABL_IDChanging(Nullable<global::System.Int32> value);
+        partial void OnREP_ABL_IDChanged();
+
+        #endregion
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Model", "FK_FZG_REP", "T_FAHRZEUG")]
+        public T_FAHRZEUG T_FAHRZEUG
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_FAHRZEUG>("Model.FK_FZG_REP", "T_FAHRZEUG").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_FAHRZEUG>("Model.FK_FZG_REP", "T_FAHRZEUG").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<T_FAHRZEUG> T_FAHRZEUGReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_FAHRZEUG>("Model.FK_FZG_REP", "T_FAHRZEUG");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<T_FAHRZEUG>("Model.FK_FZG_REP", "T_FAHRZEUG", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Model", "FK_ABL_REP", "TZ_ARBEITLISTE")]
+        public TZ_ARBEITLISTE TZ_ARBEITLISTE
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TZ_ARBEITLISTE>("Model.FK_ABL_REP", "TZ_ARBEITLISTE").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TZ_ARBEITLISTE>("Model.FK_ABL_REP", "TZ_ARBEITLISTE").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<TZ_ARBEITLISTE> TZ_ARBEITLISTEReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TZ_ARBEITLISTE>("Model.FK_ABL_REP", "TZ_ARBEITLISTE");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TZ_ARBEITLISTE>("Model.FK_ABL_REP", "TZ_ARBEITLISTE", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Model", "FK_MTL_REP", "TZ_MATERIALLISTE")]
+        public TZ_MATERIALLISTE TZ_MATERIALLISTE
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TZ_MATERIALLISTE>("Model.FK_MTL_REP", "TZ_MATERIALLISTE").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TZ_MATERIALLISTE>("Model.FK_MTL_REP", "TZ_MATERIALLISTE").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<TZ_MATERIALLISTE> TZ_MATERIALLISTEReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TZ_MATERIALLISTE>("Model.FK_MTL_REP", "TZ_MATERIALLISTE");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TZ_MATERIALLISTE>("Model.FK_MTL_REP", "TZ_MATERIALLISTE", value);
+                }
+            }
+        }
+
+        #endregion
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
     [EdmEntityTypeAttribute(NamespaceName="Model", Name="TR_ARBEIT")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
@@ -871,6 +1334,31 @@ namespace MDP_Projekt.Model
 
         #endregion
     
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Model", "FK_ARB_ABL", "TZ_ARBEITLISTE")]
+        public EntityCollection<TZ_ARBEITLISTE> TZ_ARBEITLISTE
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TZ_ARBEITLISTE>("Model.FK_ARB_ABL", "TZ_ARBEITLISTE");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TZ_ARBEITLISTE>("Model.FK_ARB_ABL", "TZ_ARBEITLISTE", value);
+                }
+            }
+        }
+
+        #endregion
     }
     
     /// <summary>
@@ -1008,24 +1496,24 @@ namespace MDP_Projekt.Model
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="Model", Name="TR_FAHRZEUGTYP")]
+    [EdmEntityTypeAttribute(NamespaceName="Model", Name="TR_FAHRZEUGMARKE")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
-    public partial class TR_FAHRZEUGTYP : EntityObject
+    public partial class TR_FAHRZEUGMARKE : EntityObject
     {
         #region Factory Method
     
         /// <summary>
-        /// Create a new TR_FAHRZEUGTYP object.
+        /// Create a new TR_FAHRZEUGMARKE object.
         /// </summary>
-        /// <param name="fZT_ID">Initial value of the FZT_ID property.</param>
-        /// <param name="fZT_BEZEICHNUNG">Initial value of the FZT_BEZEICHNUNG property.</param>
-        public static TR_FAHRZEUGTYP CreateTR_FAHRZEUGTYP(global::System.Int32 fZT_ID, global::System.String fZT_BEZEICHNUNG)
+        /// <param name="fZM_ID">Initial value of the FZM_ID property.</param>
+        /// <param name="fZM_BEZEICHNUNG">Initial value of the FZM_BEZEICHNUNG property.</param>
+        public static TR_FAHRZEUGMARKE CreateTR_FAHRZEUGMARKE(global::System.Int32 fZM_ID, global::System.String fZM_BEZEICHNUNG)
         {
-            TR_FAHRZEUGTYP tR_FAHRZEUGTYP = new TR_FAHRZEUGTYP();
-            tR_FAHRZEUGTYP.FZT_ID = fZT_ID;
-            tR_FAHRZEUGTYP.FZT_BEZEICHNUNG = fZT_BEZEICHNUNG;
-            return tR_FAHRZEUGTYP;
+            TR_FAHRZEUGMARKE tR_FAHRZEUGMARKE = new TR_FAHRZEUGMARKE();
+            tR_FAHRZEUGMARKE.FZM_ID = fZM_ID;
+            tR_FAHRZEUGMARKE.FZM_BEZEICHNUNG = fZM_BEZEICHNUNG;
+            return tR_FAHRZEUGMARKE;
         }
 
         #endregion
@@ -1036,51 +1524,51 @@ namespace MDP_Projekt.Model
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.Int32 FZT_ID
+        public global::System.Int32 FZM_ID
         {
             get
             {
-                return _FZT_ID;
+                return _FZM_ID;
             }
             set
             {
-                if (_FZT_ID != value)
+                if (_FZM_ID != value)
                 {
-                    OnFZT_IDChanging(value);
-                    ReportPropertyChanging("FZT_ID");
-                    _FZT_ID = StructuralObject.SetValidValue(value);
-                    ReportPropertyChanged("FZT_ID");
-                    OnFZT_IDChanged();
+                    OnFZM_IDChanging(value);
+                    ReportPropertyChanging("FZM_ID");
+                    _FZM_ID = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("FZM_ID");
+                    OnFZM_IDChanged();
                 }
             }
         }
-        private global::System.Int32 _FZT_ID;
-        partial void OnFZT_IDChanging(global::System.Int32 value);
-        partial void OnFZT_IDChanged();
+        private global::System.Int32 _FZM_ID;
+        partial void OnFZM_IDChanging(global::System.Int32 value);
+        partial void OnFZM_IDChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.String FZT_BEZEICHNUNG
+        public global::System.String FZM_BEZEICHNUNG
         {
             get
             {
-                return _FZT_BEZEICHNUNG;
+                return _FZM_BEZEICHNUNG;
             }
             set
             {
-                OnFZT_BEZEICHNUNGChanging(value);
-                ReportPropertyChanging("FZT_BEZEICHNUNG");
-                _FZT_BEZEICHNUNG = StructuralObject.SetValidValue(value, false);
-                ReportPropertyChanged("FZT_BEZEICHNUNG");
-                OnFZT_BEZEICHNUNGChanged();
+                OnFZM_BEZEICHNUNGChanging(value);
+                ReportPropertyChanging("FZM_BEZEICHNUNG");
+                _FZM_BEZEICHNUNG = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("FZM_BEZEICHNUNG");
+                OnFZM_BEZEICHNUNGChanged();
             }
         }
-        private global::System.String _FZT_BEZEICHNUNG;
-        partial void OnFZT_BEZEICHNUNGChanging(global::System.String value);
-        partial void OnFZT_BEZEICHNUNGChanged();
+        private global::System.String _FZM_BEZEICHNUNG;
+        partial void OnFZM_BEZEICHNUNGChanging(global::System.String value);
+        partial void OnFZM_BEZEICHNUNGChanged();
 
         #endregion
     
@@ -1092,18 +1580,18 @@ namespace MDP_Projekt.Model
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("Model", "FK_FZT_FMT", "TZ_FAHRZEUGMARKE")]
-        public EntityCollection<TZ_FAHRZEUGMARKE> TZ_FAHRZEUGMARKE
+        [EdmRelationshipNavigationPropertyAttribute("Model", "FK_FZM_FZT", "TZ_FAHRZEUGTYP")]
+        public EntityCollection<TZ_FAHRZEUGTYP> TZ_FAHRZEUGTYP
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TZ_FAHRZEUGMARKE>("Model.FK_FZT_FMT", "TZ_FAHRZEUGMARKE");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TZ_FAHRZEUGTYP>("Model.FK_FZM_FZT", "TZ_FAHRZEUGTYP");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TZ_FAHRZEUGMARKE>("Model.FK_FZT_FMT", "TZ_FAHRZEUGMARKE", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TZ_FAHRZEUGTYP>("Model.FK_FZM_FZT", "TZ_FAHRZEUGTYP", value);
                 }
             }
         }
@@ -1236,27 +1724,52 @@ namespace MDP_Projekt.Model
 
         #endregion
     
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Model", "FK_MAT_MTL", "TZ_MATERIALLISTE")]
+        public EntityCollection<TZ_MATERIALLISTE> TZ_MATERIALLISTE
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TZ_MATERIALLISTE>("Model.FK_MAT_MTL", "TZ_MATERIALLISTE");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TZ_MATERIALLISTE>("Model.FK_MAT_MTL", "TZ_MATERIALLISTE", value);
+                }
+            }
+        }
+
+        #endregion
     }
     
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="Model", Name="TZ_FAHRZEUGMARKE")]
+    [EdmEntityTypeAttribute(NamespaceName="Model", Name="TZ_ARBEITLISTE")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
-    public partial class TZ_FAHRZEUGMARKE : EntityObject
+    public partial class TZ_ARBEITLISTE : EntityObject
     {
         #region Factory Method
     
         /// <summary>
-        /// Create a new TZ_FAHRZEUGMARKE object.
+        /// Create a new TZ_ARBEITLISTE object.
         /// </summary>
-        /// <param name="fZM_ID">Initial value of the FZM_ID property.</param>
-        public static TZ_FAHRZEUGMARKE CreateTZ_FAHRZEUGMARKE(global::System.Int32 fZM_ID)
+        /// <param name="aBL_ID">Initial value of the ABL_ID property.</param>
+        public static TZ_ARBEITLISTE CreateTZ_ARBEITLISTE(global::System.Int32 aBL_ID)
         {
-            TZ_FAHRZEUGMARKE tZ_FAHRZEUGMARKE = new TZ_FAHRZEUGMARKE();
-            tZ_FAHRZEUGMARKE.FZM_ID = fZM_ID;
-            return tZ_FAHRZEUGMARKE;
+            TZ_ARBEITLISTE tZ_ARBEITLISTE = new TZ_ARBEITLISTE();
+            tZ_ARBEITLISTE.ABL_ID = aBL_ID;
+            return tZ_ARBEITLISTE;
         }
 
         #endregion
@@ -1267,75 +1780,75 @@ namespace MDP_Projekt.Model
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.Int32 FZM_ID
+        public global::System.Int32 ABL_ID
         {
             get
             {
-                return _FZM_ID;
+                return _ABL_ID;
             }
             set
             {
-                if (_FZM_ID != value)
+                if (_ABL_ID != value)
                 {
-                    OnFZM_IDChanging(value);
-                    ReportPropertyChanging("FZM_ID");
-                    _FZM_ID = StructuralObject.SetValidValue(value);
-                    ReportPropertyChanged("FZM_ID");
-                    OnFZM_IDChanged();
+                    OnABL_IDChanging(value);
+                    ReportPropertyChanging("ABL_ID");
+                    _ABL_ID = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ABL_ID");
+                    OnABL_IDChanged();
                 }
             }
         }
-        private global::System.Int32 _FZM_ID;
-        partial void OnFZM_IDChanging(global::System.Int32 value);
-        partial void OnFZM_IDChanged();
+        private global::System.Int32 _ABL_ID;
+        partial void OnABL_IDChanging(global::System.Int32 value);
+        partial void OnABL_IDChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.String FZM_BEZEICHNUNG
+        public Nullable<global::System.Decimal> ABL_MENGE
         {
             get
             {
-                return _FZM_BEZEICHNUNG;
+                return _ABL_MENGE;
             }
             set
             {
-                OnFZM_BEZEICHNUNGChanging(value);
-                ReportPropertyChanging("FZM_BEZEICHNUNG");
-                _FZM_BEZEICHNUNG = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("FZM_BEZEICHNUNG");
-                OnFZM_BEZEICHNUNGChanged();
+                OnABL_MENGEChanging(value);
+                ReportPropertyChanging("ABL_MENGE");
+                _ABL_MENGE = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ABL_MENGE");
+                OnABL_MENGEChanged();
             }
         }
-        private global::System.String _FZM_BEZEICHNUNG;
-        partial void OnFZM_BEZEICHNUNGChanging(global::System.String value);
-        partial void OnFZM_BEZEICHNUNGChanged();
+        private Nullable<global::System.Decimal> _ABL_MENGE;
+        partial void OnABL_MENGEChanging(Nullable<global::System.Decimal> value);
+        partial void OnABL_MENGEChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public Nullable<global::System.Int32> FZM_FZT_ID
+        public Nullable<global::System.Int32> ABL_ARB_ID
         {
             get
             {
-                return _FZM_FZT_ID;
+                return _ABL_ARB_ID;
             }
             set
             {
-                OnFZM_FZT_IDChanging(value);
-                ReportPropertyChanging("FZM_FZT_ID");
-                _FZM_FZT_ID = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("FZM_FZT_ID");
-                OnFZM_FZT_IDChanged();
+                OnABL_ARB_IDChanging(value);
+                ReportPropertyChanging("ABL_ARB_ID");
+                _ABL_ARB_ID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ABL_ARB_ID");
+                OnABL_ARB_IDChanged();
             }
         }
-        private Nullable<global::System.Int32> _FZM_FZT_ID;
-        partial void OnFZM_FZT_IDChanging(Nullable<global::System.Int32> value);
-        partial void OnFZM_FZT_IDChanged();
+        private Nullable<global::System.Int32> _ABL_ARB_ID;
+        partial void OnABL_ARB_IDChanging(Nullable<global::System.Int32> value);
+        partial void OnABL_ARB_IDChanged();
 
         #endregion
     
@@ -1347,18 +1860,18 @@ namespace MDP_Projekt.Model
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("Model", "FK_FZM_FZG", "T_FAHRZEUG")]
-        public EntityCollection<T_FAHRZEUG> T_FAHRZEUG
+        [EdmRelationshipNavigationPropertyAttribute("Model", "FK_ABL_REP", "T_REPARATUR")]
+        public EntityCollection<T_REPARATUR> T_REPARATUR
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<T_FAHRZEUG>("Model.FK_FZM_FZG", "T_FAHRZEUG");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<T_REPARATUR>("Model.FK_ABL_REP", "T_REPARATUR");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<T_FAHRZEUG>("Model.FK_FZM_FZG", "T_FAHRZEUG", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<T_REPARATUR>("Model.FK_ABL_REP", "T_REPARATUR", value);
                 }
             }
         }
@@ -1369,16 +1882,16 @@ namespace MDP_Projekt.Model
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("Model", "FK_FZT_FMT", "TR_FAHRZEUGTYP")]
-        public TR_FAHRZEUGTYP TR_FAHRZEUGTYP
+        [EdmRelationshipNavigationPropertyAttribute("Model", "FK_ARB_ABL", "TR_ARBEIT")]
+        public TR_ARBEIT TR_ARBEIT
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TR_FAHRZEUGTYP>("Model.FK_FZT_FMT", "TR_FAHRZEUGTYP").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TR_ARBEIT>("Model.FK_ARB_ABL", "TR_ARBEIT").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TR_FAHRZEUGTYP>("Model.FK_FZT_FMT", "TR_FAHRZEUGTYP").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TR_ARBEIT>("Model.FK_ARB_ABL", "TR_ARBEIT").Value = value;
             }
         }
         /// <summary>
@@ -1386,17 +1899,349 @@ namespace MDP_Projekt.Model
         /// </summary>
         [BrowsableAttribute(false)]
         [DataMemberAttribute()]
-        public EntityReference<TR_FAHRZEUGTYP> TR_FAHRZEUGTYPReference
+        public EntityReference<TR_ARBEIT> TR_ARBEITReference
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TR_FAHRZEUGTYP>("Model.FK_FZT_FMT", "TR_FAHRZEUGTYP");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TR_ARBEIT>("Model.FK_ARB_ABL", "TR_ARBEIT");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TR_FAHRZEUGTYP>("Model.FK_FZT_FMT", "TR_FAHRZEUGTYP", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TR_ARBEIT>("Model.FK_ARB_ABL", "TR_ARBEIT", value);
+                }
+            }
+        }
+
+        #endregion
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="Model", Name="TZ_FAHRZEUGTYP")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class TZ_FAHRZEUGTYP : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new TZ_FAHRZEUGTYP object.
+        /// </summary>
+        /// <param name="fZT_ID">Initial value of the FZT_ID property.</param>
+        public static TZ_FAHRZEUGTYP CreateTZ_FAHRZEUGTYP(global::System.Int32 fZT_ID)
+        {
+            TZ_FAHRZEUGTYP tZ_FAHRZEUGTYP = new TZ_FAHRZEUGTYP();
+            tZ_FAHRZEUGTYP.FZT_ID = fZT_ID;
+            return tZ_FAHRZEUGTYP;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 FZT_ID
+        {
+            get
+            {
+                return _FZT_ID;
+            }
+            set
+            {
+                if (_FZT_ID != value)
+                {
+                    OnFZT_IDChanging(value);
+                    ReportPropertyChanging("FZT_ID");
+                    _FZT_ID = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("FZT_ID");
+                    OnFZT_IDChanged();
+                }
+            }
+        }
+        private global::System.Int32 _FZT_ID;
+        partial void OnFZT_IDChanging(global::System.Int32 value);
+        partial void OnFZT_IDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String FZT_BEZEICHNUNG
+        {
+            get
+            {
+                return _FZT_BEZEICHNUNG;
+            }
+            set
+            {
+                OnFZT_BEZEICHNUNGChanging(value);
+                ReportPropertyChanging("FZT_BEZEICHNUNG");
+                _FZT_BEZEICHNUNG = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("FZT_BEZEICHNUNG");
+                OnFZT_BEZEICHNUNGChanged();
+            }
+        }
+        private global::System.String _FZT_BEZEICHNUNG;
+        partial void OnFZT_BEZEICHNUNGChanging(global::System.String value);
+        partial void OnFZT_BEZEICHNUNGChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> FZT_FZM_ID
+        {
+            get
+            {
+                return _FZT_FZM_ID;
+            }
+            set
+            {
+                OnFZT_FZM_IDChanging(value);
+                ReportPropertyChanging("FZT_FZM_ID");
+                _FZT_FZM_ID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("FZT_FZM_ID");
+                OnFZT_FZM_IDChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _FZT_FZM_ID;
+        partial void OnFZT_FZM_IDChanging(Nullable<global::System.Int32> value);
+        partial void OnFZT_FZM_IDChanged();
+
+        #endregion
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Model", "FK_FZT_FZG", "T_FAHRZEUG")]
+        public EntityCollection<T_FAHRZEUG> T_FAHRZEUG
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<T_FAHRZEUG>("Model.FK_FZT_FZG", "T_FAHRZEUG");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<T_FAHRZEUG>("Model.FK_FZT_FZG", "T_FAHRZEUG", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Model", "FK_FZM_FZT", "TR_FAHRZEUGMARKE")]
+        public TR_FAHRZEUGMARKE TR_FAHRZEUGMARKE
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TR_FAHRZEUGMARKE>("Model.FK_FZM_FZT", "TR_FAHRZEUGMARKE").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TR_FAHRZEUGMARKE>("Model.FK_FZM_FZT", "TR_FAHRZEUGMARKE").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<TR_FAHRZEUGMARKE> TR_FAHRZEUGMARKEReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TR_FAHRZEUGMARKE>("Model.FK_FZM_FZT", "TR_FAHRZEUGMARKE");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TR_FAHRZEUGMARKE>("Model.FK_FZM_FZT", "TR_FAHRZEUGMARKE", value);
+                }
+            }
+        }
+
+        #endregion
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="Model", Name="TZ_MATERIALLISTE")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class TZ_MATERIALLISTE : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new TZ_MATERIALLISTE object.
+        /// </summary>
+        /// <param name="mTL_ID">Initial value of the MTL_ID property.</param>
+        public static TZ_MATERIALLISTE CreateTZ_MATERIALLISTE(global::System.Int32 mTL_ID)
+        {
+            TZ_MATERIALLISTE tZ_MATERIALLISTE = new TZ_MATERIALLISTE();
+            tZ_MATERIALLISTE.MTL_ID = mTL_ID;
+            return tZ_MATERIALLISTE;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 MTL_ID
+        {
+            get
+            {
+                return _MTL_ID;
+            }
+            set
+            {
+                if (_MTL_ID != value)
+                {
+                    OnMTL_IDChanging(value);
+                    ReportPropertyChanging("MTL_ID");
+                    _MTL_ID = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("MTL_ID");
+                    OnMTL_IDChanged();
+                }
+            }
+        }
+        private global::System.Int32 _MTL_ID;
+        partial void OnMTL_IDChanging(global::System.Int32 value);
+        partial void OnMTL_IDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Decimal> MTL_MENGE
+        {
+            get
+            {
+                return _MTL_MENGE;
+            }
+            set
+            {
+                OnMTL_MENGEChanging(value);
+                ReportPropertyChanging("MTL_MENGE");
+                _MTL_MENGE = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("MTL_MENGE");
+                OnMTL_MENGEChanged();
+            }
+        }
+        private Nullable<global::System.Decimal> _MTL_MENGE;
+        partial void OnMTL_MENGEChanging(Nullable<global::System.Decimal> value);
+        partial void OnMTL_MENGEChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> MTL_MAT_ID
+        {
+            get
+            {
+                return _MTL_MAT_ID;
+            }
+            set
+            {
+                OnMTL_MAT_IDChanging(value);
+                ReportPropertyChanging("MTL_MAT_ID");
+                _MTL_MAT_ID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("MTL_MAT_ID");
+                OnMTL_MAT_IDChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _MTL_MAT_ID;
+        partial void OnMTL_MAT_IDChanging(Nullable<global::System.Int32> value);
+        partial void OnMTL_MAT_IDChanged();
+
+        #endregion
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Model", "FK_MTL_REP", "T_REPARATUR")]
+        public EntityCollection<T_REPARATUR> T_REPARATUR
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<T_REPARATUR>("Model.FK_MTL_REP", "T_REPARATUR");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<T_REPARATUR>("Model.FK_MTL_REP", "T_REPARATUR", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Model", "FK_MAT_MTL", "TR_MATERIAL")]
+        public TR_MATERIAL TR_MATERIAL
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TR_MATERIAL>("Model.FK_MAT_MTL", "TR_MATERIAL").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TR_MATERIAL>("Model.FK_MAT_MTL", "TR_MATERIAL").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<TR_MATERIAL> TR_MATERIALReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TR_MATERIAL>("Model.FK_MAT_MTL", "TR_MATERIAL");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TR_MATERIAL>("Model.FK_MAT_MTL", "TR_MATERIAL", value);
                 }
             }
         }

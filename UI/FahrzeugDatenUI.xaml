@@ -27,11 +27,11 @@
             <Label Grid.Row="1" Grid.Column="0">Fahrzeug-Nr.:</Label>
             <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Path=FZG_FAHRZEUGNR}" />
             <Label Grid.Row="1" Grid.Column="2">Marke:</Label>
-            <ComboBox Grid.Row="1" Grid.Column="3" Name="comboFahrzeugMarke" SelectedValue="{Binding Path=FZG_FZM_ID}" />
+            <ComboBox Grid.Row="1" Grid.Column="3" Name="comboFahrzeugMarke" SelectedValue="{Binding Path=TZ_FAHRZEUGTYP.FZT_FZM_ID}" />
             <Label Grid.Row="2" Grid.Column="0">Rahmen-Nr.:</Label>
             <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Path=FZG_RAHMENNR}" />
             <Label Grid.Row="2" Grid.Column="2">Typ:</Label>
-            <ComboBox Grid.Row="2" Grid.Column="3" Name="comboFahrzeugTyp" SelectedValue="{Binding Path=TZ_FAHRZEUGMARKE.FZM_ID}" />
+            <ComboBox Grid.Row="2" Grid.Column="3" Name="comboFahrzeugTyp" SelectedValue="{Binding Path=FZG_FZT_ID}" />
             <Label Grid.Row="3" Grid.Column="0">Stamm-Nr.:</Label>
             <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding Path=FZG_STAMMNR}" />
             <Label Grid.Row="3" Grid.Column="2">Nutzer:</Label>
@@ -46,7 +46,7 @@
                     <DataGridTextColumn Binding="{Binding Path=FZG_SCHILDNR, Mode=OneWay}" Header="Schild-Nr" />
                     <DataGridTextColumn Binding="{Binding Path=TR_FAHRZEUGART.FZA_BEZEICHNUNG, Mode=OneWay}" Header="Fahrzeugart" />
                     <DataGridTextColumn Binding="{Binding Path=FZG_FAHRZEUGNR, Mode=OneWay}" Header="Fahrzeug-Nr" />
-                    <DataGridTextColumn Binding="{Binding Path=TZ_FAHRZEUGMARKE.FZM_BEZEICHNUNG, Mode=OneWay}" Header="Marke" />
+                    <DataGridTextColumn Binding="{Binding Path=TZ_FAHRZEUGTYP.FZT_BEZEICHNUNG, Mode=OneWay}" Header="Typ" />
                     <!--<DataGridTextColumn Binding="{Binding Path=TZ_FAHRZEUGMARKE.TR_FAHRZEUGTYP.FZT_BEZEICHNUNG, Mode=OneWay}" Header="Typ" />-->
                     <DataGridTextColumn Binding="{Binding Path=FZG_RAHMENNR, Mode=OneWay}" Header="Rahmen-Nr"/>
                     <DataGridTextColumn Binding="{Binding Path=FZG_STAMMNR, Mode=OneWay}" Header="Stamm-Nr" />

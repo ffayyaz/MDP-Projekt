@@ -86,14 +86,12 @@
     <Compile Include="UI\FahrzeugDatenUI.xaml.cs">
       <DependentUpon>FahrzeugDatenUI.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\ISubject.cs" />
     <Compile Include="UI\MaterialDatenUI.xaml.cs">
       <DependentUpon>MaterialDatenUI.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\NutzerDatenUI.xaml.cs">
       <DependentUpon>NutzerDatenUI.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\IObserver.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
