@@ -164,7 +164,7 @@ namespace MDP_Projekt.UI
                 {
                     Model.T_FAHRZEUG fahrzeugToSave;
 
-                    if (currentFahrzeug.FZG_ID > 0)
+                    if (currentFahrzeug.isNew)
                     {
                         fahrzeugToSave = context.T_FAHRZEUG.Where(q => q.FZG_ID == currentFahrzeug.FZG_ID).First();
 

@@ -111,7 +111,7 @@ namespace MDP_Projekt.UI
                 {
                     Model.TR_MATERIAL materialToSave;
 
-                    if (currentMaterial.MAT_ID > 0)
+                    if (currentMaterial.isNew)
                     {
                         materialToSave = context.TR_MATERIAL.Where(q => q.MAT_ID == currentMaterial.MAT_ID).First();
 
