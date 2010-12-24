@@ -8,22 +8,45 @@
         <EntityContainer Name="ModelStoreContainer">
           <EntitySet Name="T_FAHRZEUG" EntityType="Model.Store.T_FAHRZEUG" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="T_NUTZER" EntityType="Model.Store.T_NUTZER" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="T_REPARATUR" EntityType="Model.Store.T_REPARATUR" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="TR_ARBEIT" EntityType="Model.Store.TR_ARBEIT" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="TR_FAHRZEUGART" EntityType="Model.Store.TR_FAHRZEUGART" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="TR_FAHRZEUGTYP" EntityType="Model.Store.TR_FAHRZEUGTYP" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TR_FAHRZEUGMARKE" EntityType="Model.Store.TR_FAHRZEUGMARKE" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="TR_MATERIAL" EntityType="Model.Store.TR_MATERIAL" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="TZ_FAHRZEUGMARKE" EntityType="Model.Store.TZ_FAHRZEUGMARKE" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TZ_ARBEITLISTE" EntityType="Model.Store.TZ_ARBEITLISTE" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TZ_FAHRZEUGTYP" EntityType="Model.Store.TZ_FAHRZEUGTYP" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TZ_MATERIALLISTE" EntityType="Model.Store.TZ_MATERIALLISTE" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_ABL_REP" Association="Model.Store.FK_ABL_REP">
+            <End Role="TZ_ARBEITLISTE" EntitySet="TZ_ARBEITLISTE" />
+            <End Role="T_REPARATUR" EntitySet="T_REPARATUR" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ARB_ABL" Association="Model.Store.FK_ARB_ABL">
+            <End Role="TR_ARBEIT" EntitySet="TR_ARBEIT" />
+            <End Role="TZ_ARBEITLISTE" EntitySet="TZ_ARBEITLISTE" />
+          </AssociationSet>
           <AssociationSet Name="FK_FZA_FZG" Association="Model.Store.FK_FZA_FZG">
             <End Role="TR_FAHRZEUGART" EntitySet="TR_FAHRZEUGART" />
             <End Role="T_FAHRZEUG" EntitySet="T_FAHRZEUG" />
           </AssociationSet>
+          <AssociationSet Name="FK_FZG_REP" Association="Model.Store.FK_FZG_REP">
+            <End Role="T_FAHRZEUG" EntitySet="T_FAHRZEUG" />
+            <End Role="T_REPARATUR" EntitySet="T_REPARATUR" />
+          </AssociationSet>
           <AssociationSet Name="FK_FZM_FZG" Association="Model.Store.FK_FZM_FZG">
-            <End Role="TZ_FAHRZEUGMARKE" EntitySet="TZ_FAHRZEUGMARKE" />
+            <End Role="TZ_FAHRZEUGTYP" EntitySet="TZ_FAHRZEUGTYP" />
             <End Role="T_FAHRZEUG" EntitySet="T_FAHRZEUG" />
           </AssociationSet>
-          <AssociationSet Name="FK_FZT_FMT" Association="Model.Store.FK_FZT_FMT">
-            <End Role="TR_FAHRZEUGTYP" EntitySet="TR_FAHRZEUGTYP" />
-            <End Role="TZ_FAHRZEUGMARKE" EntitySet="TZ_FAHRZEUGMARKE" />
+          <AssociationSet Name="FK_FZM_FZT" Association="Model.Store.FK_FZM_FZT">
+            <End Role="TR_FAHRZEUGMARKE" EntitySet="TR_FAHRZEUGMARKE" />
+            <End Role="TZ_FAHRZEUGTYP" EntitySet="TZ_FAHRZEUGTYP" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MAT_MTL" Association="Model.Store.FK_MAT_MTL">
+            <End Role="TR_MATERIAL" EntitySet="TR_MATERIAL" />
+            <End Role="TZ_MATERIALLISTE" EntitySet="TZ_MATERIALLISTE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MTL_REP" Association="Model.Store.FK_MTL_REP">
+            <End Role="TZ_MATERIALLISTE" EntitySet="TZ_MATERIALLISTE" />
+            <End Role="T_REPARATUR" EntitySet="T_REPARATUR" />
           </AssociationSet>
           <AssociationSet Name="FK_NUT_FZG" Association="Model.Store.FK_NUT_FZG">
             <End Role="T_NUTZER" EntitySet="T_NUTZER" />
@@ -53,6 +76,20 @@
           <Property Name="NUT_PLZ" Type="int" />
           <Property Name="NUT_ORT" Type="nvarchar" MaxLength="50" />
         </EntityType>
+        <EntityType Name="T_REPARATUR">
+          <Key>
+            <PropertyRef Name="REP_ID" />
+          </Key>
+          <Property Name="REP_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="REP_DISPONR" Type="nvarchar" MaxLength="50" />
+          <Property Name="REP_EINGANG" Type="datetime" />
+          <Property Name="REP_AUSGANG" Type="datetime" />
+          <Property Name="REP_RECHNUNGSNR" Type="int" />
+          <Property Name="REP_FAHRZEUGKM" Type="int" />
+          <Property Name="REP_FZG_ID" Type="int" />
+          <Property Name="REP_MTL_ID" Type="int" />
+          <Property Name="REP_ABL_ID" Type="int" />
+        </EntityType>
         <EntityType Name="TR_ARBEIT">
           <Key>
             <PropertyRef Name="ARB_ID" />
@@ -69,12 +106,12 @@
           <Property Name="FZA_BEZEICHNUNG" Type="nvarchar" Nullable="false" MaxLength="50" />
           <Property Name="FZA_KEY" Type="char" Nullable="false" MaxLength="3" />
         </EntityType>
-        <EntityType Name="TR_FAHRZEUGTYP">
+        <EntityType Name="TR_FAHRZEUGMARKE">
           <Key>
-            <PropertyRef Name="FZT_ID" />
+            <PropertyRef Name="FZM_ID" />
           </Key>
-          <Property Name="FZT_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="FZT_BEZEICHNUNG" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="FZM_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="FZM_BEZEICHNUNG" Type="nvarchar" Nullable="false" MaxLength="50" />
         </EntityType>
         <EntityType Name="TR_MATERIAL">
           <Key>
@@ -85,14 +122,54 @@
           <Property Name="MAT_PREIS" Type="decimal" Precision="12" Scale="2" />
           <Property Name="MAT_MARGE" Type="decimal" Precision="12" Scale="2" />
         </EntityType>
-        <EntityType Name="TZ_FAHRZEUGMARKE">
+        <EntityType Name="TZ_ARBEITLISTE">
           <Key>
-            <PropertyRef Name="FZM_ID" />
+            <PropertyRef Name="ABL_ID" />
           </Key>
-          <Property Name="FZM_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="FZM_BEZEICHNUNG" Type="nvarchar" MaxLength="50" />
-          <Property Name="FZM_FZT_ID" Type="int" />
+          <Property Name="ABL_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ABL_MENGE" Type="decimal" Precision="12" Scale="2" />
+          <Property Name="ABL_ARB_ID" Type="int" />
         </EntityType>
+        <EntityType Name="TZ_FAHRZEUGTYP">
+          <Key>
+            <PropertyRef Name="FZT_ID" />
+          </Key>
+          <Property Name="FZT_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="FZT_BEZEICHNUNG" Type="nvarchar" MaxLength="50" />
+          <Property Name="FZT_FZM_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="TZ_MATERIALLISTE">
+          <Key>
+            <PropertyRef Name="MTL_ID" />
+          </Key>
+          <Property Name="MTL_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="MTL_MENGE" Type="decimal" Precision="12" Scale="2" />
+          <Property Name="MTL_MAT_ID" Type="int" />
+        </EntityType>
+        <Association Name="FK_ABL_REP">
+          <End Role="TZ_ARBEITLISTE" Type="Model.Store.TZ_ARBEITLISTE" Multiplicity="0..1" />
+          <End Role="T_REPARATUR" Type="Model.Store.T_REPARATUR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TZ_ARBEITLISTE">
+              <PropertyRef Name="ABL_ID" />
+            </Principal>
+            <Dependent Role="T_REPARATUR">
+              <PropertyRef Name="REP_ABL_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ARB_ABL">
+          <End Role="TR_ARBEIT" Type="Model.Store.TR_ARBEIT" Multiplicity="0..1" />
+          <End Role="TZ_ARBEITLISTE" Type="Model.Store.TZ_ARBEITLISTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TR_ARBEIT">
+              <PropertyRef Name="ARB_ID" />
+            </Principal>
+            <Dependent Role="TZ_ARBEITLISTE">
+              <PropertyRef Name="ABL_ARB_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_FZA_FZG">
           <End Role="TR_FAHRZEUGART" Type="Model.Store.TR_FAHRZEUGART" Multiplicity="0..1" />
           <End Role="T_FAHRZEUG" Type="Model.Store.T_FAHRZEUG" Multiplicity="*" />
@@ -105,27 +182,63 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_FZG_REP">
+          <End Role="T_FAHRZEUG" Type="Model.Store.T_FAHRZEUG" Multiplicity="0..1" />
+          <End Role="T_REPARATUR" Type="Model.Store.T_REPARATUR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_FAHRZEUG">
+              <PropertyRef Name="FZG_ID" />
+            </Principal>
+            <Dependent Role="T_REPARATUR">
+              <PropertyRef Name="REP_FZG_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_FZM_FZG">
-          <End Role="TZ_FAHRZEUGMARKE" Type="Model.Store.TZ_FAHRZEUGMARKE" Multiplicity="0..1" />
+          <End Role="TZ_FAHRZEUGTYP" Type="Model.Store.TZ_FAHRZEUGTYP" Multiplicity="0..1" />
           <End Role="T_FAHRZEUG" Type="Model.Store.T_FAHRZEUG" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="TZ_FAHRZEUGMARKE">
-              <PropertyRef Name="FZM_ID" />
+            <Principal Role="TZ_FAHRZEUGTYP">
+              <PropertyRef Name="FZT_ID" />
             </Principal>
             <Dependent Role="T_FAHRZEUG">
               <PropertyRef Name="FZG_FZM_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_FZT_FMT">
-          <End Role="TR_FAHRZEUGTYP" Type="Model.Store.TR_FAHRZEUGTYP" Multiplicity="0..1" />
-          <End Role="TZ_FAHRZEUGMARKE" Type="Model.Store.TZ_FAHRZEUGMARKE" Multiplicity="*" />
+        <Association Name="FK_FZM_FZT">
+          <End Role="TR_FAHRZEUGMARKE" Type="Model.Store.TR_FAHRZEUGMARKE" Multiplicity="0..1" />
+          <End Role="TZ_FAHRZEUGTYP" Type="Model.Store.TZ_FAHRZEUGTYP" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="TR_FAHRZEUGTYP">
-              <PropertyRef Name="FZT_ID" />
+            <Principal Role="TR_FAHRZEUGMARKE">
+              <PropertyRef Name="FZM_ID" />
             </Principal>
-            <Dependent Role="TZ_FAHRZEUGMARKE">
-              <PropertyRef Name="FZM_FZT_ID" />
+            <Dependent Role="TZ_FAHRZEUGTYP">
+              <PropertyRef Name="FZT_FZM_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MAT_MTL">
+          <End Role="TR_MATERIAL" Type="Model.Store.TR_MATERIAL" Multiplicity="0..1" />
+          <End Role="TZ_MATERIALLISTE" Type="Model.Store.TZ_MATERIALLISTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TR_MATERIAL">
+              <PropertyRef Name="MAT_ID" />
+            </Principal>
+            <Dependent Role="TZ_MATERIALLISTE">
+              <PropertyRef Name="MTL_MAT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MTL_REP">
+          <End Role="TZ_MATERIALLISTE" Type="Model.Store.TZ_MATERIALLISTE" Multiplicity="0..1" />
+          <End Role="T_REPARATUR" Type="Model.Store.T_REPARATUR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TZ_MATERIALLISTE">
+              <PropertyRef Name="MTL_ID" />
+            </Principal>
+            <Dependent Role="T_REPARATUR">
+              <PropertyRef Name="REP_MTL_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -148,27 +261,50 @@
         <EntityContainer Name="Context" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="T_FAHRZEUG" EntityType="Model.T_FAHRZEUG" />
           <EntitySet Name="T_NUTZER" EntityType="Model.T_NUTZER" />
+          <EntitySet Name="T_REPARATUR" EntityType="Model.T_REPARATUR" />
+          <EntitySet Name="TR_ARBEIT" EntityType="Model.TR_ARBEIT" />
           <EntitySet Name="TR_FAHRZEUGART" EntityType="Model.TR_FAHRZEUGART" />
-          <EntitySet Name="TR_FAHRZEUGTYP" EntityType="Model.TR_FAHRZEUGTYP" />
-          <EntitySet Name="TZ_FAHRZEUGMARKE" EntityType="Model.TZ_FAHRZEUGMARKE" />
+          <EntitySet Name="TR_FAHRZEUGMARKE" EntityType="Model.TR_FAHRZEUGMARKE" />
+          <EntitySet Name="TR_MATERIAL" EntityType="Model.TR_MATERIAL" />
+          <EntitySet Name="TZ_ARBEITLISTE" EntityType="Model.TZ_ARBEITLISTE" />
+          <EntitySet Name="TZ_FAHRZEUGTYP" EntityType="Model.TZ_FAHRZEUGTYP" />
+          <EntitySet Name="TZ_MATERIALLISTE" EntityType="Model.TZ_MATERIALLISTE" />
           <AssociationSet Name="FK_FZA_FZG" Association="Model.FK_FZA_FZG">
             <End Role="TR_FAHRZEUGART" EntitySet="TR_FAHRZEUGART" />
             <End Role="T_FAHRZEUG" EntitySet="T_FAHRZEUG" />
           </AssociationSet>
+          <AssociationSet Name="FK_FZG_REP" Association="Model.FK_FZG_REP">
+            <End Role="T_FAHRZEUG" EntitySet="T_FAHRZEUG" />
+            <End Role="T_REPARATUR" EntitySet="T_REPARATUR" />
+          </AssociationSet>
           <AssociationSet Name="FK_FZM_FZG" Association="Model.FK_FZM_FZG">
-            <End Role="TZ_FAHRZEUGMARKE" EntitySet="TZ_FAHRZEUGMARKE" />
+            <End Role="TZ_FAHRZEUGTYP" EntitySet="TZ_FAHRZEUGTYP" />
             <End Role="T_FAHRZEUG" EntitySet="T_FAHRZEUG" />
           </AssociationSet>
           <AssociationSet Name="FK_NUT_FZG" Association="Model.FK_NUT_FZG">
             <End Role="T_NUTZER" EntitySet="T_NUTZER" />
             <End Role="T_FAHRZEUG" EntitySet="T_FAHRZEUG" />
           </AssociationSet>
-          <AssociationSet Name="FK_FZT_FMT" Association="Model.FK_FZT_FMT">
-            <End Role="TR_FAHRZEUGTYP" EntitySet="TR_FAHRZEUGTYP" />
-            <End Role="TZ_FAHRZEUGMARKE" EntitySet="TZ_FAHRZEUGMARKE" />
+          <AssociationSet Name="FK_ABL_REP" Association="Model.FK_ABL_REP">
+            <End Role="TZ_ARBEITLISTE" EntitySet="TZ_ARBEITLISTE" />
+            <End Role="T_REPARATUR" EntitySet="T_REPARATUR" />
           </AssociationSet>
-          <EntitySet Name="TR_ARBEIT" EntityType="Model.TR_ARBEIT" />
-          <EntitySet Name="TR_MATERIAL" EntityType="Model.TR_MATERIAL" />
+          <AssociationSet Name="FK_MTL_REP" Association="Model.FK_MTL_REP">
+            <End Role="TZ_MATERIALLISTE" EntitySet="TZ_MATERIALLISTE" />
+            <End Role="T_REPARATUR" EntitySet="T_REPARATUR" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ARB_ABL" Association="Model.FK_ARB_ABL">
+            <End Role="TR_ARBEIT" EntitySet="TR_ARBEIT" />
+            <End Role="TZ_ARBEITLISTE" EntitySet="TZ_ARBEITLISTE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FZM_FZT" Association="Model.FK_FZM_FZT">
+            <End Role="TR_FAHRZEUGMARKE" EntitySet="TR_FAHRZEUGMARKE" />
+            <End Role="TZ_FAHRZEUGTYP" EntitySet="TZ_FAHRZEUGTYP" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MAT_MTL" Association="Model.FK_MAT_MTL">
+            <End Role="TR_MATERIAL" EntitySet="TR_MATERIAL" />
+            <End Role="TZ_MATERIALLISTE" EntitySet="TZ_MATERIALLISTE" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="T_FAHRZEUG">
           <Key>
@@ -184,7 +320,8 @@
           <Property Type="Int32" Name="FZG_FZA_ID" />
           <Property Type="Int32" Name="FZG_FZM_ID" />
           <NavigationProperty Name="TR_FAHRZEUGART" Relationship="Model.FK_FZA_FZG" FromRole="T_FAHRZEUG" ToRole="TR_FAHRZEUGART" />
-          <NavigationProperty Name="TZ_FAHRZEUGMARKE" Relationship="Model.FK_FZM_FZG" FromRole="T_FAHRZEUG" ToRole="TZ_FAHRZEUGMARKE" />
+          <NavigationProperty Name="T_REPARATUR" Relationship="Model.FK_FZG_REP" FromRole="T_FAHRZEUG" ToRole="T_REPARATUR" />
+          <NavigationProperty Name="TZ_FAHRZEUGTYP" Relationship="Model.FK_FZM_FZG" FromRole="T_FAHRZEUG" ToRole="TZ_FAHRZEUGTYP" />
           <NavigationProperty Name="T_NUTZER" Relationship="Model.FK_NUT_FZG" FromRole="T_FAHRZEUG" ToRole="T_NUTZER" />
         </EntityType>
         <EntityType Name="T_NUTZER">
@@ -197,6 +334,32 @@
           <Property Type="String" Name="NUT_ORT" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="T_FAHRZEUG" Relationship="Model.FK_NUT_FZG" FromRole="T_NUTZER" ToRole="T_FAHRZEUG" />
         </EntityType>
+        <EntityType Name="T_REPARATUR">
+          <Key>
+            <PropertyRef Name="REP_ID" />
+          </Key>
+          <Property Type="Int32" Name="REP_ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="REP_DISPONR" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="REP_EINGANG" />
+          <Property Type="DateTime" Name="REP_AUSGANG" />
+          <Property Type="Int32" Name="REP_RECHNUNGSNR" />
+          <Property Type="Int32" Name="REP_FAHRZEUGKM" />
+          <Property Type="Int32" Name="REP_FZG_ID" />
+          <Property Type="Int32" Name="REP_MTL_ID" />
+          <Property Type="Int32" Name="REP_ABL_ID" />
+          <NavigationProperty Name="T_FAHRZEUG" Relationship="Model.FK_FZG_REP" FromRole="T_REPARATUR" ToRole="T_FAHRZEUG" />
+          <NavigationProperty Name="TZ_ARBEITLISTE" Relationship="Model.FK_ABL_REP" FromRole="T_REPARATUR" ToRole="TZ_ARBEITLISTE" />
+          <NavigationProperty Name="TZ_MATERIALLISTE" Relationship="Model.FK_MTL_REP" FromRole="T_REPARATUR" ToRole="TZ_MATERIALLISTE" />
+        </EntityType>
+        <EntityType Name="TR_ARBEIT">
+          <Key>
+            <PropertyRef Name="ARB_ID" />
+          </Key>
+          <Property Type="Int32" Name="ARB_ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="ARB_BEZEICHNUNG" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="ARB_PREIS" Precision="12" Scale="2" />
+          <NavigationProperty Name="TZ_ARBEITLISTE" Relationship="Model.FK_ARB_ABL" FromRole="TR_ARBEIT" ToRole="TZ_ARBEITLISTE" />
+        </EntityType>
         <EntityType Name="TR_FAHRZEUGART">
           <Key>
             <PropertyRef Name="FZA_ID" />
@@ -206,23 +369,53 @@
           <Property Type="String" Name="FZA_KEY" Nullable="false" MaxLength="3" FixedLength="true" Unicode="false" />
           <NavigationProperty Name="T_FAHRZEUG" Relationship="Model.FK_FZA_FZG" FromRole="TR_FAHRZEUGART" ToRole="T_FAHRZEUG" />
         </EntityType>
-        <EntityType Name="TR_FAHRZEUGTYP">
-          <Key>
-            <PropertyRef Name="FZT_ID" />
-          </Key>
-          <Property Type="Int32" Name="FZT_ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="FZT_BEZEICHNUNG" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="TZ_FAHRZEUGMARKE" Relationship="Model.FK_FZT_FMT" FromRole="TR_FAHRZEUGTYP" ToRole="TZ_FAHRZEUGMARKE" />
-        </EntityType>
-        <EntityType Name="TZ_FAHRZEUGMARKE">
+        <EntityType Name="TR_FAHRZEUGMARKE">
           <Key>
             <PropertyRef Name="FZM_ID" />
           </Key>
           <Property Type="Int32" Name="FZM_ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="FZM_BEZEICHNUNG" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Type="Int32" Name="FZM_FZT_ID" />
-          <NavigationProperty Name="T_FAHRZEUG" Relationship="Model.FK_FZM_FZG" FromRole="TZ_FAHRZEUGMARKE" ToRole="T_FAHRZEUG" />
-          <NavigationProperty Name="TR_FAHRZEUGTYP" Relationship="Model.FK_FZT_FMT" FromRole="TZ_FAHRZEUGMARKE" ToRole="TR_FAHRZEUGTYP" />
+          <Property Type="String" Name="FZM_BEZEICHNUNG" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="TZ_FAHRZEUGTYP" Relationship="Model.FK_FZM_FZT" FromRole="TR_FAHRZEUGMARKE" ToRole="TZ_FAHRZEUGTYP" />
+        </EntityType>
+        <EntityType Name="TR_MATERIAL">
+          <Key>
+            <PropertyRef Name="MAT_ID" />
+          </Key>
+          <Property Type="Int32" Name="MAT_ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="MAT_BEZEICHNUNG" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="MAT_PREIS" Precision="12" Scale="2" />
+          <Property Type="Decimal" Name="MAT_MARGE" Precision="12" Scale="2" />
+          <NavigationProperty Name="TZ_MATERIALLISTE" Relationship="Model.FK_MAT_MTL" FromRole="TR_MATERIAL" ToRole="TZ_MATERIALLISTE" />
+        </EntityType>
+        <EntityType Name="TZ_ARBEITLISTE">
+          <Key>
+            <PropertyRef Name="ABL_ID" />
+          </Key>
+          <Property Type="Int32" Name="ABL_ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Decimal" Name="ABL_MENGE" Precision="12" Scale="2" />
+          <Property Type="Int32" Name="ABL_ARB_ID" />
+          <NavigationProperty Name="T_REPARATUR" Relationship="Model.FK_ABL_REP" FromRole="TZ_ARBEITLISTE" ToRole="T_REPARATUR" />
+          <NavigationProperty Name="TR_ARBEIT" Relationship="Model.FK_ARB_ABL" FromRole="TZ_ARBEITLISTE" ToRole="TR_ARBEIT" />
+        </EntityType>
+        <EntityType Name="TZ_FAHRZEUGTYP">
+          <Key>
+            <PropertyRef Name="FZT_ID" />
+          </Key>
+          <Property Type="Int32" Name="FZT_ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="FZT_BEZEICHNUNG" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="FZT_FZM_ID" />
+          <NavigationProperty Name="T_FAHRZEUG" Relationship="Model.FK_FZM_FZG" FromRole="TZ_FAHRZEUGTYP" ToRole="T_FAHRZEUG" />
+          <NavigationProperty Name="TR_FAHRZEUGMARKE" Relationship="Model.FK_FZM_FZT" FromRole="TZ_FAHRZEUGTYP" ToRole="TR_FAHRZEUGMARKE" />
+        </EntityType>
+        <EntityType Name="TZ_MATERIALLISTE">
+          <Key>
+            <PropertyRef Name="MTL_ID" />
+          </Key>
+          <Property Type="Int32" Name="MTL_ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Decimal" Name="MTL_MENGE" Precision="12" Scale="2" />
+          <Property Type="Int32" Name="MTL_MAT_ID" />
+          <NavigationProperty Name="T_REPARATUR" Relationship="Model.FK_MTL_REP" FromRole="TZ_MATERIALLISTE" ToRole="T_REPARATUR" />
+          <NavigationProperty Name="TR_MATERIAL" Relationship="Model.FK_MAT_MTL" FromRole="TZ_MATERIALLISTE" ToRole="TR_MATERIAL" />
         </EntityType>
         <Association Name="FK_FZA_FZG">
           <End Type="Model.TR_FAHRZEUGART" Role="TR_FAHRZEUGART" Multiplicity="0..1" />
@@ -236,12 +429,24 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_FZG_REP">
+          <End Type="Model.T_FAHRZEUG" Role="T_FAHRZEUG" Multiplicity="0..1" />
+          <End Type="Model.T_REPARATUR" Role="T_REPARATUR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_FAHRZEUG">
+              <PropertyRef Name="FZG_ID" />
+            </Principal>
+            <Dependent Role="T_REPARATUR">
+              <PropertyRef Name="REP_FZG_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_FZM_FZG">
-          <End Type="Model.TZ_FAHRZEUGMARKE" Role="TZ_FAHRZEUGMARKE" Multiplicity="0..1" />
+          <End Type="Model.TZ_FAHRZEUGTYP" Role="TZ_FAHRZEUGTYP" Multiplicity="0..1" />
           <End Type="Model.T_FAHRZEUG" Role="T_FAHRZEUG" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="TZ_FAHRZEUGMARKE">
-              <PropertyRef Name="FZM_ID" />
+            <Principal Role="TZ_FAHRZEUGTYP">
+              <PropertyRef Name="FZT_ID" />
             </Principal>
             <Dependent Role="T_FAHRZEUG">
               <PropertyRef Name="FZG_FZM_ID" />
@@ -260,35 +465,66 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_FZT_FMT">
-          <End Type="Model.TR_FAHRZEUGTYP" Role="TR_FAHRZEUGTYP" Multiplicity="0..1" />
-          <End Type="Model.TZ_FAHRZEUGMARKE" Role="TZ_FAHRZEUGMARKE" Multiplicity="*" />
+        <Association Name="FK_ABL_REP">
+          <End Type="Model.TZ_ARBEITLISTE" Role="TZ_ARBEITLISTE" Multiplicity="0..1" />
+          <End Type="Model.T_REPARATUR" Role="T_REPARATUR" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="TR_FAHRZEUGTYP">
-              <PropertyRef Name="FZT_ID" />
+            <Principal Role="TZ_ARBEITLISTE">
+              <PropertyRef Name="ABL_ID" />
             </Principal>
-            <Dependent Role="TZ_FAHRZEUGMARKE">
-              <PropertyRef Name="FZM_FZT_ID" />
+            <Dependent Role="T_REPARATUR">
+              <PropertyRef Name="REP_ABL_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="TR_ARBEIT">
-          <Key>
-            <PropertyRef Name="ARB_ID" />
-          </Key>
-          <Property Type="Int32" Name="ARB_ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="ARB_BEZEICHNUNG" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Type="Decimal" Name="ARB_PREIS" Precision="12" Scale="2" />
-        </EntityType>
-        <EntityType Name="TR_MATERIAL">
-          <Key>
-            <PropertyRef Name="MAT_ID" />
-          </Key>
-          <Property Type="Int32" Name="MAT_ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="MAT_BEZEICHNUNG" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Type="Decimal" Name="MAT_PREIS" Precision="12" Scale="2" />
-          <Property Type="Decimal" Name="MAT_MARGE" Precision="12" Scale="2" />
-        </EntityType>
+        <Association Name="FK_MTL_REP">
+          <End Type="Model.TZ_MATERIALLISTE" Role="TZ_MATERIALLISTE" Multiplicity="0..1" />
+          <End Type="Model.T_REPARATUR" Role="T_REPARATUR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TZ_MATERIALLISTE">
+              <PropertyRef Name="MTL_ID" />
+            </Principal>
+            <Dependent Role="T_REPARATUR">
+              <PropertyRef Name="REP_MTL_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ARB_ABL">
+          <End Type="Model.TR_ARBEIT" Role="TR_ARBEIT" Multiplicity="0..1" />
+          <End Type="Model.TZ_ARBEITLISTE" Role="TZ_ARBEITLISTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TR_ARBEIT">
+              <PropertyRef Name="ARB_ID" />
+            </Principal>
+            <Dependent Role="TZ_ARBEITLISTE">
+              <PropertyRef Name="ABL_ARB_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FZM_FZT">
+          <End Type="Model.TR_FAHRZEUGMARKE" Role="TR_FAHRZEUGMARKE" Multiplicity="0..1" />
+          <End Type="Model.TZ_FAHRZEUGTYP" Role="TZ_FAHRZEUGTYP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TR_FAHRZEUGMARKE">
+              <PropertyRef Name="FZM_ID" />
+            </Principal>
+            <Dependent Role="TZ_FAHRZEUGTYP">
+              <PropertyRef Name="FZT_FZM_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MAT_MTL">
+          <End Type="Model.TR_MATERIAL" Role="TR_MATERIAL" Multiplicity="0..1" />
+          <End Type="Model.TZ_MATERIALLISTE" Role="TZ_MATERIALLISTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TR_MATERIAL">
+              <PropertyRef Name="MAT_ID" />
+            </Principal>
+            <Dependent Role="TZ_MATERIALLISTE">
+              <PropertyRef Name="MTL_MAT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -320,29 +556,18 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="TR_FAHRZEUGART">
-            <EntityTypeMapping TypeName="Model.TR_FAHRZEUGART">
-              <MappingFragment StoreEntitySet="TR_FAHRZEUGART">
-                <ScalarProperty Name="FZA_KEY" ColumnName="FZA_KEY" />
-                <ScalarProperty Name="FZA_BEZEICHNUNG" ColumnName="FZA_BEZEICHNUNG" />
-                <ScalarProperty Name="FZA_ID" ColumnName="FZA_ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="TR_FAHRZEUGTYP">
-            <EntityTypeMapping TypeName="Model.TR_FAHRZEUGTYP">
-              <MappingFragment StoreEntitySet="TR_FAHRZEUGTYP">
-                <ScalarProperty Name="FZT_BEZEICHNUNG" ColumnName="FZT_BEZEICHNUNG" />
-                <ScalarProperty Name="FZT_ID" ColumnName="FZT_ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="TZ_FAHRZEUGMARKE">
-            <EntityTypeMapping TypeName="Model.TZ_FAHRZEUGMARKE">
-              <MappingFragment StoreEntitySet="TZ_FAHRZEUGMARKE">
-                <ScalarProperty Name="FZM_FZT_ID" ColumnName="FZM_FZT_ID" />
-                <ScalarProperty Name="FZM_BEZEICHNUNG" ColumnName="FZM_BEZEICHNUNG" />
-                <ScalarProperty Name="FZM_ID" ColumnName="FZM_ID" />
+          <EntitySetMapping Name="T_REPARATUR">
+            <EntityTypeMapping TypeName="Model.T_REPARATUR">
+              <MappingFragment StoreEntitySet="T_REPARATUR">
+                <ScalarProperty Name="REP_ABL_ID" ColumnName="REP_ABL_ID" />
+                <ScalarProperty Name="REP_MTL_ID" ColumnName="REP_MTL_ID" />
+                <ScalarProperty Name="REP_FZG_ID" ColumnName="REP_FZG_ID" />
+                <ScalarProperty Name="REP_FAHRZEUGKM" ColumnName="REP_FAHRZEUGKM" />
+                <ScalarProperty Name="REP_RECHNUNGSNR" ColumnName="REP_RECHNUNGSNR" />
+                <ScalarProperty Name="REP_AUSGANG" ColumnName="REP_AUSGANG" />
+                <ScalarProperty Name="REP_EINGANG" ColumnName="REP_EINGANG" />
+                <ScalarProperty Name="REP_DISPONR" ColumnName="REP_DISPONR" />
+                <ScalarProperty Name="REP_ID" ColumnName="REP_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -355,6 +580,23 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="TR_FAHRZEUGART">
+            <EntityTypeMapping TypeName="Model.TR_FAHRZEUGART">
+              <MappingFragment StoreEntitySet="TR_FAHRZEUGART">
+                <ScalarProperty Name="FZA_KEY" ColumnName="FZA_KEY" />
+                <ScalarProperty Name="FZA_BEZEICHNUNG" ColumnName="FZA_BEZEICHNUNG" />
+                <ScalarProperty Name="FZA_ID" ColumnName="FZA_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TR_FAHRZEUGMARKE">
+            <EntityTypeMapping TypeName="Model.TR_FAHRZEUGMARKE">
+              <MappingFragment StoreEntitySet="TR_FAHRZEUGMARKE">
+                <ScalarProperty Name="FZM_BEZEICHNUNG" ColumnName="FZM_BEZEICHNUNG" />
+                <ScalarProperty Name="FZM_ID" ColumnName="FZM_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="TR_MATERIAL">
             <EntityTypeMapping TypeName="Model.TR_MATERIAL">
               <MappingFragment StoreEntitySet="TR_MATERIAL">
@@ -362,6 +604,33 @@
                 <ScalarProperty Name="MAT_PREIS" ColumnName="MAT_PREIS" />
                 <ScalarProperty Name="MAT_BEZEICHNUNG" ColumnName="MAT_BEZEICHNUNG" />
                 <ScalarProperty Name="MAT_ID" ColumnName="MAT_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TZ_ARBEITLISTE">
+            <EntityTypeMapping TypeName="Model.TZ_ARBEITLISTE">
+              <MappingFragment StoreEntitySet="TZ_ARBEITLISTE">
+                <ScalarProperty Name="ABL_ARB_ID" ColumnName="ABL_ARB_ID" />
+                <ScalarProperty Name="ABL_MENGE" ColumnName="ABL_MENGE" />
+                <ScalarProperty Name="ABL_ID" ColumnName="ABL_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TZ_FAHRZEUGTYP">
+            <EntityTypeMapping TypeName="Model.TZ_FAHRZEUGTYP">
+              <MappingFragment StoreEntitySet="TZ_FAHRZEUGTYP">
+                <ScalarProperty Name="FZT_FZM_ID" ColumnName="FZT_FZM_ID" />
+                <ScalarProperty Name="FZT_BEZEICHNUNG" ColumnName="FZT_BEZEICHNUNG" />
+                <ScalarProperty Name="FZT_ID" ColumnName="FZT_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TZ_MATERIALLISTE">
+            <EntityTypeMapping TypeName="Model.TZ_MATERIALLISTE">
+              <MappingFragment StoreEntitySet="TZ_MATERIALLISTE">
+                <ScalarProperty Name="MTL_MAT_ID" ColumnName="MTL_MAT_ID" />
+                <ScalarProperty Name="MTL_MENGE" ColumnName="MTL_MENGE" />
+                <ScalarProperty Name="MTL_ID" ColumnName="MTL_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -386,31 +655,58 @@
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
       <Diagram Name="RepairModel">
-        <EntityTypeShape EntityType="Model.T_FAHRZEUG" Width="1.5" PointX="5.25" PointY="1" Height="3.3263964843749996" />
-        <EntityTypeShape EntityType="Model.T_NUTZER" Width="1.5" PointX="3" PointY="5.375" Height="1.9802864583333317" />
-        <EntityTypeShape EntityType="Model.TR_FAHRZEUGART" Width="1.5" PointX="3" PointY="8.125" Height="1.7879850260416674" />
-        <EntityTypeShape EntityType="Model.TR_FAHRZEUGTYP" Width="1.5" PointX="0.75" PointY="1.875" Height="1.5956835937499996" />
-        <EntityTypeShape EntityType="Model.TZ_FAHRZEUGMARKE" Width="1.5" PointX="3" PointY="1.625" Height="1.9802864583333353" />
+        <EntityTypeShape EntityType="Model.T_FAHRZEUG" Width="1.5" PointX="5.25" PointY="1" Height="3.5186979166666674" />
+        <EntityTypeShape EntityType="Model.T_NUTZER" Width="1.5" PointX="3" PointY="5.5" Height="1.9802864583333388" />
+        <EntityTypeShape EntityType="Model.T_REPARATUR" Width="1.5" PointX="7.5" PointY="1.125" Height="3.3263964843750031" />
+        <EntityTypeShape EntityType="Model.TR_ARBEIT" Width="1.5" PointX="3" PointY="11.625" Height="1.7879850260416674" />
+        <EntityTypeShape EntityType="Model.TR_FAHRZEUGART" Width="1.5" PointX="3" PointY="8.25" Height="1.7879850260416674" />
+        <EntityTypeShape EntityType="Model.TR_FAHRZEUGMARKE" Width="1.5" PointX="0.75" PointY="2" Height="1.5956835937500031" />
+        <EntityTypeShape EntityType="Model.TR_MATERIAL" Width="1.5" PointX="3" PointY="14.25" Height="1.9802864583333371" />
+        <EntityTypeShape EntityType="Model.TZ_ARBEITLISTE" Width="1.5" PointX="5.25" PointY="11.5" Height="1.9802864583333388" />
+        <EntityTypeShape EntityType="Model.TZ_FAHRZEUGTYP" Width="1.5" PointX="3" PointY="1.75" Height="1.9802864583333388" />
+        <EntityTypeShape EntityType="Model.TZ_MATERIALLISTE" Width="1.5" PointX="5.25" PointY="14.25" Height="1.9802864583333371" />
         <AssociationConnector Association="Model.FK_FZA_FZG" >
-          <ConnectorPoint PointX="4.5" PointY="9.0189925130208337" />
-          <ConnectorPoint PointX="6" PointY="9.0189925130208337" />
-          <ConnectorPoint PointX="6" PointY="4.326396484375" />
+          <ConnectorPoint PointX="4.5" PointY="9.1439925130208337" />
+          <ConnectorPoint PointX="6" PointY="9.1439925130208337" />
+          <ConnectorPoint PointX="6" PointY="4.5186979166666674" />
+        </AssociationConnector>
+        <AssociationConnector Association="Model.FK_FZG_REP" >
+          <ConnectorPoint PointX="6.75" PointY="2.7881982421875016" />
+          <ConnectorPoint PointX="7.5" PointY="2.7881982421875016" />
         </AssociationConnector>
         <AssociationConnector Association="Model.FK_FZM_FZG" >
-          <ConnectorPoint PointX="4.5" PointY="2.6151432291666676" />
-          <ConnectorPoint PointX="5.25" PointY="2.6151432291666676" />
+          <ConnectorPoint PointX="4.5" PointY="2.7401432291666694" />
+          <ConnectorPoint PointX="5.25" PointY="2.7401432291666694" />
         </AssociationConnector>
         <AssociationConnector Association="Model.FK_NUT_FZG" >
-          <ConnectorPoint PointX="4.5" PointY="6.3651432291666659" />
-          <ConnectorPoint PointX="5.5937475" PointY="6.3651432291666659" />
-          <ConnectorPoint PointX="5.5937475" PointY="4.326396484375" />
+          <ConnectorPoint PointX="4.5" PointY="6.4901432291666694" />
+          <ConnectorPoint PointX="5.5937475" PointY="6.4901432291666694" />
+          <ConnectorPoint PointX="5.5937475" PointY="4.5186979166666674" />
         </AssociationConnector>
-        <AssociationConnector Association="Model.FK_FZT_FMT" >
-          <ConnectorPoint PointX="2.25" PointY="2.672841796875" />
-          <ConnectorPoint PointX="3" PointY="2.672841796875" />
+        <AssociationConnector Association="Model.FK_ABL_REP" >
+          <ConnectorPoint PointX="6.75" PointY="12.490143229166669" />
+          <ConnectorPoint PointX="7.7604141666666671" PointY="12.490143229166669" />
+          <ConnectorPoint PointX="7.9270808333333331" PointY="12.490143229166669" />
+          <ConnectorPoint PointX="8.25" PointY="12.490143229166669" />
+          <ConnectorPoint PointX="8.25" PointY="4.4513964843750031" />
         </AssociationConnector>
-        <EntityTypeShape EntityType="Model.TR_ARBEIT" Width="1.5" PointX="7.5" PointY="3.75" Height="1.5956835937499996" />
-        <EntityTypeShape EntityType="Model.TR_MATERIAL" Width="1.5" PointX="7.5" PointY="1.75" Height="1.7879850260416674" />
+        <AssociationConnector Association="Model.FK_MTL_REP" >
+          <ConnectorPoint PointX="6.75" PointY="15.240143229166669" />
+          <ConnectorPoint PointX="7.8437475" PointY="15.240143229166669" />
+          <ConnectorPoint PointX="7.8437475" PointY="4.4513964843750031" />
+        </AssociationConnector>
+        <AssociationConnector Association="Model.FK_ARB_ABL" >
+          <ConnectorPoint PointX="4.5" PointY="12.518992513020834" />
+          <ConnectorPoint PointX="5.25" PointY="12.518992513020834" />
+        </AssociationConnector>
+        <AssociationConnector Association="Model.FK_FZM_FZT" >
+          <ConnectorPoint PointX="2.25" PointY="2.7978417968750016" />
+          <ConnectorPoint PointX="3" PointY="2.7978417968750016" />
+        </AssociationConnector>
+        <AssociationConnector Association="Model.FK_MAT_MTL" >
+          <ConnectorPoint PointX="4.5" PointY="15.240143229166669" />
+          <ConnectorPoint PointX="5.25" PointY="15.240143229166669" />
+        </AssociationConnector>
       </Diagram>
     </Diagrams>
   </Designer>
