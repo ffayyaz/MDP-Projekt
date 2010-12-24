@@ -62,11 +62,11 @@ namespace MDP_Projekt.UI
                 fahrzeuge = context.T_FAHRZEUG.ToList();
 
                 // ... deren Entitäten laden
-                //fahrzeuge.Where(q => q.TR_FAHRZEUGMARKEReference != null).ToList().ForEach(q => q.TZ_FAHRZEUGMARKEReference.Load());
-                //fahrzeuge.Where(q => q.TR_FAHRZEUGARTReference != null).ToList().ForEach(q => q.TR_FAHRZEUGARTReference.Load());
-                //fahrzeuge.Where(q => q.T_NUTZERReference != null).ToList().ForEach(q => q.T_NUTZERReference.Load());
-                //fahrzeuge.Where(q => q.TR_FAHRZEUGMARKE != null && q.TR_FAHRZEUGMARKE.TZ_FAHRZEUGTYPReference != null).ToList()
-                //                .ForEach(q => q.T_NUTZERReference.Load());
+                fahrzeuge.Where(q => q.TZ_FAHRZEUGTYPReference != null).ToList().ForEach(q => q.TZ_FAHRZEUGTYPReference.Load());
+                fahrzeuge.Where(q => q.TR_FAHRZEUGARTReference != null).ToList().ForEach(q => q.TR_FAHRZEUGARTReference.Load());
+                fahrzeuge.Where(q => q.T_NUTZERReference != null).ToList().ForEach(q => q.T_NUTZERReference.Load());
+                fahrzeuge.Where(q => q.TZ_FAHRZEUGTYP != null && q.TZ_FAHRZEUGTYP.TR_FAHRZEUGMARKEReference != null).ToList()
+                                .ForEach(q => q.TZ_FAHRZEUGTYP.TR_FAHRZEUGMARKEReference.Load());
             }
             return fahrzeuge.ToList();
         }

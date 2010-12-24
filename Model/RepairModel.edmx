@@ -32,13 +32,13 @@
             <End Role="T_FAHRZEUG" EntitySet="T_FAHRZEUG" />
             <End Role="T_REPARATUR" EntitySet="T_REPARATUR" />
           </AssociationSet>
-          <AssociationSet Name="FK_FZM_FZG" Association="Model.Store.FK_FZM_FZG">
-            <End Role="TZ_FAHRZEUGTYP" EntitySet="TZ_FAHRZEUGTYP" />
-            <End Role="T_FAHRZEUG" EntitySet="T_FAHRZEUG" />
-          </AssociationSet>
           <AssociationSet Name="FK_FZM_FZT" Association="Model.Store.FK_FZM_FZT">
             <End Role="TR_FAHRZEUGMARKE" EntitySet="TR_FAHRZEUGMARKE" />
             <End Role="TZ_FAHRZEUGTYP" EntitySet="TZ_FAHRZEUGTYP" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FZT_FZG" Association="Model.Store.FK_FZT_FZG">
+            <End Role="TZ_FAHRZEUGTYP" EntitySet="TZ_FAHRZEUGTYP" />
+            <End Role="T_FAHRZEUG" EntitySet="T_FAHRZEUG" />
           </AssociationSet>
           <AssociationSet Name="FK_MAT_MTL" Association="Model.Store.FK_MAT_MTL">
             <End Role="TR_MATERIAL" EntitySet="TR_MATERIAL" />
@@ -65,7 +65,7 @@
           <Property Name="FZG_FAHRZEUGNR" Type="nvarchar" MaxLength="50" />
           <Property Name="FZG_NUT_ID" Type="int" />
           <Property Name="FZG_FZA_ID" Type="int" />
-          <Property Name="FZG_FZM_ID" Type="int" />
+          <Property Name="FZG_FZT_ID" Type="int" />
         </EntityType>
         <EntityType Name="T_NUTZER">
           <Key>
@@ -194,18 +194,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_FZM_FZG">
-          <End Role="TZ_FAHRZEUGTYP" Type="Model.Store.TZ_FAHRZEUGTYP" Multiplicity="0..1" />
-          <End Role="T_FAHRZEUG" Type="Model.Store.T_FAHRZEUG" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TZ_FAHRZEUGTYP">
-              <PropertyRef Name="FZT_ID" />
-            </Principal>
-            <Dependent Role="T_FAHRZEUG">
-              <PropertyRef Name="FZG_FZM_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_FZM_FZT">
           <End Role="TR_FAHRZEUGMARKE" Type="Model.Store.TR_FAHRZEUGMARKE" Multiplicity="0..1" />
           <End Role="TZ_FAHRZEUGTYP" Type="Model.Store.TZ_FAHRZEUGTYP" Multiplicity="*" />
@@ -215,6 +203,18 @@
             </Principal>
             <Dependent Role="TZ_FAHRZEUGTYP">
               <PropertyRef Name="FZT_FZM_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FZT_FZG">
+          <End Role="TZ_FAHRZEUGTYP" Type="Model.Store.TZ_FAHRZEUGTYP" Multiplicity="0..1" />
+          <End Role="T_FAHRZEUG" Type="Model.Store.T_FAHRZEUG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TZ_FAHRZEUGTYP">
+              <PropertyRef Name="FZT_ID" />
+            </Principal>
+            <Dependent Role="T_FAHRZEUG">
+              <PropertyRef Name="FZG_FZT_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -277,7 +277,7 @@
             <End Role="T_FAHRZEUG" EntitySet="T_FAHRZEUG" />
             <End Role="T_REPARATUR" EntitySet="T_REPARATUR" />
           </AssociationSet>
-          <AssociationSet Name="FK_FZM_FZG" Association="Model.FK_FZM_FZG">
+          <AssociationSet Name="FK_FZT_FZG" Association="Model.FK_FZT_FZG">
             <End Role="TZ_FAHRZEUGTYP" EntitySet="TZ_FAHRZEUGTYP" />
             <End Role="T_FAHRZEUG" EntitySet="T_FAHRZEUG" />
           </AssociationSet>
@@ -318,10 +318,10 @@
           <Property Type="String" Name="FZG_FAHRZEUGNR" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Type="Int32" Name="FZG_NUT_ID" />
           <Property Type="Int32" Name="FZG_FZA_ID" />
-          <Property Type="Int32" Name="FZG_FZM_ID" />
+          <Property Type="Int32" Name="FZG_FZT_ID" />
           <NavigationProperty Name="TR_FAHRZEUGART" Relationship="Model.FK_FZA_FZG" FromRole="T_FAHRZEUG" ToRole="TR_FAHRZEUGART" />
           <NavigationProperty Name="T_REPARATUR" Relationship="Model.FK_FZG_REP" FromRole="T_FAHRZEUG" ToRole="T_REPARATUR" />
-          <NavigationProperty Name="TZ_FAHRZEUGTYP" Relationship="Model.FK_FZM_FZG" FromRole="T_FAHRZEUG" ToRole="TZ_FAHRZEUGTYP" />
+          <NavigationProperty Name="TZ_FAHRZEUGTYP" Relationship="Model.FK_FZT_FZG" FromRole="T_FAHRZEUG" ToRole="TZ_FAHRZEUGTYP" />
           <NavigationProperty Name="T_NUTZER" Relationship="Model.FK_NUT_FZG" FromRole="T_FAHRZEUG" ToRole="T_NUTZER" />
         </EntityType>
         <EntityType Name="T_NUTZER">
@@ -404,7 +404,7 @@
           <Property Type="Int32" Name="FZT_ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="String" Name="FZT_BEZEICHNUNG" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Type="Int32" Name="FZT_FZM_ID" />
-          <NavigationProperty Name="T_FAHRZEUG" Relationship="Model.FK_FZM_FZG" FromRole="TZ_FAHRZEUGTYP" ToRole="T_FAHRZEUG" />
+          <NavigationProperty Name="T_FAHRZEUG" Relationship="Model.FK_FZT_FZG" FromRole="TZ_FAHRZEUGTYP" ToRole="T_FAHRZEUG" />
           <NavigationProperty Name="TR_FAHRZEUGMARKE" Relationship="Model.FK_FZM_FZT" FromRole="TZ_FAHRZEUGTYP" ToRole="TR_FAHRZEUGMARKE" />
         </EntityType>
         <EntityType Name="TZ_MATERIALLISTE">
@@ -441,7 +441,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_FZM_FZG">
+        <Association Name="FK_FZT_FZG">
           <End Type="Model.TZ_FAHRZEUGTYP" Role="TZ_FAHRZEUGTYP" Multiplicity="0..1" />
           <End Type="Model.T_FAHRZEUG" Role="T_FAHRZEUG" Multiplicity="*" />
           <ReferentialConstraint>
@@ -449,7 +449,7 @@
               <PropertyRef Name="FZT_ID" />
             </Principal>
             <Dependent Role="T_FAHRZEUG">
-              <PropertyRef Name="FZG_FZM_ID" />
+              <PropertyRef Name="FZG_FZT_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -534,7 +534,7 @@
           <EntitySetMapping Name="T_FAHRZEUG">
             <EntityTypeMapping TypeName="Model.T_FAHRZEUG">
               <MappingFragment StoreEntitySet="T_FAHRZEUG">
-                <ScalarProperty Name="FZG_FZM_ID" ColumnName="FZG_FZM_ID" />
+                <ScalarProperty Name="FZG_FZT_ID" ColumnName="FZG_FZT_ID" />
                 <ScalarProperty Name="FZG_FZA_ID" ColumnName="FZG_FZA_ID" />
                 <ScalarProperty Name="FZG_NUT_ID" ColumnName="FZG_NUT_ID" />
                 <ScalarProperty Name="FZG_FAHRZEUGNR" ColumnName="FZG_FAHRZEUGNR" />
@@ -656,56 +656,56 @@
     <Diagrams>
       <Diagram Name="RepairModel">
         <EntityTypeShape EntityType="Model.T_FAHRZEUG" Width="1.5" PointX="5.25" PointY="1" Height="3.5186979166666674" />
-        <EntityTypeShape EntityType="Model.T_NUTZER" Width="1.5" PointX="3" PointY="5.5" Height="1.9802864583333388" />
-        <EntityTypeShape EntityType="Model.T_REPARATUR" Width="1.5" PointX="7.5" PointY="1.125" Height="3.3263964843750031" />
+        <EntityTypeShape EntityType="Model.T_NUTZER" Width="1.5" PointX="3" PointY="5.5" Height="1.9802864583333246" />
+        <EntityTypeShape EntityType="Model.T_REPARATUR" Width="1.5" PointX="7.5" PointY="1.125" Height="3.3263964843750102" />
         <EntityTypeShape EntityType="Model.TR_ARBEIT" Width="1.5" PointX="3" PointY="11.625" Height="1.7879850260416674" />
         <EntityTypeShape EntityType="Model.TR_FAHRZEUGART" Width="1.5" PointX="3" PointY="8.25" Height="1.7879850260416674" />
-        <EntityTypeShape EntityType="Model.TR_FAHRZEUGMARKE" Width="1.5" PointX="0.75" PointY="2" Height="1.5956835937500031" />
-        <EntityTypeShape EntityType="Model.TR_MATERIAL" Width="1.5" PointX="3" PointY="14.25" Height="1.9802864583333371" />
-        <EntityTypeShape EntityType="Model.TZ_ARBEITLISTE" Width="1.5" PointX="5.25" PointY="11.5" Height="1.9802864583333388" />
-        <EntityTypeShape EntityType="Model.TZ_FAHRZEUGTYP" Width="1.5" PointX="3" PointY="1.75" Height="1.9802864583333388" />
-        <EntityTypeShape EntityType="Model.TZ_MATERIALLISTE" Width="1.5" PointX="5.25" PointY="14.25" Height="1.9802864583333371" />
+        <EntityTypeShape EntityType="Model.TR_FAHRZEUGMARKE" Width="1.5" PointX="0.75" PointY="2" Height="1.5956835937499818" />
+        <EntityTypeShape EntityType="Model.TR_MATERIAL" Width="1.5" PointX="3" PointY="14.25" Height="1.9802864583333513" />
+        <EntityTypeShape EntityType="Model.TZ_ARBEITLISTE" Width="1.5" PointX="5.25" PointY="11.5" Height="1.9802864583333246" />
+        <EntityTypeShape EntityType="Model.TZ_FAHRZEUGTYP" Width="1.5" PointX="3" PointY="1.75" Height="1.9802864583333246" />
+        <EntityTypeShape EntityType="Model.TZ_MATERIALLISTE" Width="1.5" PointX="5.25" PointY="14.25" Height="1.9802864583333228" />
         <AssociationConnector Association="Model.FK_FZA_FZG" >
           <ConnectorPoint PointX="4.5" PointY="9.1439925130208337" />
           <ConnectorPoint PointX="6" PointY="9.1439925130208337" />
           <ConnectorPoint PointX="6" PointY="4.5186979166666674" />
         </AssociationConnector>
         <AssociationConnector Association="Model.FK_FZG_REP" >
-          <ConnectorPoint PointX="6.75" PointY="2.7881982421875016" />
-          <ConnectorPoint PointX="7.5" PointY="2.7881982421875016" />
+          <ConnectorPoint PointX="6.75" PointY="2.7881982421875051" />
+          <ConnectorPoint PointX="7.5" PointY="2.7881982421875051" />
         </AssociationConnector>
-        <AssociationConnector Association="Model.FK_FZM_FZG" >
-          <ConnectorPoint PointX="4.5" PointY="2.7401432291666694" />
-          <ConnectorPoint PointX="5.25" PointY="2.7401432291666694" />
+        <AssociationConnector Association="Model.FK_FZT_FZG" >
+          <ConnectorPoint PointX="4.5" PointY="2.7401432291666623" />
+          <ConnectorPoint PointX="5.25" PointY="2.7401432291666623" />
         </AssociationConnector>
         <AssociationConnector Association="Model.FK_NUT_FZG" >
-          <ConnectorPoint PointX="4.5" PointY="6.4901432291666694" />
-          <ConnectorPoint PointX="5.5937475" PointY="6.4901432291666694" />
+          <ConnectorPoint PointX="4.5" PointY="6.4901432291666623" />
+          <ConnectorPoint PointX="5.5937475" PointY="6.4901432291666623" />
           <ConnectorPoint PointX="5.5937475" PointY="4.5186979166666674" />
         </AssociationConnector>
         <AssociationConnector Association="Model.FK_ABL_REP" >
-          <ConnectorPoint PointX="6.75" PointY="12.490143229166669" />
-          <ConnectorPoint PointX="7.7604141666666671" PointY="12.490143229166669" />
-          <ConnectorPoint PointX="7.9270808333333331" PointY="12.490143229166669" />
-          <ConnectorPoint PointX="8.25" PointY="12.490143229166669" />
-          <ConnectorPoint PointX="8.25" PointY="4.4513964843750031" />
+          <ConnectorPoint PointX="6.75" PointY="12.490143229166662" />
+          <ConnectorPoint PointX="7.7604141666666671" PointY="12.490143229166662" />
+          <ConnectorPoint PointX="7.9270808333333331" PointY="12.490143229166662" />
+          <ConnectorPoint PointX="8.25" PointY="12.490143229166662" />
+          <ConnectorPoint PointX="8.25" PointY="4.45139648437501" />
         </AssociationConnector>
         <AssociationConnector Association="Model.FK_MTL_REP" >
-          <ConnectorPoint PointX="6.75" PointY="15.240143229166669" />
-          <ConnectorPoint PointX="7.8437475" PointY="15.240143229166669" />
-          <ConnectorPoint PointX="7.8437475" PointY="4.4513964843750031" />
+          <ConnectorPoint PointX="6.75" PointY="15.240143229166662" />
+          <ConnectorPoint PointX="7.8437475" PointY="15.240143229166662" />
+          <ConnectorPoint PointX="7.8437475" PointY="4.45139648437501" />
         </AssociationConnector>
         <AssociationConnector Association="Model.FK_ARB_ABL" >
           <ConnectorPoint PointX="4.5" PointY="12.518992513020834" />
           <ConnectorPoint PointX="5.25" PointY="12.518992513020834" />
         </AssociationConnector>
         <AssociationConnector Association="Model.FK_FZM_FZT" >
-          <ConnectorPoint PointX="2.25" PointY="2.7978417968750016" />
-          <ConnectorPoint PointX="3" PointY="2.7978417968750016" />
+          <ConnectorPoint PointX="2.25" PointY="2.7978417968749909" />
+          <ConnectorPoint PointX="3" PointY="2.7978417968749909" />
         </AssociationConnector>
         <AssociationConnector Association="Model.FK_MAT_MTL" >
-          <ConnectorPoint PointX="4.5" PointY="15.240143229166669" />
-          <ConnectorPoint PointX="5.25" PointY="15.240143229166669" />
+          <ConnectorPoint PointX="4.5" PointY="15.240143229166662" />
+          <ConnectorPoint PointX="5.25" PointY="15.240143229166662" />
         </AssociationConnector>
       </Diagram>
     </Diagrams>

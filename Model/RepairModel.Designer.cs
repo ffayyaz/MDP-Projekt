@@ -20,7 +20,7 @@ using System.Runtime.Serialization;
 
 [assembly: EdmRelationshipAttribute("Model", "FK_FZA_FZG", "TR_FAHRZEUGART", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(MDP_Projekt.Model.TR_FAHRZEUGART), "T_FAHRZEUG", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MDP_Projekt.Model.T_FAHRZEUG), true)]
 [assembly: EdmRelationshipAttribute("Model", "FK_FZG_REP", "T_FAHRZEUG", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(MDP_Projekt.Model.T_FAHRZEUG), "T_REPARATUR", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MDP_Projekt.Model.T_REPARATUR), true)]
-[assembly: EdmRelationshipAttribute("Model", "FK_FZM_FZG", "TZ_FAHRZEUGTYP", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(MDP_Projekt.Model.TZ_FAHRZEUGTYP), "T_FAHRZEUG", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MDP_Projekt.Model.T_FAHRZEUG), true)]
+[assembly: EdmRelationshipAttribute("Model", "FK_FZT_FZG", "TZ_FAHRZEUGTYP", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(MDP_Projekt.Model.TZ_FAHRZEUGTYP), "T_FAHRZEUG", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MDP_Projekt.Model.T_FAHRZEUG), true)]
 [assembly: EdmRelationshipAttribute("Model", "FK_NUT_FZG", "T_NUTZER", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(MDP_Projekt.Model.T_NUTZER), "T_FAHRZEUG", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MDP_Projekt.Model.T_FAHRZEUG), true)]
 [assembly: EdmRelationshipAttribute("Model", "FK_ABL_REP", "TZ_ARBEITLISTE", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(MDP_Projekt.Model.TZ_ARBEITLISTE), "T_REPARATUR", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MDP_Projekt.Model.T_REPARATUR), true)]
 [assembly: EdmRelationshipAttribute("Model", "FK_MTL_REP", "TZ_MATERIALLISTE", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(MDP_Projekt.Model.TZ_MATERIALLISTE), "T_REPARATUR", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MDP_Projekt.Model.T_REPARATUR), true)]
@@ -553,24 +553,24 @@ namespace MDP_Projekt.Model
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public Nullable<global::System.Int32> FZG_FZM_ID
+        public Nullable<global::System.Int32> FZG_FZT_ID
         {
             get
             {
-                return _FZG_FZM_ID;
+                return _FZG_FZT_ID;
             }
             set
             {
-                OnFZG_FZM_IDChanging(value);
-                ReportPropertyChanging("FZG_FZM_ID");
-                _FZG_FZM_ID = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("FZG_FZM_ID");
-                OnFZG_FZM_IDChanged();
+                OnFZG_FZT_IDChanging(value);
+                ReportPropertyChanging("FZG_FZT_ID");
+                _FZG_FZT_ID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("FZG_FZT_ID");
+                OnFZG_FZT_IDChanged();
             }
         }
-        private Nullable<global::System.Int32> _FZG_FZM_ID;
-        partial void OnFZG_FZM_IDChanging(Nullable<global::System.Int32> value);
-        partial void OnFZG_FZM_IDChanged();
+        private Nullable<global::System.Int32> _FZG_FZT_ID;
+        partial void OnFZG_FZT_IDChanging(Nullable<global::System.Int32> value);
+        partial void OnFZG_FZT_IDChanged();
 
         #endregion
     
@@ -642,16 +642,16 @@ namespace MDP_Projekt.Model
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("Model", "FK_FZM_FZG", "TZ_FAHRZEUGTYP")]
+        [EdmRelationshipNavigationPropertyAttribute("Model", "FK_FZT_FZG", "TZ_FAHRZEUGTYP")]
         public TZ_FAHRZEUGTYP TZ_FAHRZEUGTYP
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TZ_FAHRZEUGTYP>("Model.FK_FZM_FZG", "TZ_FAHRZEUGTYP").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TZ_FAHRZEUGTYP>("Model.FK_FZT_FZG", "TZ_FAHRZEUGTYP").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TZ_FAHRZEUGTYP>("Model.FK_FZM_FZG", "TZ_FAHRZEUGTYP").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TZ_FAHRZEUGTYP>("Model.FK_FZT_FZG", "TZ_FAHRZEUGTYP").Value = value;
             }
         }
         /// <summary>
@@ -663,13 +663,13 @@ namespace MDP_Projekt.Model
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TZ_FAHRZEUGTYP>("Model.FK_FZM_FZG", "TZ_FAHRZEUGTYP");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TZ_FAHRZEUGTYP>("Model.FK_FZT_FZG", "TZ_FAHRZEUGTYP");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TZ_FAHRZEUGTYP>("Model.FK_FZM_FZG", "TZ_FAHRZEUGTYP", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TZ_FAHRZEUGTYP>("Model.FK_FZT_FZG", "TZ_FAHRZEUGTYP", value);
                 }
             }
         }
@@ -2026,18 +2026,18 @@ namespace MDP_Projekt.Model
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("Model", "FK_FZM_FZG", "T_FAHRZEUG")]
+        [EdmRelationshipNavigationPropertyAttribute("Model", "FK_FZT_FZG", "T_FAHRZEUG")]
         public EntityCollection<T_FAHRZEUG> T_FAHRZEUG
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<T_FAHRZEUG>("Model.FK_FZM_FZG", "T_FAHRZEUG");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<T_FAHRZEUG>("Model.FK_FZT_FZG", "T_FAHRZEUG");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<T_FAHRZEUG>("Model.FK_FZM_FZG", "T_FAHRZEUG", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<T_FAHRZEUG>("Model.FK_FZT_FZG", "T_FAHRZEUG", value);
                 }
             }
         }
