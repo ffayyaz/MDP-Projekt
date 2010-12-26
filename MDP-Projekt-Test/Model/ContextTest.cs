@@ -99,6 +99,18 @@ namespace MDP_Projekt_Test
         }
 
         /// <summary>
+        ///A test for AddToTR_ARBEIT
+        ///</summary>
+        [TestMethod()]
+        public void AddToTR_ARBEITTest()
+        {
+            Context target = new Context(); // TODO: Initialize to an appropriate value
+            TR_ARBEIT tR_ARBEIT = null; // TODO: Initialize to an appropriate value
+            target.AddToTR_ARBEIT(tR_ARBEIT);
+            Assert.Inconclusive("A method that does not return a value cannot be verified.");
+        }
+
+        /// <summary>
         ///A test for AddToTR_FAHRZEUGART
         ///</summary>
         [TestMethod()]
@@ -111,26 +123,62 @@ namespace MDP_Projekt_Test
         }
 
         /// <summary>
-        ///A test for AddToTR_FAHRZEUGTYP
+        ///A test for AddToTR_FAHRZEUGMARKE
         ///</summary>
         [TestMethod()]
-        public void AddToTR_FAHRZEUGTYPTest()
+        public void AddToTR_FAHRZEUGMARKETest()
         {
             Context target = new Context(); // TODO: Initialize to an appropriate value
-            TR_FAHRZEUGTYP tR_FAHRZEUGTYP = null; // TODO: Initialize to an appropriate value
-            target.AddToTR_FAHRZEUGTYP(tR_FAHRZEUGTYP);
+            TR_FAHRZEUGMARKE tR_FAHRZEUGMARKE = null; // TODO: Initialize to an appropriate value
+            target.AddToTR_FAHRZEUGMARKE(tR_FAHRZEUGMARKE);
             Assert.Inconclusive("A method that does not return a value cannot be verified.");
         }
 
         /// <summary>
-        ///A test for AddToTZ_FAHRZEUGMARKE
+        ///A test for AddToTR_MATERIAL
         ///</summary>
         [TestMethod()]
-        public void AddToTZ_FAHRZEUGMARKETest()
+        public void AddToTR_MATERIALTest()
         {
             Context target = new Context(); // TODO: Initialize to an appropriate value
-            TZ_FAHRZEUGMARKE tZ_FAHRZEUGMARKE = null; // TODO: Initialize to an appropriate value
-            target.AddToTZ_FAHRZEUGMARKE(tZ_FAHRZEUGMARKE);
+            TR_MATERIAL tR_MATERIAL = null; // TODO: Initialize to an appropriate value
+            target.AddToTR_MATERIAL(tR_MATERIAL);
+            Assert.Inconclusive("A method that does not return a value cannot be verified.");
+        }
+
+        /// <summary>
+        ///A test for AddToTZ_ARBEITLISTE
+        ///</summary>
+        [TestMethod()]
+        public void AddToTZ_ARBEITLISTETest()
+        {
+            Context target = new Context(); // TODO: Initialize to an appropriate value
+            TZ_ARBEITLISTE tZ_ARBEITLISTE = null; // TODO: Initialize to an appropriate value
+            target.AddToTZ_ARBEITLISTE(tZ_ARBEITLISTE);
+            Assert.Inconclusive("A method that does not return a value cannot be verified.");
+        }
+
+        /// <summary>
+        ///A test for AddToTZ_FAHRZEUGTYP
+        ///</summary>
+        [TestMethod()]
+        public void AddToTZ_FAHRZEUGTYPTest()
+        {
+            Context target = new Context(); // TODO: Initialize to an appropriate value
+            TZ_FAHRZEUGTYP tZ_FAHRZEUGTYP = null; // TODO: Initialize to an appropriate value
+            target.AddToTZ_FAHRZEUGTYP(tZ_FAHRZEUGTYP);
+            Assert.Inconclusive("A method that does not return a value cannot be verified.");
+        }
+
+        /// <summary>
+        ///A test for AddToTZ_MATERIALLISTE
+        ///</summary>
+        [TestMethod()]
+        public void AddToTZ_MATERIALLISTETest()
+        {
+            Context target = new Context(); // TODO: Initialize to an appropriate value
+            TZ_MATERIALLISTE tZ_MATERIALLISTE = null; // TODO: Initialize to an appropriate value
+            target.AddToTZ_MATERIALLISTE(tZ_MATERIALLISTE);
             Assert.Inconclusive("A method that does not return a value cannot be verified.");
         }
 
@@ -159,6 +207,30 @@ namespace MDP_Projekt_Test
         }
 
         /// <summary>
+        ///A test for AddToT_REPARATUR
+        ///</summary>
+        [TestMethod()]
+        public void AddToT_REPARATURTest()
+        {
+            Context target = new Context(); // TODO: Initialize to an appropriate value
+            T_REPARATUR t_REPARATUR = null; // TODO: Initialize to an appropriate value
+            target.AddToT_REPARATUR(t_REPARATUR);
+            Assert.Inconclusive("A method that does not return a value cannot be verified.");
+        }
+
+        /// <summary>
+        ///A test for TR_ARBEIT
+        ///</summary>
+        [TestMethod()]
+        public void TR_ARBEITTest()
+        {
+            Context target = new Context(); // TODO: Initialize to an appropriate value
+            ObjectSet<TR_ARBEIT> actual;
+            actual = target.TR_ARBEIT;
+            Assert.Inconclusive("Verify the correctness of this test method.");
+        }
+
+        /// <summary>
         ///A test for TR_FAHRZEUGART
         ///</summary>
         [TestMethod()]
@@ -171,26 +243,62 @@ namespace MDP_Projekt_Test
         }
 
         /// <summary>
-        ///A test for TR_FAHRZEUGTYP
+        ///A test for TR_FAHRZEUGMARKE
         ///</summary>
         [TestMethod()]
-        public void TR_FAHRZEUGTYPTest()
+        public void TR_FAHRZEUGMARKETest()
         {
             Context target = new Context(); // TODO: Initialize to an appropriate value
-            ObjectSet<TR_FAHRZEUGTYP> actual;
-            actual = target.TR_FAHRZEUGTYP;
+            ObjectSet<TR_FAHRZEUGMARKE> actual;
+            actual = target.TR_FAHRZEUGMARKE;
             Assert.Inconclusive("Verify the correctness of this test method.");
         }
 
         /// <summary>
-        ///A test for TZ_FAHRZEUGMARKE
+        ///A test for TR_MATERIAL
         ///</summary>
         [TestMethod()]
-        public void TZ_FAHRZEUGMARKETest()
+        public void TR_MATERIALTest()
         {
             Context target = new Context(); // TODO: Initialize to an appropriate value
-            ObjectSet<TZ_FAHRZEUGMARKE> actual;
-            actual = target.TZ_FAHRZEUGMARKE;
+            ObjectSet<TR_MATERIAL> actual;
+            actual = target.TR_MATERIAL;
+            Assert.Inconclusive("Verify the correctness of this test method.");
+        }
+
+        /// <summary>
+        ///A test for TZ_ARBEITLISTE
+        ///</summary>
+        [TestMethod()]
+        public void TZ_ARBEITLISTETest()
+        {
+            Context target = new Context(); // TODO: Initialize to an appropriate value
+            ObjectSet<TZ_ARBEITLISTE> actual;
+            actual = target.TZ_ARBEITLISTE;
+            Assert.Inconclusive("Verify the correctness of this test method.");
+        }
+
+        /// <summary>
+        ///A test for TZ_FAHRZEUGTYP
+        ///</summary>
+        [TestMethod()]
+        public void TZ_FAHRZEUGTYPTest()
+        {
+            Context target = new Context(); // TODO: Initialize to an appropriate value
+            ObjectSet<TZ_FAHRZEUGTYP> actual;
+            actual = target.TZ_FAHRZEUGTYP;
+            Assert.Inconclusive("Verify the correctness of this test method.");
+        }
+
+        /// <summary>
+        ///A test for TZ_MATERIALLISTE
+        ///</summary>
+        [TestMethod()]
+        public void TZ_MATERIALLISTETest()
+        {
+            Context target = new Context(); // TODO: Initialize to an appropriate value
+            ObjectSet<TZ_MATERIALLISTE> actual;
+            actual = target.TZ_MATERIALLISTE;
             Assert.Inconclusive("Verify the correctness of this test method.");
         }
 
@@ -215,6 +323,18 @@ namespace MDP_Projekt_Test
             Context target = new Context(); // TODO: Initialize to an appropriate value
             ObjectSet<T_NUTZER> actual;
             actual = target.T_NUTZER;
+            Assert.Inconclusive("Verify the correctness of this test method.");
+        }
+
+        /// <summary>
+        ///A test for T_REPARATUR
+        ///</summary>
+        [TestMethod()]
+        public void T_REPARATURTest()
+        {
+            Context target = new Context(); // TODO: Initialize to an appropriate value
+            ObjectSet<T_REPARATUR> actual;
+            actual = target.T_REPARATUR;
             Assert.Inconclusive("Verify the correctness of this test method.");
         }
     }

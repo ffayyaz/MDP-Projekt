@@ -74,31 +74,6 @@ namespace MDP_Projekt_Test
         }
 
         /// <summary>
-        ///A test for InitializeComponent
-        ///</summary>
-        [TestMethod()]
-        public void InitializeComponentTest()
-        {
-            MDP_Projekt.UI.FahrzeugDatenUI target = new MDP_Projekt.UI.FahrzeugDatenUI(); // TODO: Initialize to an appropriate value
-            target.InitializeComponent();
-            Assert.Inconclusive("A method that does not return a value cannot be verified.");
-        }
-
-        /// <summary>
-        ///A test for System.Windows.Markup.IComponentConnector.Connect
-        ///</summary>
-        [TestMethod()]
-        [DeploymentItem("MDP-Projekt.exe")]
-        public void ConnectTest()
-        {
-            System.Windows.Markup.IComponentConnector target = new MDP_Projekt.UI.NutzerDatenUI(); // TODO: Initialize to an appropriate value
-            int connectionId = 0; // TODO: Initialize to an appropriate value
-            object target1 = null; // TODO: Initialize to an appropriate value
-            target.Connect(connectionId, target1);
-            Assert.Inconclusive("A method that does not return a value cannot be verified.");
-        }
-
-        /// <summary>
         ///A test for getFahrzeuge
         ///</summary>
         [TestMethod()]
@@ -151,8 +126,8 @@ namespace MDP_Projekt_Test
         {
             MDP_Projekt.UI.FahrzeugDatenUI_Accessor target1 = new MDP_Projekt.UI.FahrzeugDatenUI_Accessor();
             MDP_Projekt.UI.FahrzeugDatenUI_Accessor target2 = new MDP_Projekt.UI.FahrzeugDatenUI_Accessor(); 
-            System.Collections.Generic.List<MDP_Projekt.Model.TZ_FAHRZEUGMARKE> expected;
-            System.Collections.Generic.List<MDP_Projekt.Model.TZ_FAHRZEUGMARKE> actual;
+            System.Collections.Generic.List<MDP_Projekt.Model.TR_FAHRZEUGMARKE> expected;
+            System.Collections.Generic.List<MDP_Projekt.Model.TR_FAHRZEUGMARKE> actual;
             actual = target1.getFahrzeugmarkeCombo();
             expected = target2.getFahrzeugmarkeCombo();
             
@@ -173,8 +148,8 @@ namespace MDP_Projekt_Test
         {
             MDP_Projekt.UI.FahrzeugDatenUI_Accessor target1 = new MDP_Projekt.UI.FahrzeugDatenUI_Accessor();
             MDP_Projekt.UI.FahrzeugDatenUI_Accessor target2 = new MDP_Projekt.UI.FahrzeugDatenUI_Accessor();
-            System.Collections.Generic.List<MDP_Projekt.Model.TR_FAHRZEUGTYP> expected;
-            System.Collections.Generic.List<MDP_Projekt.Model.TR_FAHRZEUGTYP> actual;
+            System.Collections.Generic.List<MDP_Projekt.Model.TZ_FAHRZEUGTYP> expected;
+            System.Collections.Generic.List<MDP_Projekt.Model.TZ_FAHRZEUGTYP> actual;
             actual = target1.getFahrzeugtypCombo();
             expected = target2.getFahrzeugtypCombo();
             Assert.IsNotNull(actual);
@@ -204,53 +179,6 @@ namespace MDP_Projekt_Test
             Assert.IsTrue(actual.Capacity > 0);
             Assert.IsTrue(actual.Capacity == expected.Capacity);
             Assert.AreEqual(expected, actual);
-        }
-
-        /// <summary>
-        ///A test for dataGridNutzerDaten_SelectionChanged
-        ///</summary>
-        [TestMethod()]
-        [DeploymentItem("MDP-Projekt.exe")]
-        public void gridFahrzeugDaten_SelectionChangedTest()
-        {
-            MDP_Projekt.UI.FahrzeugDatenUI_Accessor target = new MDP_Projekt.UI.FahrzeugDatenUI_Accessor(); // TODO: Initialize to an appropriate value
-            object sender = null; // TODO: Initialize to an appropriate value
-            System.Windows.Controls.SelectionChangedEventArgs e = null; // TODO: Initialize to an appropriate value
-            target.gridFahrzeugDaten_SelectionChanged(sender, e);
-            Assert.Inconclusive("A method that does not return a value cannot be verified.");
-        }
-
-        /// <summary>
-        ///A test for btnSave_Click
-        ///</summary>
-        [TestMethod()]
-        [DeploymentItem("MDP-Projekt.exe")]
-        public void btnSave_ClickTest()
-        {
-            MDP_Projekt.UI.FahrzeugDatenUI_Accessor target = new MDP_Projekt.UI.FahrzeugDatenUI_Accessor(); // TODO: Initialize to an appropriate value
-
-        }
-
-        /// <summary>
-        ///A test for btnDelete_Click
-        ///</summary>
-        [TestMethod()]
-        [DeploymentItem("MDP-Projekt.exe")]
-        public void btnDelete_ClickTest()
-        {
-            MDP_Projekt.UI.FahrzeugDatenUI_Accessor target = new MDP_Projekt.UI.FahrzeugDatenUI_Accessor(); // TODO: Initialize to an appropriate value
-
-        }
-
-        /// <summary>
-        ///A test for btnNew_Click
-        ///</summary>
-        [TestMethod()]
-        [DeploymentItem("MDP-Projekt.exe")]
-        public void btnNew_ClickTest()
-        {
-            MDP_Projekt.UI.FahrzeugDatenUI_Accessor target = new MDP_Projekt.UI.FahrzeugDatenUI_Accessor(); // TODO: Initialize to an appropriate value
-
         }
     }
 }

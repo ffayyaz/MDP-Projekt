@@ -75,30 +75,5 @@ namespace MDP_Projekt_Test
             MainWindow mainWindow = new MainWindow();
             Assert.IsInstanceOfType(mainWindow, typeof(MainWindow));
         }
-
-        /// <summary>
-        ///A test for InitializeComponent
-        ///</summary>
-        [TestMethod()]
-        public void InitializeComponentTest()
-        {
-            MainWindow mainWindow = new MainWindow(); // TODO: Initialize to an appropriate value
-            mainWindow.InitializeComponent();
-            Assert.Inconclusive("A method that does not return a value cannot be verified.");
-        }
-
-        /// <summary>
-        ///A test for System.Windows.Markup.IComponentConnector.Connect
-        ///</summary>
-        [TestMethod()]
-        [DeploymentItem("MDP-Projekt.exe")]
-        public void ConnectTest()
-        {
-            IComponentConnector mainWindow = new MainWindow(); // TODO: Initialize to an appropriate value
-            int connectionId = 0; // TODO: Initialize to an appropriate value
-            object mainWindow1 = null; // TODO: Initialize to an appropriate value
-            mainWindow.Connect(connectionId, mainWindow1);
-            Assert.Inconclusive("A method that does not return a value cannot be verified.");
-        }
     }
 }

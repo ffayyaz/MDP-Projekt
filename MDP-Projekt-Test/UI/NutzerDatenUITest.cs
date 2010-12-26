@@ -75,31 +75,6 @@ namespace MDP_Projekt_Test
         }
 
         /// <summary>
-        ///A test for InitializeComponent
-        ///</summary>       
-        [TestMethod()]
-        public void InitializeComponentTest()
-        {
-            MDP_Projekt.UI.NutzerDatenUI target = new MDP_Projekt.UI.NutzerDatenUI(); // TODO: Initialize to an appropriate value
-            target.InitializeComponent();            
-            Assert.Inconclusive("A method that does not return a value cannot be verified.");
-        }        
-
-        /// <summary>
-        ///A test for System.Windows.Markup.IComponentConnector.Connect
-        ///</summary>
-        [TestMethod()]
-        [DeploymentItem("MDP-Projekt.exe")]
-        public void ConnectTest()
-        {
-            System.Windows.Markup.IComponentConnector target = new MDP_Projekt.UI.NutzerDatenUI(); // TODO: Initialize to an appropriate value
-            int connectionId = 0; // TODO: Initialize to an appropriate value
-            object target1 = null; // TODO: Initialize to an appropriate value
-            target.Connect(connectionId, target1);
-            Assert.Inconclusive("A method that does not return a value cannot be verified.");
-        }
-
-        /// <summary>
         ///A test for getNutzer
         ///</summary>
         [TestMethod()]
@@ -119,20 +94,6 @@ namespace MDP_Projekt_Test
             Assert.IsTrue(actual.Capacity > 0);
             Assert.IsTrue(actual.Capacity == expected.Capacity);
             Assert.AreEqual(expected, actual);
-        }
-
-        /// <summary>
-        ///A test for dataGridNutzerDaten_SelectionChanged
-        ///</summary>
-        [TestMethod()]
-        [DeploymentItem("MDP-Projekt.exe")]
-        public void dataGridNutzerDaten_SelectionChangedTest()
-        {
-            MDP_Projekt.UI.NutzerDatenUI_Accessor target = new MDP_Projekt.UI.NutzerDatenUI_Accessor(); // TODO: Initialize to an appropriate value
-            object sender = null; // TODO: Initialize to an appropriate value
-            System.Windows.Controls.SelectionChangedEventArgs e = null; // TODO: Initialize to an appropriate value
-            target.dataGridNutzerDaten_SelectionChanged(sender, e);
-            Assert.Inconclusive("A method that does not return a value cannot be verified.");
         }
     }
 }

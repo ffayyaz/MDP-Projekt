@@ -8,11 +8,11 @@ namespace MDP_Projekt_Test
     
     
     /// <summary>
-    ///This is a test class for TR_FAHRZEUGTYPTest and is intended
-    ///to contain all TR_FAHRZEUGTYPTest Unit Tests
+    ///This is a test class for TR_FAHRZEUGMARKETest and is intended
+    ///to contain all TR_FAHRZEUGMARKETest Unit Tests
     ///</summary>
     [TestClass()]
-    public class TR_FAHRZEUGTYPTest
+    public class TR_FAHRZEUGMARKETest
     {
 
 
@@ -66,64 +66,63 @@ namespace MDP_Projekt_Test
 
 
         /// <summary>
-        ///A test for TR_FAHRZEUGTYP Constructor
+        ///A test for TR_FAHRZEUGMARKE Constructor
         ///</summary>
         [TestMethod()]
-        public void TR_FAHRZEUGTYPConstructorTest()
+        public void TR_FAHRZEUGMARKEConstructorTest()
         {
-            TR_FAHRZEUGTYP fzgTyp = new TR_FAHRZEUGTYP();
-            Assert.IsInstanceOfType(fzgTyp, typeof(TR_FAHRZEUGTYP));
+            TR_FAHRZEUGMARKE target = new TR_FAHRZEUGMARKE();
+            Assert.IsInstanceOfType(target, typeof(TR_FAHRZEUGMARKE));
         }
 
         /// <summary>
-        ///A test for CreateTR_FAHRZEUGTYP
+        ///A test for CreateTR_FAHRZEUGMARKE
         ///</summary>
         [TestMethod()]
-        public void CreateTR_FAHRZEUGTYPTest()
+        public void CreateTR_FAHRZEUGMARKETest()
         {
-            int fZT_ID = 1;
-            string fZT_BEZEICHNUNG = "Liberty";
-            TR_FAHRZEUGTYP fzgTyp = TR_FAHRZEUGTYP.CreateTR_FAHRZEUGTYP(fZT_ID, fZT_BEZEICHNUNG);
-            Assert.IsTrue(fzgTyp.FZT_ID == fZT_ID && fzgTyp.FZT_BEZEICHNUNG.Equals(fZT_BEZEICHNUNG));
+            int fZM_ID = 1;
+            string fZM_Bezeichnung = "Piaggio";
+            TR_FAHRZEUGMARKE fzgMarke = TR_FAHRZEUGMARKE.CreateTR_FAHRZEUGMARKE(fZM_ID,fZM_Bezeichnung);
+            Assert.IsTrue(fzgMarke.FZM_BEZEICHNUNG.Equals(fZM_Bezeichnung) && fzgMarke.FZM_ID == fZM_ID);
         }
 
         /// <summary>
-        ///A test for FZT_BEZEICHNUNG
+        ///A test for FZM_BEZEICHNUNG
         ///</summary>
         [TestMethod()]
-        public void FZT_BEZEICHNUNGTest()
+        public void FZM_BEZEICHNUNGTest()
         {
-            TR_FAHRZEUGTYP fzgTyp = new TR_FAHRZEUGTYP();
-            string expected = "Liberty"; 
-            fzgTyp.FZT_BEZEICHNUNG = expected;
-            Assert.AreEqual(expected, fzgTyp.FZT_BEZEICHNUNG);
+            TR_FAHRZEUGMARKE fzgMarke = new TR_FAHRZEUGMARKE();
+            string expected = "Vespa";
+            fzgMarke.FZM_BEZEICHNUNG = expected;
+            Assert.AreEqual(expected, fzgMarke.FZM_BEZEICHNUNG);
         }
 
         /// <summary>
-        ///A test for FZT_ID
+        ///A test for FZM_ID
         ///</summary>
         [TestMethod()]
-        public void FZT_IDTest()
+        public void FZM_IDTest()
         {
-            TR_FAHRZEUGTYP fzgTyp = new TR_FAHRZEUGTYP(); 
-            int expected = 1; 
-            fzgTyp.FZT_ID = expected;
-            Assert.AreEqual(expected, fzgTyp.FZT_ID);
+            TR_FAHRZEUGMARKE fzgMarke = new TR_FAHRZEUGMARKE();
+            int expected = 1;
+            fzgMarke.FZM_ID = expected;
+            Assert.AreEqual(expected, fzgMarke.FZM_ID);
         }
 
+        /*
         /// <summary>
-        ///A test for TZ_FAHRZEUGMARKE
+        ///A test for isNew
         ///</summary>
         [TestMethod()]
-        public void TZ_FAHRZEUGMARKETest()
+        public void isNewTest()
         {
-            TR_FAHRZEUGTYP fzgTyp = new TR_FAHRZEUGTYP(); // TODO: Initialize to an appropriate value
-            EntityCollection<TZ_FAHRZEUGMARKE> expected = null; // TODO: Initialize to an appropriate value
-            EntityCollection<TZ_FAHRZEUGMARKE> actual;
-            fzgTyp.TZ_FAHRZEUGMARKE = expected;
-            actual = fzgTyp.TZ_FAHRZEUGMARKE;
-            Assert.AreEqual(expected, actual);
+            TR_FAHRZEUGMARKE target = new TR_FAHRZEUGMARKE(); // TODO: Initialize to an appropriate value
+            bool actual;
+            actual = target.isNew;
             Assert.Inconclusive("Verify the correctness of this test method.");
         }
+         */
     }
 }

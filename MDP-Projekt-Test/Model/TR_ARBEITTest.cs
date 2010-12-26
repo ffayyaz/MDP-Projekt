@@ -8,11 +8,11 @@ namespace MDP_Projekt_Test
     
     
     /// <summary>
-    ///This is a test class for TR_FAHRZEUGARTTest and is intended
-    ///to contain all TR_FAHRZEUGARTTest Unit Tests
+    ///This is a test class for TR_ARBEITTest and is intended
+    ///to contain all TR_ARBEITTest Unit Tests
     ///</summary>
     [TestClass()]
-    public class TR_FAHRZEUGARTTest
+    public class TR_ARBEITTest
     {
 
 
@@ -66,76 +66,74 @@ namespace MDP_Projekt_Test
 
 
         /// <summary>
-        ///A test for TR_FAHRZEUGART Constructor
+        ///A test for TR_ARBEIT Constructor
         ///</summary>
         [TestMethod()]
-        public void TR_FAHRZEUGARTConstructorTest()
+        public void TR_ARBEITConstructorTest()
         {
-            TR_FAHRZEUGART target = new TR_FAHRZEUGART();
-            Assert.IsInstanceOfType(target, typeof(TR_FAHRZEUGART));
+            TR_ARBEIT target = new TR_ARBEIT();
+            Assert.IsInstanceOfType(target, typeof(TR_ARBEIT));
         }
 
         /// <summary>
-        ///A test for CreateTR_FAHRZEUGART
+        ///A test for CreateTR_ARBEIT
         ///</summary>
         [TestMethod()]
-        public void CreateTR_FAHRZEUGARTTest()
+        public void CreateTR_ARBEITTest()
         {
-            int fZA_ID = 1;
-            string fZA_BEZEICHNUNG = "Roller";
-            string fZA_KEY = "ROL";
-            TR_FAHRZEUGART fzgArt = TR_FAHRZEUGART.CreateTR_FAHRZEUGART(fZA_ID, fZA_BEZEICHNUNG, fZA_KEY);
-            Assert.IsTrue(fzgArt.FZA_ID == fZA_ID && fzgArt.FZA_BEZEICHNUNG.Equals(fZA_BEZEICHNUNG) && fzgArt.FZA_KEY.Equals(fZA_KEY));
+            int aRB_ID = 1;
+            TR_ARBEIT rep = TR_ARBEIT.CreateTR_ARBEIT(aRB_ID);
+            Assert.IsTrue(rep.ARB_ID== aRB_ID);
         }
 
         /// <summary>
-        ///A test for FZA_BEZEICHNUNG
+        ///A test for ARB_BEZEICHNUNG
         ///</summary>
         [TestMethod()]
-        public void FZA_BEZEICHNUNGTest()
+        public void ARB_BEZEICHNUNGTest()
         {
-            TR_FAHRZEUGART fzgArt = new TR_FAHRZEUGART();
-            string expected = "Roller";
-            fzgArt.FZA_BEZEICHNUNG = expected;
-            Assert.AreEqual(expected, fzgArt.FZA_BEZEICHNUNG);
+            TR_ARBEIT arb = new TR_ARBEIT();
+            string expected = "arbeit";
+            arb.ARB_BEZEICHNUNG= expected;
+            Assert.AreEqual(expected, arb.ARB_BEZEICHNUNG);
         }
 
         /// <summary>
-        ///A test for FZA_ID
+        ///A test for ARB_ID
         ///</summary>
         [TestMethod()]
-        public void FZA_IDTest()
+        public void ARB_IDTest()
         {
-            TR_FAHRZEUGART fzgArt = new TR_FAHRZEUGART();
+            TR_ARBEIT arb = new TR_ARBEIT();
             int expected = 1;
-            fzgArt.FZA_ID = expected;
-            Assert.AreEqual(expected, fzgArt.FZA_ID);
+            arb.ARB_ID = expected;
+            Assert.AreEqual(expected, arb.ARB_ID);
         }
 
         /// <summary>
-        ///A test for FZA_KEY
+        ///A test for ARB_PREIS
         ///</summary>
         [TestMethod()]
-        public void FZA_KEYTest()
+        public void ARB_PREISTest()
         {
-            TR_FAHRZEUGART fzgArt = new TR_FAHRZEUGART();
-            string expected = "ROL";
-            fzgArt.FZA_KEY = expected;
-            Assert.AreEqual(expected, fzgArt.FZA_KEY);
+            TR_ARBEIT arb = new TR_ARBEIT();
+            decimal expected = new Decimal(2.2);
+            arb.ARB_PREIS = expected;
+            Assert.AreEqual(expected, arb.ARB_PREIS);
         }
 
         /*
         /// <summary>
-        ///A test for T_FAHRZEUG
+        ///A test for TZ_ARBEITLISTE
         ///</summary>
         [TestMethod()]
-        public void T_FAHRZEUGTest()
+        public void TZ_ARBEITLISTETest()
         {
-            TR_FAHRZEUGART target = new TR_FAHRZEUGART(); // TODO: Initialize to an appropriate value
-            EntityCollection<T_FAHRZEUG> expected = null; // TODO: Initialize to an appropriate value
-            EntityCollection<T_FAHRZEUG> actual;
-            target.T_FAHRZEUG = expected;
-            actual = target.T_FAHRZEUG;
+            TR_ARBEIT target = new TR_ARBEIT(); // TODO: Initialize to an appropriate value
+            EntityCollection<TZ_ARBEITLISTE> expected = null; // TODO: Initialize to an appropriate value
+            EntityCollection<TZ_ARBEITLISTE> actual;
+            target.TZ_ARBEITLISTE = expected;
+            actual = target.TZ_ARBEITLISTE;
             Assert.AreEqual(expected, actual);
             Assert.Inconclusive("Verify the correctness of this test method.");
         }

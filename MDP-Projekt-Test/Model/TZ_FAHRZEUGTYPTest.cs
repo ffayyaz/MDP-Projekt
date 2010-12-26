@@ -8,11 +8,11 @@ namespace MDP_Projekt_Test
     
     
     /// <summary>
-    ///This is a test class for T_NUTZERTest and is intended
-    ///to contain all T_NUTZERTest Unit Tests
+    ///This is a test class for TZ_FAHRZEUGTYPTest and is intended
+    ///to contain all TZ_FAHRZEUGTYPTest Unit Tests
     ///</summary>
     [TestClass()]
-    public class T_NUTZERTest
+    public class TZ_FAHRZEUGTYPTest
     {
 
 
@@ -66,83 +66,98 @@ namespace MDP_Projekt_Test
 
 
         /// <summary>
-        ///A test for T_NUTZER Constructor
+        ///A test for TZ_FAHRZEUGTYP Constructor
         ///</summary>
         [TestMethod()]
-        public void T_NUTZERConstructorTest()
+        public void TZ_FAHRZEUGTYPConstructorTest()
         {
-           T_NUTZER nutzer = new T_NUTZER();
-           Assert.IsInstanceOfType(nutzer, typeof(T_NUTZER));
+            TZ_FAHRZEUGTYP target = new TZ_FAHRZEUGTYP();
+            Assert.IsInstanceOfType(target, typeof(TZ_FAHRZEUGTYP));
         }
 
         /// <summary>
-        ///A test for CreateT_NUTZER
+        ///A test for CreateTZ_FAHRZEUGTYP
         ///</summary>
         [TestMethod()]
-        public void CreateT_NUTZERTest()
+        public void CreateTZ_FAHRZEUGTYPTest()
         {
-            int nUT_ID = 1;
-            string nUT_NAME = "Poststelle";
-            T_NUTZER nutzer = T_NUTZER.CreateT_NUTZER(nUT_ID, nUT_NAME);
-            Assert.IsTrue(nutzer.NUT_ID == nUT_ID && nutzer.NUT_NAME.Equals(nUT_NAME));
+            int fZT_ID = 1;
+            TZ_FAHRZEUGTYP fzgTyp = TZ_FAHRZEUGTYP.CreateTZ_FAHRZEUGTYP(fZT_ID);
+            Assert.IsTrue(fzgTyp.FZT_ID == fZT_ID);
         }
 
         /// <summary>
-        ///A test for NUT_ID
+        ///A test for FZT_BEZEICHNUNG
         ///</summary>
         [TestMethod()]
-        public void NUT_IDTest()
+        public void FZT_BEZEICHNUNGTest()
         {
-            T_NUTZER nutzer = new T_NUTZER();
+            TZ_FAHRZEUGTYP fzgTyp = new TZ_FAHRZEUGTYP();
+            string expected = "Liberty";
+            fzgTyp.FZT_BEZEICHNUNG = expected;
+            Assert.AreEqual(expected, fzgTyp.FZT_BEZEICHNUNG);
+        }
+
+        /// <summary>
+        ///A test for FZT_FZM_ID
+        ///</summary>
+        [TestMethod()]
+        public void FZT_FZM_IDTest()
+        {
+            TZ_FAHRZEUGTYP fzgTyp = new TZ_FAHRZEUGTYP();
             int expected = 1;
-            nutzer.NUT_ID = expected;
-            Assert.AreEqual(expected, nutzer.NUT_ID);
+            fzgTyp.FZT_FZM_ID = expected;
+            Assert.AreEqual(expected, fzgTyp.FZT_FZM_ID);
         }
 
         /// <summary>
-        ///A test for NUT_NAME
+        ///A test for FZT_ID
         ///</summary>
         [TestMethod()]
-        public void NUT_NAMETest()
+        public void FZT_IDTest()
         {
-            T_NUTZER nutzer = new T_NUTZER();
-            string expected = "Poststelle";
-            nutzer.NUT_NAME = expected;
-            Assert.AreEqual(expected, nutzer.NUT_NAME);
+            TZ_FAHRZEUGTYP fzgTyp = new TZ_FAHRZEUGTYP();
+            int expected = 1;
+            fzgTyp.FZT_ID = expected;
+            Assert.AreEqual(expected, fzgTyp.FZT_ID);
         }
 
         /// <summary>
-        ///A test for NUT_ORT
+        ///A test for TR_FAHRZEUGMARKE
         ///</summary>
         [TestMethod()]
-        public void NUT_ORTTest()
+        public void TR_FAHRZEUGMARKETest()
         {
-            T_NUTZER nutzer = new T_NUTZER();
-            string expected = "Cham";
-            nutzer.NUT_ORT = expected;
-            Assert.AreEqual(expected, nutzer.NUT_ORT);
-        }
-
-        /// <summary>
-        ///A test for NUT_PLZ
-        ///</summary>
-        [TestMethod()]
-        public void NUT_PLZTest()
-        {
-            T_NUTZER nutzer = new T_NUTZER();
-            Nullable<int> expected = 6330;
-            nutzer.NUT_PLZ = expected;
-            Assert.AreEqual(expected, nutzer.NUT_PLZ);
+            TZ_FAHRZEUGTYP fzgTyp = new TZ_FAHRZEUGTYP();
+            TR_FAHRZEUGMARKE expected = new TR_FAHRZEUGMARKE();
+            expected.FZM_ID = 1;
+            fzgTyp.TR_FAHRZEUGMARKE= expected;
+            Assert.AreEqual(expected, fzgTyp.TR_FAHRZEUGMARKE);
         }
 
         /*
+        /// <summary>
+        ///A test for TR_FAHRZEUGMARKEReference
+        ///</summary>
+        [TestMethod()]
+        public void TR_FAHRZEUGMARKEReferenceTest()
+        {
+            TZ_FAHRZEUGTYP target = new TZ_FAHRZEUGTYP(); // TODO: Initialize to an appropriate value
+            EntityReference<TR_FAHRZEUGMARKE> expected = null; // TODO: Initialize to an appropriate value
+            EntityReference<TR_FAHRZEUGMARKE> actual;
+            target.TR_FAHRZEUGMARKEReference = expected;
+            actual = target.TR_FAHRZEUGMARKEReference;
+            Assert.AreEqual(expected, actual);
+            Assert.Inconclusive("Verify the correctness of this test method.");
+        }
+
         /// <summary>
         ///A test for T_FAHRZEUG
         ///</summary>
         [TestMethod()]
         public void T_FAHRZEUGTest()
         {
-            T_NUTZER target = new T_NUTZER(); // TODO: Initialize to an appropriate value
+            TZ_FAHRZEUGTYP target = new TZ_FAHRZEUGTYP(); // TODO: Initialize to an appropriate value
             EntityCollection<T_FAHRZEUG> expected = null; // TODO: Initialize to an appropriate value
             EntityCollection<T_FAHRZEUG> actual;
             target.T_FAHRZEUG = expected;
@@ -157,7 +172,7 @@ namespace MDP_Projekt_Test
         [TestMethod()]
         public void isNewTest()
         {
-            T_NUTZER target = new T_NUTZER(); // TODO: Initialize to an appropriate value
+            TZ_FAHRZEUGTYP target = new TZ_FAHRZEUGTYP(); // TODO: Initialize to an appropriate value
             bool actual;
             actual = target.isNew;
             Assert.Inconclusive("Verify the correctness of this test method.");

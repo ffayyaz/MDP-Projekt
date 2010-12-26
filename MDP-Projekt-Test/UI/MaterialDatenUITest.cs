@@ -1,17 +1,19 @@
-﻿using MDP_Projekt;
+﻿using MDP_Projekt.UI;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using MDP_Projekt.Model;
+using System.Collections.Generic;
 
 namespace MDP_Projekt_Test
 {
     
     
     /// <summary>
-    ///This is a test class for AppTest and is intended
-    ///to contain all AppTest Unit Tests
+    ///This is a test class for MaterialDatenUITest and is intended
+    ///to contain all MaterialDatenUITest Unit Tests
     ///</summary>
     [TestClass()]
-    public class AppTest
+    public class MaterialDatenUITest
     {
 
 
@@ -65,13 +67,35 @@ namespace MDP_Projekt_Test
 
 
         /// <summary>
-        ///A test for App Constructor
+        ///A test for MaterialDatenUI Constructor
         ///</summary>
         [TestMethod()]
-        public void AppConstructorTest()
+        public void MaterialDatenUIConstructorTest()
         {
-            App app = new App();
-            Assert.IsInstanceOfType(app, typeof(App));
+            MaterialDatenUI target = new MaterialDatenUI();
+            Assert.IsInstanceOfType(target, typeof(MaterialDatenUI));
+        }
+
+        /// <summary>
+        ///A test for getMaterial
+        ///</summary>
+        [TestMethod()]
+        [DeploymentItem("MDP-Projekt.exe")]
+        public void getMaterialTest()
+        {
+            MDP_Projekt.UI.MaterialDatenUI_Accessor target1 = new MDP_Projekt.UI.MaterialDatenUI_Accessor();
+            MDP_Projekt.UI.MaterialDatenUI_Accessor target2 = new MDP_Projekt.UI.MaterialDatenUI_Accessor();
+            List<TR_MATERIAL> expected;
+            List<TR_MATERIAL> actual;
+            actual = target1.getMaterial();
+            expected = target2.getMaterial();
+
+            Assert.IsNotNull(actual);
+            Assert.IsInstanceOfType(target1, typeof(MaterialDatenUI_Accessor));
+            Assert.IsInstanceOfType(target2, typeof(MaterialDatenUI_Accessor));
+            Assert.IsTrue(actual.Capacity > 0);
+            Assert.IsTrue(actual.Capacity == expected.Capacity);
+            Assert.AreEqual(expected, actual);
         }
     }
 }

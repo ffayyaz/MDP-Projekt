@@ -8,11 +8,11 @@ namespace MDP_Projekt_Test
     
     
     /// <summary>
-    ///This is a test class for T_NUTZERTest and is intended
-    ///to contain all T_NUTZERTest Unit Tests
+    ///This is a test class for TZ_ARBEITLISTETest and is intended
+    ///to contain all TZ_ARBEITLISTETest Unit Tests
     ///</summary>
     [TestClass()]
-    public class T_NUTZERTest
+    public class TZ_ARBEITLISTETest
     {
 
 
@@ -66,100 +66,104 @@ namespace MDP_Projekt_Test
 
 
         /// <summary>
-        ///A test for T_NUTZER Constructor
+        ///A test for TZ_ARBEITLISTE Constructor
         ///</summary>
         [TestMethod()]
-        public void T_NUTZERConstructorTest()
+        public void TZ_ARBEITLISTEConstructorTest()
         {
-           T_NUTZER nutzer = new T_NUTZER();
-           Assert.IsInstanceOfType(nutzer, typeof(T_NUTZER));
+            TZ_ARBEITLISTE target = new TZ_ARBEITLISTE();
+            Assert.IsInstanceOfType(target, typeof(TZ_ARBEITLISTE));
         }
 
         /// <summary>
-        ///A test for CreateT_NUTZER
+        ///A test for CreateTZ_ARBEITLISTE
         ///</summary>
         [TestMethod()]
-        public void CreateT_NUTZERTest()
+        public void CreateTZ_ARBEITLISTETest()
         {
-            int nUT_ID = 1;
-            string nUT_NAME = "Poststelle";
-            T_NUTZER nutzer = T_NUTZER.CreateT_NUTZER(nUT_ID, nUT_NAME);
-            Assert.IsTrue(nutzer.NUT_ID == nUT_ID && nutzer.NUT_NAME.Equals(nUT_NAME));
+            int aBL_ID = 1;
+            TZ_ARBEITLISTE al = TZ_ARBEITLISTE.CreateTZ_ARBEITLISTE(aBL_ID);
+            Assert.IsTrue(al.ABL_ID == aBL_ID);
         }
 
         /// <summary>
-        ///A test for NUT_ID
+        ///A test for ABL_ARB_ID
         ///</summary>
         [TestMethod()]
-        public void NUT_IDTest()
+        public void ABL_ARB_IDTest()
         {
-            T_NUTZER nutzer = new T_NUTZER();
+            TZ_ARBEITLISTE al = new TZ_ARBEITLISTE();
             int expected = 1;
-            nutzer.NUT_ID = expected;
-            Assert.AreEqual(expected, nutzer.NUT_ID);
+            al.ABL_ARB_ID= expected;
+            Assert.AreEqual(expected, al.ABL_ARB_ID);
         }
 
         /// <summary>
-        ///A test for NUT_NAME
+        ///A test for ABL_ID
         ///</summary>
         [TestMethod()]
-        public void NUT_NAMETest()
+        public void ABL_IDTest()
         {
-            T_NUTZER nutzer = new T_NUTZER();
-            string expected = "Poststelle";
-            nutzer.NUT_NAME = expected;
-            Assert.AreEqual(expected, nutzer.NUT_NAME);
+            TZ_ARBEITLISTE al = new TZ_ARBEITLISTE();
+            int expected = 1;
+            al.ABL_ID= expected;
+            Assert.AreEqual(expected, al.ABL_ID);
         }
 
         /// <summary>
-        ///A test for NUT_ORT
+        ///A test for ABL_MENGE
         ///</summary>
         [TestMethod()]
-        public void NUT_ORTTest()
+        public void ABL_MENGETest()
         {
-            T_NUTZER nutzer = new T_NUTZER();
-            string expected = "Cham";
-            nutzer.NUT_ORT = expected;
-            Assert.AreEqual(expected, nutzer.NUT_ORT);
+            TZ_ARBEITLISTE al = new TZ_ARBEITLISTE();
+            decimal expected = new Decimal(2.0);
+            al.ABL_MENGE = expected;
+            Assert.AreEqual(expected, al.ABL_MENGE);
         }
 
         /// <summary>
-        ///A test for NUT_PLZ
+        ///A test for TR_ARBEIT
         ///</summary>
         [TestMethod()]
-        public void NUT_PLZTest()
+        public void TR_ARBEITTest()
         {
-            T_NUTZER nutzer = new T_NUTZER();
-            Nullable<int> expected = 6330;
-            nutzer.NUT_PLZ = expected;
-            Assert.AreEqual(expected, nutzer.NUT_PLZ);
+            TZ_ARBEITLISTE al = new TZ_ARBEITLISTE();
+            TR_ARBEIT expected = new TR_ARBEIT();
+            expected.ARB_ID = 1;
+            al.TR_ARBEIT= expected;
+            Assert.AreEqual(expected, al.TR_ARBEIT);
         }
 
         /*
         /// <summary>
-        ///A test for T_FAHRZEUG
+        ///A test for TR_ARBEITReference
         ///</summary>
         [TestMethod()]
-        public void T_FAHRZEUGTest()
+        public void TR_ARBEITReferenceTest()
         {
-            T_NUTZER target = new T_NUTZER(); // TODO: Initialize to an appropriate value
-            EntityCollection<T_FAHRZEUG> expected = null; // TODO: Initialize to an appropriate value
-            EntityCollection<T_FAHRZEUG> actual;
-            target.T_FAHRZEUG = expected;
-            actual = target.T_FAHRZEUG;
+            TZ_ARBEITLISTE target = new TZ_ARBEITLISTE(); // TODO: Initialize to an appropriate value
+            EntityReference<TR_ARBEIT> expected = null; // TODO: Initialize to an appropriate value
+            EntityReference<TR_ARBEIT> actual;
+            target.TR_ARBEITReference = expected;
+            actual = target.TR_ARBEITReference;
             Assert.AreEqual(expected, actual);
             Assert.Inconclusive("Verify the correctness of this test method.");
         }
+        
 
         /// <summary>
-        ///A test for isNew
+        ///A test for T_REPARATUR
         ///</summary>
         [TestMethod()]
-        public void isNewTest()
+        public void T_REPARATURTest()
         {
-            T_NUTZER target = new T_NUTZER(); // TODO: Initialize to an appropriate value
-            bool actual;
-            actual = target.isNew;
+            TZ_ARBEITLISTE target = new TZ_ARBEITLISTE(); // TODO: Initialize to an appropriate value
+            EntityCollection<T_REPARATUR> expected = null; // TODO: Initialize to an appropriate value
+            EntityCollection<T_REPARATUR> actual;
+            target.T_REPARATUR = expected;
+            actual = target.T_REPARATUR;
+            Assert.AreEqual(expected, actual);
             Assert.Inconclusive("Verify the correctness of this test method.");
         }
          */

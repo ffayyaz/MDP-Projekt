@@ -58,13 +58,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppTest.cs" />
-    <Compile Include="MainWindowTest.cs" />
+    <Compile Include="UI\MaterialDatenUITest.cs" />
     <Compile Include="Model\ContextTest.cs" />
+    <Compile Include="MainWindowTest.cs" />
+    <Compile Include="Model\TR_ARBEITTest.cs" />
     <Compile Include="Model\TR_FAHRZEUGARTTest.cs" />
-    <Compile Include="Model\TR_FAHRZEUGTYPTest.cs" />
-    <Compile Include="Model\TZ_FAHRZEUGMARKETest.cs" />
+    <Compile Include="Model\TR_FAHRZEUGMARKETest.cs" />
+    <Compile Include="Model\TR_MATERIALTest.cs" />
+    <Compile Include="Model\TZ_ARBEITLISTETest.cs" />
+    <Compile Include="Model\TZ_FAHRZEUGTYPTest.cs" />
+    <Compile Include="Model\TZ_MATERIALLISTETest.cs" />
     <Compile Include="Model\T_FAHRZEUGTest.cs" />
     <Compile Include="Model\T_NUTZERTest.cs" />
+    <Compile Include="Model\T_REPARATURTest.cs" />
     <Compile Include="UI\NutzerDatenUITest.cs" />
     <Compile Include="UI\FahrzeugDatenUITest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

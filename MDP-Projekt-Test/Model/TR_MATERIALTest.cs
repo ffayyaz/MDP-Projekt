@@ -8,11 +8,11 @@ namespace MDP_Projekt_Test
     
     
     /// <summary>
-    ///This is a test class for T_NUTZERTest and is intended
-    ///to contain all T_NUTZERTest Unit Tests
+    ///This is a test class for TR_MATERIALTest and is intended
+    ///to contain all TR_MATERIALTest Unit Tests
     ///</summary>
     [TestClass()]
-    public class T_NUTZERTest
+    public class TR_MATERIALTest
     {
 
 
@@ -66,90 +66,90 @@ namespace MDP_Projekt_Test
 
 
         /// <summary>
-        ///A test for T_NUTZER Constructor
+        ///A test for TR_MATERIAL Constructor
         ///</summary>
         [TestMethod()]
-        public void T_NUTZERConstructorTest()
+        public void TR_MATERIALConstructorTest()
         {
-           T_NUTZER nutzer = new T_NUTZER();
-           Assert.IsInstanceOfType(nutzer, typeof(T_NUTZER));
+            TR_MATERIAL target = new TR_MATERIAL();
+            Assert.IsInstanceOfType(target, typeof(TR_MATERIAL));
         }
 
         /// <summary>
-        ///A test for CreateT_NUTZER
+        ///A test for CreateTR_MATERIAL
         ///</summary>
         [TestMethod()]
-        public void CreateT_NUTZERTest()
+        public void CreateTR_MATERIALTest()
         {
-            int nUT_ID = 1;
-            string nUT_NAME = "Poststelle";
-            T_NUTZER nutzer = T_NUTZER.CreateT_NUTZER(nUT_ID, nUT_NAME);
-            Assert.IsTrue(nutzer.NUT_ID == nUT_ID && nutzer.NUT_NAME.Equals(nUT_NAME));
+            int mAT_ID = 1;
+            TR_MATERIAL mat = TR_MATERIAL.CreateTR_MATERIAL(mAT_ID);
+            Assert.IsTrue(mat.MAT_ID== mAT_ID);
         }
 
         /// <summary>
-        ///A test for NUT_ID
+        ///A test for MAT_BEZEICHNUNG
         ///</summary>
         [TestMethod()]
-        public void NUT_IDTest()
+        public void MAT_BEZEICHNUNGTest()
         {
-            T_NUTZER nutzer = new T_NUTZER();
+            string bez = "Piaggio";
+            TR_MATERIAL mat = TR_MATERIAL.CreateTR_MATERIAL(1);
+            mat.MAT_BEZEICHNUNG = bez;
+            Assert.IsTrue(mat.MAT_BEZEICHNUNG.Equals(bez));
+        }
+
+        /// <summary>
+        ///A test for MAT_ID
+        ///</summary>
+        [TestMethod()]
+        public void MAT_IDTest()
+        {
+            TR_MATERIAL mat = new TR_MATERIAL();
             int expected = 1;
-            nutzer.NUT_ID = expected;
-            Assert.AreEqual(expected, nutzer.NUT_ID);
+            mat.MAT_ID = expected;
+            Assert.AreEqual(expected, mat.MAT_ID);
         }
 
         /// <summary>
-        ///A test for NUT_NAME
+        ///A test for MAT_MARGE
         ///</summary>
         [TestMethod()]
-        public void NUT_NAMETest()
+        public void MAT_MARGETest()
         {
-            T_NUTZER nutzer = new T_NUTZER();
-            string expected = "Poststelle";
-            nutzer.NUT_NAME = expected;
-            Assert.AreEqual(expected, nutzer.NUT_NAME);
+            TR_MATERIAL mat = new TR_MATERIAL();
+            decimal expected = new Decimal(2.0);
+            mat.MAT_MARGE = expected;
+            Assert.AreEqual(expected, mat.MAT_MARGE);
         }
 
         /// <summary>
-        ///A test for NUT_ORT
+        ///A test for MAT_PREIS
         ///</summary>
         [TestMethod()]
-        public void NUT_ORTTest()
+        public void MAT_PREISTest()
         {
-            T_NUTZER nutzer = new T_NUTZER();
-            string expected = "Cham";
-            nutzer.NUT_ORT = expected;
-            Assert.AreEqual(expected, nutzer.NUT_ORT);
-        }
-
-        /// <summary>
-        ///A test for NUT_PLZ
-        ///</summary>
-        [TestMethod()]
-        public void NUT_PLZTest()
-        {
-            T_NUTZER nutzer = new T_NUTZER();
-            Nullable<int> expected = 6330;
-            nutzer.NUT_PLZ = expected;
-            Assert.AreEqual(expected, nutzer.NUT_PLZ);
+            TR_MATERIAL mat = new TR_MATERIAL();
+            decimal expected = new Decimal(2.0);
+            mat.MAT_PREIS = expected;
+            Assert.AreEqual(expected, mat.MAT_PREIS);
         }
 
         /*
         /// <summary>
-        ///A test for T_FAHRZEUG
+        ///A test for TZ_MATERIALLISTE
         ///</summary>
         [TestMethod()]
-        public void T_FAHRZEUGTest()
+        public void TZ_MATERIALLISTETest()
         {
-            T_NUTZER target = new T_NUTZER(); // TODO: Initialize to an appropriate value
-            EntityCollection<T_FAHRZEUG> expected = null; // TODO: Initialize to an appropriate value
-            EntityCollection<T_FAHRZEUG> actual;
-            target.T_FAHRZEUG = expected;
-            actual = target.T_FAHRZEUG;
+            TR_MATERIAL target = new TR_MATERIAL(); // TODO: Initialize to an appropriate value
+            EntityCollection<TZ_MATERIALLISTE> expected = null; // TODO: Initialize to an appropriate value
+            EntityCollection<TZ_MATERIALLISTE> actual;
+            target.TZ_MATERIALLISTE = expected;
+            actual = target.TZ_MATERIALLISTE;
             Assert.AreEqual(expected, actual);
             Assert.Inconclusive("Verify the correctness of this test method.");
         }
+         
 
         /// <summary>
         ///A test for isNew
@@ -157,7 +157,7 @@ namespace MDP_Projekt_Test
         [TestMethod()]
         public void isNewTest()
         {
-            T_NUTZER target = new T_NUTZER(); // TODO: Initialize to an appropriate value
+            TR_MATERIAL target = new TR_MATERIAL(); // TODO: Initialize to an appropriate value
             bool actual;
             actual = target.isNew;
             Assert.Inconclusive("Verify the correctness of this test method.");
