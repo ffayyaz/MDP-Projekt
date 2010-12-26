@@ -63,6 +63,7 @@ namespace MDP_Projekt_Test
         //
         #endregion
 
+        /*
         /// <summary>
         ///A test for NutzerDatenUI Constructor
         ///</summary>
@@ -139,6 +140,7 @@ namespace MDP_Projekt_Test
             Assert.AreEqual(expected, actual);
         }
 
+        
         /// <summary>
         ///A test for getFahrzeugtypCombo
         ///</summary>
@@ -180,5 +182,6 @@ namespace MDP_Projekt_Test
             Assert.IsTrue(actual.Capacity == expected.Capacity);
             Assert.AreEqual(expected, actual);
         }
+         */
     }
 }

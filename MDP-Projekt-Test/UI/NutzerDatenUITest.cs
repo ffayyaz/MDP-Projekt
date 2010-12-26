@@ -64,6 +64,7 @@ namespace MDP_Projekt_Test
         #endregion
 
 
+        /*
         /// <summary>
         ///A test for NutzerDatenUI Constructor
         ///</summary>
@@ -73,7 +74,7 @@ namespace MDP_Projekt_Test
             MDP_Projekt.UI.NutzerDatenUI target = new MDP_Projekt.UI.NutzerDatenUI();
             Assert.IsInstanceOfType(target, typeof(NutzerDatenUI));
         }
-
+         
         /// <summary>
         ///A test for getNutzer
         ///</summary>
@@ -95,5 +96,6 @@ namespace MDP_Projekt_Test
             Assert.IsTrue(actual.Capacity == expected.Capacity);
             Assert.AreEqual(expected, actual);
         }
+         */
     }
 }

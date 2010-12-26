@@ -7,7 +7,7 @@ using System.Data.Objects;
 namespace MDP_Projekt_Test
 {
     
-    
+    /*
     /// <summary>
     ///This is a test class for ContextTest and is intended
     ///to contain all ContextTest Unit Tests
@@ -65,7 +65,7 @@ namespace MDP_Projekt_Test
         //
         #endregion
 
-
+        
         /// <summary>
         ///A test for Context Constructor
         ///</summary>
@@ -337,5 +337,6 @@ namespace MDP_Projekt_Test
             actual = target.T_REPARATUR;
             Assert.Inconclusive("Verify the correctness of this test method.");
         }
-    }
+    
+    }*/
 }
