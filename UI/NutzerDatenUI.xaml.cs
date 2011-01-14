@@ -111,7 +111,7 @@ namespace MDP_Projekt.UI
                 {
                     Model.T_NUTZER nutzerToSave;
 
-                    if (currentNutzer.isNew)
+                    if (!currentNutzer.isNew)
                     {
                         nutzerToSave = context.T_NUTZER.Where(q => q.NUT_ID == currentNutzer.NUT_ID).First();
 
