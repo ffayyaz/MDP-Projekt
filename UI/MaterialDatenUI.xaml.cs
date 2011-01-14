@@ -16,7 +16,7 @@ namespace MDP_Projekt.UI
     /// <summary>
     /// Interaction logic for MaterialDatenUI.xaml
     /// </summary>
-    public partial class MaterialDatenUI : Window
+    public partial class MaterialDatenUI : Page
     {
         public MaterialDatenUI()
         {

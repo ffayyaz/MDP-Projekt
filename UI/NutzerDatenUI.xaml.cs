@@ -16,7 +16,7 @@ namespace MDP_Projekt.UI
     /// <summary>
     /// Interaction logic for NutzerDatenUI.xaml
     /// </summary>
-    public partial class NutzerDatenUI : Window
+    public partial class NutzerDatenUI : Page
     {
         public NutzerDatenUI()
         {

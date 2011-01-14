@@ -16,7 +16,7 @@ namespace MDP_Projekt.UI
     /// <summary>
     /// Interaction logic for FahrzeugDaten.xaml
     /// </summary>
-    public partial class FahrzeugDatenUI : Window
+    public partial class FahrzeugDatenUI : Page
     {
         public FahrzeugDatenUI()
         {

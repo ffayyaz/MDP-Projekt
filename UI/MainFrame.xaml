@@ -5,8 +5,8 @@
 	x:Name="Window"
 	Title="MainFrame"
     ResizeMode="NoResize"
-	Width="640"
-    Height="480"
+	Width="800"
+    Height="600"
     xmlns:Microsoft_Windows_Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Classic"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -218,16 +218,14 @@
             <TreeViewItem Header="Datenverwaltung">
                 <TreeViewItem Header="Fahrzeug" Selected="showFahrzeugDaten" />
                 <TreeViewItem Header="Material" Selected="showMaterialDaten" />
-                <TreeViewItem Header="Arbeit"/>
+                <TreeViewItem Header="Arbeit" Selected="showArbeitsDaten"/>
                 <TreeViewItem Header="Nutzer" Selected="showNutzerDaten" />
             </TreeViewItem>
         </TreeView>
         <Label Height="32.5" Margin="70,0,0,-5" Name="labelCopy" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="128.75" Foreground="White">© by Team8</Label>
         <Label Height="55" Padding="40,10,0,0" Margin="12,16.25,0,0" Name="lblTitle" VerticalAlignment="Top" Background="#9F000000" Foreground="White" FontSize="24" FlowDirection="RightToLeft" FontWeight="Normal">Post Datenbank</Label>
-        <Canvas Margin="238.75,123.75,26.25,86.25" Name="canvasUnknown" Background="Transparent" Visibility="Hidden">
-            <Label Canvas.Left="26.25" Canvas.Top="126.25" Height="35" Name="lblUnknown" Width="307.5" FontSize="18" Foreground="White" Background="#9F000000">Dieser Punkt ist nicht implementiert!</Label>
-            <Image Canvas.Left="75" Canvas.Top="-13" Height="81.25" Name="imgUnknown" Stretch="Fill" Width="88.75" Source="/MDP-Projekt;component/UI/Pictures/attention.png" />
-            <Button Canvas.Left="132.5" Canvas.Top="178.75" Height="25" Name="btnUnknownClose" Width="85" Click="btnUnknownClose_Click" FontSize="11">schliessen</Button>
+        <Canvas Margin="238.75,123.75,26.25,86.25" Name="canvasUnknown" Background="#00AD4747" Visibility="Visible">
+            <Frame Height="Auto" Name="frmPage" Width="Auto" Background="#FF1A4579" />
         </Canvas>
     </Grid>
 </Window>
