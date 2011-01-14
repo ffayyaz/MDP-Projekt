@@ -1,7 +1,7 @@
 ﻿<Window x:Class="MDP_Projekt.UI.NutzerDatenUI"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="NutzerDatenUI" Height="300" Width="640">
+        Title="NutzerDatenUI" Height="Auto" Width="640">
     <StackPanel>
         <Grid Height="Auto" Margin="10" Name="gridNutzerDaten">
             <Grid.RowDefinitions>

@@ -1,0 +1,233 @@
+﻿<Window 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	x:Class="MDP_Projekt.UI.MainFrame"
+	x:Name="Window"
+	Title="MainFrame"
+    ResizeMode="NoResize"
+	Width="640"
+    Height="480"
+    xmlns:Microsoft_Windows_Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Classic"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Window.Resources>
+        <Style TargetType="{x:Type TreeView}">
+            <Setter Property="Background" Value="#3f000000"/>
+            <Setter Property="BorderBrush" Value="#1ef009"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto"/>
+            <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TreeView}">
+                        <Border SnapsToDevicePixels="True" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                            <ScrollViewer Focusable="false" Background="Transparent" Padding="{TemplateBinding Padding}" CanContentScroll="false" HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}" VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}">
+                                <ItemsPresenter/>
+                            </ScrollViewer>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="TreeViewItemFocusVisual">
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Rectangle/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="ExpandCollapseToggleStyle" TargetType="{x:Type ToggleButton}">
+            <Setter Property="Focusable" Value="False"/>
+            <Setter Property="Width" Value="19"/>
+            <Setter Property="Height" Value="13"/>
+            <Setter Property="Foreground" Value="#000000"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ToggleButton}">
+                        <ControlTemplate.Resources>
+                            <Storyboard x:Key="Storyboard1" RepeatBehavior="Forever">
+                                <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="border" Storyboard.TargetProperty="(UIElement.BitmapEffect).(OuterGlowBitmapEffect.GlowSize)">
+                                    <SplineDoubleKeyFrame KeyTime="00:00:00" Value="1"/>
+                                    <SplineDoubleKeyFrame KeyTime="00:00:00.3" Value="6"/>
+                                    <SplineDoubleKeyFrame KeyTime="00:00:00.5" Value="2"/>
+                                </DoubleAnimationUsingKeyFrames>
+                            </Storyboard>
+                            <Storyboard x:Key="Storyboard2">
+                                <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="border" Storyboard.TargetProperty="(UIElement.BitmapEffect).(OuterGlowBitmapEffect.GlowSize)">
+                                    <SplineDoubleKeyFrame KeyTime="00:00:00" Value="6"/>
+                                    <SplineDoubleKeyFrame KeyTime="00:00:00.3000000" Value="1"/>
+                                </DoubleAnimationUsingKeyFrames>
+                            </Storyboard>
+                        </ControlTemplate.Resources>
+                        <Border Width="19" Height="13" Background="Transparent">
+                            <Border SnapsToDevicePixels="true" Width="9" Height="9" Background="{TemplateBinding Background}" x:Name="border">
+                                <Border.BitmapEffect>
+                                    <OuterGlowBitmapEffect GlowColor="#FFFFFF" GlowSize="1"/>
+                                </Border.BitmapEffect>
+                                <Path VerticalAlignment="Center" HorizontalAlignment="Center" Margin="1,1,1,1" x:Name="ExpandPath" Fill="{TemplateBinding Foreground}" Data="M 0 2 L 0 3 L 2 3 L 2 5 L 3 5 L 3 3 L 5 3 L 5 2 L 3 2 L 3 0 L 2 0 L 2 2 Z"/>
+                            </Border>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter Property="Data" TargetName="ExpandPath" Value="M 0 2 L 0 3 L 5 3 L 5 2 Z"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Trigger.ExitActions>
+                                    <BeginStoryboard Storyboard="{StaticResource Storyboard2}" x:Name="Storyboard2_BeginStoryboard"/>
+                                </Trigger.ExitActions>
+                                <Trigger.EnterActions>
+                                    <BeginStoryboard Storyboard="{StaticResource Storyboard1}"/>
+                                </Trigger.EnterActions>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style TargetType="{x:Type TreeViewItem}">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="HorizontalContentAlignment" Value="{Binding Path=HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"/>
+            <Setter Property="VerticalContentAlignment" Value="{Binding Path=VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"/>
+            <Setter Property="Padding" Value="1,0,0,0"/>
+            <Setter Property="Foreground" Value="#FFFFFF"/>
+            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="FontFamily" Value="Tahoma"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FocusVisualStyle" Value="{StaticResource TreeViewItemFocusVisual}"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TreeViewItem}">
+                        <ControlTemplate.Resources>
+                            <Storyboard x:Key="Storyboard1">
+                                <ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="Bd" Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)">
+                                    <SplineColorKeyFrame KeyTime="00:00:00" Value="#00000000"/>
+                                    <SplineColorKeyFrame KeyTime="00:00:00.3000000" Value="#4C000000"/>
+                                </ColorAnimationUsingKeyFrames>
+                                <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="whiteRect" Storyboard.TargetProperty="(UIElement.BitmapEffect).(OuterGlowBitmapEffect.GlowSize)">
+                                    <SplineDoubleKeyFrame KeyTime="00:00:00" Value="4"/>
+                                    <SplineDoubleKeyFrame KeyTime="00:00:00.3000000" Value="6"/>
+                                </DoubleAnimationUsingKeyFrames>
+                                <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="whiteRect" Storyboard.TargetProperty="(UIElement.BitmapEffect).(OuterGlowBitmapEffect.Opacity)">
+                                    <SplineDoubleKeyFrame KeyTime="00:00:00" Value="0.75"/>
+                                    <SplineDoubleKeyFrame KeyTime="00:00:00.3000000" Value="1"/>
+                                </DoubleAnimationUsingKeyFrames>
+                            </Storyboard>
+                            <Storyboard x:Key="Storyboard2">
+                                <ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="Bd" Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)">
+                                    <SplineColorKeyFrame KeyTime="00:00:00" Value="#4C000000"/>
+                                    <SplineColorKeyFrame KeyTime="00:00:00.3" Value="#00000000"/>
+                                </ColorAnimationUsingKeyFrames>
+                                <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="whiteRect" Storyboard.TargetProperty="(UIElement.BitmapEffect).(OuterGlowBitmapEffect.GlowSize)">
+                                    <SplineDoubleKeyFrame KeyTime="00:00:00" Value="6"/>
+                                    <SplineDoubleKeyFrame KeyTime="00:00:00.3000000" Value="4"/>
+                                </DoubleAnimationUsingKeyFrames>
+                                <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="whiteRect" Storyboard.TargetProperty="(UIElement.BitmapEffect).(OuterGlowBitmapEffect.Opacity)">
+                                    <SplineDoubleKeyFrame KeyTime="00:00:00" Value="1"/>
+                                    <SplineDoubleKeyFrame KeyTime="00:00:00.3000000" Value="0.75"/>
+                                </DoubleAnimationUsingKeyFrames>
+                            </Storyboard>
+                        </ControlTemplate.Resources>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition MinWidth="19" Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+
+                            <Border x:Name="Bd" Grid.ColumnSpan="3" Background="#00000000"/>
+
+                            <ToggleButton x:Name="Expander" Background="{TemplateBinding Foreground}" Style="{StaticResource ExpandCollapseToggleStyle}" ClickMode="Press" IsChecked="{Binding Path=IsExpanded, RelativeSource={RelativeSource TemplatedParent}}"/>
+
+                            <Rectangle Width="3" Height="7" x:Name="whiteRect" Margin="3,0" VerticalAlignment="Center" Fill="#FFFFFF" HorizontalAlignment="Center" Visibility="Collapsed">
+                                <Rectangle.BitmapEffect>
+                                    <OuterGlowBitmapEffect GlowColor="#FFFFFF" GlowSize="4" Opacity="0.75"/>
+                                </Rectangle.BitmapEffect>
+                            </Rectangle>
+
+                            <Border SnapsToDevicePixels="true" Grid.Column="1" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Padding="{TemplateBinding Padding}">
+                                <ContentPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" x:Name="PART_Header" ContentSource="Header"/>
+                            </Border>
+                            <ItemsPresenter x:Name="ItemsHost" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="1"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsExpanded" Value="false">
+                                <Setter Property="Visibility" TargetName="ItemsHost" Value="Collapsed"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Foreground" Value="DarkGoldenrod"/>
+                            </Trigger>
+                            <Trigger Property="HasItems" Value="false">
+                                <Setter Property="Visibility" TargetName="Expander" Value="Hidden"/>
+                                <Setter Property="FontSize" Value="11"/>
+                                <Setter Property="FontWeight" Value="Normal"/>
+                                <Setter Property="Foreground" Value="DarkGoldenrod"/>
+                                <Setter Property="Visibility" TargetName="whiteRect" Value="Visible"/>
+                            </Trigger>
+                            <Trigger Property="IsSelected" Value="true">
+                                <Setter Property="Background" TargetName="Bd" Value="#7F000000"/>
+                            </Trigger>
+                            <MultiTrigger>
+                                <MultiTrigger.Conditions>
+                                    <Condition Property="IsMouseOver" Value="true"/>
+                                    <Condition Property="HasItems" Value="false"/>
+                                </MultiTrigger.Conditions>
+                                <MultiTrigger.ExitActions>
+                                    <BeginStoryboard Storyboard="{StaticResource Storyboard2}" x:Name="Storyboard2_BeginStoryboard"/>
+                                </MultiTrigger.ExitActions>
+                                <MultiTrigger.EnterActions>
+                                    <BeginStoryboard Storyboard="{StaticResource Storyboard1}"/>
+                                </MultiTrigger.EnterActions>
+                            </MultiTrigger>
+                            <MultiTrigger>
+                                <MultiTrigger.Conditions>
+                                    <Condition Property="IsSelected" Value="true"/>
+                                    <Condition Property="IsSelectionActive" Value="false"/>
+                                </MultiTrigger.Conditions>
+                                <Setter Property="Background" TargetName="Bd" Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"/>
+                                <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+                            </MultiTrigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <Grid x:Name="LayoutRoot">
+        <Image Source="/MDP-Projekt;component/UI/Pictures/forrest.jpg" Margin="-30" Height="561.25" Width="753.75" Name="imgBackground" />
+        <Canvas Name="canvasMenu" Background="#8F000000" HorizontalAlignment="Left" Width="195" />
+        <TreeView d:LayoutOverrides="Height" Opacity="1" Foreground="Black" BorderBrush="#00000000" Background="#00000000" Margin="12,85,0,12" HorizontalAlignment="Left" Width="170" Name="treeMenu">
+            <TreeViewItem Header="Rechnung">
+                <TreeViewItem Header="erstellen" Selected="showUnknown"/>
+                <TreeViewItem Header="ansehen" Selected="showUnknown"/>
+            </TreeViewItem>
+            <TreeViewItem Header="Datenverwaltung">
+                <TreeViewItem Header="Fahrzeug" Selected="showFahrzeugDaten" />
+                <TreeViewItem Header="Material" Selected="showMaterialDaten" />
+                <TreeViewItem Header="Arbeit"/>
+                <TreeViewItem Header="Nutzer" Selected="showNutzerDaten" />
+            </TreeViewItem>
+        </TreeView>
+        <Label Height="32.5" Margin="70,0,0,-5" Name="labelCopy" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="128.75" Foreground="White">© by Team8</Label>
+        <Label Height="55" Padding="40,10,0,0" Margin="12,16.25,0,0" Name="lblTitle" VerticalAlignment="Top" Background="#9F000000" Foreground="White" FontSize="24" FlowDirection="RightToLeft" FontWeight="Normal">Post Datenbank</Label>
+        <Canvas Margin="238.75,123.75,26.25,86.25" Name="canvasUnknown" Background="Transparent" Visibility="Hidden">
+            <Label Canvas.Left="26.25" Canvas.Top="126.25" Height="35" Name="lblUnknown" Width="307.5" FontSize="18" Foreground="White" Background="#9F000000">Dieser Punkt ist nicht implementiert!</Label>
+            <Image Canvas.Left="75" Canvas.Top="-13" Height="81.25" Name="imgUnknown" Stretch="Fill" Width="88.75" Source="/MDP-Projekt;component/UI/Pictures/attention.png" />
+            <Button Canvas.Left="132.5" Canvas.Top="178.75" Height="25" Name="btnUnknownClose" Width="85" Click="btnUnknownClose_Click" FontSize="11">schliessen</Button>
+        </Canvas>
+    </Grid>
+</Window>
