@@ -1,7 +1,7 @@
-<Window x:Class="MDP_Projekt.UI.MaterialDatenUI"
+<Page x:Class="MDP_Projekt.UI.MaterialDatenUI"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MaterialDatenUI" Height="Auto" Width="400">
+        Title="MaterialDatenUI" Height="Auto" Width="Auto">
     <StackPanel>
         <Grid Height="Auto" Margin="10" Name="gridMaterialDaten">
             <Grid.RowDefinitions>
@@ -36,4 +36,4 @@
             <GridSplitter Grid.Row="3" Grid.ColumnSpan="3" Height="5" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Margin="0,10,0,0" />
         </Grid>
     </StackPanel>
-</Window>
+</Page>

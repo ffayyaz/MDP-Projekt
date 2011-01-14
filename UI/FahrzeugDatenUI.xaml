@@ -1,7 +1,7 @@
-﻿<Window x:Class="MDP_Projekt.UI.FahrzeugDatenUI"
+﻿<Page x:Class="MDP_Projekt.UI.FahrzeugDatenUI"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Fahrzeugdaten" Height="Auto" Width="700" Name="FahrzeugDaten">
+        Title="Fahrzeugdaten" Height="Auto" Width="Auto" Name="FahrzeugDaten">
     <StackPanel>
         <Grid Height="Auto" Margin="10" Name="gridFahrzeug">
             <Grid.RowDefinitions>
@@ -57,4 +57,4 @@
             <GridSplitter Grid.Row="5" Grid.ColumnSpan="4" Height="5" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Margin="0,10,0,0" />
         </Grid>
     </StackPanel>
-</Window>
+</Page>

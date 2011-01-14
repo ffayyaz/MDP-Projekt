@@ -29,34 +29,24 @@ namespace MDP_Projekt.UI
 
         }
 
-        private void btnUnknownClose_Click(object sender, RoutedEventArgs e)
-        {
-            hideAll();
-        }
-
-        private void hideAll()
-        {
-            canvasUnknown.Visibility = Visibility.Hidden;
-
-            // ...
-        }
-
         private void showFahrzeugDaten(object sender, RoutedEventArgs e)
         {
-            UI.FahrzeugDatenUI fahrzeugGUI = new UI.FahrzeugDatenUI();
-            fahrzeugGUI.ShowDialog();
+            frmPage.Navigate(new System.Uri("UI/FahrzeugDatenUI.xaml", UriKind.RelativeOrAbsolute));
         }
 
         private void showNutzerDaten(object sender, RoutedEventArgs e)
         {
-            UI.NutzerDatenUI nutzerGUI = new UI.NutzerDatenUI();
-            nutzerGUI.ShowDialog();
+            frmPage.Navigate(new System.Uri("UI/NutzerDatenUI.xaml", UriKind.RelativeOrAbsolute));
         }
 
         private void showMaterialDaten(object sender, RoutedEventArgs e)
         {
-            UI.MaterialDatenUI materialienGUI = new UI.MaterialDatenUI();
-            materialienGUI.ShowDialog();
+            frmPage.Navigate(new System.Uri("UI/MaterialDatenUI.xaml", UriKind.RelativeOrAbsolute));
+        }
+
+        private void showArbeitsDaten(object sender, RoutedEventArgs e)
+        {
+            frmPage.Navigate(new System.Uri("UI/ArbeitsDatenUI.xaml", UriKind.RelativeOrAbsolute));
         }
 
         private void showUnknown(object sender, RoutedEventArgs e)
