@@ -59,4 +59,15 @@ namespace MDP_Projekt.Model
             get { return !(this.MAT_ID > 0); }
         }
     }
+
+    public partial class TR_ARBEIT
+    {
+        /// <summary>
+        /// Gibt an, ob ein Objekt dieser Klasse neu instanziert wurde
+        /// </summary>
+        public bool isNew
+        {
+            get { return !(this.ARB_ID > 0); }
+        }
+    }
 }

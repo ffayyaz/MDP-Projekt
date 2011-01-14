@@ -28,8 +28,8 @@
             <Button Grid.Row="2" Grid.Column="3" Name="btnSave" Click="btnSave_Click">Save</Button>
             <DataGrid Grid.Row="5" Grid.ColumnSpan="3" AutoGenerateColumns="False" HeadersVisibility="Column" Name="dataGridMaterialDaten" ItemsSource="{Binding}" SelectionChanged="dataGridMaterialDaten_SelectionChanged">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Binding="{Binding Path=MAT_BEZEICHNUNG, Mode=OneWay}" Header="Bezeichnung" />
-                    <DataGridTextColumn Binding="{Binding Path=MAT_PREIS, Mode=OneWay}" Header="Preis" />
+                    <DataGridTextColumn Binding="{Binding Path=MAT_BEZEICHNUNG, Mode=OneWay}" Header="Bezeichnung" Width="*" />
+                    <DataGridTextColumn Binding="{Binding Path=MAT_PREIS, Mode=OneWay}" Header="Preis" Width="*"/>
                     <DataGridTextColumn Binding="{Binding Path=MAT_MARGE, Mode=OneWay}" Header="Marge" />
                 </DataGrid.Columns>
             </DataGrid>

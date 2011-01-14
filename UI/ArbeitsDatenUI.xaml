@@ -1,0 +1,35 @@
+﻿<Page x:Class="MDP_Projekt.UI.ArbeitsDatenGUI"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="ArbeitsDatenGUI" Height="Auto" Width="Auto">
+    <StackPanel>
+        <Grid Height="Auto" Margin="10" Name="gridArbeitsDaten">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Row="0" Grid.Column="0">Bezeichnung:</Label>
+            <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding Path=ARB_BEZEICHNUNG}" />
+            <Label Grid.Row="1" Grid.Column="0">Preis:</Label>
+            <TextBox Grid.Row="1" Grid.Column="1"  Text="{Binding Path=ARB_PREIS}" />
+            <Button Grid.Row="3" Grid.Column="0" Name="btnNew" Click="btnNew_Click">New</Button>
+            <Button Grid.Row="3" Grid.Column="1" Name="btnDelete" Click="btnDelete_Click">Delete</Button>
+            <Button Grid.Row="1" Grid.Column="3" Name="btnSave" Click="btnSave_Click">Save</Button>
+            <DataGrid Grid.Row="4" Grid.ColumnSpan="3" AutoGenerateColumns="False" HeadersVisibility="Column" Name="dataGridArbeitsDaten" ItemsSource="{Binding}" SelectionChanged="dataGridArbeitsDaten_SelectionChanged">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding Path=ARB_BEZEICHNUNG, Mode=OneWay}" Header="Bezeichnung" Width="*" />
+                    <DataGridTextColumn Binding="{Binding Path=ARB_PREIS, Mode=OneWay}" Header="Preis" Width="*"/>
+                </DataGrid.Columns>
+            </DataGrid>
+            <GridSplitter Grid.Row="2" Grid.ColumnSpan="3" Height="5" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Margin="0,10,0,0" />
+        </Grid>
+    </StackPanel>
+</Page>

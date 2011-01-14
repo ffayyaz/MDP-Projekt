@@ -3,6 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              StartupUri="/UI/MainFrame.xaml">
     <Application.Resources>
+        <Style TargetType="{x:Type DataGrid}">
+            <Setter Property="CanUserDeleteRows" Value="False" />
+            <Setter Property="CanUserAddRows" Value="False" />
+        </Style>
         <Style TargetType="{x:Type Button}">
             <Setter Property="FontFamily" Value="Calibri" />
             <Setter Property="FontSize" Value="14" />

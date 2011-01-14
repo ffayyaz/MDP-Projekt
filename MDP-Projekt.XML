@@ -1,0 +1,804 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MDP-Projekt</name>
+    </assembly>
+    <members>
+        <member name="T:MDP_Projekt.MainWindow">
+            <summary>
+            Interaction logic for MainWindow.xaml
+            </summary>
+            <summary>
+            MainWindow
+            </summary>
+        </member>
+        <member name="M:MDP_Projekt.MainWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:MDP_Projekt.UI.NutzerDatenUI">
+            <summary>
+            Interaction logic for NutzerDatenUI.xaml
+            </summary>
+            <summary>
+            NutzerDatenUI
+            </summary>
+        </member>
+        <member name="M:MDP_Projekt.UI.NutzerDatenUI.getNutzer">
+            <summary>
+            Gibt alle Nutzer zurück
+            </summary>
+            <returns>Liste der Nutzer</returns>
+        </member>
+        <member name="M:MDP_Projekt.UI.NutzerDatenUI.dataGridNutzerDaten_SelectionChanged(System.Object,System.Windows.Controls.SelectionChangedEventArgs)">
+            <summary>
+            Gibt alle Nutzer zurück
+            </summary>
+            <param name="sender"></param>
+            <param name="e">Liste aller Nutzer</param>
+        </member>
+        <member name="M:MDP_Projekt.UI.NutzerDatenUI.btnNew_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Erstellt einen neuen Nutzer im Model
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:MDP_Projekt.UI.NutzerDatenUI.btnDelete_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Löscht einen Nutzer aus dem Model
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:MDP_Projekt.UI.NutzerDatenUI.btnSave_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Speichert Änderungen eines Nutzerdatensatzes im Model
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:MDP_Projekt.UI.NutzerDatenUI.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:MDP_Projekt.UI.MaterialDatenUI">
+            <summary>
+            Interaction logic for MaterialDatenUI.xaml
+            </summary>
+            <summary>
+            MaterialDatenUI
+            </summary>
+        </member>
+        <member name="M:MDP_Projekt.UI.MaterialDatenUI.getMaterial">
+            <summary>
+            Gibt alles Material zurück
+            </summary>
+            <returns>Liste des Materials</returns>
+        </member>
+        <member name="M:MDP_Projekt.UI.MaterialDatenUI.dataGridMaterialDaten_SelectionChanged(System.Object,System.Windows.Controls.SelectionChangedEventArgs)">
+            <summary>
+            Gibt alle Materialien zurück
+            </summary>
+            <param name="sender"></param>
+            <param name="e">Liste aller Materialien</param>
+        </member>
+        <member name="M:MDP_Projekt.UI.MaterialDatenUI.btnNew_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Erstellt ein neues Material im Model
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:MDP_Projekt.UI.MaterialDatenUI.btnDelete_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Löscht ein Material aus dem Model
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:MDP_Projekt.UI.MaterialDatenUI.btnSave_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+             Speichert ein neues Material im Model
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:MDP_Projekt.UI.MaterialDatenUI.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:MDP_Projekt.Model.T_FAHRZEUG">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="M:MDP_Projekt.Model.T_FAHRZEUG.CreateT_FAHRZEUG(System.Int32)">
+            <summary>
+            Create a new T_FAHRZEUG object.
+            </summary>
+            <param name="fZG_ID">Initial value of the FZG_ID property.</param>
+        </member>
+        <member name="P:MDP_Projekt.Model.T_FAHRZEUG.FZG_ID">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:MDP_Projekt.Model.T_FAHRZEUG.FZG_SCHILDNR">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:MDP_Projekt.Model.T_FAHRZEUG.FZG_RAHMENNR">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:MDP_Projekt.Model.T_FAHRZEUG.FZG_STAMMNR">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:MDP_Projekt.Model.T_FAHRZEUG.FZG_ERSTEINVERKEHR">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:MDP_Projekt.Model.T_FAHRZEUG.FZG_FAHRZEUGNR">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:MDP_Projekt.Model.T_FAHRZEUG.FZG_NUT_ID">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:MDP_Projekt.Model.T_FAHRZEUG.FZG_FZA_ID">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:MDP_Projekt.Model.T_FAHRZEUG.FZG_FZT_ID">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:MDP_Projekt.Model.T_FAHRZEUG.TR_FAHRZEUGART">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:MDP_Projekt.Model.T_FAHRZEUG.TR_FAHRZEUGARTReference">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:MDP_Projekt.Model.T_FAHRZEUG.T_REPARATUR">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:MDP_Projekt.Model.T_FAHRZEUG.TZ_FAHRZEUGTYP">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:MDP_Projekt.Model.T_FAHRZEUG.TZ_FAHRZEUGTYPReference">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:MDP_Projekt.Model.T_FAHRZEUG.T_NUTZER">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:MDP_Projekt.Model.T_FAHRZEUG.T_NUTZERReference">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="T:MDP_Projekt.Model.Context">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="M:MDP_Projekt.Model.Context.#ctor">
+            <summary>
+            Initializes a new Context object using the connection string found in the 'Context' section of the application configuration file.
+            </summary>
+        </member>
+        <member name="M:MDP_Projekt.Model.Context.#ctor(System.String)">
+            <summary>
+            Initialize a new Context object.
+            </summary>
+        </member>
+        <member name="M:MDP_Projekt.Model.Context.#ctor(System.Data.EntityClient.EntityConnection)">
+            <summary>
+            Initialize a new Context object.
+            </summary>
+        </member>
+        <member name="M:MDP_Projekt.Model.Context.AddToT_FAHRZEUG(MDP_Projekt.Model.T_FAHRZEUG)">
+            <summary>
+            Deprecated Method for adding a new object to the T_FAHRZEUG EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+            </summary>
+        </member>
+        <member name="M:MDP_Projekt.Model.Context.AddToT_NUTZER(MDP_Projekt.Model.T_NUTZER)">
+            <summary>
+            Deprecated Method for adding a new object to the T_NUTZER EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+            </summary>
+        </member>
+        <member name="M:MDP_Projekt.Model.Context.AddToT_REPARATUR(MDP_Projekt.Model.T_REPARATUR)">
+            <summary>
+            Deprecated Method for adding a new object to the T_REPARATUR EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+            </summary>
+        </member>
+        <member name="M:MDP_Projekt.Model.Context.AddToTR_ARBEIT(MDP_Projekt.Model.TR_ARBEIT)">
+            <summary>
+            Deprecated Method for adding a new object to the TR_ARBEIT EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+            </summary>
+        </member>
+        <member name="M:MDP_Projekt.Model.Context.AddToTR_FAHRZEUGART(MDP_Projekt.Model.TR_FAHRZEUGART)">
+            <summary>
+            Deprecated Method for adding a new object to the TR_FAHRZEUGART EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+            </summary>
+        </member>
+        <member name="M:MDP_Projekt.Model.Context.AddToTR_FAHRZEUGMARKE(MDP_Projekt.Model.TR_FAHRZEUGMARKE)">
+            <summary>
+            Deprecated Method for adding a new object to the TR_FAHRZEUGMARKE EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+            </summary>
+        </member>
+        <member name="M:MDP_Projekt.Model.Context.AddToTR_MATERIAL(MDP_Projekt.Model.TR_MATERIAL)">
+            <summary>
+            Deprecated Method for adding a new object to the TR_MATERIAL EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+            </summary>
+        </member>
+        <member name="M:MDP_Projekt.Model.Context.AddToTZ_ARBEITLISTE(MDP_Projekt.Model.TZ_ARBEITLISTE)">
+            <summary>
+            Deprecated Method for adding a new object to the TZ_ARBEITLISTE EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+            </summary>
+        </member>
+        <member name="M:MDP_Projekt.Model.Context.AddToTZ_FAHRZEUGTYP(MDP_Projekt.Model.TZ_FAHRZEUGTYP)">
+            <summary>
+            Deprecated Method for adding a new object to the TZ_FAHRZEUGTYP EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+            </summary>
+        </member>
+        <member name="M:MDP_Projekt.Model.Context.AddToTZ_MATERIALLISTE(MDP_Projekt.Model.TZ_MATERIALLISTE)">
+            <summary>
+            Deprecated Method for adding a new object to the TZ_MATERIALLISTE EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+            </summary>
+        </member>
+        <member name="P:MDP_Projekt.Model.Context.T_FAHRZEUG">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:MDP_Projekt.Model.Context.T_NUTZER">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:MDP_Projekt.Model.Context.T_REPARATUR">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:MDP_Projekt.Model.Context.TR_ARBEIT">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:MDP_Projekt.Model.Context.TR_FAHRZEUGART">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:MDP_Projekt.Model.Context.TR_FAHRZEUGMARKE">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:MDP_Projekt.Model.Context.TR_MATERIAL">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:MDP_Projekt.Model.Context.TZ_ARBEITLISTE">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:MDP_Projekt.Model.Context.TZ_FAHRZEUGTYP">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:MDP_Projekt.Model.Context.TZ_MATERIALLISTE">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="T:MDP_Projekt.Model.T_NUTZER">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="M:MDP_Projekt.Model.T_NUTZER.CreateT_NUTZER(System.Int32,System.String)">
+            <summary>
+            Create a new T_NUTZER object.
+            </summary>
+            <param name="nUT_ID">Initial value of the NUT_ID property.</param>
+            <param name="nUT_NAME">Initial value of the NUT_NAME property.</param>
+        </member>
+        <member name="P:MDP_Projekt.Model.T_NUTZER.NUT_ID">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:MDP_Projekt.Model.T_NUTZER.NUT_NAME">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:MDP_Projekt.Model.T_NUTZER.NUT_PLZ">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:MDP_Projekt.Model.T_NUTZER.NUT_ORT">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:MDP_Projekt.Model.T_NUTZER.T_FAHRZEUG">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="T:MDP_Projekt.Model.T_REPARATUR">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="M:MDP_Projekt.Model.T_REPARATUR.CreateT_REPARATUR(System.Int32)">
+            <summary>
+            Create a new T_REPARATUR object.
+            </summary>
+            <param name="rEP_ID">Initial value of the REP_ID property.</param>
+        </member>
+        <member name="P:MDP_Projekt.Model.T_REPARATUR.REP_ID">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:MDP_Projekt.Model.T_REPARATUR.REP_DISPONR">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:MDP_Projekt.Model.T_REPARATUR.REP_EINGANG">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:MDP_Projekt.Model.T_REPARATUR.REP_AUSGANG">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:MDP_Projekt.Model.T_REPARATUR.REP_RECHNUNGSNR">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:MDP_Projekt.Model.T_REPARATUR.REP_FAHRZEUGKM">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:MDP_Projekt.Model.T_REPARATUR.REP_FZG_ID">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:MDP_Projekt.Model.T_REPARATUR.REP_MTL_ID">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:MDP_Projekt.Model.T_REPARATUR.REP_ABL_ID">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:MDP_Projekt.Model.T_REPARATUR.T_FAHRZEUG">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:MDP_Projekt.Model.T_REPARATUR.T_FAHRZEUGReference">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:MDP_Projekt.Model.T_REPARATUR.TZ_ARBEITLISTE">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:MDP_Projekt.Model.T_REPARATUR.TZ_ARBEITLISTEReference">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:MDP_Projekt.Model.T_REPARATUR.TZ_MATERIALLISTE">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:MDP_Projekt.Model.T_REPARATUR.TZ_MATERIALLISTEReference">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="T:MDP_Projekt.Model.TR_ARBEIT">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="M:MDP_Projekt.Model.TR_ARBEIT.CreateTR_ARBEIT(System.Int32)">
+            <summary>
+            Create a new TR_ARBEIT object.
+            </summary>
+            <param name="aRB_ID">Initial value of the ARB_ID property.</param>
+        </member>
+        <member name="P:MDP_Projekt.Model.TR_ARBEIT.ARB_ID">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:MDP_Projekt.Model.TR_ARBEIT.ARB_BEZEICHNUNG">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:MDP_Projekt.Model.TR_ARBEIT.ARB_PREIS">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:MDP_Projekt.Model.TR_ARBEIT.TZ_ARBEITLISTE">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="T:MDP_Projekt.Model.TR_FAHRZEUGART">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="M:MDP_Projekt.Model.TR_FAHRZEUGART.CreateTR_FAHRZEUGART(System.Int32,System.String,System.String)">
+            <summary>
+            Create a new TR_FAHRZEUGART object.
+            </summary>
+            <param name="fZA_ID">Initial value of the FZA_ID property.</param>
+            <param name="fZA_BEZEICHNUNG">Initial value of the FZA_BEZEICHNUNG property.</param>
+            <param name="fZA_KEY">Initial value of the FZA_KEY property.</param>
+        </member>
+        <member name="P:MDP_Projekt.Model.TR_FAHRZEUGART.FZA_ID">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:MDP_Projekt.Model.TR_FAHRZEUGART.FZA_BEZEICHNUNG">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:MDP_Projekt.Model.TR_FAHRZEUGART.FZA_KEY">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:MDP_Projekt.Model.TR_FAHRZEUGART.T_FAHRZEUG">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="T:MDP_Projekt.Model.TR_FAHRZEUGMARKE">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="M:MDP_Projekt.Model.TR_FAHRZEUGMARKE.CreateTR_FAHRZEUGMARKE(System.Int32,System.String)">
+            <summary>
+            Create a new TR_FAHRZEUGMARKE object.
+            </summary>
+            <param name="fZM_ID">Initial value of the FZM_ID property.</param>
+            <param name="fZM_BEZEICHNUNG">Initial value of the FZM_BEZEICHNUNG property.</param>
+        </member>
+        <member name="P:MDP_Projekt.Model.TR_FAHRZEUGMARKE.FZM_ID">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:MDP_Projekt.Model.TR_FAHRZEUGMARKE.FZM_BEZEICHNUNG">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:MDP_Projekt.Model.TR_FAHRZEUGMARKE.TZ_FAHRZEUGTYP">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="T:MDP_Projekt.Model.TR_MATERIAL">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="M:MDP_Projekt.Model.TR_MATERIAL.CreateTR_MATERIAL(System.Int32)">
+            <summary>
+            Create a new TR_MATERIAL object.
+            </summary>
+            <param name="mAT_ID">Initial value of the MAT_ID property.</param>
+        </member>
+        <member name="P:MDP_Projekt.Model.TR_MATERIAL.MAT_ID">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:MDP_Projekt.Model.TR_MATERIAL.MAT_BEZEICHNUNG">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:MDP_Projekt.Model.TR_MATERIAL.MAT_PREIS">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:MDP_Projekt.Model.TR_MATERIAL.MAT_MARGE">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:MDP_Projekt.Model.TR_MATERIAL.TZ_MATERIALLISTE">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="T:MDP_Projekt.Model.TZ_ARBEITLISTE">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="M:MDP_Projekt.Model.TZ_ARBEITLISTE.CreateTZ_ARBEITLISTE(System.Int32)">
+            <summary>
+            Create a new TZ_ARBEITLISTE object.
+            </summary>
+            <param name="aBL_ID">Initial value of the ABL_ID property.</param>
+        </member>
+        <member name="P:MDP_Projekt.Model.TZ_ARBEITLISTE.ABL_ID">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:MDP_Projekt.Model.TZ_ARBEITLISTE.ABL_MENGE">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:MDP_Projekt.Model.TZ_ARBEITLISTE.ABL_ARB_ID">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:MDP_Projekt.Model.TZ_ARBEITLISTE.T_REPARATUR">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:MDP_Projekt.Model.TZ_ARBEITLISTE.TR_ARBEIT">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:MDP_Projekt.Model.TZ_ARBEITLISTE.TR_ARBEITReference">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="T:MDP_Projekt.Model.TZ_FAHRZEUGTYP">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="M:MDP_Projekt.Model.TZ_FAHRZEUGTYP.CreateTZ_FAHRZEUGTYP(System.Int32)">
+            <summary>
+            Create a new TZ_FAHRZEUGTYP object.
+            </summary>
+            <param name="fZT_ID">Initial value of the FZT_ID property.</param>
+        </member>
+        <member name="P:MDP_Projekt.Model.TZ_FAHRZEUGTYP.FZT_ID">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:MDP_Projekt.Model.TZ_FAHRZEUGTYP.FZT_BEZEICHNUNG">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:MDP_Projekt.Model.TZ_FAHRZEUGTYP.FZT_FZM_ID">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:MDP_Projekt.Model.TZ_FAHRZEUGTYP.T_FAHRZEUG">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:MDP_Projekt.Model.TZ_FAHRZEUGTYP.TR_FAHRZEUGMARKE">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:MDP_Projekt.Model.TZ_FAHRZEUGTYP.TR_FAHRZEUGMARKEReference">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="T:MDP_Projekt.Model.TZ_MATERIALLISTE">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="M:MDP_Projekt.Model.TZ_MATERIALLISTE.CreateTZ_MATERIALLISTE(System.Int32)">
+            <summary>
+            Create a new TZ_MATERIALLISTE object.
+            </summary>
+            <param name="mTL_ID">Initial value of the MTL_ID property.</param>
+        </member>
+        <member name="P:MDP_Projekt.Model.TZ_MATERIALLISTE.MTL_ID">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:MDP_Projekt.Model.TZ_MATERIALLISTE.MTL_MENGE">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:MDP_Projekt.Model.TZ_MATERIALLISTE.MTL_MAT_ID">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:MDP_Projekt.Model.TZ_MATERIALLISTE.T_REPARATUR">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:MDP_Projekt.Model.TZ_MATERIALLISTE.TR_MATERIAL">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:MDP_Projekt.Model.TZ_MATERIALLISTE.TR_MATERIALReference">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="T:MDP_Projekt.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:MDP_Projekt.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:MDP_Projekt.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="T:MDP_Projekt.UI.FahrzeugDatenUI">
+            <summary>
+            Interaction logic for FahrzeugDaten.xaml
+            </summary>
+            <summary>
+            FahrzeugDatenUI
+            </summary>
+        </member>
+        <member name="M:MDP_Projekt.UI.FahrzeugDatenUI.getFahrzeuge">
+            <summary>
+            Gibt alle Fahrzeuge zurück
+            </summary>
+            <returns>Liste der Fahrzeuge</returns>
+        </member>
+        <member name="M:MDP_Projekt.UI.FahrzeugDatenUI.getFahrzeugarten">
+            <summary>
+            Gibt alle Fahrzeugarten zurück
+            </summary>
+            <returns>Liste der Fahrzeugarten</returns>
+        </member>
+        <member name="M:MDP_Projekt.UI.FahrzeugDatenUI.getFahrzeugmarkeCombo">
+            <summary>
+            Gibt alle Fahrzeugmarken zurück
+            </summary>
+            <returns>Liste der Fahrzeugmarken</returns>
+        </member>
+        <member name="M:MDP_Projekt.UI.FahrzeugDatenUI.getFahrzeugtypCombo">
+            <summary>
+            Gibt alle Fahrzeugtypen zurück
+            </summary>
+            <returns>Liste der Fahrzeugtypen</returns>
+        </member>
+        <member name="M:MDP_Projekt.UI.FahrzeugDatenUI.getFahrzeugnutzerCombo">
+            <summary>
+            Gibt alle Fahrzeugnutzer zurück
+            </summary>
+            <returns>Liste der Fahrzeugnutzer</returns>
+        </member>
+        <member name="M:MDP_Projekt.UI.FahrzeugDatenUI.gridFahrzeugDaten_SelectionChanged(System.Object,System.Windows.Controls.SelectionChangedEventArgs)">
+            <summary>
+            Lädt die Detailansicht anhand der Datagridauswahl
+            </summary>
+            <param name="sender">Senderobjekt Datagrid</param>
+            <param name="e">Argument des Senderobjekts</param>
+        </member>
+        <member name="M:MDP_Projekt.UI.FahrzeugDatenUI.btnSave_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Speichert Änderungen eines Fahrzeugdatensatzes im Model
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:MDP_Projekt.UI.FahrzeugDatenUI.btnDelete_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Löscht ein Fahrzeug aus dem Model
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:MDP_Projekt.UI.FahrzeugDatenUI.btnNew_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Erstellt ein neues Fahrzeug im Model
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:MDP_Projekt.UI.FahrzeugDatenUI.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:MDP_Projekt.App">
+            <summary>
+            Interaction logic for App.xaml
+            </summary>
+            <summary>
+            App
+            </summary>
+        </member>
+        <member name="M:MDP_Projekt.App.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="M:MDP_Projekt.App.Main">
+            <summary>
+            Application Entry Point.
+            </summary>
+        </member>
+    </members>
+</doc>
