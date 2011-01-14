@@ -5,8 +5,8 @@
 	x:Name="Window"
 	Title="MainFrame"
     ResizeMode="NoResize"
-	Width="800"
-    Height="600"
+	Width="750"
+    Height="580"
     xmlns:Microsoft_Windows_Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Classic"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -97,8 +97,8 @@
             <Setter Property="VerticalContentAlignment" Value="{Binding Path=VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"/>
             <Setter Property="Padding" Value="1,0,0,0"/>
             <Setter Property="Foreground" Value="#FFFFFF"/>
-            <Setter Property="FontSize" Value="13"/>
-            <Setter Property="FontFamily" Value="Tahoma"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontFamily" Value="Calibri"/>
             <Setter Property="FontWeight" Value="Bold"/>
             <Setter Property="FocusVisualStyle" Value="{StaticResource TreeViewItemFocusVisual}"/>
             <Setter Property="Template">
@@ -169,7 +169,7 @@
                             </Trigger>
                             <Trigger Property="HasItems" Value="false">
                                 <Setter Property="Visibility" TargetName="Expander" Value="Hidden"/>
-                                <Setter Property="FontSize" Value="11"/>
+                                <Setter Property="FontSize" Value="12"/>
                                 <Setter Property="FontWeight" Value="Normal"/>
                                 <Setter Property="Foreground" Value="DarkGoldenrod"/>
                                 <Setter Property="Visibility" TargetName="whiteRect" Value="Visible"/>
@@ -223,7 +223,7 @@
             </TreeViewItem>
         </TreeView>
         <Label Height="32.5" Margin="70,0,0,-5" Name="labelCopy" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="128.75" Foreground="White">© by Team8</Label>
-        <Label Height="55" Padding="40,10,0,0" Margin="12,16.25,0,0" Name="lblTitle" VerticalAlignment="Top" Background="#9F000000" Foreground="White" FontSize="24" FlowDirection="RightToLeft" FontWeight="Normal">Post Datenbank</Label>
+        <Label Height="55" Padding="40,10,0,0" Margin="12,16.25,0,0" Name="lblTitle" VerticalAlignment="Top" Background="#9F000000" Foreground="White" FontFamily="Calibri" FontSize="24" FlowDirection="RightToLeft" FontWeight="Normal">Post Datenbank</Label>
         <Canvas Margin="238.75,123.75,26.25,86.25" Name="canvasUnknown" Background="#00AD4747" Visibility="Visible">
             <Frame Height="Auto" Name="frmPage" Width="Auto" Background="#FF1A4579" />
         </Canvas>
