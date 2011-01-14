@@ -144,7 +144,7 @@ namespace MDP_Projekt.UI
             {
                 using (Model.Context context = new Model.Context())
                 {
-                    this.gridFahrzeug.DataContext = context.T_FAHRZEUG.Where(q => q.FZG_ID == selectedItem.FZG_ID).First();
+                    this.gridFahrzeug.DataContext = context.T_FAHRZEUG.Where(q => q.FZG_ID == selectedItem.FZG_ID).FirstOrDefault();
                 }
             }
         }
@@ -164,9 +164,9 @@ namespace MDP_Projekt.UI
                 {
                     Model.T_FAHRZEUG fahrzeugToSave;
 
-                    if (currentFahrzeug.isNew)
+                    if (!currentFahrzeug.isNew)
                     {
-                        fahrzeugToSave = context.T_FAHRZEUG.Where(q => q.FZG_ID == currentFahrzeug.FZG_ID).First();
+                        fahrzeugToSave = context.T_FAHRZEUG.Where(q => q.FZG_ID == currentFahrzeug.FZG_ID).FirstOrDefault();
 
                         if (fahrzeugToSave != null)
                         {
@@ -198,11 +198,11 @@ namespace MDP_Projekt.UI
             {
                 using (Model.Context context = new Model.Context())
                 {
-                    Model.T_FAHRZEUG fahrzeugToDelete = context.T_FAHRZEUG.Where(q => q.FZG_ID == currentFahrzeug.FZG_ID).First();
+                    Model.T_FAHRZEUG fahrzeugToDelete = context.T_FAHRZEUG.Where(q => q.FZG_ID == currentFahrzeug.FZG_ID).FirstOrDefault();
 
                     if (fahrzeugToDelete != null)
                     {
-                        context.T_FAHRZEUG.DeleteObject(context.T_FAHRZEUG.Where(q => q.FZG_ID == fahrzeugToDelete.FZG_ID).First());
+                        context.T_FAHRZEUG.DeleteObject(context.T_FAHRZEUG.Where(q => q.FZG_ID == fahrzeugToDelete.FZG_ID).FirstOrDefault());
                         context.SaveChanges();
                     }
                 }
