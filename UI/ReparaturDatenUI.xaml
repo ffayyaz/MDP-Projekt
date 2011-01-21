@@ -13,8 +13,8 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
                 <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
@@ -30,15 +30,15 @@
             <Label Grid.Row="2" Grid.Column="0">Fahrzeug km:</Label>
             <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Path=REP_FAHRZEUGKM}" />
             <Label Grid.Row="0" Grid.Column="2">Reparatur-Eingang:</Label>
-            <DatePicker Grid.Row="0" Grid.Column="3" />
+            <DatePicker Grid.Row="0" Grid.Column="3" SelectedDate="{Binding Path=REP_EINGANG}"/>
             <Label Grid.Row="1" Grid.Column="2">Reparatur-Ausgang:</Label>
-            <DatePicker Grid.Row="1" Grid.Column="3" />
+            <DatePicker Grid.Row="1" Grid.Column="3" SelectedDate="{Binding Path=REP_AUSGANG}"/>
             <DataGrid Grid.Row="3" Grid.ColumnSpan="2" Name="dataGridMaterial" AutoGenerateColumns="False" HeadersVisibility="Column">
             <DataGrid.Columns>
                 <DataGridTemplateColumn Header="Material">
                     <DataGridTemplateColumn.CellEditingTemplate>
                         <DataTemplate>
-                            <ComboBox SelectedItem="{Binding Path=MTL_MAT_ID.MAT_BEZEICHNUNG, Mode=OneWay}" />
+                            <ComboBox SelectedItem="{Binding Path=TR_MATERIAL.MAT_BEZEICHNUNG, Mode=OneWay}" />
                         </DataTemplate>
                     </DataGridTemplateColumn.CellEditingTemplate>
                 </DataGridTemplateColumn>
@@ -56,7 +56,7 @@
                     <DataGridTemplateColumn Header="Arbeit">
                         <DataGridTemplateColumn.CellEditingTemplate>
                             <DataTemplate>
-                                <ComboBox SelectedItem="{Binding Path=ABL_ARB_ID.ARB_BEZEICHNUNG, Mode=OneWay}" />
+                                <ComboBox SelectedItem="{Binding Path=TR_ARBEIT.ARB_BEZEICHNUNG, Mode=OneWay}" />
                             </DataTemplate>
                         </DataGridTemplateColumn.CellEditingTemplate>
                     </DataGridTemplateColumn>
@@ -69,21 +69,20 @@
                     </DataGridTemplateColumn>
                 </DataGrid.Columns>
             </DataGrid>
-            
             <Button Grid.Row="2" Grid.Column="4" Name="btnSave">Save</Button>
-            <Button Grid.Row="6" Grid.Column="0" Name="btnNew">New</Button>
-            <Button Grid.Row="6" Grid.Column="1" Name="btnDelete">Delete</Button>
-            <DataGrid Grid.Row="7" Grid.ColumnSpan="4" AutoGenerateColumns="False" HeadersVisibility="Column" Name="dataGridReparaturDaten" ItemsSource="{Binding}">
+            <Button Grid.Row="5" Grid.Column="0" Name="btnNew">New</Button>
+            <Button Grid.Row="5" Grid.Column="1" Name="btnDelete">Delete</Button>
+            <DataGrid Grid.Row="6" Grid.ColumnSpan="4" AutoGenerateColumns="False" HeadersVisibility="Column" Name="dataGridReparaturDaten" ItemsSource="{Binding}">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Binding="{Binding Path=REP_FZG_ID.FZG_SCHILDNR, Mode=OneWay}" Header="Fahrzeug" />
                     <DataGridTextColumn Binding="{Binding Path=REP_RECHNUNGSNR, Mode=OneWay}" Header="Rechnungs-Nr" />
+                    <DataGridTextColumn Binding="{Binding Path=T_FAHRZEUG.FZG_SCHILDNR, Mode=OneWay}" Header="Schild-Nr" />
+                    <DataGridTextColumn Binding="{Binding Path=REP_FAHRZEUGKM, Mode=OneWay}" Header="Fahrzeug km"/>
                     <DataGridTextColumn Binding="{Binding Path=REP_DISPONR, Mode=OneWay}" Header="Dispositions-Nr" />
                     <DataGridTextColumn Binding="{Binding Path=REP_EINGANG, Mode=OneWay}" Header="Reparatur Eingang" />
                     <DataGridTextColumn Binding="{Binding Path=REP_AUSGANG, Mode=OneWay}" Header="Reparatur Ausgang" />
-                    <DataGridTextColumn Binding="{Binding Path=REP_FAHRZEUGKM, Mode=OneWay}" Header="Fahrzeug km"/>
                 </DataGrid.Columns>
             </DataGrid>
-            <GridSplitter Grid.Row="5" Grid.ColumnSpan="4" Height="5" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Margin="0,10,0,0" />
+            <GridSplitter Grid.Row="4" Grid.ColumnSpan="4" Height="5" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Margin="0,10,0,0" />
         </Grid>
     </StackPanel>
 </Page>
