@@ -22,6 +22,22 @@ namespace MDP_Projekt.UI
         public RechnungsDatenUI()
         {
             InitializeComponent();
+
+            this.gridReparaturDaten.DataContext = getReparaturen();
+        }
+
+        private List<Model.T_REPARATUR> getReparaturen()
+        {
+            List<Model.T_REPARATUR> reparaturen; // = new List<Model.T_FAHRZEUG>();
+            using (Model.Context context = new Model.Context())
+            {
+                // Fahrzeuge holen
+                reparaturen = context.T_REPARATUR.ToList();
+
+                // ... deren Entitäten laden
+                reparaturen.Where(q => q.T_FAHRZEUGReference != null).ToList().ForEach(q => q.T_FAHRZEUGReference.Load());
+            }
+            return reparaturen.ToList();
         }
     }
 }
