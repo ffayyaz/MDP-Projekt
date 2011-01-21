@@ -4,7 +4,6 @@
 	x:Class="MDP_Projekt.UI.MainFrame"
 	x:Name="Window"
 	Title="MainFrame"
-    ResizeMode="NoResize"
 	Width="750"
     Height="580"
     xmlns:Microsoft_Windows_Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Classic"
@@ -212,7 +211,7 @@
         <Canvas Name="canvasMenu" Background="#8F000000" HorizontalAlignment="Left" Width="195" />
         <TreeView d:LayoutOverrides="Height" Opacity="1" Foreground="Black" BorderBrush="#00000000" Background="#00000000" Margin="12,85,0,12" HorizontalAlignment="Left" Width="170" Name="treeMenu">
             <TreeViewItem Header="Rechnung">
-                <TreeViewItem Header="erstellen" Selected="showUnknown"/>
+                <TreeViewItem Header="erstellen" Selected="showReparaturDaten"/>
                 <TreeViewItem Header="ansehen" Selected="showUnknown"/>
             </TreeViewItem>
             <TreeViewItem Header="Datenverwaltung">
