@@ -70,4 +70,15 @@ namespace MDP_Projekt.Model
             get { return !(this.ARB_ID > 0); }
         }
     }
+
+    public partial class T_REPARATUR
+    {
+        /// <summary>
+        /// Gibt an, ob ein Objekt dieser Klasse neu instanziert wurde
+        /// </summary>
+        public bool isNew
+        {
+            get { return !(this.REP_ID > 0); }
+        }
+    }
 }
