@@ -22,8 +22,8 @@ using System.Runtime.Serialization;
 [assembly: EdmRelationshipAttribute("Model", "FK_FZG_REP", "T_FAHRZEUG", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(MDP_Projekt.Model.T_FAHRZEUG), "T_REPARATUR", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MDP_Projekt.Model.T_REPARATUR), true)]
 [assembly: EdmRelationshipAttribute("Model", "FK_FZT_FZG", "TZ_FAHRZEUGTYP", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(MDP_Projekt.Model.TZ_FAHRZEUGTYP), "T_FAHRZEUG", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MDP_Projekt.Model.T_FAHRZEUG), true)]
 [assembly: EdmRelationshipAttribute("Model", "FK_NUT_FZG", "T_NUTZER", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(MDP_Projekt.Model.T_NUTZER), "T_FAHRZEUG", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MDP_Projekt.Model.T_FAHRZEUG), true)]
-[assembly: EdmRelationshipAttribute("Model", "FK_ABL_REP", "TZ_ARBEITLISTE", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(MDP_Projekt.Model.TZ_ARBEITLISTE), "T_REPARATUR", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MDP_Projekt.Model.T_REPARATUR), true)]
-[assembly: EdmRelationshipAttribute("Model", "FK_MTL_REP", "TZ_MATERIALLISTE", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(MDP_Projekt.Model.TZ_MATERIALLISTE), "T_REPARATUR", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MDP_Projekt.Model.T_REPARATUR), true)]
+[assembly: EdmRelationshipAttribute("Model", "FK_REP_ABL", "T_REPARATUR", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(MDP_Projekt.Model.T_REPARATUR), "TZ_ARBEITLISTE", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MDP_Projekt.Model.TZ_ARBEITLISTE), true)]
+[assembly: EdmRelationshipAttribute("Model", "FK_REP_MTL", "T_REPARATUR", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(MDP_Projekt.Model.T_REPARATUR), "TZ_MATERIALLISTE", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MDP_Projekt.Model.TZ_MATERIALLISTE), true)]
 [assembly: EdmRelationshipAttribute("Model", "FK_ARB_ABL", "TR_ARBEIT", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(MDP_Projekt.Model.TR_ARBEIT), "TZ_ARBEITLISTE", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MDP_Projekt.Model.TZ_ARBEITLISTE), true)]
 [assembly: EdmRelationshipAttribute("Model", "FK_FZM_FZT", "TR_FAHRZEUGMARKE", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(MDP_Projekt.Model.TR_FAHRZEUGMARKE), "TZ_FAHRZEUGTYP", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MDP_Projekt.Model.TZ_FAHRZEUGTYP), true)]
 [assembly: EdmRelationshipAttribute("Model", "FK_MAT_MTL", "TR_MATERIAL", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(MDP_Projekt.Model.TR_MATERIAL), "TZ_MATERIALLISTE", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MDP_Projekt.Model.TZ_MATERIALLISTE), true)]
@@ -1063,54 +1063,6 @@ namespace MDP_Projekt.Model
         private Nullable<global::System.Int32> _REP_FZG_ID;
         partial void OnREP_FZG_IDChanging(Nullable<global::System.Int32> value);
         partial void OnREP_FZG_IDChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public Nullable<global::System.Int32> REP_MTL_ID
-        {
-            get
-            {
-                return _REP_MTL_ID;
-            }
-            set
-            {
-                OnREP_MTL_IDChanging(value);
-                ReportPropertyChanging("REP_MTL_ID");
-                _REP_MTL_ID = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("REP_MTL_ID");
-                OnREP_MTL_IDChanged();
-            }
-        }
-        private Nullable<global::System.Int32> _REP_MTL_ID;
-        partial void OnREP_MTL_IDChanging(Nullable<global::System.Int32> value);
-        partial void OnREP_MTL_IDChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public Nullable<global::System.Int32> REP_ABL_ID
-        {
-            get
-            {
-                return _REP_ABL_ID;
-            }
-            set
-            {
-                OnREP_ABL_IDChanging(value);
-                ReportPropertyChanging("REP_ABL_ID");
-                _REP_ABL_ID = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("REP_ABL_ID");
-                OnREP_ABL_IDChanged();
-            }
-        }
-        private Nullable<global::System.Int32> _REP_ABL_ID;
-        partial void OnREP_ABL_IDChanging(Nullable<global::System.Int32> value);
-        partial void OnREP_ABL_IDChanged();
 
         #endregion
     
@@ -1160,34 +1112,18 @@ namespace MDP_Projekt.Model
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("Model", "FK_ABL_REP", "TZ_ARBEITLISTE")]
-        public TZ_ARBEITLISTE TZ_ARBEITLISTE
+        [EdmRelationshipNavigationPropertyAttribute("Model", "FK_REP_ABL", "TZ_ARBEITLISTE")]
+        public EntityCollection<TZ_ARBEITLISTE> TZ_ARBEITLISTE
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TZ_ARBEITLISTE>("Model.FK_ABL_REP", "TZ_ARBEITLISTE").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TZ_ARBEITLISTE>("Model.FK_ABL_REP", "TZ_ARBEITLISTE").Value = value;
-            }
-        }
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<TZ_ARBEITLISTE> TZ_ARBEITLISTEReference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TZ_ARBEITLISTE>("Model.FK_ABL_REP", "TZ_ARBEITLISTE");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TZ_ARBEITLISTE>("Model.FK_REP_ABL", "TZ_ARBEITLISTE");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TZ_ARBEITLISTE>("Model.FK_ABL_REP", "TZ_ARBEITLISTE", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TZ_ARBEITLISTE>("Model.FK_REP_ABL", "TZ_ARBEITLISTE", value);
                 }
             }
         }
@@ -1198,34 +1134,18 @@ namespace MDP_Projekt.Model
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("Model", "FK_MTL_REP", "TZ_MATERIALLISTE")]
-        public TZ_MATERIALLISTE TZ_MATERIALLISTE
+        [EdmRelationshipNavigationPropertyAttribute("Model", "FK_REP_MTL", "TZ_MATERIALLISTE")]
+        public EntityCollection<TZ_MATERIALLISTE> TZ_MATERIALLISTE
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TZ_MATERIALLISTE>("Model.FK_MTL_REP", "TZ_MATERIALLISTE").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TZ_MATERIALLISTE>("Model.FK_MTL_REP", "TZ_MATERIALLISTE").Value = value;
-            }
-        }
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<TZ_MATERIALLISTE> TZ_MATERIALLISTEReference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TZ_MATERIALLISTE>("Model.FK_MTL_REP", "TZ_MATERIALLISTE");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TZ_MATERIALLISTE>("Model.FK_REP_MTL", "TZ_MATERIALLISTE");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TZ_MATERIALLISTE>("Model.FK_MTL_REP", "TZ_MATERIALLISTE", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TZ_MATERIALLISTE>("Model.FK_REP_MTL", "TZ_MATERIALLISTE", value);
                 }
             }
         }
@@ -1849,6 +1769,30 @@ namespace MDP_Projekt.Model
         private Nullable<global::System.Int32> _ABL_ARB_ID;
         partial void OnABL_ARB_IDChanging(Nullable<global::System.Int32> value);
         partial void OnABL_ARB_IDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> ABL_REP_ID
+        {
+            get
+            {
+                return _ABL_REP_ID;
+            }
+            set
+            {
+                OnABL_REP_IDChanging(value);
+                ReportPropertyChanging("ABL_REP_ID");
+                _ABL_REP_ID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ABL_REP_ID");
+                OnABL_REP_IDChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _ABL_REP_ID;
+        partial void OnABL_REP_IDChanging(Nullable<global::System.Int32> value);
+        partial void OnABL_REP_IDChanged();
 
         #endregion
     
@@ -1860,18 +1804,34 @@ namespace MDP_Projekt.Model
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("Model", "FK_ABL_REP", "T_REPARATUR")]
-        public EntityCollection<T_REPARATUR> T_REPARATUR
+        [EdmRelationshipNavigationPropertyAttribute("Model", "FK_REP_ABL", "T_REPARATUR")]
+        public T_REPARATUR T_REPARATUR
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<T_REPARATUR>("Model.FK_ABL_REP", "T_REPARATUR");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_REPARATUR>("Model.FK_REP_ABL", "T_REPARATUR").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_REPARATUR>("Model.FK_REP_ABL", "T_REPARATUR").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<T_REPARATUR> T_REPARATURReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_REPARATUR>("Model.FK_REP_ABL", "T_REPARATUR");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<T_REPARATUR>("Model.FK_ABL_REP", "T_REPARATUR", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<T_REPARATUR>("Model.FK_REP_ABL", "T_REPARATUR", value);
                 }
             }
         }
@@ -2181,6 +2141,30 @@ namespace MDP_Projekt.Model
         private Nullable<global::System.Int32> _MTL_MAT_ID;
         partial void OnMTL_MAT_IDChanging(Nullable<global::System.Int32> value);
         partial void OnMTL_MAT_IDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> MTL_REP_ID
+        {
+            get
+            {
+                return _MTL_REP_ID;
+            }
+            set
+            {
+                OnMTL_REP_IDChanging(value);
+                ReportPropertyChanging("MTL_REP_ID");
+                _MTL_REP_ID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("MTL_REP_ID");
+                OnMTL_REP_IDChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _MTL_REP_ID;
+        partial void OnMTL_REP_IDChanging(Nullable<global::System.Int32> value);
+        partial void OnMTL_REP_IDChanged();
 
         #endregion
     
@@ -2192,18 +2176,34 @@ namespace MDP_Projekt.Model
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("Model", "FK_MTL_REP", "T_REPARATUR")]
-        public EntityCollection<T_REPARATUR> T_REPARATUR
+        [EdmRelationshipNavigationPropertyAttribute("Model", "FK_REP_MTL", "T_REPARATUR")]
+        public T_REPARATUR T_REPARATUR
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<T_REPARATUR>("Model.FK_MTL_REP", "T_REPARATUR");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_REPARATUR>("Model.FK_REP_MTL", "T_REPARATUR").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_REPARATUR>("Model.FK_REP_MTL", "T_REPARATUR").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<T_REPARATUR> T_REPARATURReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_REPARATUR>("Model.FK_REP_MTL", "T_REPARATUR");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<T_REPARATUR>("Model.FK_MTL_REP", "T_REPARATUR", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<T_REPARATUR>("Model.FK_REP_MTL", "T_REPARATUR", value);
                 }
             }
         }

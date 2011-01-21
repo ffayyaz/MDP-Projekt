@@ -225,7 +225,7 @@
         <Label Height="32.5" Margin="70,0,0,-5" Name="labelCopy" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="128.75" Foreground="White">© by Team8</Label>
         <Label Height="55" Padding="40,10,0,0" Margin="12,16.25,0,0" Name="lblTitle" VerticalAlignment="Top" Background="#9F000000" Foreground="White" FontFamily="Calibri" FontSize="24" FlowDirection="RightToLeft" FontWeight="Normal">Post Datenbank</Label>
         <Canvas Margin="238.75,123.75,26.25,86.25" Name="canvasUnknown" Background="#00AD4747" Visibility="Visible">
-            <Frame Height="Auto" Name="frmPage" Width="Auto" Background="#FF1A4579" />
+            <Frame Height="Auto" Name="frmPage" Width="Auto" Background="#FF1A4579" NavigationUIVisibility="Hidden" />
         </Canvas>
     </Grid>
 </Window>
