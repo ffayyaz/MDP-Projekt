@@ -23,7 +23,9 @@ namespace MDP_Projekt.UI
         {
             InitializeComponent();
 
-            this.gridReparaturDaten.DataContext = getReparaturen();
+            this.dataGridReparaturDaten.DataContext = getReparaturen();
+
+            this.gridReparaturDaten.DataContext = new Model.T_REPARATUR();
         }
 
         private List<Model.T_REPARATUR> getReparaturen()
@@ -38,6 +40,42 @@ namespace MDP_Projekt.UI
                 reparaturen.Where(q => q.T_FAHRZEUGReference != null).ToList().ForEach(q => q.T_FAHRZEUGReference.Load());
             }
             return reparaturen.ToList();
+        }
+
+        private void btnNew_Click(object sender, RoutedEventArgs e)
+        {
+            this.gridReparaturDaten.DataContext = new Model.T_REPARATUR();
+        }
+
+        private void btnSave_Click(object sender, RoutedEventArgs e)
+        {
+            Model.T_REPARATUR currentReparatur = this.gridReparaturDaten.DataContext as Model.T_REPARATUR;
+
+            if (currentReparatur != null)
+            {
+                using (Model.Context context = new Model.Context())
+                {
+                    Model.T_REPARATUR reparaturToSave;
+
+                    if (!currentReparatur.isNew)
+                    {
+                        reparaturToSave = context.T_REPARATUR.Where(q => q.REP_ID == currentReparatur.REP_ID).FirstOrDefault();
+
+                        if (reparaturToSave != null)
+                        {
+                            context.ApplyCurrentValues<Model.T_REPARATUR>("T_REPARATUR", currentReparatur);
+                            context.SaveChanges();
+                        }
+                    }
+                    else
+                    {
+                        context.AddToT_REPARATUR(currentReparatur);
+                        context.SaveChanges();
+                    }
+                }
+
+                this.dataGridReparaturDaten.DataContext = getReparaturen();
+            }
         }
     }
 }

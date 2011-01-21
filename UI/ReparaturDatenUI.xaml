@@ -69,8 +69,8 @@
                     </DataGridTemplateColumn>
                 </DataGrid.Columns>
             </DataGrid>
-            <Button Grid.Row="2" Grid.Column="4" Name="btnSave">Save</Button>
-            <Button Grid.Row="5" Grid.Column="0" Name="btnNew">New</Button>
+            <Button Grid.Row="2" Grid.Column="4" Name="btnSave" Click="btnSave_Click">Save</Button>
+            <Button Grid.Row="5" Grid.Column="0" Name="btnNew" Click="btnNew_Click">New</Button>
             <Button Grid.Row="5" Grid.Column="1" Name="btnDelete">Delete</Button>
             <DataGrid Grid.Row="6" Grid.ColumnSpan="4" AutoGenerateColumns="False" HeadersVisibility="Column" Name="dataGridReparaturDaten" ItemsSource="{Binding}">
                 <DataGrid.Columns>
