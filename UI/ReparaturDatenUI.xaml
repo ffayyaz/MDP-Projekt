@@ -33,40 +33,16 @@
             <DatePicker Grid.Row="0" Grid.Column="3" SelectedDate="{Binding Path=REP_EINGANG}"/>
             <Label Grid.Row="1" Grid.Column="2">Reparatur-Ausgang:</Label>
             <DatePicker Grid.Row="1" Grid.Column="3" SelectedDate="{Binding Path=REP_AUSGANG}"/>
-            <DataGrid Grid.Row="3" Grid.ColumnSpan="2" Name="dataGridMaterial" AutoGenerateColumns="False" HeadersVisibility="Column">
-            <DataGrid.Columns>
-                <DataGridTemplateColumn Header="Material">
-                    <DataGridTemplateColumn.CellEditingTemplate>
-                        <DataTemplate>
-                            <ComboBox SelectedItem="{Binding Path=TR_MATERIAL.MAT_BEZEICHNUNG, Mode=OneWay}" />
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellEditingTemplate>
-                </DataGridTemplateColumn>
-                <DataGridTemplateColumn Header="Menge">
-                    <DataGridTemplateColumn.CellEditingTemplate>
-                        <DataTemplate>
-                            <ComboBox SelectedItem="{Binding Path=MTL_MENGE, Mode=OneWay}" />
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellEditingTemplate>
-                </DataGridTemplateColumn>
-            </DataGrid.Columns>
-            </DataGrid>
-            <DataGrid Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2" Name="dataGridArbeit" AutoGenerateColumns="False" HeadersVisibility="Column">
+            <DataGrid Grid.Row="3" Grid.ColumnSpan="2" Name="dataGridMaterial" AutoGenerateColumns="False"  CanUserDeleteRows="True" CanUserAddRows="True" HeadersVisibility="Column" ItemsSource="{Binding}">
                 <DataGrid.Columns>
-                    <DataGridTemplateColumn Header="Arbeit">
-                        <DataGridTemplateColumn.CellEditingTemplate>
-                            <DataTemplate>
-                                <ComboBox SelectedItem="{Binding Path=TR_ARBEIT.ARB_BEZEICHNUNG, Mode=OneWay}" />
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellEditingTemplate>
-                    </DataGridTemplateColumn>
-                    <DataGridTemplateColumn Header="Menge">
-                        <DataGridTemplateColumn.CellEditingTemplate>
-                            <DataTemplate>
-                                <ComboBox SelectedItem="{Binding Path=ABL_MENGE, Mode=OneWay}" />
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellEditingTemplate>
-                    </DataGridTemplateColumn>
+                    <DataGridComboBoxColumn SelectedValueBinding="{Binding Path=MTL_MAT_ID, Mode=TwoWay}" Header="Material" Width="100" />
+                    <DataGridTextColumn Binding="{Binding Path=MTL_MENGE, Mode=TwoWay}" Header="Menge" Width="100" />
+                </DataGrid.Columns>
+            </DataGrid>
+            <DataGrid Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2" CanUserDeleteRows="True" CanUserAddRows="True" Name="dataGridArbeit" AutoGenerateColumns="False" HeadersVisibility="Column" ItemsSource="{Binding}">
+                <DataGrid.Columns>
+                    <DataGridComboBoxColumn SelectedValueBinding="{Binding Path=ABL_ARB_ID, Mode=TwoWay}" Header="Arbeit" Width="100" />
+                    <DataGridTextColumn Binding="{Binding Path=ABL_MENGE, Mode=TwoWay}" Header="Menge" Width="100" />
                 </DataGrid.Columns>
             </DataGrid>
             <Button Grid.Row="2" Grid.Column="4" Name="btnSave" Click="btnSave_Click">Save</Button>

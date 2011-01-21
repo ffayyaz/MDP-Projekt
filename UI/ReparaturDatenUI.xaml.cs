@@ -23,11 +23,41 @@ namespace MDP_Projekt.UI
         {
             InitializeComponent();
 
+            // Reparaturen-Liste ins Grid laden
             this.dataGridReparaturDaten.DataContext = getReparaturen();
 
+            // per Default leeres Reparatur-Objekt laden
             this.gridReparaturDaten.DataContext = new Model.T_REPARATUR();
+
+            // Arbeitliste ins Grid laden
+            this.dataGridArbeit.DataContext = getArbeitliste();
+
+            // Materialliste mit leere Liste initialisieren, da momentan keine Daten in DB
+            this.dataGridMaterial.DataContext = new List<Model.TZ_MATERIALLISTE>();
         }
 
+        /// <summary>
+        /// Liefert alle Arbeitslisten
+        /// </summary>
+        /// <returns>Arbeitsliste</returns>
+        private List<Model.TZ_ARBEITLISTE> getArbeitliste()
+        {
+            List<Model.TZ_ARBEITLISTE> arbeitliste; // = new List<Model.T_FAHRZEUG>();
+            using (Model.Context context = new Model.Context())
+            {
+                // Fahrzeuge holen
+                arbeitliste = context.TZ_ARBEITLISTE.ToList();
+
+                // Entitäten laden
+                arbeitliste.Where(q => q.TR_ARBEITReference != null).ToList().ForEach(q => q.TR_ARBEITReference.Load());
+            }
+            return arbeitliste.ToList();
+        }
+
+        /// <summary>
+        /// Liefert alle Reparaturen
+        /// </summary>
+        /// <returns>Reparaturenliste</returns>
         private List<Model.T_REPARATUR> getReparaturen()
         {
             List<Model.T_REPARATUR> reparaturen; // = new List<Model.T_FAHRZEUG>();
@@ -51,6 +81,8 @@ namespace MDP_Projekt.UI
         {
             Model.T_REPARATUR currentReparatur = this.gridReparaturDaten.DataContext as Model.T_REPARATUR;
 
+            List<Model.TZ_ARBEITLISTE> al = this.dataGridArbeit.DataContext as List<Model.TZ_ARBEITLISTE>;
+
             if (currentReparatur != null)
             {
                 using (Model.Context context = new Model.Context())
@@ -63,6 +95,17 @@ namespace MDP_Projekt.UI
 
                         if (reparaturToSave != null)
                         {
+                            foreach (Model.TZ_ARBEITLISTE arbl in al)
+                            {
+                                if (arbl.ABL_ID > 0)
+                                {
+                                    context.ApplyCurrentValues<Model.TZ_ARBEITLISTE>("TZ_ARBEITLISTE", arbl);
+                                }
+                                else
+                                {
+                                    context.AddToTZ_ARBEITLISTE(arbl);
+                                }
+                            }
                             context.ApplyCurrentValues<Model.T_REPARATUR>("T_REPARATUR", currentReparatur);
                             context.SaveChanges();
                         }
@@ -73,7 +116,6 @@ namespace MDP_Projekt.UI
                         context.SaveChanges();
                     }
                 }
-
                 this.dataGridReparaturDaten.DataContext = getReparaturen();
             }
         }
