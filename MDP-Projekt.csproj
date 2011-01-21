@@ -60,6 +60,9 @@
     <PlatformTarget>AnyCPU</PlatformTarget>
     <OutputPath>bin\Release\</OutputPath>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="PresentationFramework.Classic" />
     <Reference Include="System" />
@@ -104,6 +107,9 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="UI\ReparaturDatenUI.xaml.cs">
+      <DependentUpon>ReparaturDatenUI.xaml</DependentUpon>
+    </Compile>
     <Page Include="UI\ArbeitsDatenUI.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -121,6 +127,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="UI\NutzerDatenUI.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\ReparaturDatenUI.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

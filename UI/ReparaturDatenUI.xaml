@@ -1,0 +1,89 @@
+﻿<Page x:Class="MDP_Projekt.UI.RechnungsDatenUI"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" 
+      d:DesignHeight="400" d:DesignWidth="400"
+	Title="RechnungsDatenUI">
+    <StackPanel>
+        <Grid Height="Auto" Margin="10" Name="gridReparaturDaten">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Row="0" Grid.Column="0">Fahrzeug:</Label>
+            <ComboBox Grid.Row="0" Grid.Column="1" Name="comboSchildNr" SelectedValue="{Binding Path=FZG_SCHILDNR}" />
+            <Label Grid.Row="1" Grid.Column="0">Rechnungs-Nr.:</Label>
+            <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Path=REP_RECHNUNGSNR}" />
+            <Label Grid.Row="2" Grid.Column="0">Fahrzeug km:</Label>
+            <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Path=REP_FAHRZEUGKM}" />
+            <Label Grid.Row="0" Grid.Column="2">Reparatur-Eingang:</Label>
+            <DatePicker Grid.Row="0" Grid.Column="3" />
+            <Label Grid.Row="1" Grid.Column="2">Reparatur-Ausgang:</Label>
+            <DatePicker Grid.Row="1" Grid.Column="3" />
+            <DataGrid Grid.Row="3" Grid.ColumnSpan="2" Name="dataGridMaterial" AutoGenerateColumns="False" HeadersVisibility="Column">
+            <DataGrid.Columns>
+                <DataGridTemplateColumn Header="Material">
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+                            <ComboBox SelectedItem="{Binding Path=MTL_MAT_ID.MAT_BEZEICHNUNG, Mode=OneWay}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="Menge">
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+                            <ComboBox SelectedItem="{Binding Path=MTL_MENGE, Mode=OneWay}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+            </DataGrid>
+            <DataGrid Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2" Name="dataGridArbeit" AutoGenerateColumns="False" HeadersVisibility="Column">
+                <DataGrid.Columns>
+                    <DataGridTemplateColumn Header="Arbeit">
+                        <DataGridTemplateColumn.CellEditingTemplate>
+                            <DataTemplate>
+                                <ComboBox SelectedItem="{Binding Path=ABL_ARB_ID.ARB_BEZEICHNUNG, Mode=OneWay}" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellEditingTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Header="Menge">
+                        <DataGridTemplateColumn.CellEditingTemplate>
+                            <DataTemplate>
+                                <ComboBox SelectedItem="{Binding Path=ABL_MENGE, Mode=OneWay}" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellEditingTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+            
+            <Button Grid.Row="2" Grid.Column="4" Name="btnSave">Save</Button>
+            <Button Grid.Row="6" Grid.Column="0" Name="btnNew">New</Button>
+            <Button Grid.Row="6" Grid.Column="1" Name="btnDelete">Delete</Button>
+            <DataGrid Grid.Row="7" Grid.ColumnSpan="4" AutoGenerateColumns="False" HeadersVisibility="Column" Name="dataGridReparaturDaten" ItemsSource="{Binding}">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding Path=REP_FZG_ID.FZG_SCHILDNR, Mode=OneWay}" Header="Fahrzeug" />
+                    <DataGridTextColumn Binding="{Binding Path=REP_RECHNUNGSNR, Mode=OneWay}" Header="Rechnungs-Nr" />
+                    <DataGridTextColumn Binding="{Binding Path=REP_DISPONR, Mode=OneWay}" Header="Dispositions-Nr" />
+                    <DataGridTextColumn Binding="{Binding Path=REP_EINGANG, Mode=OneWay}" Header="Reparatur Eingang" />
+                    <DataGridTextColumn Binding="{Binding Path=REP_AUSGANG, Mode=OneWay}" Header="Reparatur Ausgang" />
+                    <DataGridTextColumn Binding="{Binding Path=REP_FAHRZEUGKM, Mode=OneWay}" Header="Fahrzeug km"/>
+                </DataGrid.Columns>
+            </DataGrid>
+            <GridSplitter Grid.Row="5" Grid.ColumnSpan="4" Height="5" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Margin="0,10,0,0" />
+        </Grid>
+    </StackPanel>
+</Page>

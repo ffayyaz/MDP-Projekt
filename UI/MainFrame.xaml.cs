@@ -49,6 +49,11 @@ namespace MDP_Projekt.UI
             frmPage.Navigate(new System.Uri("UI/ArbeitsDatenUI.xaml", UriKind.RelativeOrAbsolute));
         }
 
+        private void showReparaturDaten(object sender, RoutedEventArgs e)
+        {
+            frmPage.Navigate(new System.Uri("UI/ReparaturDatenUI.xaml", UriKind.RelativeOrAbsolute));
+        }
+
         private void showUnknown(object sender, RoutedEventArgs e)
         {
             canvasUnknown.Visibility = Visibility.Visible;
